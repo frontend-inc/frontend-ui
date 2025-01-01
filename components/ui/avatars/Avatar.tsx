@@ -6,7 +6,7 @@ import {
 	AvatarImage,
 	AvatarFallback,
 } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type AvatarProps = {
   alt?: string

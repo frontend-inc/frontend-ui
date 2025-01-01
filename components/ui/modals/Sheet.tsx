@@ -6,28 +6,18 @@ import {
   Drawer,
   DrawerBody,
   DrawerContent,
-  DrawerHeader,  
+  DrawerHeader,
+  DrawerProps  
 } from '@nextui-org/react'
+import { useTheme } from '../../../hooks'
 
-type SheetProps = {
+type SheetProps = DrawerProps & {
 	open: boolean
 	loading?: boolean
 	title?: string
 	side?: 'left' | 'right'
-	handleClose: () => void
-  size?: 
-    'xs' |
-    'sm' | 
-    'md' | 
-    'lg' | 
-    'xl' | 
-    '2xl' | 
-    '3xl' | 
-    '4xl' | 
-    '5xl' | 
-    'full'
-	buttons?: React.ReactNode
-	children: React.ReactNode
+	handleClose: () => void  
+	buttons?: React.ReactNode	
 }
 
 const Sheet: React.FC<SheetProps> = (props) => {
@@ -36,28 +26,29 @@ const Sheet: React.FC<SheetProps> = (props) => {
 		title,
 		handleClose,
 		children,
-    size='sm',
 		buttons,
 	} = props
 
+  const { themeClass } = useTheme()
+
 	return (
-		<Drawer 
-      size={size}
+    <Drawer 
       isOpen={open} 
       onOpenChange={handleClose}
+      className={ themeClass }
     >
-			<DrawerContent>			
-				<DrawerHeader>
-					{title}
-				</DrawerHeader>
-				<DrawerBody>			
-					{children}
-				</DrawerBody>
+      <DrawerContent>			
+        <DrawerHeader>
+          {title}
+        </DrawerHeader>
+        <DrawerBody>			
+          {children}
+        </DrawerBody>
         <DrawerFooter>
           { buttons }
         </DrawerFooter>
-			</DrawerContent>
-		</Drawer>
+      </DrawerContent>
+    </Drawer>
 	)
 }
 

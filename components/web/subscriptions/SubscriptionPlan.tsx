@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Typography } from '../..'
 import { Card, CardHeader, CardBody, CardFooter, Button } from '@nextui-org/react'
 import { RemixIcon } from '../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 import { formatCurrency } from '../../../helpers'
 

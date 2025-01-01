@@ -6,7 +6,7 @@ import { useApp } from '../../../hooks'
 import { useRouter } from 'next/navigation'
 import { useResourceContext } from 'frontend-js'
 import { CoverProps } from '../../web/covers/Cover'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type ProductCollectionCoverCarouselListItemsProps = CoverProps & {
 	href?: string

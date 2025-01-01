@@ -3,7 +3,7 @@
 import React from 'react'
 import { Avatar, AvatarImage } from 'frontend-shadcn'
 import { ScrollArea } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type AIChatMessagesProps = {
 	avatar?: string

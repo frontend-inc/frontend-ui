@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { GripVertical } from 'lucide-react'
 
 type SortableListItemProps = {
@@ -24,7 +24,7 @@ export default function SortableListItem({
 			)}
 		>
 			<div className="mr-4 cursor-grab active:cursor-grabbing">
-				<GripVertical className="h-5 w-5 text-muted-foreground" />
+				<GripVertical className="h-5 w-5 text-foreground/70" />
 			</div>
 			<div className="flex-grow">
 				<Typography variant="body1">{primary}</Typography>

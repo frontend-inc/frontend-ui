@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useDroppable } from '@dnd-kit/core'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface DroppableProps {
 	id: string
@@ -19,7 +19,7 @@ const Droppable: React.FC<DroppableProps> = ({ id, children }) => {
 			ref={setNodeRef}
 			className={cn(
 				'flex flex-row items-center justify-center w-[260px] h-full p-2 rounded',
-				'border border-border',
+				'border border-divider',
 				isOver && 'border-primary'
 			)}
 		>

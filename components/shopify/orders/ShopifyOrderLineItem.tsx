@@ -5,7 +5,7 @@ import { Badge } from 'frontend-shadcn'
 import { Image } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { OrderLineItemType } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyOrderLineItemProps = {
 	lineItem: OrderLineItemType
@@ -36,10 +36,10 @@ const ShopifyOrderLineItem: React.FC<ShopifyOrderLineItemProps> = ({
 			</div>
 			<div className="flex-grow">
 				<h4 className="text-sm font-medium">{lineItem.title}</h4>
-				<p className="text-sm text-muted-foreground">
+				<p className="text-sm text-foreground/70">
 					{lineItem?.variant?.title}
 				</p>
-				<p className="text-sm text-muted-foreground">
+				<p className="text-sm text-foreground/70">
 					{lineItem.quantity} x{' '}
 					{formatCurrency(lineItem?.variant?.price?.amount)}
 				</p>

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
-import { Button } from '../../../components'
+import React from 'react'
+import { Button } from '@nextui-org/react'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
 import ProductFiltersList from './ShopifyProductFiltersList'
 import {
@@ -33,7 +33,7 @@ const ShopifyProductSearchFilters: React.FC<
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant="ghost" className="w-full">
+				<Button variant="ghost" fullWidth>
 					<SlidersHorizontal className="mr-2 h-4 w-4" />
 					Filters
 				</Button>

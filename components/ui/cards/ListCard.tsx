@@ -29,7 +29,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 	return (
 		<button
 			onClick={handleClick}
-			className="p-2 w-full border-b border-border last:border-b-0 hover:bg-muted/50"
+			className="p-2 w-full border-b border-divider last:border-b-0 hover:bg-content2/50"
 		>
 			<div className="flex flex-row items-center w-full">
 				<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row justify-start items-start flex-grow">
@@ -51,7 +51,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 					<div className="flex flex-col justify-between min-h-[120px] flex-grow">
 						<div className="flex flex-col space-y-1">
 							<Typography variant="subtitle1">{title}</Typography>
-							<Typography variant="body2" className="text-muted-foreground">
+							<Typography variant="body2" className="text-foreground/70">
 								{subtitle}
 							</Typography>
 						</div>

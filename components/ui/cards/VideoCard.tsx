@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Image } from '../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { RiPlayCircleFill } from '@remixicon/react'
 
 export type CardProps = {

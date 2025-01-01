@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { RemixIcon } from '../..'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { 
   Button,
   Popover, 
@@ -72,7 +72,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 						variant="ghost"
 						loading={loading}
 						className={cn(
-							'relative w-full sm:w-auto',
+							'text-foreground relative w-full sm:w-auto',
 						)}
 						startContent={
 							<RemixIcon

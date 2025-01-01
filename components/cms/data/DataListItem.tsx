@@ -66,7 +66,7 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 							className="mr-2"
 						/>
 					)}
-					{sortable && <GripVertical className="text-muted-foreground" />}
+					{sortable && <GripVertical className="text-foreground/70" />}
 					<div className="pr-0 sm:pr-2 mr-0 sm:mr-2 w-full sm:w-[220px] sm:min-w-[220px] h-full">
 						<TouchableOpacity handleClick={handleClick}>
 							<Image
@@ -83,7 +83,7 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 					<div className="flex flex-col justify-between items-start h-full w-full py-0 sm:py-1">
 						<div className="flex flex-col space-y-0.5">
 							<Typography variant="subtitle2">{primary}</Typography>
-							<Typography className="text-muted-foreground" variant="body2">
+							<Typography className="text-foreground/70" variant="body2">
 								{secondary}
 							</Typography>
 						</div>

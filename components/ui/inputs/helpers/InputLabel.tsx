@@ -23,7 +23,7 @@ const InputLabel: React.FC<InputLabelProps> = (props) => {
 						<RiInformation2Line
 							name="Info"
 							size="sm"
-							className="text-muted-foreground"
+							className="text-foreground/70"
 						/>
 					</IconButton>
 				</Tooltip>

@@ -10,7 +10,7 @@ import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
 import { TextInputProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 
 const MenuBar = ({ editor }) => {

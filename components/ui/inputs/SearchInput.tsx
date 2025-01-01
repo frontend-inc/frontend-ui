@@ -45,7 +45,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 
 	return (		
     <form
-      className='w-full'
+      className={'w-full'}
       onSubmit={(e) => {
         e.preventDefault()
         handleSearch(text)
@@ -57,12 +57,13 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
         className={ fullWidth ? 'w-full' : 'max-w-screen-sm' }
         placeholder={placeholder}
         value={text}
-        onChange={handleInputChange}
+        onChange={handleInputChange}        
         endContent={
           <Button 
             variant="light"
             isIconOnly 
             onPress={() => handleSearch(text) }
+            className='text-foreground'
           >
             <RemixIcon name='ri-search-line' className='text-foreground' />
           </Button>

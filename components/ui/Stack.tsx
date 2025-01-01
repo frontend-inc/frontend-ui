@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type StackProps = {
 	direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'

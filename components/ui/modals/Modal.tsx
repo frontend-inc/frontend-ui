@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {
+  cn,
   Spinner,
   Modal as NextModal,
   ModalContent,
@@ -9,7 +10,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "@nextui-org/react";
-import {ScrollShadow} from "@nextui-org/scroll-shadow";
+import { useTheme } from '../../../hooks'
 
 type ModalProps = {
 	open: boolean
@@ -37,22 +38,25 @@ export default function Modal(props: ModalProps) {
     maxWidth = 'md',		
 	} = props
 
+  const { themeClass } = useTheme()
+
 	return (
 		<NextModal 
       size={ maxWidth } 
       isOpen={open} 
       onOpenChange={handleClose}
+      className={ themeClass }
     >
 			<ModalContent>
         {(onClose) => (
           <>
-          <ModalHeader className="mt-4">
+          <ModalHeader className="mt-4 text-foreground">
             {title}					
           </ModalHeader>
           <ModalBody>    
-            <ScrollShadow 
+            <div 
               style={{ 
-                maxHeight: maxWidth == 'full' ? 'calc(100vh - 100px)' : '600px' 
+                maxHeight: 'calc(100vh - 100px)'
               }} 
               className="w-full overflow-y-scroll"
             >
@@ -63,7 +67,7 @@ export default function Modal(props: ModalProps) {
               ) : (
                 <div className="w-full">{children}</div>
               )}
-            </ScrollShadow>    
+            </div>    
           </ModalBody>        
           {!loading && buttons && (
             <ModalFooter>{buttons}</ModalFooter>

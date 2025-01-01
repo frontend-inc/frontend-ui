@@ -3,7 +3,7 @@
 import React from 'react'
 import { Input } from 'frontend-shadcn'
 import { Label } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface TextFieldProps
 	extends Omit<
@@ -79,7 +79,7 @@ function TextField({
 				<p
 					className={cn(
 						'text-sm',
-						error ? 'text-destructive' : 'text-muted-foreground'
+						error ? 'text-destructive' : 'text-foreground/70'
 					)}
 				>
 					{helperText}

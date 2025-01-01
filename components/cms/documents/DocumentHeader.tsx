@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { Button } from '../..'
-import { cn } from 'frontend-shadcn'
+import React from 'react'
+import { Button } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 import {
-	Icon,
 	FilterButton,
 	SortButton,
 	SearchInput,
@@ -119,12 +118,13 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 				{enableCreate && (
 					<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
 						<Button
+              variant="solid"
+              color="primary"
 							className={cn(
 								'w-full sm:w-auto',
-								'bg-primary text-primary-foreground hover:bg-primary/90'
 							)}
-							onClick={handleAdd}
-							startIcon={<RiAddFill />}
+							onPress={handleAdd}
+							startContent={<RiAddFill />}
 						>
 							{buttonText}
 						</Button>

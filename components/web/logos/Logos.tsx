@@ -20,7 +20,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 	return (
 		<div className="flex flex-col w-full">
 			<div className="relative flex flex-wrap w-full justify-center items-center gap-4 sm:flex-nowrap">
-				<Marquee className="[--duration:20s]">
+				<Marquee className="duration-3000">
 					{logos.map((logo, i) => (
 						<div
 							key={i}

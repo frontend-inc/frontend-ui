@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC, ReactNode } from 'react'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface AnimatedShinyTextProps {
 	children: ReactNode

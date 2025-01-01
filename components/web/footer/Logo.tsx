@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import EmptyImage from '../../ui/NoImage'
 
 const LOGO_WIDTH = 160
@@ -25,7 +25,7 @@ const Logo: React.FC<LogoProps> = ({
 		<Button
 			variant="ghost"
 			className="p-0 hover:bg-transparent focus:bg-transparent"
-			onClick={() => handleClick('/')}
+			onPress={() => handleClick('/')}
 		>
 			{src?.length > 1 ? (
 				<Image

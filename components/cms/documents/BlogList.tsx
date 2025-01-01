@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { DocumentList, BlogListItems } from '../..'
+import { Empty, DocumentList, BlogListItems } from '../..'
 import { DocumentListProps } from './DocumentList'
 
 export type BlogListProps = DocumentListProps
@@ -12,6 +12,9 @@ const BlogList: React.FC<BlogListProps> = (props) => {
       {...props} 
       list={BlogListItems} 
       contentType="article"
+      emptyIcon="ri-quill-pen-fill"
+      emptyTitle="No blog posts"
+      emptyDescription="Create your first blog post to get started."                
     />
   )
 }

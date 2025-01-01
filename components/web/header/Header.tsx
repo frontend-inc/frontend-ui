@@ -7,6 +7,7 @@ import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { ButtonType, MenuLinkType } from '../../..'
 import {
+  cn,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -20,7 +21,6 @@ import {
   Dropdown,
   DropdownMenu,
 } from "@nextui-org/react";
-import { cn } from 'frontend-shadcn'
 
 type DesktopHeaderProps = {
 	logo: string
@@ -56,6 +56,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
+    <div className="dark">
     <Navbar                   
       isMenuOpen={isMenuOpen} 
       onMenuOpenChange={setIsMenuOpen}
@@ -173,6 +174,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
         ))}
       </NavbarMenu>
     </Navbar>
+    </div>
 	)
 }
 

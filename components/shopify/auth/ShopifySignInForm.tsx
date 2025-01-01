@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { TextInput, IconLoading } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 
@@ -43,20 +43,24 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				placeholder="Password"
 				handleChange={handleChange}
 			/>
-			<Button className="w-full" onClick={handleSubmit} disabled={loading}>
-				Sign In
-				{loading && <IconLoading className="ml-2 h-4 w-4 animate-spin" />}
+			<Button 
+        fullWidth 
+        onPress={handleSubmit} 
+        disabled={loading}
+        isLoading={loading}
+      >
+				Sign In				
 			</Button>
 			{handleSignup && (
-				<Button className="w-full" variant="ghost" onClick={handleSignup}>
+				<Button fullWidth variant="ghost" onPress={handleSignup}>
 					No account? Sign up
 				</Button>
 			)}
 			{handleForgotPassword && (
 				<Button
-					className="w-full"
+          fullWidth
 					variant="ghost"
-					onClick={handleForgotPassword}
+					onPress={handleForgotPassword}
 				>
 					Forgot password?
 				</Button>

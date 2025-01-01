@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface RowProps {
 	size: '1/2' | '1/3' | '1/4' | '2/3' | '3/4' | 'full'

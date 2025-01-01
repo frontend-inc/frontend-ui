@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../..'
+import { Button } from '@nextui-org/react'
 import { Sheet } from '../../../components'
 import ShopifySortList from './ShopifySortList'
 import { PRODUCT_SORT_OPTIONS } from 'frontend-shopify'
@@ -34,20 +34,24 @@ const ShopifyProductSortButton: React.FC<ShopifyProductSortButtonProps> = (
 
 	return (
 		<>
-			<Button variant="ghost" className="w-full" onClick={handleOpen}>
-				{currentSortLabel}
-				<ArrowUpDown className="ml-2 h-4 w-4" />
+			<Button 
+        variant="ghost" 
+        fullWidth 
+        onPress={handleOpen}
+        endContent={ 
+          <ArrowUpDown className="h-4 w-4" />
+        }
+        >
+				{currentSortLabel}				
 			</Button>
 			<Sheet title="Sort by" open={open} handleClose={() => setOpen(false)}>
-				<div className="w-full py-2">
-					<ShopifySortList
-						enableIcons
-						value={sortKey}
-						reverse={reverse}
-						options={PRODUCT_SORT_OPTIONS}
-						handleClick={handleSortClick}
-					/>
-				</div>
+        <ShopifySortList
+          enableIcons
+          value={sortKey}
+          reverse={reverse}
+          options={PRODUCT_SORT_OPTIONS}
+          handleClick={handleSortClick}
+        />
 			</Sheet>
 		</>
 	)

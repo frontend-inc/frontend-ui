@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { UserAvatar, Label, MenuButton } from '../..'
 import { UserType } from 'frontend-js'
 import { useAuth } from 'frontend-js'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type MyAccountUserItemProps = {
 	user: UserType
@@ -44,7 +44,7 @@ const MyAccountUserItem: React.FC<MyAccountUserItemProps> = ({
 			<Button
 				variant="ghost"
 				className="w-full justify-start px-2 py-3"
-				onClick={handleClick}
+				onPress={handleClick}
 			>
 				<div className="flex items-center w-full">
 					<div className="mr-4">
@@ -57,7 +57,7 @@ const MyAccountUserItem: React.FC<MyAccountUserItemProps> = ({
 							</span>
 							{user?.role && <Label>{user?.role}</Label>}
 						</div>
-						<span className="text-xs text-muted-foreground">{user?.email}</span>
+						<span className="text-xs text-foreground/70">{user?.email}</span>
 					</div>
 					{(canEdit || canDelete) && (
 						<MenuButton

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, SwitchInput, TextInput } from '../..'
+import { Button } from '@nextui-org/react'
+import { SwitchInput, TextInput } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 
 type ShopifyRegisterFormProps = {
@@ -57,9 +57,11 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 				handleChange={handleChange}
 			/>
 			<Button
-				loading={loading}
-				className="w-full"
-				onClick={handleSubmit}
+        color="primary"
+        variant="solid"
+				isLoading={loading}
+				fullWidth 
+				onPress={handleSubmit}
 				disabled={loading}
 			>
 				Register

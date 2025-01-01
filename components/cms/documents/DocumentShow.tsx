@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CommentList, Modal, DocumentDetails, SocialButtons } from '../..'
+import { Drawer, CommentList, Modal, DocumentDetails, SocialButtons } from '../..'
 import { BlurFade } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -45,9 +45,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 			break
 		default:
 			disableImage = false
-	}
-
-  const maxWidth = resource?.content_type == 'image' ? 'lg' : 'md'
+	}  
 
 	if (!resource) return null
 	return (
@@ -55,9 +53,9 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
 			title={!disableTitle ? resource?.title : ''}
-      maxWidth={maxWidth}
+      maxWidth='5xl'
 		>
-			<div className="flex flex-col space-y-6 pb-[40px] w-full">
+			<div className="flex flex-col space-y-6 p-6 w-full">
 				<BlurFade delay={0.25} inView className="w-full">
 					<div className="w-full">
 						<DocumentDetails

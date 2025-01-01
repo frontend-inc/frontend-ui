@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Image } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type CardProps = {
 	primary?: string

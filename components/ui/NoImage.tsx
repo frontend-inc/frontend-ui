@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { RemixIcon } from '../../components'
 import { Avatar, AvatarFallback, AspectRatio } from 'frontend-shadcn'
 

@@ -6,7 +6,7 @@ import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { RiHeartFill, RiHeartLine } from '@remixicon/react'
 import { RemixIcon, IconButton } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ProductLikeButtonProps = {
 	product: any

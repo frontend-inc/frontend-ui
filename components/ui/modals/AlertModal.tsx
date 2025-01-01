@@ -11,7 +11,7 @@ import {
   Spinner,  
 } from "@nextui-org/react";
 import { Typography } from '@/components/core';
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type AlertModalProps = {
 	loading?: boolean
@@ -48,7 +48,7 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
                   <Typography variant="subtitle2">
                     { title }
                   </Typography>
-                  <Typography variant="body1" className='text-muted-foreground'>
+                  <Typography variant="body1" className='text-foreground/70'>
                     { description }
                   </Typography>
                 </>

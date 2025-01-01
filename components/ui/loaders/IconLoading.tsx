@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { RiLoader4Line } from '@remixicon/react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type IconLoadingProps = {
 	color?: string

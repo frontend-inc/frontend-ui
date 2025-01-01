@@ -56,7 +56,7 @@ const DropZone: React.FC<DropZoneProps> = (props) => {
 	return (
 		<div
 			{...getRootProps()}
-			className="h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center border-2 border-border rounded-2xl text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300"
+			className="h-[120px] w-full bg-content2 m-px p-4 flex flex-col justify-center items-center rounded-2xl text-center hover:bg-content3 hover:cursor-pointer transition-all duration-300"
 		>
 			<input {...getInputProps()} />
 			{loading ? (

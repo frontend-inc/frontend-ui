@@ -35,7 +35,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
   } = props || {}
 
   return(
-    <Card      
+    <Card            
       isFooterBlurred
       isPressable={ handleClick ? true : false } 
       onPress={ handleClick } 
@@ -60,8 +60,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
       { enableGradient && <div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent" /> }
       { enableOverlay && <div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" /> }
       { label && (
-        <CardFooter className="z-20 w-[calc(100%_-_8px)] justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 ml-1 mt-1">
-          <p className="text-xs text-white">{ label }</p>
+        <CardFooter className="z-20 p-3 w-full overflow-hidden py-1 absolute left-0 bottom-0 text-white text-sm">
+          { label }
         </CardFooter>
       )}
     </Card>

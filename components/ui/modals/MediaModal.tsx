@@ -3,7 +3,7 @@
 import React from 'react'
 import { Backdrop } from '../../../components'
 import { X } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type MediaModalProps = {
 	open: boolean

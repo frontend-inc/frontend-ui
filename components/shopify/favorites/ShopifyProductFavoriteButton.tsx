@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { Heart } from 'lucide-react'
-import { IconButton } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useAuth } from 'frontend-js'
 import { ShopifyProductType } from 'frontend-shopify'
 import { useApp, useSocial } from '../../../hooks'
 import { isShopifyFavorite } from '../../../helpers'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
@@ -41,15 +41,10 @@ const ShopifyProductFavoriteButton: React.FC<
 	}, [currentUser?.id, product?.handle])
 
 	return (
-		<IconButton
-			onClick={handleClick}
-			className={cn(
-				'min-w-[40px]',
-				variant == 'circular' ? 'rounded-full' : 'rounded-lg',
-				size === 'large' && 'border border-divider',
-				'transition-transform duration-200',
-				isFavorite && 'transform scale-110'
-			)}
+		<Button
+      isIconOnly
+			onPress={handleClick}
+      size={size}			
 		>
 			<Heart
 				className={cn(
@@ -57,7 +52,7 @@ const ShopifyProductFavoriteButton: React.FC<
 					isFavorite ? 'fill-primary' : 'stroke-current'
 				)}
 			/>
-		</IconButton>
+		</Button>
 	)
 }
 

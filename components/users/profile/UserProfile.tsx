@@ -40,7 +40,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				<div className="flex flex-col space-y-1">
 					<Typography
 						variant="caption"
-						className="text-muted-foreground w-full flex justify-center sm:justify-start"
+						className="text-foreground/70 w-full flex justify-center sm:justify-start"
 					>
 						@{username}
 					</Typography>
@@ -55,7 +55,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 						{about_me && (
 							<ExpandableText
 								text={about_me}
-								className="text-muted-foreground"
+								className="text-foreground/70"
 							/>
 						)}
 					</div>

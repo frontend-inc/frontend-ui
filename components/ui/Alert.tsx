@@ -7,7 +7,7 @@ import {
 	AlertTitle,
 	AlertDescription,
 } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type AlertProps = {
 	icon?: string

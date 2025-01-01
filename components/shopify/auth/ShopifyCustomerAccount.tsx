@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { AuthScreen, Empty } from '../..'
+import { Button } from '@nextui-org/react'
+import { RemixIcon, AuthScreen, Empty } from '../..'
 import { useAuth } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { User, ShoppingCart, MapPin, LogOut } from 'lucide-react'
@@ -22,11 +22,15 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 	return (
 		<li>
 			<Button
+        fullWidth
 				variant="ghost"
-				className="w-full justify-start"
-				onClick={() => handleClick(item?.path)}
+				className="justify-start"
+				onPress={() => handleClick(item?.path)}
+        startContent={ 
+          item.icon && <RemixIcon name={item.icon} />
+        }
 			>
-				{item.icon && <span className="mr-2">{item.icon}</span>}
+				
 				{item.label}
 			</Button>
 		</li>

@@ -4,7 +4,7 @@ import React from 'react'
 import { Typography } from '../../../components'
 import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 const FieldString: React.FC<FieldElementProps> = (props) => {
 	const { value, label, placeholder, alignItems, className, ...rest } = props

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { Checkbox } from '@nextui-org/react'
 import { MenuButton } from '../../../components'
@@ -54,7 +54,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 		<div
 			className={cn(
         'group',
-				'hover:bg-muted transition-all duration-200 p-1 py-2 overflow-hidden rounded-xl',
+				'hover:bg-content2 transition-all duration-200 p-1 py-2 overflow-hidden rounded-xl',
 				selected && 'border-primary'
 			)}
 		>
@@ -103,7 +103,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				<div className="flex-grow cursor-pointer" onClick={handleClick}>
 					<Typography variant="body1">{primary}</Typography>
 					{secondary && (
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body2" className="text-foreground/70">
 							{secondary}
 						</Typography>
 					)}

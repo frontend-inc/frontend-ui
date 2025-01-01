@@ -9,7 +9,7 @@ import {
 	FilterOptionType,
 	SyntheticEventType,
 } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { RiAddFill } from '@remixicon/react'
 
 export type ResourceHeaderProps = {

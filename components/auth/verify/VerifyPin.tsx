@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { VerifyPinForm, VerifySendPinForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 
@@ -73,7 +73,7 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 						/>
 					)}
 					{loginUrl && (
-						<Button fullWidth onClick={handleLogin}>
+						<Button variant="ghost" fullWidth onPress={handleLogin}>
 							Back to login
 						</Button>
 					)}

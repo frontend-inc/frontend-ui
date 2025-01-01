@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { InputPropsType } from '../../../types'
-import { GripVertical, Plus } from 'lucide-react'
+import { GripVertical } from 'lucide-react'
 import { SortableList, InputLabel, Sheet } from '../..'
 import {
 	RemixIcon,
@@ -234,7 +234,10 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 				open={open}
 				handleClose={closeMenu}
 				buttons={
-					<Button fullWidth onClick={handleSubmit}>
+					<Button 
+            fullWidth 
+            onPress={handleSubmit}
+          >
 						Save
 					</Button>
 				}

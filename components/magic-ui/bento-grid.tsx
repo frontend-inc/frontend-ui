@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Button } from 'frontend-shadcn'
 
 const BentoGrid = ({

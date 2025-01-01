@@ -5,7 +5,7 @@ import { Header } from '../../components'
 import { HeaderProps } from '../../components/web/header/Header'
 import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type UIHeaderProps = HeaderProps & {
 	bgColor: string

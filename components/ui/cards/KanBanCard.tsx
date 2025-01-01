@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Card, CardContent, CardFooter } from 'frontend-shadcn'
 import { Image } from '../../../components'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type CardProps = {
 	id: string
@@ -83,15 +83,14 @@ const KanBanCard: React.FC<CardProps> = (props) => {
 			<CardContent className="p-4">
 				<h3 className="text-lg font-semibold text-primary mb-1">{primary}</h3>
 				{secondary && (
-					<p className="text-sm text-muted-foreground">{secondary}</p>
+					<p className="text-sm text-foreground/70">{secondary}</p>
 				)}
 			</CardContent>
 			<CardFooter className="flex justify-between p-4">
 				<Button
-					onClick={handleClick}
+					onPress={handleClick}
 					size="sm"
 					variant="ghost"
-					className="uppercase"
 				>
 					Details
 				</Button>

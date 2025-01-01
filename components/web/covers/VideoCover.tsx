@@ -2,7 +2,7 @@ import React from 'react'
 import { Heading, Button } from '../../../components'
 import { useNavigate } from '../../../hooks'
 import { HeadingProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type VideoCoverProps = HeadingProps & {
 	src: string

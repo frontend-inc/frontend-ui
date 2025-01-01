@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyOptionButtonProps = {
 	value: string
@@ -28,7 +28,6 @@ const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = (props) => {
   
 	return (
 		<Button
-      color='primary'
 			variant={active ? 'solid' : 'ghost'}
 			onPress={() => handleClick(name, value)}
 		>

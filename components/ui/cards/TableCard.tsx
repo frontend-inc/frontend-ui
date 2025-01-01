@@ -3,7 +3,7 @@
 import React from 'react'
 import { Image } from '../..'
 import { Typography } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type CardProps = {
 	label?: string
@@ -37,7 +37,7 @@ const TableCard: React.FC<CardProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'w-full flex flex-row flex-nowrap pt-1 pb-2 overflow-hidden border-b border-border justify-between'
+				'w-full flex flex-row flex-nowrap pt-1 pb-2 overflow-hidden border-b border-divider justify-between'
 			)}
 			{...slots.item}
 		>

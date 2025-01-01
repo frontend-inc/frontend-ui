@@ -6,7 +6,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface MenuProps {
 	children: React.ReactNode

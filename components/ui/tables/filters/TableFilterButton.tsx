@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../../components'
+import { Button } from '@nextui-org/react'
 import { Badge } from 'frontend-shadcn'
 import { Popover, PopoverTrigger, PopoverContent } from 'frontend-shadcn'
 import TableFilterForm from './TableFilterForm'
 import { ListFilter } from 'lucide-react'
 import { SyntheticEventType } from '../../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FilterButtonProps = {
 	loading: boolean

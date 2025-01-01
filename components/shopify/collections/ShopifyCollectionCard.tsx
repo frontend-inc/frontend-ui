@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react'
 import { Typography } from '../../../components'
-import { Button, Card, CardFooter } from '@nextui-org/react'
+import { Card, CardFooter } from '@nextui-org/react'
 import { ShopifyProductCollectionModal } from '../../../components'
-import { truncate } from '../../../helpers'
 import { Image } from '../../../components'
 import { ShopifyCollectionType } from 'frontend-shopify'
 
@@ -23,7 +22,6 @@ export default function ShopifyCollectionCard(
 ) {
 	const {
 		collection,
-		buttonText,
 		enableGradient = false,
 		enableOverlay = false,
 		enableAddToCart = false,
@@ -40,10 +38,8 @@ export default function ShopifyCollectionCard(
 	}
 
 	return (
-		<>
-			<Card
-        isFooterBlurred      
-      >				
+		  <>
+			  <Card isFooterBlurred>				
 					<Image
             handleClick={ handleShowClick }
             disableBorderRadius
@@ -55,21 +51,10 @@ export default function ShopifyCollectionCard(
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>
-				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-20'>				
-					<div className="flex items-center justify-between w-full">
-            <Typography variant="body1" className="text-white text-ellipsis">
-              { title }
-            </Typography>
-						{buttonText && (
-							<Button
-								variant="ghost"								
-								onPress={handleShowClick}
-								className="bg-white text-black hover:bg-white/90"
-							>
-								Browse
-							</Button>
-						)}
-					</div>
+				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-20'>									
+          <Typography variant="body1" className="text-white text-ellipsis">
+            { title }
+          </Typography>					
         </CardFooter>
 			</Card>
 			<ShopifyProductCollectionModal

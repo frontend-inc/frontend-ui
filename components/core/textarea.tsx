@@ -3,7 +3,7 @@
 import React from 'react'
 import { Textarea } from 'frontend-shadcn'
 import { Label } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface TextAreaProps
 	extends Omit<
@@ -65,7 +65,7 @@ function TextArea(props: TextAreaProps) {
 				<p
 					className={cn(
 						'text-sm',
-						error ? 'text-destructive' : 'text-muted-foreground'
+						error ? 'text-destructive' : 'text-foreground/70'
 					)}
 				>
 					{helperText}

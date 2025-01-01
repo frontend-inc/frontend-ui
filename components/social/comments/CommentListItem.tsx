@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Collapse, Typography } from '../../../components'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { UserAvatar } from '../../../components'
 import { useComments } from '../../../hooks'
 import moment from 'moment'
@@ -76,7 +76,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				</div>
 				<div className="flex-grow">
 					<div className="space-y-1">
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body2" className="text-foreground/70">
 							{`@${parentComment?.user?.username}`} -{' '}
 							{moment(parentComment?.created_at).fromNow()}
 						</Typography>
@@ -85,9 +85,8 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 						</Typography>
 					</div>
 					<Button
-						variant="link"
-						onClick={handleReply}
-						className="text-muted-foreground hover:text-foreground"
+						variant="light"
+						onPress={handleReply}						
 					>
 						reply
 					</Button>
@@ -107,9 +106,8 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 					{!showReplies && (
 						<div>
 							<Button
-								variant="link"
-								className="text-muted-foreground hover:text-foreground"
-								onClick={handleShowReplies}
+								variant="light"								
+								onPress={handleShowReplies}
 							>
 								show {parentComment?.replies?.length}{' '}
 								{parentComment?.replies?.length > 1 ? 'replies' : 'reply'}

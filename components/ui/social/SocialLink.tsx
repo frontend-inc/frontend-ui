@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../../components'
+import { Button } from '../../../components'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
 
@@ -61,7 +61,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	}
 
 	return (
-		<button className="p-1 rounded-full hover:bg-muted" onClick={handleClick}>
+		<Button isIconOnly variant="light" onPress={handleClick}>
 			<SocialIcon
 				network={provider}
 				style={{
@@ -69,7 +69,7 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 					width: size,
 				}}
 			/>
-		</button>
+		</Button>
 	)
 }
 

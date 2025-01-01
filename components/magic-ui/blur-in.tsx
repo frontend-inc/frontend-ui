@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface BlurIntProps {
 	children: React.ReactNode

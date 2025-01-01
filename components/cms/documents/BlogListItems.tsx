@@ -79,7 +79,6 @@ const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
   }
 
 	return (
-    <Container maxWidth="lg">
       <div className="flex flex-col w-full space-y-2">
         {firstPost && (
           <BlurFade delay={0.25} inView key={firstPost.id}>
@@ -125,7 +124,6 @@ const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
           handlePaginate={handlePaginate}
         />
       </div>
-    </Container>
 	)
 }
 

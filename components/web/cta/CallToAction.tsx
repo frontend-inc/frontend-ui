@@ -5,7 +5,7 @@ import { Heading, Stack } from '../../../components'
 import { ButtonType } from '../../../types'
 import { ButtonActions } from '../..'
 import { HeadingProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type CallToActionProps = HeadingProps & {
 	direction?: 'row' | 'column'

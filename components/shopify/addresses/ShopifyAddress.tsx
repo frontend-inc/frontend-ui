@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../..'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressForm } from '..'
 import { useApp } from '../../../hooks'

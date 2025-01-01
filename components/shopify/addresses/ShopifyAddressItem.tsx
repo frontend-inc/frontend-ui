@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -32,10 +32,10 @@ const ShopifyAddressItem: React.FC<ShopifyAddressItemProps> = (props) => {
 	return (
 		<div className="flex justify-between items-center w-full p-2">
 			<Button
-				variant="ghost"
+				variant="light"
 				className="flex-grow text-left justify-start rounded-lg"
 				//@ts-ignore
-				onClick={() => handleClick(address?.id)}
+				onPress={() => handleClick(address?.id)}
 			>
 				<div>
 					<Typography variant="subtitle1">

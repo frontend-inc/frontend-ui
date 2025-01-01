@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ScrollArea } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type DataLayoutProps = {
 	loading?: boolean

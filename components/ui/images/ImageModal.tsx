@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { toast } from 'sonner'
-import { Modal } from '../../../components'
-import { Button } from '../../../components'
+import { RemixIcon, Modal } from '../../../components'
+import { Button } from '@nextui-org/react'
 import copy from 'copy-to-clipboard'
 import Image from 'next/image'
 
@@ -34,10 +34,15 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			maxWidth="md"
 			buttons={
 				<div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:sspace-x-2">
-					<Button color="secondary" onClick={handleCopyUrlClick}>
+					<Button onPress={handleCopyUrlClick}>
 						Copy URL
 					</Button>
-					<Button onClick={handleDownloadClick}>Download</Button>
+					<Button 
+            onPress={handleDownloadClick}
+            startContent={
+              <RemixIcon name="ri-download-2-line" />
+            }
+          >Download</Button>
 				</div>
 			}
 		>

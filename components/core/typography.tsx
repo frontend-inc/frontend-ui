@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { SyntheticEventType } from '../../types'
 import { useDebounce } from 'use-debounce'
 

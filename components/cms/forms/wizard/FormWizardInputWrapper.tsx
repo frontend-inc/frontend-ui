@@ -21,7 +21,7 @@ const FormWizardInputWrapper: React.FC<FormWizardInputWrapperProps> = (
 			<div className="flex flex-col space-y-4">
 				<div className="p-1 flex flex-col space-y-2">
 					<Typography variant="h4">{title}</Typography>
-					<Typography variant="body1" className="text-muted-foreground">
+					<Typography variant="body1" className="text-foreground/70">
 						{description}
 					</Typography>
 				</div>

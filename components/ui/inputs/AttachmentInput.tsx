@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { Trash2 } from 'lucide-react'
 import { InputLabel } from '../../../components'
 import { AttachmentInputProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
-import { Button } from '../../../components'
+import { cn } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { RemixIcon, DropZone } from '../../../components'
 
@@ -56,13 +56,13 @@ function RenderAttachment(props: RenderAttachmentProps) {
 				</Avatar>
 			)}
 			<Button
-				variant="outline"
-				size="icon"
+        isIconOnly				
+				size="sm"
 				className={cn(
-					'text-foreground absolute -top-3 left-2 h-6 w-6 rounded-full',
+					'text-foreground absolute -top-3 left-2',
 					variant === 'file' && 'left-12 -top-1'
 				)}
-				onClick={onDelete}
+				onPress={onDelete}
 			>
 				<Trash2 className="h-4 w-4" />
 			</Button>

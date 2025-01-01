@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { SearchInput } from '../../../components'
 import { IconButton, Hidden } from '../../../components'
 import { Edit, Filter, Trash } from 'lucide-react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Badge } from 'frontend-shadcn'
 import TableFilterButton from './filters/TableFilterButton'
 
@@ -43,7 +43,6 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 		handleDelete,
 		handlePublish,
 		handleUnpublish,
-		handleClearQuery,
 		secondaryActions,
 
 		fields,
@@ -92,8 +91,8 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 								<>
 									{enableDelete && (
 										<Button
-											color="secondary"
-											onClick={() => handleDelete(selected)}
+											color="danger"
+											onPress={() => handleDelete(selected)}
 										>
 											Delete
 										</Button>
@@ -101,14 +100,13 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 									{enableEdit && (
 										<>
 											<Button
-												color="secondary"
-												onClick={() => handlePublish(selected)}
+												color="success"
+												onPress={() => handlePublish(selected)}
 											>
 												Publish
 											</Button>
-											<Button
-												color="secondary"
-												onClick={() => handleUnpublish(selected)}
+											<Button												
+												onPress={() => handleUnpublish(selected)}
 											>
 												Unpublish
 											</Button>
@@ -132,14 +130,14 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 							{selected?.length > 0 && (
 								<>
 									{enableDelete && (
-										<IconButton onClick={() => handleDelete(selected)}>
+										<Button isIconOnly onPress={() => handleDelete(selected)}>
 											<Trash className="w-5 h-5 text-foreground" />
-										</IconButton>
+										</Button>
 									)}
 									{enableEdit && (
-										<IconButton onClick={() => handleEdit(selected)}>
+										<Button onPress={() => handleEdit(selected)}>
 											<Edit className="w-5 h-5 text-foreground" />
-										</IconButton>
+										</Button>
 									)}
 								</>
 							)}

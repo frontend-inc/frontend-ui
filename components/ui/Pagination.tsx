@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../components'
+import { Button } from '@nextui-org/react'
 import {
 	PaginationContent,
 	PaginationItem,
@@ -53,7 +53,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 				{loading ? (
 					<Loader2 className="h-6 w-6 animate-spin text-primary" />
 				) : (
-					<p className="text-sm text-muted-foreground">
+					<p className="text-sm text-foreground/70">
 						Results {startIndex} - {endIndex} of {totalCount}
 					</p>
 				)}
@@ -63,8 +63,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 					<PaginationContent>
 						<PaginationItem>
 							<Button
-								variant="outline"
-								onClick={() => handleChangePage(Math.max(1, pageNumber - 1))}
+								variant="ghost"
+								onPress={() => handleChangePage(Math.max(1, pageNumber - 1))}
 								disabled={pageNumber === 1}
 								className="text-foreground"
 							>
@@ -74,9 +74,9 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 						{Array.from({ length: numPages }, (_, i) => i + 1).map((num) => (
 							<PaginationItem key={num}>
 								<Button
-									variant={num === pageNumber ? 'default' : 'outline'}
+									variant={num === pageNumber ? 'solid' : 'ghost'}
 									size="sm"
-									onClick={() => handleChangePage(num)}
+									onPress={() => handleChangePage(num)}
 								>
 									{num}
 								</Button>
@@ -84,8 +84,8 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 						))}
 						<PaginationItem>
 							<Button
-								variant="outline"
-								onClick={() =>
+								variant="ghost"
+								onPress={() =>
 									handleChangePage(Math.min(numPages, pageNumber + 1))
 								}
 								disabled={pageNumber === numPages}

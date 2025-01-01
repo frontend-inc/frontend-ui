@@ -15,7 +15,7 @@ import {
 import { useTheme as useNextTheme } from 'next-themes'
 import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useTheme } from '../../../hooks'
 
 type CustomDrawerProps = {

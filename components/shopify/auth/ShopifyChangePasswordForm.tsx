@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { TextInput } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 
@@ -27,11 +27,11 @@ const ShopifyForgotPasswordForm: React.FC<ShopifyForgotPasswordFormProps> = (
 				placeholder="Enter your email"
 				handleChange={handleChange}
 			/>
-			<Button fullWidth onClick={handleSubmit}>
+			<Button variant="solid" color="primary" fullWidth onPress={handleSubmit}>
 				Send Instructions
 			</Button>
 			{handleLogin && (
-				<Button fullWidth variant="ghost" onClick={handleLogin}>
+				<Button fullWidth variant="ghost" onPress={handleLogin}>
 					Back to Login
 				</Button>
 			)}

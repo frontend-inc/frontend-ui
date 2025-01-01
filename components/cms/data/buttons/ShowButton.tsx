@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../..'
+import { Button } from '@nextui-org/react'
 import { useResourceContext } from 'frontend-js'
 
 export type ShowButtonProps = {
@@ -31,7 +31,7 @@ const ShowButton: React.FC<ShowButtonProps> = (props) => {
 	}
 
 	return (
-		<Button onClick={handleClick} {...rest}>
+		<Button onPress={handleClick} {...rest}>
 			{children}
 		</Button>
 	)

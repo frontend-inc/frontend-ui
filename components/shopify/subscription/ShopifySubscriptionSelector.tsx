@@ -50,7 +50,6 @@ const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = 
   return (
     <div className="w-full relative">
       <Button
-        color="primary"
         variant="bordered"
         onPress={toggleOpen}
         className="w-full justify-between"

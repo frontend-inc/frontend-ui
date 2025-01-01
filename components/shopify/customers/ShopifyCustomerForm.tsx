@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ShopifyCustomerType } from 'frontend-shopify'
-import { TextInput, IconLoading } from '../..'
+import { TextInput } from '../..'
 
 type ShopifyCustomerFormProps = {
 	loading: boolean
@@ -48,7 +48,7 @@ const ShopifyCustomerForm: React.FC<ShopifyCustomerFormProps> = (props) => {
 				value={customer?.password || ''}
 				handleChange={handleChange}
 			/>
-			<Button color="secondary" loading={loading} onClick={handleSubmit}>
+			<Button color="secondary" isLoading={loading} onPress={handleSubmit}>
 				Update Account
 			</Button>
 		</div>

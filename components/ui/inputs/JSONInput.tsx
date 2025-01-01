@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Textarea } from 'frontend-shadcn'
 import { InputLabel, ErrorText } from '../../../components'
 import { InputPropsType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type JSONInputProps = InputPropsType
 

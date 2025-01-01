@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Typography } from '../../../core'
 import { Image } from '../../..'
 
@@ -70,7 +70,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 						</div>
 						{subtitle && (
 							<Typography
-								className="text-sm text-muted-foreground"
+								className="text-sm text-foreground/70"
 								variant="body2"
 							>
 								{subtitle}

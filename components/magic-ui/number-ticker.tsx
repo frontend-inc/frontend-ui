@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useInView, useMotionValue, useSpring } from 'framer-motion'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export default function NumberTicker({
 	value,

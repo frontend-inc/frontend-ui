@@ -23,12 +23,12 @@ export default function UserChip({
 		<div className="flex items-center py-0.5 space-x-2">
 			<UserAvatar user={user} size={size} />
 			<div className="flex flex-col py-0.5">
-				<span className="text-xs text-muted-foreground">{user.name}</span>
+				<span className="text-xs text-foreground/70">{user.name}</span>
 				{enableEmail && user?.email && (
-					<span className="text-xs text-muted-foreground">{user.email}</span>
+					<span className="text-xs text-foreground/70">{user.email}</span>
 				)}
 				{enableUsername && (
-					<span className="text-xs text-muted-foreground">
+					<span className="text-xs text-foreground/70">
 						@{user.username}
 					</span>
 				)}

@@ -6,7 +6,7 @@ import { InputLabel, ErrorText } from '../../../components'
 import { useError } from '../../../hooks'
 import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export default function TextInput(props: TextInputProps) {
 	const {

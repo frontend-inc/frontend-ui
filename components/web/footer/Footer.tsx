@@ -20,7 +20,7 @@ const FooterLink: React.FC<FooterLinkProps> = (props) => {
   return (
     <button
       onClick={handleClick}                              
-      className='w-full justify-start items-start flex flex-col hover:bg-muted focus:focus-ring focus:ring-2 focus:ring-ring rounded-md p-2'
+      className='w-full justify-start items-start flex flex-col hover:bg-content2 focus:focus-ring focus:ring-2 focus:ring-ring rounded-md p-2'
     >
       <Typography variant="body1" className='text-foreground'>
         {link.label}
@@ -104,7 +104,7 @@ export default function Footer(props: FooterProps) {
         })}
       </div>
       {(socialLinks?.length > 0 || iOSUrl || androidUrl) && (
-        <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 items-center justify-between border-t border-border py-4">
+        <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 items-center justify-between border-t border-divider py-4">
           { socialLinks?.length > 0 && (
             <div className="flex flex-row space-x-1">
               { socialLinks?.map((socialLink, index) => (

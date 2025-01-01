@@ -4,7 +4,7 @@ import React from 'react'
 import { SyntheticEventType } from '../../../types'
 import { Checkbox } from '@nextui-org/react'
 import { InputLabel } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type CheckboxInputProps = {
 	name: string

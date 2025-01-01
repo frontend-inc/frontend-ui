@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import { Check, ChevronsUpDown } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
-import { Button } from '../../components'
+import { cn } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import {
 	Command,
 	CommandEmpty,
@@ -47,9 +47,11 @@ function Autocomplete({
 					role="combobox"
 					aria-expanded={open}
 					className="w-full justify-between"
+          endContent={ 
+            <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
+          }
 				>
 					{selectedOption ? selectedOption.label : placeholder}
-					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-full p-0">

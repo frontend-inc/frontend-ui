@@ -6,7 +6,7 @@ import { SyntheticEventType } from '../../../types'
 import { useGooglePlaces } from '../../../hooks'
 import { Input } from 'frontend-shadcn'
 import { RemixIcon, Button } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type GeoSearchInputProps = {
 	name?: string
@@ -134,7 +134,7 @@ export default function GeoSearchInput(props: GeoSearchInputProps) {
 				size="icon"
 				className="mr-1"
 			>
-				<RemixIcon name="ri-search-line" className="text-muted-foreground" />
+				<RemixIcon name="ri-search-line" className="text-foreground/70" />
 			</Button>
 		</div>
 	)

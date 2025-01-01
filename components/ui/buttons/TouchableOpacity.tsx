@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useClickOrDrag } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type TouchableOpacityProps = {
 	children: any

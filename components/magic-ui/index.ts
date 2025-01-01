@@ -1,4 +1,3 @@
-export { default as AnimatedCircularProgressBar } from './animated-circular-progress-bar'
 export { default as AnimatedGradientText } from './animated-gradient-text'
 export { default as AnimatedShinyText } from './animated-shiny-text'
 export { AnimatedList } from './animated-list'

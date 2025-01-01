@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { toast } from 'sonner'
 import { Icon } from '../..'
@@ -42,15 +42,15 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 				<CardElement className="text-2xl" />
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button variant="default" onClick={handleClick}>
+				<Button variant="solid" color="primary" onPress={handleClick}>
 					<Icon name="CreditCard" className="mr-2 h-4 w-4" />
 					Add Credit Card
 				</Button>
-				<Button variant="ghost" onClick={handleCancel}>
+				<Button variant="ghost" onPress={handleCancel}>
 					Cancel
 				</Button>
 			</div>
-			<p className="text-center text-sm text-muted-foreground">
+			<p className="text-center text-sm text-foreground/70">
 				We support all major credit cards.
 				<br />
 				Secure SSL connection.

@@ -8,7 +8,7 @@ import { Typography } from '../../../components'
 import { LineItemType } from '../../../types'
 import { ProductModal } from '../../../components'
 import { Button, ButtonGroup } from '@nextui-org/react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Plus, Minus } from 'lucide-react'
 
 type CartQuantityInputProps = {
@@ -26,7 +26,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	} = props
 
 	return (
-		<ButtonGroup variant="light" className="border-2 border-border rounded-lg" size='sm'>
+		<ButtonGroup variant="light" className="border-2 border-divider rounded-lg" size='sm'>
 			<Button
 				isIconOnly								
         size='sm'
@@ -105,7 +105,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
             </Badge>
 					<div className="flex flex-col space-y-1">
 						<Typography variant="body1">{product?.title}</Typography>
-						<Typography className="text-muted-foreground" variant="body2">
+						<Typography className="text-foreground/70" variant="body2">
 							{product?.display_price}
 						</Typography>
 						<CartQuantityInput
@@ -124,7 +124,7 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
         >
 					<Icon
 						name="X"
-						className="h-4 w-4 text-muted-foreground hover:text-foreground"
+						className="h-4 w-4 text-foreground/70 hover:text-foreground"
 					/>
         </Button>				
 			</div>

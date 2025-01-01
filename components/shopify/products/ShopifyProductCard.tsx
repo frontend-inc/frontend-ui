@@ -56,7 +56,7 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
             disableBorderRadius={enableBorder}
           />			
         </CardContent>
-        <CardFooter className='w-full'>
+        <CardFooter className='bg-content1 w-full'>
           <div className="flex flex-col space-y-2 w-full">
             <div className="flex flex-col space-y-0 min-h-[50px]">
               <Typography variant="subtitle2">

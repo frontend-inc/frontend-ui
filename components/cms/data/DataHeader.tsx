@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useDocumentForms } from '../../../hooks'
@@ -101,9 +101,11 @@ const DataHeader: React.FC<DataHeaderProps> = (props) => {
 				{(enableCreate || secondaryAction) && (
 					<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
 						<Button
+              variant='solid'
+              color='primary'
 							className="sm:w-auto"
-							startIcon={<RiAddFill className="text-primary-foreground" />}
-							onClick={handleAdd}
+							startContent={<RiAddFill className="text-primary-foreground" />}
+							onPress={handleAdd}
 						>
 							{buttonText}
 						</Button>

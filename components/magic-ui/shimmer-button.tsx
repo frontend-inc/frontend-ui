@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export interface ShimmerButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {

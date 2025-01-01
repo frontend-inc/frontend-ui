@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Badge } from 'frontend-shadcn'
+import { Chip } from '@nextui-org/react'
 import { FieldWrapper } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FieldArrayProps = {
 	value?: any[]
@@ -24,13 +24,12 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 			>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
-						<Badge
-							variant="ghost"
-							className="px-3 py-1 text-sm font-medium rounded-full whitespace-nowrap"
+						<Chip					
+							className="whitespace-nowrap"
 							key={index}
 						>
 							{value}
-						</Badge>
+						</Chip>
 					))}
 			</div>
 		</FieldWrapper>

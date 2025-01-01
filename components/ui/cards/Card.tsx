@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { Image } from '../..'
 
@@ -56,12 +56,12 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
 					{subtitle && (
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body2" className="text-foreground/70">
 							{subtitle}
 						</Typography>
 					)}
 					{description && (
-						<Typography variant="body1" className="text-muted-foreground">
+						<Typography variant="body1" className="text-foreground/70">
 							{description}
 						</Typography>
 					)}

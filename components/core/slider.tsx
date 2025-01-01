@@ -3,7 +3,7 @@
 import React from 'react'
 import { Slider as ShadcnSlider } from 'frontend-shadcn'
 import { Label } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface SliderProps {
 	name: string

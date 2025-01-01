@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ScrollArea } from 'frontend-shadcn'
 import {
 	ShopifyAddressItem,
@@ -11,7 +11,7 @@ import { formatCurrency } from 'frontend-shopify'
 import { ShopifyOrderType, OrderLineItemType } from 'frontend-shopify'
 import { ExternalLink } from 'lucide-react'
 import { useRouter, useParams } from 'next/navigation'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyOrderDetailsProps = {
 	className?: string
@@ -76,18 +76,21 @@ const ShopifyOrderDetails: React.FC<ShopifyOrderDetailsProps> = (props) => {
 				</>
 			)}
 			<Button
-				className="w-full"
-				variant="default"
-				onClick={handleOrderStatusClick}
+				fullWidth 
+				variant="solid"
+        color="primary"
+				onPress={handleOrderStatusClick}
+        endContent={ 
+          <ExternalLink className="h-4 w-4" />
+        }
 			>
-				Order status
-				<ExternalLink className="ml-2 h-4 w-4" />
+				Order status				
 			</Button>
 			{supportUrl && (
 				<Button
-					className="w-full"
-					variant="outline"
-					onClick={handleSupportClick}
+          fullWidth 
+          variant="ghost"
+					onPress={handleSupportClick}
 				>
 					Customer support
 				</Button>

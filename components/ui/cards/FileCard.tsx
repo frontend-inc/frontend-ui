@@ -22,7 +22,7 @@ const FileCard: React.FC<FileCardProps> = (props) => {
 	} = props || {}
 
 	return (
-    <div className='p-0 flex flex-row hover:bg-muted items-center border border-border rounded-lg'>
+    <div className='p-0 flex flex-row hover:bg-content2 items-center border border-divider rounded-lg'>
       <button
         onClick={handleClick}
         className="p-2 w-full flex flex-row items-center cursor-pointer transition-all duration-200"
@@ -38,7 +38,7 @@ const FileCard: React.FC<FileCardProps> = (props) => {
         </div>
         <div className="flex flex-col space-y-1 flex-grow-1 w-full">
           <Typography variant="subtitle1">{title}</Typography>
-          <Typography variant="body2" className="text-muted-foreground">
+          <Typography variant="body2" className="text-foreground/70">
             {subtitle}
           </Typography>
         </div>

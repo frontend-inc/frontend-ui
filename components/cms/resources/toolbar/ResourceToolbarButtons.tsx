@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../../components'
+import { Button } from '@nextui-org/react'
 import { RemixIcon } from '../../../../components'
 
 type ResourceToolbarButtonsProps = {
@@ -26,13 +26,15 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (
 			{buttons?.map((button, index) => (
 				<Button
 					key={index}
-					onClick={
+					onPress={
 						selected && button?.onClick
 							? () => button?.onClick(selected)
 							: undefined
 					}
+          startContent={
+            button?.icon && <RemixIcon name={button?.icon} />
+          }
 				>
-					{button?.icon && <RemixIcon name={button?.icon} className="mr-2" />}
 					{button?.label}
 				</Button>
 			))}

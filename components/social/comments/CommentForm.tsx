@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { AuthGuard, IconLoading, TextInput } from '../../../components'
+import { Button } from '@nextui-org/react'
+import { AuthGuard, TextInput } from '../../../components'
 
 type CommentFormProps = {
 	loading: boolean
@@ -28,11 +28,11 @@ const CommentForm: React.FC<CommentFormProps> = (props) => {
 						className="w-full"
 					/>
 					<Button
-						variant="default"
-						onClick={handleSubmit}
+						variant="solid"
+						onPress={handleSubmit}
 						disabled={loading}
 						className="flex items-center"
-						loading={loading}
+						isLoading={loading}
 					>
 						Submit
 					</Button>

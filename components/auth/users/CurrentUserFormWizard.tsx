@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useApp } from '../../../hooks'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import FormWizardProgress from '../../cms/forms/wizard/FormWizardProgress'
 import FormWizardField from '../../cms/forms/wizard/FormWizardField'
 import FormWizardButtons from '../../cms/forms/wizard/FormWizardButtons'
@@ -137,7 +137,7 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col justify-between items-center">
-			<Button onClick={handleStartClick} size="lg" className="mb-4">
+			<Button variant="solid" color="primary" onPress={handleStartClick} size="lg" className="mb-4">
 				{buttonText}
 			</Button>
 			<Modal open={open} handleClose={() => setOpen(false)}>

@@ -3,7 +3,7 @@
 import React from 'react'
 import { Typography } from '../../../components'
 import { Image, ProductRating } from '../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type PDPProps = {
 	direction?: 'row' | 'column'
@@ -82,7 +82,7 @@ const PDP: React.FC<PDPProps> = (props) => {
 							{compareAtPrice && (
 								<Typography
 									variant="subtitle2"
-									className="text-muted-foreground line-through"
+									className="text-foreground/70 line-through"
 								>
 									{compareAtPrice}
 								</Typography>

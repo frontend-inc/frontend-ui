@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { AuthScreen, AlertModal, Loader } from '../../../components'
-import { Plus } from 'lucide-react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
@@ -75,10 +74,9 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					handleDelete={handleDeleteClick}
 				/>
 				<Button
-					fullWidth
-					variant="ghost"
-					onClick={handleAddAddress}
-					startIcon={<RiAddFill />}
+					fullWidth          					
+					onPress={handleAddAddress}
+					startContent={<RiAddFill />}
 				>
 					Add Address
 				</Button>

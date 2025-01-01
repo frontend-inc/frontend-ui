@@ -63,7 +63,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
                 )}
                 <div className="flex flex-col justify-center space-y-0">
                   <Typography variant="subtitle2">{ item.title }</Typography>
-                  <Typography variant="body1" className="text-muted-foreground">{ item.subtitle }</Typography>
+                  <Typography variant="body1" className="text-foreground/70">{ item.subtitle }</Typography>
                 </div>
               </li>
             ))}

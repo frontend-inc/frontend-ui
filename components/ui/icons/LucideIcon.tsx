@@ -2,7 +2,7 @@
 
 import React from 'react'
 import * as icons from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type LucideIconProps = {
 	name: string

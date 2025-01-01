@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Icon, Image, MenuButton } from '../../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Typography } from '../../../core'
 import { GripVertical } from 'lucide-react'
 
@@ -27,7 +27,7 @@ export default function SortableReferenceItem({
 				'flex items-center justify-between',
 				'px-1 py-2',
 				'transition-shadow duration-200',
-				'border border-border',
+				'border border-divider',
 				'rounded',
 				'my-1',
 				'hover:shadow-md',

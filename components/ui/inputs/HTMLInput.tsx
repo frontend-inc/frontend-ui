@@ -19,7 +19,7 @@ import OrderedList from '@tiptap/extension-ordered-list'
 import Blockquote from '@tiptap/extension-blockquote'
 import BubbleMenu from '@tiptap/extension-bubble-menu'
 import { TextInputProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 
 const MenuBar = (props) => {
@@ -141,7 +141,7 @@ const HTMLInput: React.FC<TextInputProps> = (props) => {
 	const [debouncedText] = useDebounce(text, 500)
 
 	// You can manually add css classes to the extensions
-	// heading: { HTMLAttributes: { class: `pt-8 pb-4 text-2xl font-semibold text-muted-foreground` } },
+	// heading: { HTMLAttributes: { class: `pt-8 pb-4 text-2xl font-semibold text-foreground/70` } },
 
 	const extensions = [
 		StarterKit,
@@ -165,7 +165,7 @@ const HTMLInput: React.FC<TextInputProps> = (props) => {
 		editorProps: {
 			attributes: {
 				class:
-					'w-full prose prose-sm focus:outline-none p-2 border border-border rounded-lg border-1 border-border focus:ring-2 focus:ring-ring focus:ring-offset-3',
+					'w-full prose prose-sm focus:outline-none p-2 border border-divider rounded-lg border-1 border-divider focus:ring-2 focus:ring-ring focus:ring-offset-3',
 			},
 		},
 	})

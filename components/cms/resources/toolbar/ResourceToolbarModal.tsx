@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { X } from 'lucide-react'
-import { Button } from '../../../../components'
-import { cn } from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 
 interface ResourceToolbarModalProps {
 	open: boolean
@@ -23,7 +23,7 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 		<div
 			className={cn(
 				!open && 'hidden',
-				'fixed bg-muted top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
+				'fixed bg-content1 top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
 			)}
 		>
 			<div className="text-secondary-foreground shadow-md">
@@ -36,9 +36,9 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 							variant="ghost"							
               radius='full'
 							className="min-w-8 w-8 h-8"
-							onClick={handleClose}
+							onPress={handleClose}
 						>
-							<X className="h-5 w-5 text-muted-foreground" />
+							<X className="h-5 w-5 text-foreground/70" />
 						</Button>
 					</div>
 				</div>

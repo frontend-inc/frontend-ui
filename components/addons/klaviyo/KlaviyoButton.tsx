@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 // Reference:
 // https://help.klaviyo.com/hc/en-us/articles/4418052317339
@@ -9,11 +9,10 @@ export type KlaviyoButtonProps = {
 	formId?: string
 	justifyContent?: string
 	buttonText?: string
-	variant?: 'default' | 'secondary' | 'ghost' | 'link'
 }
 
 const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
-	const { formId, variant = 'default', buttonText = 'Subscribe' } = props || {}
+	const { formId, buttonText = 'Subscribe' } = props || {}
 
 	const handleClick = () => {
 		// @ts-ignore
@@ -25,7 +24,7 @@ const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
 	if (!formId) return null
 	return (
 		<div className="flex flex-row justify-center">
-			<Button variant={variant} onClick={handleClick}>
+			<Button variant="solid" onPress={handleClick}>
 				{buttonText}
 			</Button>
 		</div>

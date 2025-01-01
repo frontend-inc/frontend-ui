@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Typography } from '../..'
 import { Image } from '../..'
 
@@ -42,7 +42,7 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 			<div
 				ref={ref}
 				className={cn(
-					!disableBorder && 'border border-border hover:shadow-md',
+					!disableBorder && 'border border-divider hover:shadow-md',
 					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
 				)}
 			>

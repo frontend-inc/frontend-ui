@@ -5,7 +5,7 @@ import { FieldWrapper } from '../..'
 import { FieldElementProps } from './Field'
 //@ts-ignore
 import Markdown from 'react-markdown'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FieldMarkdownProps = FieldElementProps & {
 	maxChars?: number

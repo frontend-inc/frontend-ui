@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../../core'
+import { Button } from '@nextui-org/react'
 import { RemixIcon, Form, Modal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { FormFieldType } from '../../../../types'
@@ -38,10 +38,9 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 
 	return (
 		<>
-			<Button
-				color="secondary"
-				onClick={() => setOpen(true)}
-				startIcon={icon && <RemixIcon name={icon} />}
+			<Button				
+				onPress={() => setOpen(true)}
+				startContent={icon && <RemixIcon name={icon} />}
 			>
 				{buttonText}
 			</Button>

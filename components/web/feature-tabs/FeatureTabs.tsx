@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { Empty, BlurFade } from '../../../components'
 import { Image, RemixIcon, Typography } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Button, Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "frontend-shadcn"
 import { type CarouselApi } from 'frontend-shadcn'
 
@@ -31,8 +31,8 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
       onClick={handleClick}
       className={cn( 
         "rounded-md",
-        isActive && 'bg-muted',
-        'hover:bg-muted cursor-pointer p-3 w-full transition-all duration-200',        
+        isActive && 'bg-content1',
+        'hover:bg-content2 cursor-pointer p-3 w-full transition-all duration-200',        
       )}
     >
       <div className={cn(
@@ -43,7 +43,7 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
             name={icon}
             size="lg"
             className={cn(              
-              isActive ? "text-foreground" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-foreground/70"
             )}
           />
         )}
@@ -54,14 +54,14 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
           <Typography 
             variant="subtitle1" 
             className={cn(
-              isActive ? "text-foreground" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-foreground/70"
             )}
           >
             {title}
           </Typography>
           <Typography 
             className={cn(              
-              isActive ? "text-foreground" : "text-muted-foreground"
+              isActive ? "text-foreground" : "text-foreground/70"
             )}
             variant="body1"
           >

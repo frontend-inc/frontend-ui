@@ -18,8 +18,7 @@ import {
 	Autosuggest,
 	ArrayInput,
 } from '../../../../components'
-import { Separator } from 'frontend-shadcn'
-import { IconButton } from '../../../core'
+import { Divider, Button } from '@nextui-org/react'
 import { FilterOptionType, SyntheticEventType } from '../../../../types'
 import TableWhereInput from './TableWhereInput'
 
@@ -151,9 +150,9 @@ const FilternameWrapper: React.FC<FilternameProps> = ({
 					</div>
 				</div>
 				<div className="mt-1 pr-2">
-					<IconButton onClick={() => handleRemove(index)}>
+					<Button isIconOnly onPress={() => handleRemove(index)}>
 						<X className="w-5 h-5 text-foreground" />
-					</IconButton>
+					</Button>
 				</div>
 			</div>
 		</>

@@ -10,7 +10,7 @@ import {
 	ShopifyTrackRecentlyViewed,
 } from '..'
 import { useProducts, useProductDetails } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type ShopifyProductDetailsProps = {
 	shopifyProduct: string

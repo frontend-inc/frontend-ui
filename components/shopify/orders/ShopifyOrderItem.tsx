@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Card } from '@nextui-org/react'
 import { Image } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import moment from 'moment'
 import { ShopifyOrderType } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyOrderItemProps = {
 	order: ShopifyOrderType
@@ -20,13 +20,13 @@ const ShopifyOrderItem: React.FC<ShopifyOrderItemProps> = ({
 	className,
 }) => {
 	return (
-		<Button
-			variant="ghost"
+		<Card
+      isPressable
 			className={cn(
-				'w-full justify-start text-left hover:bg-accent',
+				'w-full justify-start text-left hover:bg-content2',
 				className
 			)}
-			onClick={() => handleClick(order)}
+			onPress={() => handleClick(order)}
 		>
 			<div className="flex items-center space-x-4">
 				<div className="flex-shrink-0">
@@ -44,13 +44,13 @@ const ShopifyOrderItem: React.FC<ShopifyOrderItemProps> = ({
 				</div>
 				<div className="flex-grow">
 					<h3 className="text-base font-semibold mb-1">Order {order?.name}</h3>
-					<div className="text-sm text-muted-foreground">
+					<div className="text-sm text-foreground/70">
 						<p>{moment(order?.processedAt).format('MM/DD/YYYY')}</p>
 						<p>{formatCurrency(order?.totalPrice?.amount)}</p>
 					</div>
 				</div>
 			</div>
-		</Button>
+		</Card>
 	)
 }
 

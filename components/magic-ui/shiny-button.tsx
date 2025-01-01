@@ -6,7 +6,7 @@ import {
 	type AnimationProps,
 	type HTMLMotionProps,
 } from 'framer-motion'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 const animationProps = {
 	initial: { '--x': '100%', scale: 0.8 },

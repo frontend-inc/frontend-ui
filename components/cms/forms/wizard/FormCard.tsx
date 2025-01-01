@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../../components'
+import { Button } from '@nextui-org/react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { Heading, Image } from '../../../../components'
 import { HeadingProps } from '../../../../types'
@@ -43,7 +43,7 @@ const FormCard: React.FC<FormCardProps> = (props) => {
 			)}
 			<Heading title={title} subtitle={subtitle} textAlign="center" />
 			<div>
-				<Button onClick={handleClick} variant="default">
+				<Button onPress={handleClick} variant="solid" color="primary">
 					{buttonText}
 				</Button>
 			</div>

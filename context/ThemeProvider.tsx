@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import ThemeContext from './ThemeContext'
 import GoogleFontLoader from 'react-google-font-loader'
 import { NextUIProvider } from '@nextui-org/react'
-import { cn } from 'frontend-shadcn'
 
 type ThemeProviderProps = {
 	mode?: 'light' | 'dark'
@@ -78,12 +77,20 @@ const ThemeProvider = (props: ThemeProviderProps) => {
       }
     }, [headerFont, bodyFont])
 
+  let themeClass = `${theme}-${mode}`
+  if(theme == 'light'){
+    themeClass = `light`
+  }
+  if(theme == 'dark'){
+    themeClass = `dark`
+  }
+
 	return (
 		<ThemeContext.Provider value={value}>
       { googleFonts?.length > 0 && (
         <GoogleFontLoader fonts={googleFonts} />
       )}
-      <NextUIProvider className={cn(mode, theme)}>			
+      <NextUIProvider className={themeClass}>			
 				{children}			
       </NextUIProvider>
 		</ThemeContext.Provider>

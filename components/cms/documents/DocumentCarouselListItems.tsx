@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import DocumentListItem from './DocumentListItem'
 import { DocumentListItemsProps } from './DocumentListItems'
 import { useResourceContext } from 'frontend-js'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import {
 	Carousel,
 	CarouselContent,

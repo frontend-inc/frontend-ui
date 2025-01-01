@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton } from '../../../components'
+import { Button } from '@nextui-org/react'
 //@ts-ignore
 import { SocialIcon as ReactSocialIcon } from 'react-social-icons'
 
@@ -16,7 +16,7 @@ type SocialIconProps = {
 const SocialIcon: React.FC<SocialIconProps> = (props) => {
 	const { provider, handleClick, size = 20 } = props || {}
 	return (
-		<IconButton onClick={handleClick}>
+		<Button isIconOnly radius="full" onPress={handleClick}>
 			<ReactSocialIcon
 				/* @ts-ignore */
 				network={provider}
@@ -25,7 +25,7 @@ const SocialIcon: React.FC<SocialIconProps> = (props) => {
 					width: size,
 				}}
 			/>
-		</IconButton>
+		</Button>
 	)
 }
 

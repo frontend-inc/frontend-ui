@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { TextInputProps } from '../../../types'
 import AIChatForm from './AIChatForm'
 import AIChatMessages from './AIChatMessages'
@@ -47,7 +47,13 @@ const AIChat: React.FC<AIChatProps> = (props) => {
 				input={input}
 				handleInputChange={handleInputChange}
 			/>
-			<Button fullWidth onClick={handleChatSubmit} loading={loading}>
+			<Button 
+        fullWidth 
+        color="primary" 
+        variant="solid" 
+        onPress={handleChatSubmit} 
+        isLoading={loading}
+      >
 				{buttonText}
 			</Button>
 		</div>

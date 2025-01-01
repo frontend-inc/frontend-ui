@@ -3,7 +3,7 @@
 import React from 'react'
 import { RemixIcon } from '..'
 import { Typography } from '..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type EmptyProps = {
 	icon?: string
@@ -29,7 +29,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				fill && 'bg-muted/50',
+				fill && 'bg-content1',
 				'rounded-lg py-10 w-full flex flex-col space-y-2 items-center justify-center',
 				variant == 'destructive' &&
 					'bg-destructive/10 border border-destructive',

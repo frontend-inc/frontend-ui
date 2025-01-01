@@ -12,7 +12,7 @@ import {
   PopoverTrigger 
 } from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import {
 	TAILWIND_COLOR_PICKER_MAP,
 	TAILWIND_COLOR_MAP,

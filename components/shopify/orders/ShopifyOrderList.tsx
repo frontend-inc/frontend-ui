@@ -4,7 +4,7 @@ import React from 'react'
 import { ScrollArea } from 'frontend-shadcn'
 import { ShopifyOrderType } from 'frontend-shopify'
 import ShopifyOrderItem from './ShopifyOrderItem'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyOrderListProps = {
 	orders: ShopifyOrderType[]

@@ -5,7 +5,7 @@ import React from 'react'
 import Zoom from 'react-medium-image-zoom'
 import { ShopifyImageType } from 'frontend-shopify'
 import Image from 'next/image'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ThumbnailProps = {
 	image: ShopifyImageType
@@ -18,7 +18,7 @@ const Thumbnail: React.FC<ThumbnailProps> = (props) => {
 	return (
 		<button
 			className={cn(
-				'p-0 w-[96px] h-[96px] overflow-hidden rounded hover:bg-muted/20',
+				'p-0 w-[96px] h-[96px] overflow-hidden rounded hover:bg-content2/20',
 				active ? 'ring-2 ring-offset-2 ring-primary' : 'ring-2 ring-transparent'
 			)}
 			onClick={() => handleClick(image)}

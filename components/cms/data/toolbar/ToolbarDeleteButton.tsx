@@ -5,7 +5,7 @@ import { AlertModal } from '../../..'
 import { useResourceContext } from 'frontend-js'
 import { useApp } from '../../../../hooks'
 import { useAuth } from 'frontend-js'
-import { Button } from '../../../core'
+import { Button } from '@nextui-org/react'
 import { RiDeleteBin7Fill } from '@remixicon/react'
 
 const ToolbarDeleteButton: React.FC<any> = () => {
@@ -30,9 +30,9 @@ const ToolbarDeleteButton: React.FC<any> = () => {
 	return (
 		<>
 			<Button
-				onClick={handleDeleteClick}
-				color="secondary"
-				startIcon={<RiDeleteBin7Fill />}
+				onPress={handleDeleteClick}
+				color="danger"
+				startContent={<RiDeleteBin7Fill />}
 			>
 				Delete
 			</Button>

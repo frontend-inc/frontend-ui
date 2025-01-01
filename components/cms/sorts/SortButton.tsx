@@ -57,12 +57,12 @@ export default function SortButton(props: SortButtonProps) {
         <Button
           variant="ghost"
           onPress={toggleOpen}
-          className="w-full md:w-auto"
+          className="text-foreground w-full md:w-auto"
           endContent={
             sortDirection === 'asc' ? (
-              <ArrowUp className="h-4 w-4" />
+              <ArrowUp className="h-4 w-4 text-foreground" />
             ):(
-              <ArrowDown className="h-4 w-4" />
+              <ArrowDown className="h-4 w-4 text-foreground" />
             )}            
         >
           Sort						

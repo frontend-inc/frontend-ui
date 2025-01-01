@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { RemixIcon } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FieldWrapperProps = {
 	direction?: 'row' | 'column'
@@ -32,7 +32,7 @@ const FieldWrapper: React.FC<FieldWrapperProps> = (props) => {
 						direction == 'row' && 'w-[100px] pr-1'
 					)}
 				>
-					<label className="text-xs text-muted-foreground font-medium uppercase tracking-wider">
+					<label className="text-xs text-foreground/70 font-medium uppercase tracking-wider">
 						{label}
 					</label>
 				</div>

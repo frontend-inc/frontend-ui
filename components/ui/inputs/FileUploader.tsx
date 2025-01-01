@@ -4,11 +4,10 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import Image from 'next/image'
 import { File, Trash2, Loader2, UploadCloud, DownloadCloud } from 'lucide-react'
-import { Button } from '../..' // Adjust the import path as needed
+import { Button } from '@nextui-org/react' // Adjust the import path as needed
 import { InputLabel } from '../..' // Adjust the import path as needed
-import { Avatar, AvatarFallback } from 'frontend-shadcn' // Adjust the import path as needed
 import { toast } from 'sonner'
-import { cn } from 'frontend-shadcn' // Adjust the import path as needed
+import { cn } from '@nextui-org/react' // Adjust the import path as needed
 
 // Type Definitions
 
@@ -59,21 +58,21 @@ const PreviewFile: React.FC<PreviewFileProps> = ({
           )}
         </div>
       ) : (
-        <div className="h-16 w-16 bg-muted rounded-md flex items-center justify-center">          
+        <div className="h-16 w-16 bg-content1 rounded-md flex items-center justify-center">          
           <File className="h-6 w-6" />          
         </div>
       )}
       <div className="flex-1">
         <p className="text-sm font-medium text-foreground">{file.name}</p>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-foreground/70">
           {(file.size / (1024 * 1024)).toFixed(2)} MB
         </p>
       </div>
       <Button
-        variant="ghost"
-        size="icon"
-        className="text-red-500"
-        onClick={() => handleDelete(index)}
+        isIconOnly
+        size="sm"
+        color="danger"
+        onPress={() => handleDelete(index)}
         aria-label={`Remove ${file.name}`}
       >
         <Trash2 className="h-4 w-4" />
@@ -169,7 +168,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <div
         {...getRootProps()}
         className={cn(
-          'h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded-xl border-2 border-border text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
+          'h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded-xl border-2 border-divider text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
           isDragActive ? 'border-primary bg-opacity-50' : ''
         )}
       >

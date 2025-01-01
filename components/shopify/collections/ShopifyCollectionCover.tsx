@@ -21,7 +21,7 @@ export type ShopifyCollectionCoverProps = {
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	props
 ) => {
-  
+
 	const {
 		shopifyCollection,
 		alt = 'image',
@@ -52,8 +52,6 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 		}
 	}, [shopifyCollection])
 
-  console.log("SHopify Colleciton", shopifyCollection)
-
 	if (!shopifyCollection) return null
 	return (
 		<>
@@ -64,7 +62,6 @@ const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 				// @ts-ignore
 				image={collection?.image?.url}
 				alt={alt}
-        height={400}
 				alignItems={alignItems}
 				handleClick={handleShowClick}
 				buttonText={buttonText}

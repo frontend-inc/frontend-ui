@@ -81,7 +81,7 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 	return (
 		<div className="flex flex-col gap-2">
 			{label && (
-				<Typography variant="caption" className="text-muted-foreground">
+				<Typography variant="caption" className="text-foreground/70">
 					{label}
 				</Typography>
 			)}

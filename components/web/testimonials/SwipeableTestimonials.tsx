@@ -37,7 +37,7 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
       <Card 
         shadow={ variant == 'default' ? 'none' : 'sm' }
         className={
-          variant == 'fill' ? 'bg-muted' : ''
+          variant == 'fill' ? 'bg-content1' : ''
         }
       >
         <CardBody className="p-10">

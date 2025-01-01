@@ -24,7 +24,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 					{price && formatCurrency(price)}
 				</div>
 				{compareAtPrice && (
-					<div className="text-md text-muted-foreground line-through">
+					<div className="text-md text-foreground/70 line-through">
 						{formatCurrency(compareAtPrice)}
 					</div>
 				)}

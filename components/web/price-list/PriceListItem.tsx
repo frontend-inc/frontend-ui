@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Typography } from '../..'
 import { useNavigate } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { formatCurrency } from '../../../helpers'
 
 export type PriceListItemProps = {
@@ -40,9 +40,9 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
         //@ts-ignore
 				onClick={onClick}
 				className={cn(
-					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-muted',
-					variant == 'fill' && 'bg-muted p-6 rounded-lg',
-					variant == 'outline' && 'border border-border p-6 rounded-lg'
+					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-content2',
+					variant == 'fill' && 'bg-content1 p-6 rounded-lg',
+					variant == 'outline' && 'border border-divider p-6 rounded-lg'
 				)}
 			>
 				<div className=" flex flex-row space-x-6 items-center">
@@ -60,7 +60,7 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 						<Typography variant="subtitle1" className="font-medium">
 							{title}
 						</Typography>
-						<Typography variant="body2" className="text-muted-foreground">
+						<Typography variant="body2" className="text-foreground/70">
 							{subtitle}
 						</Typography>
 					</div>

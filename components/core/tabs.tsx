@@ -7,7 +7,7 @@ import {
 	TabsTrigger,
 	TabsContent,
 } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface TabProps {
 	label: string

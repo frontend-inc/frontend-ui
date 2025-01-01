@@ -14,7 +14,6 @@ type UIAccordionProps = SectionProps &
 const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 	const {
 		direction = 'column',
-    variant,
 		label,
 		title,
 		subtitle,
@@ -43,7 +42,6 @@ const UIAccordion: React.FC<UIAccordionProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant}
 		>
 			<Stack direction={direction} spacing={10}>
 				<Stack direction={direction} size="1/3">

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export default function AnimatedGradientText({
 	children,

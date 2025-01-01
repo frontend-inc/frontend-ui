@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 interface RainbowButtonProps
 	extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 

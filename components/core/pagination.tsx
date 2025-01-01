@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
-import { Button } from '../../components'
+import { Button } from '@nextui-org/react'
 
 interface PaginationProps {
 	count: number
@@ -15,15 +15,18 @@ interface PaginationProps {
 	className?: string
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-	count,
-	page,
-	onChange,
-	disabled = false,
-	siblingCount = 1,
-	boundaryCount = 1,
-	className,
-}) => {
+const Pagination: React.FC<PaginationProps> = (props) => {
+
+  const {
+    count,
+    page,
+    onChange,
+    disabled = false,
+    siblingCount = 1,
+    boundaryCount = 1,
+    className,
+  } = props
+
 	const range = (start: number, end: number) => {
 		const length = end - start + 1
 		return Array.from({ length }, (_, i) => start + i)
@@ -75,10 +78,11 @@ const Pagination: React.FC<PaginationProps> = ({
 			<ul className="flex list-none">
 				<li>
 					<Button
-						variant="outline"
-						size="icon"
+            isIconOnly        
+						variant="ghost"
+						size="sm"
 						className="mr-2"
-						onClick={() => handleClick(page - 1)}
+						onPress={() => handleClick(page - 1)}
 						disabled={page === 1 || disabled}
 						aria-label="Go to previous page"
 					>
@@ -88,15 +92,20 @@ const Pagination: React.FC<PaginationProps> = ({
 				{itemList.map((item, index) => (
 					<li key={index}>
 						{item === 'ellipsis' ? (
-							<Button variant="ghost" size="icon" className="mx-1" disabled>
+							<Button 
+                variant="ghost" 
+                size="sm" 
+                className="mx-1" 
+                disabled
+              >
 								<MoreHorizontal className="h-4 w-4" />
 							</Button>
 						) : (
 							<Button
-								variant={page === item ? 'default' : 'outline'}
-								size="icon"
+                isIconOnly
+								variant={page === item ? 'default' : 'outline'}								
 								className="mx-1"
-								onClick={() => handleClick(item as number)}
+								onPress={() => handleClick(item as number)}
 								disabled={disabled}
 								aria-label={`Go to page ${item}`}
 								aria-current={page === item ? 'page' : undefined}
@@ -108,10 +117,11 @@ const Pagination: React.FC<PaginationProps> = ({
 				))}
 				<li>
 					<Button
-						variant="outline"
+            isIconOnly
+						variant="ghost"
 						size="icon"
 						className="ml-2"
-						onClick={() => handleClick(page + 1)}
+						onPress={() => handleClick(page + 1)}
 						disabled={page === count || disabled}
 						aria-label="Go to next page"
 					>

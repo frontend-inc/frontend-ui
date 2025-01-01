@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import {
 	Drawer,
-	AuthGuard,
-	IconLoading,
 	RatingInput,
 	TextArea,
 	TextInput,
@@ -54,11 +52,12 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
 			handleClose={() => setOpenEdit(false)}
 			buttons={
 				<Button
-					className="w-full"
-					variant="default"
-					onClick={handleSubmit}
+					fullWidth
+					variant="solid"
+          color="primary"
+					onPress={handleSubmit}
 					disabled={loading}
-					loading={loading}
+					isLoading={loading}
 				>
 					Submit
 				</Button>

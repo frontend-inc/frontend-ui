@@ -8,7 +8,7 @@ import {
   PopoverTrigger 
 } from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { TAILWIND_COLORS, TAILWIND_COLOR_MAP } from '../../../constants'
 
 type ThemePickerProps = {

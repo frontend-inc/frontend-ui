@@ -17,7 +17,7 @@ import {
 } from '../..'
 import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShowFieldProps = {
 	label?: string
@@ -109,7 +109,7 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 
 
 	return (
-		<div className="w-full p-3 rounded-lg bg-muted/40 hover:bg-muted/60">
+		<div className="w-full p-3 rounded-lg bg-content1/40 hover:bg-content2/60">
 			<Component
 				icon={icon}
 				variant="caption"

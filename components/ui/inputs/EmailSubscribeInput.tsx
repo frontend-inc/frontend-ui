@@ -4,7 +4,7 @@
 import React from 'react'
 import { Button, Input } from '@nextui-org/react'
 import { SyntheticEventType, TextInputProps } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { RemixIcon } from '../../../components'
 
 export type EmailSubscribeInputProps = TextInputProps & {
@@ -29,9 +29,12 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
     ...rest 
   } = props || {}
 
-  const handleValueChange = (ev: SyntheticEventType) => {
-    console.log("EV", ev)
-    handleChange(ev.target.value)
+  const handleValueChange = (text: string) => {    
+    handleChange({ 
+      target: {
+        name,
+        value: text
+    }})
   }
 
 	return (

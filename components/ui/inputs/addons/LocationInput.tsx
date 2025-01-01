@@ -5,7 +5,7 @@ import { useGooglePlaces } from '../../../../hooks'
 import { TextInput, GoogleMaps } from '../../..'
 import { TextInputProps } from '../../../../types'
 import { useDebounce } from 'use-debounce'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useClickOutside } from '@raddix/use-click-outside'
 import { RiMapPin2Fill } from '@remixicon/react'
 

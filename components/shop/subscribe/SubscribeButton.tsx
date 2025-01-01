@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useSubscribe } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
 import { toast } from 'sonner'
 
 type SusbcribeButtonProps = {
@@ -48,11 +47,11 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 	return (
 		<Button
 			fullWidth={fullWidth}
-			loading={loading}
-			onClick={handleClick}
+			isLoading={loading}
+			onPress={handleClick}
 			disabled={!availableForSale}
 			size={size}
-			className={'w-full min-w-[160px]'}
+			className={'min-w-[160px]'}
 		>
 			{buttonText}
 		</Button>

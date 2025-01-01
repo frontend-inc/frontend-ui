@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, TextInput } from '../..'
+import { Button } from '@nextui-org/react'
+import { TextInput } from '../..'
 
 type NewPasswordFormProps = {
 	loading: boolean
@@ -35,11 +35,17 @@ const NewPasswordForm: React.FC<NewPasswordFormProps> = (props) => {
 				type="password"
 				placeholder="Confirm password"
 			/>
-			<Button fullWidth onClick={handleSubmit} loading={loading}>
+			<Button 
+        fullWidth 
+        variant="solid"
+        color="primary"
+        onPress={handleSubmit} 
+        isLoading={loading}
+      >
 				Save and Continue
 			</Button>
 			{handleLogin && (
-				<Button fullWidth onClick={handleLogin}>
+				<Button fullWidth onPress={handleLogin}>
 					Back to Login
 				</Button>
 			)}

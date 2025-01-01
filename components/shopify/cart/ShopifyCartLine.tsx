@@ -10,7 +10,7 @@ import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
 import { CartLineType } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
@@ -27,7 +27,7 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props
   } = props
 
 	return (
-		<ButtonGroup variant="light" className="border-1 border-border rounded-xl" size='sm'>
+		<ButtonGroup variant="light" className="border-1 border-divider rounded-xl" size='sm'>
 			<Button
         isIconOnly
 				className="px-2 rounded-r-none"
@@ -146,14 +146,14 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 				<Typography variant="body1">
 					{line?.merchandise?.product?.title}
 				</Typography>
-				<Typography variant="body1" className="text-muted-foreground">
+				<Typography variant="body1" className="text-foreground/70">
 					{line?.merchandise?.selectedOptions
 						?.filter((option) => option.name !== 'Title')
 						?.map((option) => option.value)
 						.join(' / ')}
 				</Typography>
 				{sellingPlanAllocation?.sellingPlan && (
-					<p className="text-sm italic text-muted-foreground">
+					<p className="text-sm italic text-foreground/70">
 						{sellingPlanAllocation?.sellingPlan?.name}
 					</p>
 				)}
@@ -172,7 +172,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
         isIconOnly
         variant="light"
         radius="full"
-				className="text-muted-foreground"
+				className="text-foreground/70"
 				onPress={handleRemoveLineItem}
 			>
 				<RemixIcon name='ri-close-fill' />

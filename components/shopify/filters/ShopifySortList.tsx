@@ -31,7 +31,7 @@ const ShopifySortList: React.FC<ShopifySortListProps> = (props) => {
 			{options?.map((option, index) => (
 				<div
 					key={index}
-					className="flex items-center cursor-pointer p-2 space-x-2 hover:bg-muted/50 rounded-lg"
+					className="flex items-center cursor-pointer p-2 space-x-2 hover:bg-content2/50 rounded-lg"
 				>
 					<RadioGroupItem
 						value={`${option.value}-${option.reverse}`}

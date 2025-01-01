@@ -22,7 +22,7 @@ import {
 } from '../..'
 import { MetafieldType } from '../../../types'
 import { get } from 'lodash'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type DisplayFieldProps = {
 	label?: string
@@ -78,7 +78,7 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		},
 		text: {
 			className:
-				'px-[40px] sm:px-[100px] leading-relaxed text-muted-foreground text-lg',
+				'px-[40px] sm:px-[100px] leading-relaxed text-lg',
 		},
 		html: {
 			className: 'prose',

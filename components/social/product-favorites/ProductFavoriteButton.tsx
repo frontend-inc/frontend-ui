@@ -5,7 +5,7 @@ import { isProductFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
 import { RemixIcon, IconButton } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ProductFavoriteButtonProps = {
 	product: any

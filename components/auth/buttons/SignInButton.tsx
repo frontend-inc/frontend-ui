@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useContext } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useAuth } from 'frontend-js'
 import { AppContext } from '../../../context'
 
@@ -22,7 +22,12 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 
 	if (currentUser?.id) return null
 	return (
-		<Button fullWidth onClick={handleLogin}>
+		<Button 
+      fullWidth 
+      variant="solid"
+      color="primary"
+      onPress={handleLogin}
+    >
 			{buttonText}
 		</Button>
 	)

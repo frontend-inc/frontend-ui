@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useError } from '../../../hooks'
 import { RemixIcon, InputLabel, ErrorText, Typography } from '../../../components'
 import { SyntheticEventType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Input } from 'frontend-shadcn'
 import { Chip } from '@nextui-org/react'
 
@@ -79,7 +79,7 @@ export default function ArrayInput(props: ArrayInputProps) {
 			<div className="relative w-full">
 				<div
 					className={cn(
-						'bg-muted px-3 py-2 flex flex-col space-y-0 rounded-xl',
+						'bg-content1 px-3 py-2 flex flex-col space-y-0 rounded-xl',
 						error && 'border-destructive'
 					)}
 				>   

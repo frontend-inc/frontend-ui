@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { MenuLinkType } from '../../../types'
 
 
@@ -65,13 +65,13 @@ function RenderLink({ link, handleClick }: RenderLinkProps) {
         onClick={onClickHandler}
         className="flex w-full items-center justify-between 
           rounded-md p-2 text-left text-md font-medium text-foreground
-          transition-colors hover:bg-muted focus:outline-none"
+          transition-colors hover:bg-content2 focus:outline-none"
         aria-expanded={hasChildren ? isOpen : undefined}
       >
         <div className="flex flex-col text-left">
           <span>{link.label}</span>
           {link.description && (
-            <span className="text-xs text-muted-foreground">{link.description}</span>
+            <span className="text-xs text-foreground/70">{link.description}</span>
           )}
         </div>
         {hasChildren && (

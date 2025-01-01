@@ -10,7 +10,7 @@ import {
 	CarouselPrevious,
 } from 'frontend-shadcn';
 import { type CarouselApi } from 'frontend-shadcn';
-import { cn } from 'frontend-shadcn';
+import { cn } from '@nextui-org/react';
 
 type SwipeableProps = {
 	children: React.ReactNode[];

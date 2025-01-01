@@ -4,7 +4,7 @@ import React from 'react'
 import { Checkbox } from 'frontend-shadcn'
 import { InputLabel } from '../../../components'
 import { OptionType, SyntheticEventType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type CheckboxGroupInputProps = {
 	errors: any

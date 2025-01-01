@@ -5,7 +5,7 @@ import { FieldWrapper, Typography } from '../../../components'
 import { FieldElementProps } from './Field'
 import { Button, RemixIcon } from '../../../components'
 import { cloudinaryDownloadUrl, downloadFile } from '../../../helpers'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 const FieldFile: React.FC<FieldElementProps> = (props) => {
 	const { value, label, className } = props

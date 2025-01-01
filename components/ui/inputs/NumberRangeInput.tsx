@@ -4,7 +4,7 @@ import React from 'react'
 import { InputLabel } from '../../../components'
 import { SyntheticEventType } from '../../../types'
 import { Input } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type NumberRangeInputProps = {
 	label?: string

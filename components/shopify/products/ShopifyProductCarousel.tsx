@@ -3,7 +3,7 @@
 import React from 'react'
 import { ShopifyProductCard } from '..'
 import { ShopifyProductType } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import {
 	Carousel,
 	CarouselContent,

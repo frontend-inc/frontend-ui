@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ChevronUp } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type CellHeaderProps = {
 	field: {
@@ -30,23 +30,21 @@ export default function CellHeader({
 	return (
 		<Button
 			variant="ghost"
-			className={cn(
-				'w-full h-11 rounded-none flex justify-between items-center px-2',
-				'hover:bg-muted hover:text-foreground'
-			)}
-			onClick={() => handleSort(field)}
+			onPress={() => handleSort(field)}
+      endContent={ 
+        active && (
+          <span
+            className={cn(
+              'transition-transform duration-200',
+              sortDirection === 'desc' && 'rotate-180'
+            )}
+          >
+            <ChevronUp className="h-5 w-5 text-foreground/70" />
+          </span>
+        )
+      }
 		>
-			<span className="font-medium">{field?.label}</span>
-			{active && (
-				<span
-					className={cn(
-						'transition-transform duration-200',
-						sortDirection === 'desc' && 'rotate-180'
-					)}
-				>
-					<ChevronUp className="h-5 w-5 text-muted-foreground" />
-				</span>
-			)}
+			{field?.label}			
 		</Button>
 	)
 }

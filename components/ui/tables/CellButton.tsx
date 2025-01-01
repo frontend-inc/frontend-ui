@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { RemixIcon } from '../../../components'
 
 type CellButtonProps = {
@@ -18,8 +18,8 @@ const CellButton: React.FC<CellButtonProps> = (props) => {
 			fullWidth
 			size="sm"
 			variant="ghost"
-			startIcon={<RemixIcon name={icon} />}
-			onClick={handleClick && handleClick}
+			startContent={<RemixIcon name={icon} />}
+			onPress={handleClick && handleClick}
 		>
 			{children}
 		</Button>

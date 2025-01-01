@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { RemixIcon } from '..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import {Tabs, Tab } from "@nextui-org/react";
 
 type ButtonTabsProps = {

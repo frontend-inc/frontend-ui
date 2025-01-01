@@ -4,7 +4,7 @@ import React from 'react'
 import { useApp } from '../../../hooks'
 import { UserAvatar } from '../..'
 import { useAuth } from 'frontend-js'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ChevronRight } from 'lucide-react'
 
 type MyAccountTabsProps = {
@@ -60,7 +60,7 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 						<Button
 							variant="ghost"
 							className="w-full justify-between py-3 px-4 text-left"
-							onClick={() => handleClick(tab)}
+							onPress={() => handleClick(tab)}
 						>
 							<span className="text-sm font-medium">{tab?.label}</span>
 							<ChevronRight className="h-4 w-4" />

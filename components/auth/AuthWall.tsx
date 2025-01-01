@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Empty } from '../../components'
-import { Button } from '../../components'
+import { Button } from '@nextui-org/react'
 import { useApp } from '../../hooks'
 
 const AuthWall: React.FC = () => {
@@ -17,7 +17,12 @@ const AuthWall: React.FC = () => {
 			<Empty
 				title="Sign in to view content"
 				description="You are not logged in."
-				buttons={<Button onClick={handleLoginClick}> Sign in</Button>}
+				buttons={<Button 
+            variant="solid"
+            color="primary"
+            onPress={handleLoginClick}
+          > Sign in</Button>
+      }
 			/>
 		</div>
 	)

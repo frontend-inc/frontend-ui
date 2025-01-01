@@ -29,7 +29,7 @@ const CollectionShow: React.FC<CollectionShowProps> = (props) => {
 			<div className="w-full flex flex-row justify-center pb-10">
 				<div className="w-full md:max-w-screen-sm flex flex-col space-y-[40px]">
 					<div className="w-full flex flex-col space-y-3">
-						<Typography variant="body1" className="text-muted-foreground">
+						<Typography variant="body1" className="text-foreground/70">
 							{resource?.description}
 						</Typography>
 					</div>

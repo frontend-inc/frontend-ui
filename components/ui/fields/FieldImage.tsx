@@ -3,7 +3,7 @@
 import React from 'react'
 import { Image, FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FieldImageProps = FieldElementProps & {
 	height?: number

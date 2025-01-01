@@ -7,7 +7,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from '@nextui-org/react'
-import { Button } from '../../components'
+import { Button } from '@nextui-org/react'
 import { RemixIcon } from '../../components'
 
 type MenuButtonProps = {

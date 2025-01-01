@@ -31,7 +31,7 @@ const FooterLinks: React.FC<FooterLinksProps> = ({ menuItem, handleClick }) => {
 								e.preventDefault()
 								handleClick(link.path)
 							}}
-							className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+							className="text-sm text-foreground/70 hover:text-foreground transition-colors duration-200"
 						>
 							{link.label}
 						</Link>

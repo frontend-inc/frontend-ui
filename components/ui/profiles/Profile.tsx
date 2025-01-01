@@ -70,7 +70,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 						/>
 						<Typography
 							variant="subtitle2"
-							className="w-full text-muted-foreground italic leading-loose"
+							className="w-full text-foreground/70 italic leading-loose"
               textAlign={direction == 'row' ? 'left' : 'center'}
 						>
 							{description}

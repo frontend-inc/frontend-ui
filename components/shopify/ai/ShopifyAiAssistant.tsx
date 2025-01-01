@@ -4,7 +4,7 @@ import { ToolInvocation } from 'ai'
 import { IconButton, RemixIcon, Typography, Button } from '../../../components'
 import { TextArea } from '../../../components'
 import { Avatar, ShopifyProductCollection, ShopifyProductArray } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { toast } from 'sonner'
 import { Container } from '../../../components'
 import { Loader2 } from 'lucide-react'
@@ -94,7 +94,7 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
                   src={ avatar } 
                   alt="avatar"            
                 />          
-                <Typography variant="body1" className="text-muted-foreground">
+                <Typography variant="body1" className="text-foreground/70">
                   Hi! I'm your shopping assistant. Ask me anything about our products.
                 </Typography>
               </CardContent>

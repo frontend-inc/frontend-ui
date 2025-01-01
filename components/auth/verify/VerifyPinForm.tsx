@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
-import { IconLoading, TextInput } from '../..'
+import { Button } from '@nextui-org/react'
+import { TextInput } from '../..'
 
 type SendPinFormProps = {
 	errors: Record<string, any>
@@ -27,10 +27,16 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 				placeholder="Enter PIN for verification"
 				handleChange={handleChange}
 			/>
-			<Button fullWidth onClick={handleSubmit} loading={loading}>
+			<Button 
+        color="primary"
+        variant="solid"
+        fullWidth onPress={handleSubmit} loading={loading}>
 				Verify Pin
 			</Button>
-			<Button fullWidth onClick={handleResendPin}>
+			<Button 
+        variant="ghost"
+        fullWidth 
+        onPress={handleResendPin}>
 				Resend Pin
 			</Button>
 		</div>

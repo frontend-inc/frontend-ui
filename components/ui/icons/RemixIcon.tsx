@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef } from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 // <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.min.css" rel="stylesheet" />
 type RemixIconProps = {

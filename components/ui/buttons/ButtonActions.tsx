@@ -3,7 +3,7 @@
 import React from 'react'
 import ButtonAction from './ButtonAction'
 import { ButtonType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type ButtonActionsProps = {
 	buttons: ButtonType[]

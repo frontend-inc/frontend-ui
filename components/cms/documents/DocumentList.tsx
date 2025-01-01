@@ -84,13 +84,16 @@ export type DocumentListProps = {
 		empty?: any
 		item?: any
 	}
-	circular?: boolean
 	disableImage?: boolean
 	url: string
 	query?: any
 	resource: any
 	filterSimilar?: boolean
 	filterGeo?: boolean
+
+  emptyIcon?: string
+  emptyTitle?: string
+  emptyDescription?: string
 }
 
 const DocumentList: React.FC<DocumentListProps> = (props) => {
@@ -128,22 +131,25 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		enableOverlay,
 
 		style = 'card',
-		buttons = [],
-		circular,
+		buttons = [],		
 		disableImage,
 		enableShow,
-
 		enableSearch,
 		enableFilters,
 		enableSorting,
 		displayFields = [],
-		filterChoices = [],
+		filterChoices = [],        
 		headers = [], // Used by KanBan
+
+    emptyIcon,
+    emptyTitle,
+    emptyDescription,
+
 		header: Header = DocumentHeader,
 		list: List = DocumentListItems,
 		component: Component = DocumentListItem,
 		show: Show = DocumentShow,
-		empty: Empty = DocumentEmpty,
+		empty: Empty = DocumentEmpty,    
 		slots: defaultSlots = {
 			header: {},
 			toolbar: {},
@@ -221,14 +227,12 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		},
 		item: {
 			...defaultSlots.item,
-			circular,
       disableTitle: !displayTitle,
 			disableImage,
 			style,
 			buttons,
 			listFields,
 			enableLikes,
-      enableDownload,
 			enableFavorites,
 			enableComments,
 			enableGradient,
@@ -268,6 +272,9 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 			show={Show}
 			empty={Empty}
 			slots={slots}
+      emptyIcon={emptyIcon}
+      emptyTitle={emptyTitle}
+      emptyDescription={emptyDescription}
 		/>
 	)
 }

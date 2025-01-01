@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 import { useCollections } from 'frontend-shopify'
 import { ShopifyCollectionCard } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type ShopifyCollectionsProps = {
 	href: string

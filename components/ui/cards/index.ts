@@ -1,7 +1,6 @@
 export { default as AvatarCard } from './AvatarCard'
 export { default as Card } from './Card'
 export { default as CoverCard } from './CoverCard'
-export { default as ChipCard } from './ChipCard'
 export { default as TextCard } from './TextCard'
 export { default as ImageCard } from './ImageCard'
 export { default as KanBanCard } from './KanBanCard'

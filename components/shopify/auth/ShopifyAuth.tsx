@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import { ShopifyContext } from 'frontend-shopify'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { useShop } from 'frontend-shopify'
 import { RemixIcon } from '../../../components'
@@ -17,7 +17,12 @@ const DesktopAuthButton: React.FC<DesktopAuthButtonProps> = (props) => {
 	const { handleClick, icon } = props
 
 	return (
-		<Button variant="ghost" size="icon" onClick={handleClick} className="p-0">
+		<Button 
+      variant="ghost" 
+      size="icon" 
+      onPress={handleClick} 
+      className="p-0"
+    >
 			<RemixIcon name={icon} />
 		</Button>
 	)
@@ -36,7 +41,7 @@ const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
 	return (
 		<Button
 			variant="ghost"
-			onClick={handleClick}
+			onPress={handleClick}
 			className="w-full justify-start px-1 py-2"
 		>
 			<div className="flex items-center">

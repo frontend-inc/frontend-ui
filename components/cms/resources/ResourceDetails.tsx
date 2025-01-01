@@ -4,7 +4,7 @@ import React from 'react'
 import { ShowFields, Image } from '../../../components'
 import { Typography } from '../../../components'
 import { MetafieldType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ResourceDetailsProps = {
 	disableImage?: boolean
@@ -53,7 +53,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 					{subtitle && (
 						<Typography
 							variant="body1"
-							className="px-2 text-lg italic text-muted-foreground"
+							className="px-2 text-lg italic text-foreground/70"
 						>
 							{subtitle}
 						</Typography>

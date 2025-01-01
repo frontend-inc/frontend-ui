@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { RemixIcon, ShareModal, IconButton } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShareButtonProps = {
 	url: string

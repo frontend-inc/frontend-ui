@@ -4,7 +4,7 @@ import React from 'react'
 import { Heading, Button } from '../../../components'
 import { Image } from '../..'
 import { useNavigate } from '../../../hooks'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { HeadingProps } from '../../../types'
 
 export type CoverProps = HeadingProps & {

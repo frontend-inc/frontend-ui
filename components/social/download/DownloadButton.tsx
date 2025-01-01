@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { RemixIcon, IconButton } from '../..'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { cloudinaryDownloadUrl } from '../../../helpers'
 
 type DownloadButtonProps = {

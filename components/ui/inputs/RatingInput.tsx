@@ -4,7 +4,7 @@ import React from 'react'
 import { Rating } from '../../../components'
 import { InputPropsType, SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type RatingInputProps = InputPropsType & {
 	name?: string

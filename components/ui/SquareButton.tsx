@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { RemixIcon } from '../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type SquareButtonProps = {
 	label: string
@@ -19,7 +19,7 @@ const SquareButton: React.FC<SquareButtonProps> = (props) => {
 				'w-full flex flex-row space-x-3 items-center rounded-lg hover:border-primary p-4 transition duration-200',
 				selected
 					? 'border-2 border-primary shadow-lg'
-					: 'border-2 border-border'
+					: 'border-2 border-divider'
 			)}
 			onClick={handleClick ? handleClick : undefined}
 		>

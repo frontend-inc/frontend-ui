@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Checkbox as ShadcnCheckbox } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface CheckboxProps {
 	name: string

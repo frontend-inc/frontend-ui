@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../..'
-import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react'
 import SortList from './ShopifySortList'
 import { COLLECTION_SORT_OPTIONS } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
@@ -33,14 +33,20 @@ const ShopifyCollectionSortButton: React.FC<
 	)?.label
 
 	return (
-		<Sheet open={open} onOpenChange={setOpen}>
-			<SheetTrigger asChild>
-				<Button variant="ghost" className="w-full" onClick={handleOpen}>
-					{currentSortLabel}
-					<ArrowUpDown className="ml-2 h-4 w-4" />
+		<Popover open={open} onOpenChange={setOpen}>
+			<PopoverTrigger asChild>
+				<Button 
+          variant="ghost" 
+          fullWidth 
+          onPress={handleOpen}
+          endContent={ 
+            <ArrowUpDown className="h-4 w-4" />
+          }
+        >
+					{currentSortLabel}					
 				</Button>
-			</SheetTrigger>
-			<SheetContent side="right">
+			</PopoverTrigger>
+			<PopoverContent>
 				<SortList
 					enableIcons
 					value={sortKey}
@@ -48,8 +54,8 @@ const ShopifyCollectionSortButton: React.FC<
 					options={COLLECTION_SORT_OPTIONS}
 					handleClick={handleSortClick}
 				/>
-			</SheetContent>
-		</Sheet>
+			</PopoverContent>
+		</Popover>
 	)
 }
 

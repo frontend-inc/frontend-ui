@@ -4,7 +4,7 @@ import React from 'react'
 import ProductListItem from './ProductListItem'
 import { ProductListItemsProps } from '../products/ProductListItems'
 import { useResourceContext } from 'frontend-js'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import {
 	Carousel,
 	CarouselContent,

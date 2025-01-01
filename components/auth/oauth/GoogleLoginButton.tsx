@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useAuth } from 'frontend-js'
 
@@ -44,8 +44,8 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 		<Button
 			variant="solid"      
 			//@ts-ignore
-			onClick={handleLogin}
-			loading={loading}      
+			onPress={handleLogin}
+			isLoading={loading}      
       size='lg'
 		>
 			<div className="mr-2">

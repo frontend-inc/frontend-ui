@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { InlineWidget } from 'react-calendly'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useAuth } from 'frontend-js'
 import { MediaModal } from '../../../components'
 
@@ -33,7 +33,7 @@ const Calendly: React.FC<CalendlyProps> = (props) => {
 	if (!calendlyUrl) return null
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<Button size="lg" variant="default" onClick={() => setOpen(true)}>
+			<Button size="lg" variant="solid" color="primary" onPress={() => setOpen(true)}>
 				{buttonText}
 			</Button>
 			<MediaModal open={open} handleClose={() => setOpen(false)}>

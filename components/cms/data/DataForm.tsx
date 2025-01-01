@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Sheet, FormFields } from '../..'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useResourceContext } from 'frontend-js'
 
 export type DataFormProps = {
@@ -35,7 +35,7 @@ const DataForm: React.FC<DataFormProps> = (props) => {
 			handleClose={() => setOpenEdit(false)}
 			title={resource?.id ? 'Edit' : 'Add'}
 			buttons={
-				<Button fullWidth onClick={handleSubmit} loading={loading}>
+				<Button variant="solid" color="primary" fullWidth onPress={handleSubmit} isLoading={loading}>
 					{resource?.id ? 'Update' : 'Save'}
 				</Button>
 			}

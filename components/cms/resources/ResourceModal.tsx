@@ -53,6 +53,7 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 							<Button 
                 variant="ghost"
                 fullWidth 
+                color="danger" 
                 onPress={handleDelete}
               >
 								Delete

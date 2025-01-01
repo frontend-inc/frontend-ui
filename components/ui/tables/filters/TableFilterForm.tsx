@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Plus, Search, FilterIcon, Loader } from 'lucide-react'
 import { FILTERABLE_TYPES, SORTABLE_TYPES } from '../../../../constants/index'
-import { Button } from '../../../../components'
+import { Button } from '@nextui-org/react'
 import { TableFilterInputs } from '../../../../components'
 import { TableFilterKeywordsInput } from '../../../../components'
 import { TableFilterSortInput } from '../../../../components'
@@ -157,12 +157,11 @@ export default function TableFilterForm({
 				handleRemove={handleRemoveFilter}
 			/>
 			<Button
-				variant="ghost"
-				className="text-foreground"
-				onClick={handleAddFilter}
+        isIconOnly 
+				variant="ghost"				
+				onPress={handleAddFilter}
 			>
-				<Plus className="w-4 h-4 text-foreground" />
-				<span>Filter</span>
+				<Plus className="w-4 h-4 text-foreground" />				
 			</Button>
 			<button
 				className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
@@ -175,13 +174,14 @@ export default function TableFilterForm({
 				)}
 				<span>Search</span>
 			</button>
-			<button
-				className="w-full px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
-				onClick={handleClearFilters}
-			>
-				<FilterIcon className="w-4 h-4" />
-				<span>Reset filters</span>
-			</button>
+			<Button				
+				onPress={handleClearFilters}
+        startContent={
+          <FilterIcon className="w-4 h-4" />
+        }
+			>				
+				Reset filters
+			</Button>
 		</div>
 	)
 }

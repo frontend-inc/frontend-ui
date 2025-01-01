@@ -5,7 +5,7 @@ import { isLiked } from '../../../helpers'
 import { useSocial, useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { RemixIcon, IconButton } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type LikeButtonProps = {
 	resource: any

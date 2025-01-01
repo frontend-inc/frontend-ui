@@ -7,7 +7,7 @@ import { TableHeaderType } from '../../../types'
 import { useRouter } from 'next/navigation'
 import { TableList } from '../..'
 import { DataListItemsProps } from '../data/DataListItems'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type DataTableListProps = DataListItemsProps & {
 	headers: TableHeaderType[]

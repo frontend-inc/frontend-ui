@@ -90,7 +90,7 @@ const ListItem = React.forwardRef<
                 <div className="text-sm text-foreground font-medium leading-none">{title}</div>
               )}
               {children && (
-                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                <p className="line-clamp-2 text-sm leading-snug text-foreground/70">
                   {children}
                 </p>
               )}

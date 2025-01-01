@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import React, { MouseEvent, useEffect, useState } from 'react'
 
 interface RippleButtonProps

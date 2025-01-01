@@ -5,7 +5,7 @@ import { useApp } from '../../../hooks'
 import { Button, Typography } from '../../../components'
 import { Image } from '../..'
 import { useRouter } from 'next/navigation'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type FeaturedCardProps = {
   direction?: 'column' | 'row' | 'row-reverse'
@@ -62,8 +62,8 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 			className={cn(
 				'flex items-center gap-10 flex-wrap md:flex-nowrap',
 				direction && flexDirectionClass[direction],
-				variant == 'outline' && 'p-6 border-2 border-border rounded-lg',
-				variant == 'fill' && 'p-6 bg-muted/50 rounded-lg'
+				variant == 'outline' && 'p-6 border-2 border-divider rounded-lg',
+				variant == 'fill' && 'p-6 bg-content1/50 rounded-lg'
 			)}
 		>
 			<div className="w-full md:w-1/2">
@@ -83,7 +83,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
           "md:w-1/2"
         )}>
 				<Typography variant="h5">{title}</Typography>
-				<Typography variant="subtitle2" className="text-muted-foreground">
+				<Typography variant="subtitle2" className="text-foreground/70">
 					{subtitle}
 				</Typography>
 				{buttonText && (

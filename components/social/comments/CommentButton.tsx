@@ -4,7 +4,7 @@ import React from 'react'
 import { useResourceContext } from 'frontend-js'
 import { MessageSquare } from 'lucide-react'
 import { RemixIcon, IconButton } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type CommentButtonProps = {
 	resource: any

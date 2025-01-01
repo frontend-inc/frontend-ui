@@ -4,13 +4,14 @@ import React from 'react'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { ActionType } from '../../../types'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type ButtonActionProps = {
 	icon?: string
 	action: ActionType
-	variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link'
-	size?: 'sm' | 'default' | 'lg'
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'default'
+	variant?: 'solid' | 'secondary' | 'outline' | 'ghost' | 'light' | 'link'
+	size?: 'sm' | 'md' | 'lg'
 	url?: string
 	path?: string
 	src?: string
@@ -24,6 +25,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		url,
 		path,
 		src,
+    color,
 		variant = 'secondary',
 		size = 'default',
 		children,
@@ -51,12 +53,13 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 				fullWidth
         {...rest}
 				size={size}
-				startIcon={
+        color={ color }
+				startContent={
 					icon && (
 						<RemixIcon
 							name={icon}
 							className={
-								variant == 'default'
+								color == 'primary' 
 									? 'text-primary-foreground'
 									: 'text-secondary-foreground'
 							}
@@ -64,7 +67,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 					)
 				}
 				/* @ts-ignore */
-				onClick={handleClick}
+				onPress={handleClick}
 				variant={variant}
 			>
 				{children}

@@ -5,7 +5,7 @@ import { Empty } from '../..'
 import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
 import { Typography } from '../../../components'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type FeatureIconProps = {
 	icon?: string
@@ -22,8 +22,8 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 			className={cn(
 				'flex justify-start py-6 w-full items-start h-full',
         'flex-row items-start space-x-3 min-h-[90px]',
-				variant == 'outline' && 'border-2 border-border rounded-lg p-6',
-				variant == 'fill' && 'bg-muted rounded-lg p-6'
+				variant == 'outline' && 'border-2 border-divider rounded-lg p-6',
+				variant == 'fill' && 'bg-content1 rounded-lg p-6'
 			)}
 		>
 			{icon && (
@@ -46,7 +46,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 				</Typography>
 				<Typography
 					className={cn(
-						'text-muted-foreground',
+						'text-foreground/70',
 					)}
 					variant="body1"
 				>

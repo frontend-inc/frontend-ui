@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useContext } from 'react'
-import { IconButton } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { ShopifyContext } from 'frontend-shopify'
 import { AppContext } from '../../../context'
-import { Icon } from '../..'
 import { RiSearch2Fill } from '@remixicon/react'
 
 const ShopifySearchButton: React.FC = () => {
@@ -17,9 +16,9 @@ const ShopifySearchButton: React.FC = () => {
 	}
 
 	return (
-		<IconButton onClick={handleToggleSearch}>
+		<Button isIconOnly onPress={handleToggleSearch}>
 			<RiSearch2Fill />
-		</IconButton>
+		</Button>
 	)
 }
 

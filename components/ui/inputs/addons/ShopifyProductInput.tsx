@@ -6,8 +6,8 @@ import { Empty } from '../../../../components'
 import { SyntheticEventType } from '../../../../types'
 import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
-import { IconButton } from '../../../../components'
-import { cn } from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 import { Collapse } from '../../../core'
 import { X } from 'lucide-react'
 import Image from 'next/image'
@@ -114,9 +114,9 @@ const ShopifyProductInput: React.FC<AutosuggestProps> = (props) => {
 					/>
 					<div className="absolute inset-0 bg-black bg-opacity-40" />
 					<div className="absolute top-4 right-4">
-						<IconButton onClick={handleClear}>
+						<Button isIconOnly radius="full" onPress={handleClear}>
 							<X className="h-4 w-4" />
-						</IconButton>
+						</Button>
 					</div>
 				</div>
 			</Collapse>

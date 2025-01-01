@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Popover, PopoverContent, PopoverTrigger } from 'frontend-shadcn'
 import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
 import { ListFilter } from 'lucide-react'
@@ -41,11 +41,14 @@ const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 				<Popover open={open} onOpenChange={toggleMenu}>
 					<PopoverTrigger asChild>
 						<Button
-							variant="default"
+							variant="solid"
+              color="primary"
 							className="w-full sm:w-auto"
-							onClick={toggleMenu}
-						>
-							<ListFilter className="mr-2 h-4 w-4" />
+							onPress={toggleMenu}
+              startContent={
+                <ListFilter className="h-4 w-4" />
+              }
+						>							
 							Filter
 						</Button>
 					</PopoverTrigger>

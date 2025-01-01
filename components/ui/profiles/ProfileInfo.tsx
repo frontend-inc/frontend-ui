@@ -22,7 +22,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 				<FieldString
 					value={label}
 					variant="caption"
-					className="text-muted-foreground"
+					className="text-foreground/70"
 				/>
 				<FieldString value={title} />
 				{socialLinks?.length > 0 && (
@@ -35,7 +35,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 				<FieldText
 					value={description}
 					variant="body2"
-					className="text-muted-foreground"
+					className="text-foreground/70"
 				/>
 			</div>
 		</div>

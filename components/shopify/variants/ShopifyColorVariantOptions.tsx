@@ -4,7 +4,7 @@ import React from 'react'
 import { ShopifyProductType } from 'frontend-shopify'
 import Image from 'next/image'
 import { findVariantByColor } from 'frontend-shopify'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShopifyColorVariantsOptionsProps = {
 	product: ShopifyProductType
@@ -38,7 +38,7 @@ const ShopifyColorVariantsOptions: React.FC<
 								width={72}
 								src={variant?.image?.url}
 								alt={variant?.image?.altText || `${value} color variant`}
-								className="object-contain hover:scale-110 transition-transform"
+								className="object-cover hover:scale-110 transition-transform"
 							/>
 						</button>
 					)

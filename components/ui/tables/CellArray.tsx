@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Label } from '../../../components'
 
 type CellArrayProps = {
@@ -41,7 +41,7 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 				<Label key={index}>{ value }</Label>
 			))}
 			{!open && visibleTags && visibleTags?.length > MAX_TAGS && (
-				<Button onClick={handleToggleSeeAll}>
+				<Button onPress={handleToggleSeeAll}>
 					<Label>...</Label>
 				</Button>
 			)}

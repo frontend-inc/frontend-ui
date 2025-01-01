@@ -3,7 +3,7 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../../types'
 import { Tabs, TabsList, TabsTrigger } from 'frontend-shadcn'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type TabsWhereInputProps = {
 	name: string

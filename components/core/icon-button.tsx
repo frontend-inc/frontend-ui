@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef } from 'react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { Button, ButtonProps } from '@nextui-org/react'
 
 const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(({ 

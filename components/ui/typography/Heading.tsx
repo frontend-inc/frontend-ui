@@ -3,7 +3,7 @@
 import React from 'react'
 import { Typography } from '../../../components'
 import { SyntheticEventType, TypographyVariantsType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { BlurFade } from '../../../components'
 
 type HeadingProps = {

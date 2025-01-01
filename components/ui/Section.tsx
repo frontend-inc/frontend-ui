@@ -3,8 +3,9 @@
 import React from 'react'
 import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useTheme } from '../../hooks'
+import {commonColors, semanticColors} from "@nextui-org/theme";
 
 type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -39,6 +40,8 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'py-[144px]',
 	}
 
+  console.log("COLORS", commonColors)
+
 	const pxClasses = {
 		none: 'px-0',
 		sm: 'px-6',
@@ -50,16 +53,15 @@ const Section: React.FC<SectionProps> = (props) => {
 	const backgroundStyle = bgImage ? { 
     backgroundImage: `url(${bgImage})` } : {
     backgroundColor: bgColor,
-    }
-
+  }
+  
 	return (
 		<section
 			className={cn(
         'z-0',
-				mode,
-				theme,
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
+        theme && mode && `${theme}-${mode}`,
 				pyClasses[py],
 				pxClasses[px],
 				!bgImage && bgColor,
@@ -71,9 +73,9 @@ const Section: React.FC<SectionProps> = (props) => {
 			<div
 				className={cn(
           'relative z-[1]',
-					variant == 'outline' && 'p-8 border-2 border-border rounded-xl',
+					variant == 'outline' && 'p-8 border-2 border-divider rounded-xl',
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
-          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-muted/50',
+          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content1/50',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}

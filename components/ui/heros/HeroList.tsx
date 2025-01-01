@@ -92,7 +92,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					{(startsAt || endsAt) && (
 						<Typography
 							variant="subtitle2"
-							className="text-muted-foreground"
+							className="text-foreground/70"
 							textAlign={textAlign}
 						>
 							{startsAt} - {endsAt}
@@ -101,7 +101,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					{publishedAt && (
 						<Typography
 							variant="subtitle2"
-							className="text-muted-foreground"
+							className="text-foreground/70"
 							textAlign={textAlign}
 						>
 							{publishedAt}
@@ -110,7 +110,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					{location && (
 						<Typography
 							variant="subtitle2"
-							className="text-muted-foreground"
+							className="text-foreground/70"
 							textAlign={textAlign}
 						>
 							{location}
@@ -148,7 +148,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 				{actions}
 				<div className="w-full sm:max-w-screen-md flex flex-col space-y-6">
 					{description && (
-						<Typography variant="subtitle2" className="text-muted-foreground">
+						<Typography variant="subtitle2" className="text-foreground/70">
 							{description}
 						</Typography>
 					)}
@@ -160,7 +160,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 					{lat && lng && (
 						<div className="w-full py-4 flex flex-col space-y-2">
 							<GoogleMap label={title} lat={lat} lng={lng} />
-							<span className="text-sm text-muted-foreground italic">
+							<span className="text-sm text-foreground/70 italic">
 								<strong>Location: </strong> {location}
 							</span>
 						</div>
@@ -171,7 +171,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 								<Badge
 									key={index}
 									variant="outline"
-									className="px-3 py-1 text-muted-foreground"
+									className="px-3 py-1 text-foreground/70"
 								>
 									{tag}
 								</Badge>

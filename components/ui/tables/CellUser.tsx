@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { UserType } from 'frontend-js'
 import { UserAvatar } from '../../../components'
 
@@ -19,8 +19,8 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 			<Button
 				size="sm"
 				variant="ghost"
-				onClick={handleClick}
-				startIcon={<UserAvatar size={28} user={user} />}
+				onPress={handleClick}
+				startContent={<UserAvatar size={28} user={user} />}
 			>
 				{user?.first_name} {user?.last_name}
 			</Button>

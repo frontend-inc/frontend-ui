@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 type CommentReplyButtonProps = {
 	reply?: boolean
@@ -14,8 +14,7 @@ const CommentReplyButton: React.FC<CommentReplyButtonProps> = (props) => {
 	return (
 		<Button
 			variant="ghost"
-			onClick={handleClick}
-			className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+			onPress={handleClick}			
 		>
 			{reply ? 'Reply' : 'Leave a Comment'}
 		</Button>

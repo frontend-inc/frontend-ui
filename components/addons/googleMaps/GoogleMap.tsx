@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Map, useMap } from '@vis.gl/react-google-maps'
 import { MAP_CONFIGS, MapConfig } from './styles/mapConfigs'
 import GoogleMarker from './GoogleMarker'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 export type GoogleMapProps = {
 	darkTheme?: boolean

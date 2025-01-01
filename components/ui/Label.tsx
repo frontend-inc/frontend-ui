@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Badge } from '@nextui-org/react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type LabelProps = {
 	children?: string

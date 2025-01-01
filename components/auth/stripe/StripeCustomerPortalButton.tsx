@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useStripeCustomerPortal } from '../../../hooks'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 
 const StripeCustomerPortalButton: React.FC = () => {
 	const { loading, stripeCustomerPortal } = useStripeCustomerPortal()
@@ -16,7 +16,12 @@ const StripeCustomerPortalButton: React.FC = () => {
 	}
 
 	return (
-		<Button onClick={handleClick}>
+		<Button 
+      variant="solid"
+      color="primary"
+      onPress={handleClick}
+      isLoading={loading}
+    >
 			{loading ? 'Connecting...' : 'Manage Payments with Stripe'}
 		</Button>
 	)

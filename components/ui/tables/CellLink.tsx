@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { truncate } from '../../../helpers'
 import { RiExternalLinkFill } from '@remixicon/react'
 
@@ -18,8 +18,8 @@ const CellLink: React.FC<CellLinkProps> = (props) => {
 				<Button
 					size="sm"
 					variant="ghost"
-					startIcon={<RiExternalLinkFill />}
-					onClick={handleClick}
+					startContent={<RiExternalLinkFill />}
+					onPress={handleClick}
 				>
 					{truncate(value, 20)}
 				</Button>

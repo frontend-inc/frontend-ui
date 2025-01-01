@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import {
   DndContext,
   closestCenter,
@@ -17,9 +17,8 @@ import {
   verticalListSortingStrategy,
   useSortable,
 } from '@dnd-kit/sortable'
-import { cn } from 'frontend-shadcn'
 import { CSS } from '@dnd-kit/utilities'
-import { File, Folder, ChevronRight, ChevronDown } from 'lucide-react'
+import { File, Folder } from 'lucide-react'
 import { MenuButton } from '../../../components'
 
 interface Item {
@@ -82,7 +81,7 @@ function SortableItem(props: SortableItemProps) {
           {...listeners}
           onClick={handleItemClick}
           className={`
-            bg-muted/50 hover:bg-muted rounded-lg shadow-sm
+            bg-content1 hover:bg-content2 rounded-lg shadow-sm
             w-full p-2 cursor-move
             transition-colors duration-200 ease-in-out
             flex items-center space-x-2

@@ -3,7 +3,7 @@
 import React from 'react'
 import ShowField from './ShowField'
 import { MetafieldType } from '../../../types'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type ShowFieldsProps = {
 	fields: MetafieldType[]

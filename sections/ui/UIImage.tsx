@@ -43,7 +43,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 			<figure className="w-full flex flex-col space-y-2">
 				<Image {...rest} src={image} aspectRatio={aspectRatio} />
 				{title && (
-					<figcaption className="text-sm text-muted-foreground text-center">
+					<figcaption className="text-sm text-foreground/70 text-center">
 						{title}
 					</figcaption>
 				)}

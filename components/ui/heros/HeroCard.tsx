@@ -6,7 +6,8 @@ import { Heading, Typography } from '../../../components'
 import { HeroProps } from './Hero'
 
 const HeroCard: React.FC<HeroProps> = (props) => {
-	const {
+	
+  const {
 		label,
 		image,
 		title,

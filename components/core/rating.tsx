@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Star, StarHalf } from 'lucide-react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 interface RatingProps {
 	name?: string
@@ -102,7 +102,7 @@ function Rating({
 						) : (
 							<Star
 								className={cn(
-									filled ? 'text-primary' : 'text-muted-foreground',
+									filled ? 'text-primary' : 'text-foreground/70',
 									sizeClasses[size]
 								)}
 								fill={filled ? 'currentColor' : 'none'}

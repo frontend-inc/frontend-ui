@@ -21,7 +21,7 @@ export default function ShopifyQuantitySelector(props: ShopifyQuantitySelectorPr
   } = props || {}
 
 	return (
-		<ButtonGroup variant="light" className="border-1 border-border rounded-xl" size={ size }>
+		<ButtonGroup variant="light" className="border-1 border-divider rounded-xl" size={ size }>
 			<Button
         isIconOnly
 				onPress={handleRemoveQuantity}
