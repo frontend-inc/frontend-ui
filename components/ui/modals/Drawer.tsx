@@ -12,7 +12,6 @@ import {
 	DrawerPortal,
 	ScrollArea,
 } from 'frontend-shadcn'
-import { useTheme as useNextTheme } from 'next-themes'
 import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
 import { cn } from '@nextui-org/react'
@@ -50,16 +49,14 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 		xl: 'max-w-screen-xl',
 	}
 
-	const { theme: mode } = useNextTheme()
-	const { theme } = useTheme()
+	const { themeClass } = useTheme()
 
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
 				<DrawerContent
 					className={cn(
-						mode,
-						theme,
+						themeClass,
 						className
 					)}
 				>

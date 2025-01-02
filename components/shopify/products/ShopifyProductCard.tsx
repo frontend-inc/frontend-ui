@@ -8,8 +8,8 @@ import { ShopifyContext } from 'frontend-shopify'
 import { formatCurrency } from 'frontend-shopify'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
-import { cn, Card, CardBody, CardFooter } from '@nextui-org/react'
-import { AspectRatio, CardContent } from 'frontend-shadcn'
+import { cn, Card, CardFooter } from '@nextui-org/react'
+import {  CardContent } from 'frontend-shadcn'
 
 type ShopifyProductCardProps = {
 	product: ShopifyProductType

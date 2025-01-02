@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Drawer, ProductDetails, ProductReviews } from '../..'
+import { Modal, ProductDetails, ProductReviews } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { BlurFade } from '../../../components'
 
@@ -28,10 +28,10 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Drawer
+		<Modal
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-			maxWidth="lg"
+			maxWidth="5xl"
 		>
 			<div className="w-full flex flex-row justify-center pb-10">
 				<BlurFade delay={0.25} inView className="w-full">
@@ -49,7 +49,7 @@ const ShowModal: React.FC<ShowModalProps> = (props) => {
 					</div>
 				</BlurFade>
 			</div>
-		</Drawer>
+		</Modal>
 	)
 }
 

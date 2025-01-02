@@ -73,7 +73,7 @@ function SortableItem(props: SortableItemProps) {
 
   return (
     <li>
-      <div className="flex flex-row shadow-md w-full items-center justify-between">
+      <div className="flex flex-row w-full items-center shadow-md justify-between">
         <div
           ref={setNodeRef}
           style={style}
@@ -81,7 +81,7 @@ function SortableItem(props: SortableItemProps) {
           {...listeners}
           onClick={handleItemClick}
           className={`
-            bg-content1 hover:bg-content2 rounded-lg shadow-sm
+            bg-content1 hover:bg-content2 rounded-lg
             w-full p-2 cursor-move
             transition-colors duration-200 ease-in-out
             flex items-center space-x-2
