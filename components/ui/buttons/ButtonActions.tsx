@@ -7,7 +7,7 @@ import { cn } from '@nextui-org/react'
 
 export type ButtonActionsProps = {
 	buttons: ButtonType[]
-	size?: 'sm' | 'default' | 'lg'
+	size?: 'sm' | 'md' | 'lg'
 	justifyContent?: 'justify-start' | 'justify-center' | 'justify-end'
 	className?: string
 }
