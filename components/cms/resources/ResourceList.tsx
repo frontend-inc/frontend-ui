@@ -49,6 +49,7 @@ export type ResourceListProps = {
 	exportHeaders?: string[]
 	enableSearch?: boolean
 	buttonText?: string
+  enablePublish?: boolean
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
@@ -114,6 +115,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableDelete,
 		enableCreate,
 		enableShow,
+    enablePublish,
 		enableExport,
 		handleClick,
 		slots = SLOT_PROPS,		
@@ -154,6 +156,9 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
     findOne,
 		findMany,
 		reloadMany,
+    publish,
+    unpublish,
+    deleteMany,
 		addAttachment,
 		removeAttachment,
 		page,
@@ -320,6 +325,40 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		}
 	}
 
+  const handlePublishMany = async () => {
+    try {
+      let resp = await publish(selectedIds)
+      if (resp?.ids) {
+        reloadMany() 
+        handleClear()       
+      }
+    } catch (err) {
+      console.log('Error', err)
+    }
+  }
+
+  const handleUnpublishMany = async () => {
+    try {
+      let resp = await unpublish(selectedIds)
+      if (resp?.ids) {
+        reloadMany() 
+        handleClear()       
+      }
+    } catch (err) {
+      console.log('Error', err)
+    }
+  }
+
+  const handleDeleteMany = async () => {
+    try {
+      await deleteMany(selectedIds)
+      reloadMany() 
+      handleClear()       
+    } catch (err) {
+      console.log('Error', err)
+    }
+  }
+
 	const handleShowClick = async (resource) => {
 		if (handleClick) {
 			handleClick(resource)
@@ -396,12 +435,17 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	return (
 		<>
 			<Toolbar
+        enableDelete={enableDelete}
+        enablePublish={enablePublish}        
 				selected={selected}
 				selectedIds={selectedIds}
-				open={selected?.length > 0}
+				open={selectedIds?.length > 0}
 				handleClose={handleClear}
 				buttons={buttons}
 				onSuccess={handleSuccess}
+        handlePublish={handlePublishMany}
+        handleUnpublish={handleUnpublishMany}
+        handleDelete={handleDeleteMany}
 				handleReload={reloadMany}
 				{...slots.toolbar}
 			/>
@@ -540,6 +584,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleClose={() => setOpenEdit(false)}
 					loading={loading}
           isPublishLoading={isPublishLoading}
+          enablePublish={enablePublish}
 					errors={errors}
 					resource={resource}
 					setResource={setResource}

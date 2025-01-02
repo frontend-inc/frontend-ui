@@ -5,7 +5,6 @@ import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 import { cn } from '@nextui-org/react'
 import { useTheme } from '../../hooks'
-import {commonColors, semanticColors} from "@nextui-org/theme";
 
 type ContainerMaxWidth = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -39,8 +38,6 @@ const Section: React.FC<SectionProps> = (props) => {
 		lg: 'py-[96px]',
 		xl: 'py-[144px]',
 	}
-
-  console.log("COLORS", commonColors)
 
 	const pxClasses = {
 		none: 'px-0',

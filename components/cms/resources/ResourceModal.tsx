@@ -41,22 +41,21 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			buttons={
 				(enableEdit || enableDelete) && (
 					<div className="w-full flex flex-row space-x-2">
-						{enableEdit && (
-							<Button                 
-                variant="ghost"
-                fullWidth 
-                onPress={handleEdit}>
-								Edit
-							</Button>
-						)}
 						{enableDelete && (
 							<Button 
-                variant="ghost"
-                fullWidth 
+                fullWidth
                 color="danger" 
                 onPress={handleDelete}
               >
 								Delete
+							</Button>
+						)}
+            {enableEdit && (
+							<Button          
+                fullWidth        
+                variant="solid"
+                onPress={handleEdit}>
+								Edit
 							</Button>
 						)}
 					</div>
