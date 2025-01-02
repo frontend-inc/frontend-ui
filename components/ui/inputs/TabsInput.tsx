@@ -43,13 +43,13 @@ export default function TabsInput(props: TabsInputProps) {
       )}
     <Tabs
       fullWidth
-      selectedKey={value.toString()}
+      selectedKey={value}
       onSelectionChange={handleInputChange}
     >				
       {options.map((option) => (
         <Tab
-          key={option.value}
-          value={option.value.toString()}
+          key={option?.value }
+          value={option?.value}
           title={
             <div className='flex flex-row items-center'>
               {option.icon && (

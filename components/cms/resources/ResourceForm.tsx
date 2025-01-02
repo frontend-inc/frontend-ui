@@ -31,7 +31,8 @@ export type FormProps = ResourceFormProps & {
 }
 
 const ResourceForm: React.FC<FormProps> = (props) => {
-	const {
+	
+  const {
 		loading,
     isPublishLoading,
     enablePublish,
