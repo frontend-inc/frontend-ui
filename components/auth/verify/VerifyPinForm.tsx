@@ -18,7 +18,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 		props
 
 	return (
-		<div className="flex flex-col space-y-3">
+		<div className="flex flex-col items-center justify-center space-y-3">      
 			<OtpInput
 				label="Enter your PIN"
 				name="pin"

@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import moment from 'moment'
 import {DatePicker} from "@nextui-org/react";
-import {DateValue, parseDate, getLocalTimeZone} from "@internationalized/date";
+import {DateValue, parseDate} from "@internationalized/date";
 import { SyntheticEventType } from '../../../types'
 
 type DateInputProps = {
@@ -27,15 +27,23 @@ export default function DateInput(props: DateInputProps) {
     handleChange,
   } = props || {}
 
+  const currentDate = moment().format('YYYY-MM-DD')
+  
   const handleDateChange = (date: DateValue) => {
-    console.log('date', date)
+    const formattedDate = moment(date).format('YYYY-MM-DD')    
+    handleChange({
+      target: {
+        name, 
+        value: formattedDate
+      }
+    })
   }
 
 	return (
 		<DatePicker      
-      label={ label }
-      value={value}
+      label={ label }      
       name={name}
+      defaultValue={parseDate(value || currentDate)}
       className="max-w-[284px]"
       //@ts-ignore
       onChange={handleDateChange}

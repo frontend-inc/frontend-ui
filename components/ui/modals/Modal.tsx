@@ -53,7 +53,7 @@ export default function Modal(props: ModalProps) {
           <ModalHeader className="mt-4 text-foreground">
             {title}					
           </ModalHeader>
-          <ModalBody>    
+          <ModalBody className='px-1'>    
             <div 
               style={{ 
                 maxHeight: maxWidth == 'full' ? 'calc(100vh - 100px)' : 'calc(100vh - 400px)'
