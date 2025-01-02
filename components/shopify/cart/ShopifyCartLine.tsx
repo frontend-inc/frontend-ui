@@ -5,7 +5,7 @@ import { ShopifyContext } from 'frontend-shopify'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
 import { RemixIcon } from '../../../components'
-import { Badge, Card, Image, ButtonGroup, Button } from '@nextui-org/react'
+import { Image, ButtonGroup, Button } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
 import { useRouter } from 'next/navigation'
@@ -100,11 +100,6 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 		})
 	}
 
-	const handleClick = () => {
-		router.push(`${shopUrl}/products/${product?.handle}`)
-		setCartOpen(false)
-	}
-
 	useEffect(() => {
 		// @ts-ignore
 		if (sellingPlanAllocation?.priceAdjustments?.length > 0) {
@@ -125,22 +120,13 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 			className={cn('flex items-start space-x-4 py-4', loading && 'opacity-30')}
 		>
 			<div className="relative">
-        <Card 
-          shadow='none'
-          isPressable 
-          onPress={handleClick}
-        >
 				<Image
-          removeWrapper 
-          radius="none"
 					alt={line?.merchandise?.product?.title || ''}
 					src={url}
 					height={96}
 					width={96}
-					className="rounded-md min-h-[96px] min-w-[96px]"
-					onClick={handleClick}
+					className="min-h-[96px] min-w-[96px]"
 				/>
-        </Card>
 			</div>
 			<div className="flex-grow">
 				<Typography variant="body1">

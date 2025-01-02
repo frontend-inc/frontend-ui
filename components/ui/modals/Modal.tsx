@@ -56,7 +56,7 @@ export default function Modal(props: ModalProps) {
           <ModalBody>    
             <div 
               style={{ 
-                maxHeight: 'calc(100vh - 100px)'
+                maxHeight: maxWidth == 'full' ? 'calc(100vh - 100px)' : 'calc(100vh - 400px)'
               }} 
               className="w-full overflow-y-scroll"
             >

@@ -105,8 +105,9 @@ export default function ColorInput(props: ColorInputProps) {
 			<Popover>
 				<PopoverTrigger>
 					<Button
-						variant="outline"
-						className="bg-input text-foreground w-full justify-between"
+            fullWidth            
+						variant="ghost"
+						className="justify-between"
 					>
 						{placeholder}
 						<div className="flex items-center space-x-2">
@@ -118,58 +119,63 @@ export default function ColorInput(props: ColorInputProps) {
 						</div>
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="bg-background w-64">
-					<div className="bg-background grid grid-cols-7 gap-3 mb-2">
+				<PopoverContent className="bg-content1 p-2 w-64">
+					<div className="grid grid-cols-6 gap-1 mb-2">
 							<Tooltip content="Remove color">
-									<button
-										className={cn(
-											'relative bg-white h-8 w-8 rounded-md overflow-hidden',
-											value === '' &&
-												'ring-2 ring-offset-2 ring-offset-background'
-										)}
-										onClick={handleRemoveColor}
-									>
-										<span className="sr-only">Remove color</span>
-										<div className="absolute inset-0 flex items-center justify-center">
-											<div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
-										</div>
-									</button>
+                <Button
+                  isIconOnly  
+                  radius="md"                 
+                  className={cn(
+                    'relative bg-white h-8 w-8 min-w-8 overflow-hidden',
+                    value === '' &&
+                      'ring-2 ring-offset-2 ring-offset-background'
+                  )}
+                  onPress={handleRemoveColor}
+                >
+                  <span className="sr-only">Remove color</span>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
+                  </div>
+                </Button>
 						</Tooltip>
 						<Tooltip content="White">
-									<button
-										className={cn(
-											'h-8 w-8 rounded-md border',
-											selectedColorName === 'white' &&
-												'ring-2 ring-offset-2 ring-offset-background'
-										)}
-										style={{ backgroundColor: '#FFFFFF' }}
-										onClick={() => handleColorChange('white')}
-									/>
+              <Button 
+                isIconOnly  
+                className={cn(
+                  'h-8 w-8 min-w-8',
+                  selectedColorName === 'white' &&
+                    'ring-2 ring-offset-2 ring-offset-background'
+                )}
+                style={{ backgroundColor: '#FFFFFF' }}
+                onPress={() => handleColorChange('white')}
+              />
               </Tooltip>
 							<Tooltip content="Black">
-									<button
-										className={cn(
-											'h-8 w-8 rounded-md border',
-											selectedColorName === 'black' &&
-												'ring-2 ring-offset-2 ring-offset-background'
-										)}
-										style={{ backgroundColor: '#000000' }}
-										onClick={() => handleColorChange('black')}
-									/>
+                <Button 
+                  isIconOnly
+                  className={cn(
+                    'h-8 w-8 min-w-8',
+                    selectedColorName === 'black' &&
+                      'ring-2 ring-offset-2 ring-offset-background'
+                  )}
+                  style={{ backgroundColor: '#000000' }}
+                  onPress={() => handleColorChange('black')}
+                />
 							</Tooltip>
 						{Object.keys(TAILWIND_COLOR_PICKER_MAP).map((color) => (
 							<Tooltip content={color} key={color}>
-                  <button
-                    className={cn(
-                      'h-8 w-8 rounded-md border',
-                      value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
-                        'ring-2 ring-offset-2 ring-offset-background'
-                    )}
-                    style={{
-                      backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
-                    }}
-                    onClick={() => handleColorChange(color)}
-                  />
+                <Button 
+                  radius="md"
+                  className={cn(
+                    'h-8 w-8 min-w-8',
+                    value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
+                      'ring-2 ring-offset-2 ring-offset-background'
+                  )}
+                  style={{
+                    backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
+                  }}
+                  onPress={() => handleColorChange(color)}
+                />
 							</Tooltip>
 						))}
 					</div>

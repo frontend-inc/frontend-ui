@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { DisplayFields, Image } from '../..'
+import { DisplayFields, Image, Typography } from '../..'
 import { MetafieldType } from '../../../types'
 import { DOCUMENT_SHOW_FIELDS } from '../../../constants'
 
@@ -23,6 +23,7 @@ const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col space-y-6">
+      <Typography variant="h4" className='text-center'>{ resource?.title }</Typography>
 			{!disableImage && (
 				<div className="w-full flex flex-row justify-center">					
           <Image

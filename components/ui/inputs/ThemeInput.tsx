@@ -45,7 +45,7 @@ export default function ThemePicker(props: ThemePickerProps) {
 					className="text-foreground justify-between"
           startContent={value && (
             <div
-              className="h-5 w-5 rounded-lg"
+              className="h-5 w-5"
               style={{
                 backgroundColor:
                   TAILWIND_COLOR_MAP[
@@ -64,12 +64,13 @@ export default function ThemePicker(props: ThemePickerProps) {
 			<PopoverContent className="bg-background z-50 w-[200px] p-0">
 				<div className="grid grid-cols-5 gap-1 p-2">
 					{TAILWIND_COLORS.map((color) => (
-            <button
+            <Button 
+              isIconOnly
               key={color}
               className={cn(
-                'h-8 w-8 rounded-md border',
+                'h-8 w-8 min-w-8 rounded-lg',
                 value === color &&
-                  'ring-2 ring-offset-2 ring-offset-background'
+                  'ring-2 ring-offset-2 ring-primary'
               )}
               style={{
                 backgroundColor:
@@ -77,7 +78,7 @@ export default function ThemePicker(props: ThemePickerProps) {
                     color as keyof typeof TAILWIND_COLOR_MAP
                   ],
               }}
-              onClick={() => handleColorChange(color)}
+              onPress={() => handleColorChange(color)}
             />
 					))}
 				</div>

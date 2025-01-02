@@ -52,7 +52,6 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 		<Modal      
 			open={openShow}
 			handleClose={() => setOpenShow(false)}
-			title={!disableTitle ? resource?.title : ''}
       maxWidth='5xl'
 		>
 			<div className="flex flex-col space-y-6 p-6 w-full">

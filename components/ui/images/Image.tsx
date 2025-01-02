@@ -60,8 +60,10 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
       { enableGradient && <div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent" /> }
       { enableOverlay && <div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" /> }
       { label && (
-        <CardFooter className="z-20 p-3 w-full overflow-hidden py-1 absolute left-0 bottom-0 text-white text-sm">
-          { label }
+        <CardFooter className="z-20 w-full overflow-hidden py-1 absolute left-0 bottom-0 text-white text-sm">
+          <div className="truncate p-4">
+            { label }
+          </div>
         </CardFooter>
       )}
     </Card>
@@ -79,6 +81,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
     src,     
     height,
     aspectRatio,
+    handleClick,
     disableBorderRadius,
     ...rest 
   } = props || {}
@@ -88,6 +91,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
       disableBorderRadius={disableBorderRadius}
       aspectRatio={aspectRatio}
       height={height}
+      onClick={handleClick}
     />
   )
   return (
@@ -95,6 +99,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
     <AspectRatio ratio={aspectRatio}>
       <ImageCard 
         src={src}
+        handleClick={handleClick}
         disableBorderRadius={disableBorderRadius}
         { ...rest }
       /> 
@@ -102,6 +107,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
     <ImageCard 
       src={src}
       height={ height }
+      handleClick={handleClick}
       disableBorderRadius={disableBorderRadius}
       { ...rest }      
     /> 

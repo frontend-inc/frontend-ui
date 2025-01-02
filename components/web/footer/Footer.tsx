@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Stack, Typography } from '../../../components'
+import { Typography } from '../../../components'
 import { SocialLink } from '../../../components'
 import { SocialLinkType, MenuLinkType } from '../../../types'
-import Image from 'next/image'
 import AppStoreButton from './AppStoreButton'
 import GooglePlayButton from './GooglePlayButton'
 import { NavLogo, EmailSubscribe } from '../../../components'

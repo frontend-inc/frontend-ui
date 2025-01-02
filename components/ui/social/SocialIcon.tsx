@@ -16,7 +16,7 @@ type SocialIconProps = {
 const SocialIcon: React.FC<SocialIconProps> = (props) => {
 	const { provider, handleClick, size = 20 } = props || {}
 	return (
-		<Button isIconOnly radius="full" onPress={handleClick}>
+		<Button isIconOnly className="min-w-10" radius="full" onPress={handleClick}>
 			<ReactSocialIcon
 				/* @ts-ignore */
 				network={provider}

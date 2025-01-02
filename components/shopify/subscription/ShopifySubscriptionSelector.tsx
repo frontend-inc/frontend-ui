@@ -64,7 +64,7 @@ const ShopifySubscriptionSelector: React.FC<ShopifySubscriptionSelectorProps> = 
         <span className="truncate">{buttonText}</span>        
       </Button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-background border rounded-xl shadow-lg overflow-hidden">
+        <div className="absolute z-10 w-full mt-1 bg-content1 border-2 border-divider rounded-xl shadow-lg overflow-hidden">
           <Button
             variant="light"
             onPress={() => handleSelectPlan(null)}

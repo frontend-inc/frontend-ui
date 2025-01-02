@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import Image from 'next/image'
-import { File, Trash2, Loader2, UploadCloud, DownloadCloud } from 'lucide-react'
-import { Button } from '@nextui-org/react' // Adjust the import path as needed
+import { File, Trash2, UploadCloud, DownloadCloud } from 'lucide-react'
+import { Button, Spinner } from '@nextui-org/react' // Adjust the import path as needed
 import { InputLabel } from '../..' // Adjust the import path as needed
 import { toast } from 'sonner'
 import { cn } from '@nextui-org/react' // Adjust the import path as needed
@@ -168,13 +168,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       <div
         {...getRootProps()}
         className={cn(
-          'h-[120px] w-full bg-background m-px p-4 flex flex-col justify-center items-center rounded-xl border-2 border-divider text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
+          'h-[120px] w-full bg-content1 hover:bg-content2 m-px p-4 flex flex-col justify-center items-center rounded-xl border-2 border-divider text-center hover:border-2 hover:border-primary hover:cursor-pointer transition-all duration-300',
           isDragActive ? 'border-primary bg-opacity-50' : ''
         )}
       >
         <input {...getInputProps()} />
         { isDropzoneLoading ? (
-          <Loader2 className="text-foreground w-8 h-8 animate-spin" />
+          <Spinner className="text-foreground w-8 h-8" />
         ) : (
           <>
             {isDragActive ? (
@@ -192,8 +192,9 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       {/* Upload Button */}
       {files.length > 0 && (
         <Button
-          onClick={onUpload}
+          onPress={onUpload}
           disabled={isDropzoneLoading}
+          isLoading={ isDropzoneLoading }
         >
           {isDropzoneLoading ? 'Uploading...' : 'Upload Files'}
         </Button>
