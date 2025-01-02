@@ -16,7 +16,6 @@ export type ResourceItemProps = {
 	handleSelect?: () => void
 	handleReload?: () => void
 	secondaryAction?: React.ReactNode
-	menuActions?: any
 	sortable?: boolean
 	selectable?: boolean
 	selected?: boolean
@@ -36,7 +35,6 @@ const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 		handleSelect,
 		handleReload,
 		secondaryAction,
-		menuActions,
 		sortable,
 		selectable,
 		selected,
@@ -57,7 +55,6 @@ const ResourceItem: React.FC<ResourceItemProps> = (props) => {
 			handleDelete={handleDelete}
 			handleSelect={handleSelect}
 			handleReload={handleReload}
-			menuActions={menuActions}
 			secondaryAction={secondaryAction}
 			sortable={sortable}
 			selectable={selectable}

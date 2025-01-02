@@ -50,6 +50,7 @@ export default function SelectInput(props: SelectInputPropsType) {
 			>
         {(option) => (
 				<SelectItem 
+          // @ts-ignore
           key={option?.value}           
         >
 					{option.label}

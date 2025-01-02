@@ -9,7 +9,7 @@ const LOGO_WIDTH = 180
 const LOGO_HEIGHT = 56
 
 type LogoProps = {
-	src: string
+	src?: string
 	width?: number
 	height?: number
 	handleClick: (path: string) => void

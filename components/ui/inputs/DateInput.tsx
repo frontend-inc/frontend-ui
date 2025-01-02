@@ -24,7 +24,6 @@ export default function DateInput(props: DateInputProps) {
     label,
     name,
     value,
-    placeholder,
     handleChange,
   } = props || {}
 
@@ -37,7 +36,6 @@ export default function DateInput(props: DateInputProps) {
       label={ label }
       value={value}
       name={name}
-      placeholder={placeholder}
       className="max-w-[284px]"
       //@ts-ignore
       onChange={handleDateChange}

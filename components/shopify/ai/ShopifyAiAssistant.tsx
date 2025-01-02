@@ -223,17 +223,18 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 					name="prompt"
 					placeholder="Ask a question about our products..."
 					value={input}
+          //@ts-ignore
 					handleChange={handleInputChange}
 					disableDebounce
 				/>
 				<div className="flex flex-row space-x-2">
 					<Button
 						fullWidth
-						onClick={handleChatSubmit}
-						loading={isLoading}
+						onPress={handleChatSubmit}
+						isLoading={isLoading}
 						disabled={isLoading}
 						className="w-full bg-primary text-primary-foreground"
-						startIcon={
+						startContent={
 							<RemixIcon name="ri-gemini-fill" className="text-white" />
 						}
 					>

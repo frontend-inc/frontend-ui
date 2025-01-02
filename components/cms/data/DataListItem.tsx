@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { Icon, Image, MenuButton, TouchableOpacity } from '../..'
+import { Image, MenuButton } from '../..'
 import { Checkbox } from 'frontend-shadcn'
 import { GripVertical } from 'lucide-react'
 
@@ -68,15 +68,14 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 					)}
 					{sortable && <GripVertical className="text-foreground/70" />}
 					<div className="pr-0 sm:pr-2 mr-0 sm:mr-2 w-full sm:w-[220px] sm:min-w-[220px] h-full">
-						<TouchableOpacity handleClick={handleClick}>
 							<Image
 								label={label}
 								src={image}
 								height={height}
 								alt={primary}
+                handleClick={handleClick}
 								{...slots.image}
-							/>
-						</TouchableOpacity>
+							/>						
 					</div>
 				</div>
 				<div className="flex flex-row space-x-1 w-full">
@@ -87,13 +86,17 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 								{secondary}
 							</Typography>
 						</div>
-						<div className="flex flex-row justify-end">{actions}</div>
+						<div className="flex flex-row justify-end">
+              { actions }
+              { secondaryAction }
+            </div>
 					</div>
 					<div className="flex flex-row justify-end">
 						{(handleEdit || handleDelete) && (
-							<MenuButton handleEdit={handleEdit} handleDelete={handleDelete}>
-								{secondaryAction}
-							</MenuButton>
+							<MenuButton 
+                handleEdit={handleEdit} 
+                handleDelete={handleDelete} 
+              />
 						)}
 					</div>
 				</div>

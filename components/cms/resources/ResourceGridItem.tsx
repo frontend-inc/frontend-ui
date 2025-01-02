@@ -6,10 +6,8 @@ import {
   Checkbox, 
   Card, 
   CardHeader, 
-  CardBody, 
   CardFooter,
-  Image,
-  Button  
+  Image,  
 } from '@nextui-org/react'
 import { MenuButton, Typography } from '../../../components'
 
@@ -28,7 +26,6 @@ export type ResourceGridItemProps = {
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
 	secondaryAction?: React.ReactNode
-	menuActions?: React.ReactNode
 	sortable?: boolean
 	isDragging?: boolean
 	slots?: {
@@ -51,7 +48,6 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
     handleDelete,
     handleSelect,
     secondaryAction,
-    menuActions,
     slots = {},
   } = props || {}  
 
@@ -74,13 +70,11 @@ export default function ResourceGridItem(props: ResourceGridItemProps) {
           )}
           {secondaryAction}
         </div>
-        {(menuActions || handleEdit || handleDelete) && (
+        {(handleEdit || handleDelete) && (
           <MenuButton
             handleEdit={handleEdit}
             handleDelete={handleDelete}
-          >
-            { menuActions }
-          </MenuButton>          
+          />          
         )}
 			</CardHeader>
       <div className='w-full h-full'>

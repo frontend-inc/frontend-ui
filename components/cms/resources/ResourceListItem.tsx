@@ -24,7 +24,6 @@ export type ResourceListItemProps = {
 	handleSelect?: () => void
 	handleReload?: () => void
 	secondaryAction?: React.ReactNode
-	menuActions?: React.ReactNode
 	sortable?: boolean
 	isDragging?: boolean
 	disableImage?: boolean
@@ -42,8 +41,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 		handleEdit,
 		handleDelete,
 		handleSelect,
-		secondaryAction,
-		menuActions,
+		secondaryAction,		
 		sortable,
 		selectable,
 		selected,
@@ -110,13 +108,11 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				</div>
 				<div className="flex items-center space-x-1">
 					{secondaryAction}
-					{(menuActions || handleEdit || handleDelete) && (
+					{(handleEdit || handleDelete) && (
             <MenuButton 
               handleEdit={handleEdit}
               handleDelete={handleDelete}
-            >
-              {menuActions}
-            </MenuButton>            						
+            />
 					)}
 				</div>
 			</div>

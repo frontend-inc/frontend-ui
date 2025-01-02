@@ -4,13 +4,13 @@ import React from 'react'
 import { useClickOrDrag } from '../../../hooks'
 import { cn } from '@nextui-org/react'
 
-type TouchableOpacityProps = {
+type ClickOrDragButtonProps = {
 	children: any
 	handleClick?: () => void
 	className?: string
 }
 
-const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
+const ClickOrDragButton: React.FC<ClickOrDragButtonProps> = (props) => {
 	const { children, className, handleClick } = props
 
 	const { onMouseDown, onMouseUp } = useClickOrDrag({
@@ -28,4 +28,4 @@ const TouchableOpacity: React.FC<TouchableOpacityProps> = (props) => {
 	)
 }
 
-export default TouchableOpacity
+export default ClickOrDragButton

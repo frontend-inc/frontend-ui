@@ -24,8 +24,8 @@ import {
 
 export type HeaderProps = {
 	logo?: string
-	links: MenuLinkType[]
-	buttons: ButtonType[]
+	links?: MenuLinkType[]
+	buttons?: ButtonType[]
 	bgColor?: string
 	enableAuth?: boolean
 	enableShopify?: boolean
@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 	
   const {
 		logo,
-		links,
+		links=[],
 		buttons,
 		handleClick,
 		enableAuth = false,
@@ -107,6 +107,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu
+                //@ts-ignore
                 onAction={ handlePress }                
               >
                 { link?.children?.map((child) => (
