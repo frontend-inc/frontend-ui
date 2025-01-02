@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { FieldWrapper, Typography } from '../../../components'
+import { FieldWrapper } from '../../../components'
 import { FieldElementProps } from './Field'
-import { Button, RemixIcon } from '../../../components'
+import { RemixIcon } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { cloudinaryDownloadUrl, downloadFile } from '../../../helpers'
 import { cn } from '@nextui-org/react'
 
@@ -26,10 +27,12 @@ const FieldFile: React.FC<FieldElementProps> = (props) => {
       )}>
         <Button 
           size="lg"
-          variant="outline"
+          variant="ghost"
           className='max-w-[240px]'
-          onClick={ handleClick }
-          startIcon={<RemixIcon name="ri-download-2-fill" />}
+          onPress={ handleClick }
+          startContent={
+            <RemixIcon name="ri-download-2-fill" />
+          }
         >
           { value?.filename }
         </Button>

@@ -16,9 +16,10 @@ import {
 	sortableKeyboardCoordinates,
 	verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { Button, Typography } from '../../../components'
+import { Typography } from '../../../components'
+import { Button } from '@nextui-org/react'
 import Droppable from './Droppable'
-import { Icon, KanBanCard } from '../..'
+import { KanBanCard } from '../..'
 import { RiAddFill } from '@remixicon/react'
 
 type KanBanBoardProps = {
@@ -130,8 +131,10 @@ const KanBanBoard: React.FC<KanBanBoardProps> = (props) => {
 							<Button
 								fullWidth
 								color="secondary"
-								onClick={() => handleAdd(header.value)}
-								startIcon={<RiAddFill className="text-secondary-foreground" />}
+								onPress={() => handleAdd(header.value)}
+								startContent={
+                  <RiAddFill className="text-secondary-foreground" />
+                }
 							>
 								Add
 							</Button>

@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Empty, Button } from '../../../components'
+import { Empty, RemixIcon } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useApp } from '../../../hooks'
 import { toast } from 'sonner'
 
@@ -22,7 +23,12 @@ const ShopifyCustomerPortal = () => {
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."
 			buttons={
-				<Button onClick={handleClick} endIcon="ExternalLink">
+				<Button 
+          onPress={handleClick} 
+          endContent={
+            <RemixIcon name='ri-external-link-line' />
+          }
+        >
 					Open Customer Portal
 				</Button>
 			}

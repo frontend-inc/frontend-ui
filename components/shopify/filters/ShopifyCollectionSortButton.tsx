@@ -34,7 +34,7 @@ const ShopifyCollectionSortButton: React.FC<
 	)?.label
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
+		<Popover isOpen={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
 				<Button 
           variant="ghost" 

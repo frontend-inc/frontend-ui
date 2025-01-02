@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
+import { Image } from '@nextui-org/react'
 import {
 	ButtonActions,
-	UserAvatar,
 	ExpandableText,
 	ListFields,
 	SocialFields,
@@ -34,7 +34,13 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 		<div className="w-full flex flex-col items-center justify-center rounded">
 			<div className="flex flex-col sm:flex-row items-start sm:space-x-4 max-w-[600px]">
 				<div className="flex flex-col items-center">
-					{avatar?.url && <UserAvatar user={user} size={120} enableGradient />}
+					{avatar?.url && (
+            <Image 
+              radius="full" 
+              src={user?.avatar?.url} 
+              alt={name}
+            />
+          )}
 					<SocialFields fields={socialFields} resource={user} />
 				</div>
 				<div className="flex flex-col space-y-1">

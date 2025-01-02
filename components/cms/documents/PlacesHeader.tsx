@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { FilterButton, SortButton, GeoSearchInput } from '../..'
+import { SearchInput, FilterButton, SortButton } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch } from '../../../hooks'
 
@@ -31,13 +31,11 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 		keywords,
 		handleKeywordChange,
 		location,
-		handleLocationChange,
 		handleSearch,
 		handleSortBy,
 		handleSortDirection,
 		activeFilters,
 		handleToggleFilter,
-		handleClearFilters,
 	} = useSearch({
 		url,
 		query: defaultQuery,
@@ -52,11 +50,10 @@ const GeoHeader: React.FC<GeoHeaderProps> = (props) => {
 			<div className="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:space-x-4">
 				<div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
 					{enableSearch && (
-						<GeoSearchInput
+						<SearchInput
 							value={keywords}
 							location={location}
-							handleChange={handleKeywordChange}
-							handleLocationChange={handleLocationChange}
+							handleChange={handleKeywordChange}						
 							handleSearch={handleSearch}
 						/>
 					)}

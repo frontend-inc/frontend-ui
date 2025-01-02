@@ -8,8 +8,8 @@ import { useApp, useTheme } from '../../hooks'
 import { cn } from '@nextui-org/react'
 
 type UIHeaderProps = HeaderProps & {
-	bgColor: string
-	mode: 'light' | 'dark'
+	bgColor?: string
+	mode?: 'light' | 'dark'
 }
 
 const UIHeader: React.FC<UIHeaderProps> = (props) => {

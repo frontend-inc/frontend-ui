@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../../components'
+import { Typography } from '../../components'
 import { cn } from '@nextui-org/react'
 
 type LabelProps = {

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useChat, experimental_useObject as useObject } from 'ai/react'
 import { ToolInvocation } from 'ai'
-import { IconButton, RemixIcon, Typography, Button } from '../../../components'
+import { IconButton, RemixIcon, Typography } from '../../../components'
+import { Spinner, Button } from '@nextui-org/react'
 import { TextArea } from '../../../components'
 import { Avatar, ShopifyProductCollection, ShopifyProductArray } from '../../../components'
 import { cn } from '@nextui-org/react'
-import { toast } from 'sonner'
 import { Container } from '../../../components'
-import { Loader2 } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { 
   Card,
@@ -191,14 +190,14 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 														{!loading && (
 															<div className="flex flex-row space-x-2">
 																<Button
-																	onClick={() =>
+																	onPress={() =>
 																		dispatchTool(toolInvocation, 'Yes')
 																	}
 																>
 																	Sure!
 																</Button>
 																<Button
-																	onClick={() =>
+																	onPress={() =>
 																		dispatchTool(toolInvocation, 'No')
 																	}
 																>
@@ -241,16 +240,20 @@ const AiShopifyAssistant: React.FC<ShopifyAiAssistantProps> = (props) => {
 						{isLoading ? 'thinking...' : 'Submit'}
 					</Button>
 					<IconButton
-						onClick={stop}
-						className="bg-primary hover:bg-primary/80"
+            isIconOnly 
+						onPress={stop}
+						className="bg-primary hover:bg-primary/80 min-w-8"
 					>
-						<RemixIcon name="ri-stop-fill" className="text-primary-foreground" />
+						<RemixIcon 
+              name="ri-stop-fill" 
+              className="text-primary-foreground" 
+            />
 					</IconButton>
 				</div>
 			</div>
 			{loading && (
 				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-					<Loader2 size={64} className="text-white animate-spin" />
+					<Spinner />
 				</div>
 			)}
 		</div>

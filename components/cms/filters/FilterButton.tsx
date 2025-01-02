@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { RemixIcon } from '../..'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { cn } from '@nextui-org/react'
@@ -40,7 +40,8 @@ export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
       <ListboxSection 
         title={ filterOption?.label}
       >
-        { filterOption?.options?.map(option => (
+        { filterOption?.options?.map((option) => (
+          //@ts-ignore
           <ListboxItem key={ option?.value }>
             { option?.label}
           </ListboxItem>
@@ -70,7 +71,7 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 				<PopoverTrigger>
 					<Button
 						variant="ghost"
-						loading={loading}
+						isLoading={loading}
 						className={cn(
 							'text-foreground relative w-full sm:w-auto',
 						)}

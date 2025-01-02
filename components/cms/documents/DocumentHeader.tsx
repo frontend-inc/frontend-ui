@@ -7,7 +7,6 @@ import {
 	FilterButton,
 	SortButton,
 	SearchInput,
-	GeoSearchInput,
 } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useDocumentForms } from '../../../hooks'
@@ -18,8 +17,7 @@ export type DocumentHeaderProps = {
 	url: string
 	enableSearch?: boolean
 	enableFilters?: boolean
-	enableSorting?: boolean
-	enableGeoSearch?: boolean
+	enableSorting?: boolean	
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
@@ -35,7 +33,6 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 		sortOptions = [],
 		enableCreate = false,
 		enableSearch = false,
-		enableGeoSearch = false,
 		enableFilters = false,
 		enableSorting = false,
 		buttonText = 'Add',
@@ -45,8 +42,6 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 		query,
 		keywords,
 		handleKeywordChange,
-		location,
-		handleLocationChange,
 		handleSearch,
 		handleSortBy,
 		handleSortDirection,
@@ -78,19 +73,10 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 		<div className="flex flex-col space-y-1 mb-1">
 			<div className="flex flex-col sm:flex-row justify-between space-y-1 sm:space-y-0 sm:space-x-1">
 				<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
-					{enableSearch && !enableGeoSearch && (
+					{enableSearch && (
 						<SearchInput
 							value={keywords}
 							handleChange={handleKeywordChange}
-							handleSearch={handleSearch}
-						/>
-					)}
-					{enableGeoSearch && !enableSearch && (
-						<GeoSearchInput
-							value={keywords}
-							location={location}
-							handleChange={handleKeywordChange}
-							handleLocationChange={handleLocationChange}
 							handleSearch={handleSearch}
 						/>
 					)}

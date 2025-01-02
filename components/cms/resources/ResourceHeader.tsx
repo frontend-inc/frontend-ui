@@ -106,12 +106,11 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 			>
 				{secondaryAction}
 				{enableExport && (
-					<Button
-						size="default"
+					<Button						
 						variant="ghost"
 						className="w-full sm:w-auto"
 						onPress={handleExport}
-						startIcon={
+						startContent={
 							<RemixIcon
 								name="ri-download-fill"
 								className="text-secondary-foreground"

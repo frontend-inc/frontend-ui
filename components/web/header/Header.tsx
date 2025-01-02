@@ -23,7 +23,7 @@ import {
 } from "@nextui-org/react";
 
 export type HeaderProps = {
-	logo: string
+	logo?: string
 	links: MenuLinkType[]
 	buttons: ButtonType[]
 	bgColor?: string
@@ -41,7 +41,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 		logo,
 		links,
 		buttons,
-		bgColor,
 		handleClick,
 		enableAuth = false,
 		enableStripe = false,

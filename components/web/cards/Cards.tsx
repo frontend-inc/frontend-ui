@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Card, Empty, Button } from '../..'
+import { Card, Empty } from '../..'
+import { Button } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 import { Swipeable, BlurFade } from '../../../components'
 
@@ -51,7 +52,8 @@ const CardItems: React.FC<CardItemsProps> = (props) => {
         item?.buttonText && (
           <Button 
             fullWidth 
-            onClick={() => handleClick(item?.path)}>
+            onPress={() => handleClick(item?.path)}
+          >
             {item?.buttonText}
           </Button>
         )
@@ -74,18 +76,18 @@ const Cards: React.FC<CardsProps> = (props) => {
 				  {layout === 'carousel' ? (
             <Swipeable enableArrows itemsPerSlide={3} arrowHeight={40}>
               { items?.map((item, idx) => (
-              <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-                <div className="py-2 w-full">
-                  <CardItems 
-                    enablePadding 
-                    item={item} 
-                    enableGradient={enableGradient} 
-                    enableOverlay={enableOverlay} 
-                    handleClick={onClick }
-                  />
-                </div>
-              </BlurFade>
-            ))}              
+                <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
+                  <div className="py-2 w-full">
+                    <CardItems 
+                      enablePadding 
+                      item={item} 
+                      enableGradient={enableGradient} 
+                      enableOverlay={enableOverlay} 
+                      handleClick={onClick }
+                    />
+                  </div>
+                </BlurFade>
+              ))}              
             </Swipeable>
 				) : (
 					<div

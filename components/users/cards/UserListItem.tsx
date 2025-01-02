@@ -6,7 +6,6 @@ import { ResourceListItem, UserAvatar, ListFields } from '../..'
 import { MetafieldType, UserType } from '../../../types'
 
 type UserListItemProps = {
-	size?: number
 	resource: UserType
 	displayFields: MetafieldType[]
 	handleClick?: () => void
@@ -15,7 +14,6 @@ type UserListItemProps = {
 const UserListItem: React.FC<UserListItemProps> = (props) => {
 	let {
 		resource: user,
-		size = 44,
 		displayFields = [],
 		handleClick,
 	} = props || {}
@@ -24,7 +22,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 		<ResourceListItem
 			handleClick={handleClick}
 			primary={<Typography variant="subtitle2">{user?.name}</Typography>}
-			avatar={<UserAvatar size={size} user={user} />}
+			avatar={<UserAvatar user={user} />}
 			secondary={<ListFields resource={user} fields={displayFields} />}
 		/>
 	)

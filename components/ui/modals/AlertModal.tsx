@@ -10,7 +10,7 @@ import {
   Button,
   Spinner,  
 } from "@nextui-org/react";
-import { Typography } from '@/components/core';
+import { Typography } from '../../../components';
 import { cn } from '@nextui-org/react'
 
 type AlertModalProps = {
@@ -62,9 +62,8 @@ const AlertModal: React.FC<AlertModalProps> = (props) => {
                 color="danger"
                 variant="solid"
                 onPress={handleConfirm}
-                className={cn(loading && 'cursor-not-allowed opacity-50')}
                 disabled={loading}
-                loading={loading}
+                isLoading={loading}
               >
                 Confirm
               </Button>

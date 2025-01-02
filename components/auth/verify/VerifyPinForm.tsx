@@ -29,7 +29,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 			<Button 
         color="primary"
         variant="solid"
-        fullWidth onPress={handleSubmit} isloading={loading}>
+        fullWidth onPress={handleSubmit} isLoading={loading}>
 				Verify Pin
 			</Button>
 			<Button 

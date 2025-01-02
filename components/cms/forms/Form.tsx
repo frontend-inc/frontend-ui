@@ -56,7 +56,6 @@ const Form: React.FC<FormProps> = (props) => {
           isLoading={loading}
           onPress={handleSubmit} 
           disabled={loading} 
-          loading={loading}
         >
 					{buttonText}
 				</Button>

@@ -30,7 +30,7 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 			<Button
 				onPress={handleSubmit}
 				variant="ghost"
-				loading={loading}
+				isLoading={loading}
 			>
 				Apply
 			</Button>

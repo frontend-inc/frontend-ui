@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { InputLabel, ErrorText } from '../..'
 import { useError } from '../../../hooks'
 import { TextInputProps } from '../../../types'
 import { useDebounce } from 'use-debounce'
@@ -24,8 +23,6 @@ export default function TextArea(props: TextAreaProps) {
 		placeholder,
 		disabled,
 		errors,
-		direction = 'column',
-		info,
 		debounceDelay = 350,
 		disableDebounce = false,
 		rows = 3,
@@ -40,11 +37,16 @@ export default function TextArea(props: TextAreaProps) {
 		name,
 	})
 
-	const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+	const handleTextAreaChange = (text: string) => {
 		clearError()
-		setText(e.target.value)
+		setText(text)
 		if (disableDebounce) {
-			handleChange(e)
+			handleChange({ 
+        target: {
+          name, 
+          value: text
+        }
+      })
 		}
 	}
 
@@ -72,7 +74,7 @@ export default function TextArea(props: TextAreaProps) {
       name={name}
       disabled={disabled}
       placeholder={placeholder || `Enter ${label}`}
-      onChange={handleTextAreaChange}
+      onValueChange={handleTextAreaChange}
       value={text}
       rows={rows}
       errorMessage={error}

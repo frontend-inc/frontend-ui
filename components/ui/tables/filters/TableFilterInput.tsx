@@ -51,7 +51,7 @@ const FilternameWrapper: React.FC<FilternameProps> = ({
 
 	return (
 		<>
-			<Separator />
+			<Divider />
 			<div className="flex flex-row justify-start items-start">
 				<div>
 					<div className="flex flex-col space-y-2">

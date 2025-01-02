@@ -11,15 +11,14 @@ import { Button } from '@nextui-org/react'
 import { RemixIcon } from '../../components'
 
 type MenuButtonProps = {
-  children?: React.ReactNode
-  handleEdit?: false | ((item: any) => void)
-  handleDelete?: false | ((item: any) => void)
+  handleEdit?: ((item: any) => void)
+  handleDelete?: ((item: any) => void)
 }
 
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
-  const { children, handleEdit, handleDelete } = props
+  const { handleEdit, handleDelete } = props
 
-  const handleAction = (action: string) => {
+  const handleAction = (action: React.Key) => {
     switch(action){
       case 'edit':
         //@ts-ignore
@@ -45,21 +44,20 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu onAction={handleAction}>
-        {children}
-        {handleEdit && (
+        {handleEdit ? (
           <DropdownItem
             key='edit'
           >
             Edit
           </DropdownItem>
-        )}
-        {handleDelete && (
+        ): (null)}
+        {handleDelete ? (
           <DropdownItem
             key='delete'
           >
             Delete
           </DropdownItem>
-        )}
+        ):(null)}
       </DropdownMenu>
     </Dropdown>
   )

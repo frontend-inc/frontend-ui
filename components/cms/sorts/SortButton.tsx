@@ -43,12 +43,12 @@ export default function SortButton(props: SortButtonProps) {
 
 	const toggleOpen = () => setIsOpen(!isOpen)
 
-  const handleSortByKeys = (keys: string[]) => {
-    handleSortBy(keys?.currentKey)
+  const handleSortByKeys = (key: { currentKey: string }) => {
+    handleSortBy(key?.currentKey)
   }
 
-  const handleSortDirectionKeys = (keys: string[]) => {
-    handleSortDirection(keys?.currentKey)
+  const handleSortDirectionKeys = (key: { currentKey: 'asc' | 'desc' }) => {
+    handleSortDirection(key?.currentKey)
   }
 
 	return (
@@ -90,6 +90,7 @@ export default function SortButton(props: SortButtonProps) {
         disallowEmptySelection
         selectedKeys={[sortDirection]}
         selectionMode="single"
+        //@ts-ignore
         onSelectionChange={handleSortDirectionKeys}
       >
         <ListboxSection title="Sort direction">

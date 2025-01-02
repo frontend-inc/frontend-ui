@@ -55,7 +55,6 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 						availableForSale
 						fullWidth
 						productId={resource?.id}
-						size="default"
 						price={resource?.display_price}
 					/>
 				) : (

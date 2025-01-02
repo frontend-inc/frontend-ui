@@ -222,9 +222,8 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 			/>
 			<div>
 				<Button
-					color="secondary"
-					onClick={handleAddClick}
-					startIcon={<RiAddFill size={24} />}
+					onPress={handleAddClick}
+					startContent={<RiAddFill />}
 				>
 					Add
 				</Button>
