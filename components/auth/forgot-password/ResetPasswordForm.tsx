@@ -35,7 +35,7 @@ const ResetPasswordForm: React.FC<ResetPasswordFormProps> = (props) => {
 				type="password"
 				placeholder="Confirm password"
 			/>
-			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} isLoading={loading}>
 				Save and Continue
 			</Button>
 			{handleLogin && (

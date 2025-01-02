@@ -7,7 +7,7 @@ import { getInitials } from '../../../helpers'
 type UserAvatarProps = {
 	user: any
 	variant?: 'circular' | 'rounded'
-	size?: number
+	size?: 'sm' | 'md' | 'lg' 
 	enableGradient?: boolean
 	className?: string
 }
@@ -15,7 +15,7 @@ type UserAvatarProps = {
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const {
 		user,
-		size = 36,
+		size = 'md',
 		className,
 	} = props
   

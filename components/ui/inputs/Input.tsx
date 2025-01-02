@@ -27,6 +27,7 @@ import {
 	SwitchInput,
 	TabsInput,
 	TextInput,
+  OtpInput,
 	TextArea,
 	URLInput,
 } from './index'
@@ -94,6 +95,8 @@ const Input: React.FC<InputProps> = (props) => {
 		priceRange: PriceRangeInput,
 		radio: RadioInput,
 		search: SearchInput,
+    string: TextInput,
+    otp: OtpInput,
 		select: SelectInput,
 		shopify_products: ShopifyProductsInput,
 		switch: SwitchInput,

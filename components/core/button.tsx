@@ -3,7 +3,7 @@
 import React, { forwardRef } from 'react'
 import { Button as NextButton, ButtonProps as NextButtonProps } from '@nextui-org/react'
  
-type ButtonSize = 'sm' | 'default' | 'lg' | 'icon'
+type ButtonSize = 'sm' | 'md' | 'lg'
 type ButtonVariant =
 	| 'default'
 	| 'destructive'
@@ -12,8 +12,8 @@ type ButtonVariant =
 	| 'ghost'
 	| 'link'
 
-interface ButtonProps extends NextButtonProps {
-	size?: ButtonSize
+type ButtonProps = NextButtonProps & {
+	size: ButtonSize
 	fullWidth?: boolean
 	variant?: ButtonVariant
 	startIcon?: React.ReactNode
@@ -28,7 +28,7 @@ interface ButtonProps extends NextButtonProps {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
 		{
-			size = 'default',
+			size = 'md',
 			variant = 'ghost',
 			fullWidth,
 			className,

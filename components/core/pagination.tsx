@@ -93,6 +93,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 					<li key={index}>
 						{item === 'ellipsis' ? (
 							<Button 
+                isIconOnly
                 variant="ghost" 
                 size="sm" 
                 className="mx-1" 
@@ -103,7 +104,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 						) : (
 							<Button
                 isIconOnly
-								variant={page === item ? 'default' : 'outline'}								
+								variant={page === item ? 'solid' : 'ghost'}								
 								className="mx-1"
 								onPress={() => handleClick(item as number)}
 								disabled={disabled}
@@ -119,7 +120,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 					<Button
             isIconOnly
 						variant="ghost"
-						size="icon"
+						size="sm"
 						className="ml-2"
 						onPress={() => handleClick(page + 1)}
 						disabled={page === count || disabled}

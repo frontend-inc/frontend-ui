@@ -26,7 +26,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 				handleChange={handleChange}
 				placeholder="Enter your email"
 			/>
-			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} isLoading={loading}>
 				Send One-Time Password
 			</Button>
 			{handleLogin && (

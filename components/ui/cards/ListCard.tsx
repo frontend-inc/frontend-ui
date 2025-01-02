@@ -8,6 +8,7 @@ import { Typography } from '../../../components'
 export type ListCardProps = CardProps & {
 	circular?: boolean
 	disableImage?: boolean
+  height?: number
 }
 
 const ListCard: React.FC<ListCardProps> = (props) => {
@@ -20,7 +21,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		secondaryAction,
 		handleClick,
 		image,
-		size = 140,
+    height=140,
 		disableImage,
 		enableGradient,
 		enableOverlay,
@@ -37,10 +38,9 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 						<div className="flex-shrink-0 w-full md:w-[260px]">
 							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">								
                 <Image
-                  circular={circular}
                   label={label}
                   src={image}
-                  height={size}
+                  height={height}
                   alt={title}                  
                   enableGradient={enableGradient}
                   enableOverlay={enableOverlay}

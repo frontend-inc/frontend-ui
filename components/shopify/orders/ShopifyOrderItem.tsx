@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Card } from '@nextui-org/react'
-import { Image } from '../../../components'
+import { Image, Card } from '@nextui-org/react'
 import { formatCurrency } from 'frontend-shopify'
 import moment from 'moment'
 import { ShopifyOrderType } from 'frontend-shopify'
@@ -39,7 +38,6 @@ const ShopifyOrderItem: React.FC<ShopifyOrderItemProps> = ({
 						}
 						width={64}
 						height={64}
-						className="rounded-md object-cover"
 					/>
 				</div>
 				<div className="flex-grow">

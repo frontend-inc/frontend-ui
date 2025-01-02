@@ -27,7 +27,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 				placeholder="Enter your email"
 				handleChange={handleChange}
 			/>
-			<Button color="primary" variant="ghost" fullWidth onPress={handleSubmit} loading={loading}>
+			<Button color="primary" variant="ghost" fullWidth onPress={handleSubmit} isLoading={loading}>
 				Send Verification Pin
 			</Button>
 			{handleLogin && (

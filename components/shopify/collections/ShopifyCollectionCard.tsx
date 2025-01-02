@@ -46,8 +46,7 @@ export default function ShopifyCollectionCard(
 						// @ts-ignore
 						src={image?.url}
 						alt={title || 'Collection image'}
-						aspectRatio={1.0}
-						objectFit="cover"
+						aspectRatio={1.0}						
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
 					/>

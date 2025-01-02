@@ -27,6 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 				className="justify-start"
 				onPress={() => handleClick(item?.path)}
         startContent={ 
+          //@ts-ignore
           item.icon && <RemixIcon name={item.icon} />
         }
 			>

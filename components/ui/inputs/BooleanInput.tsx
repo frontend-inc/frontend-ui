@@ -9,11 +9,10 @@ type BooleanInputProps = {
 	name: string
 	handleChange: (ev: SyntheticEventType) => void
 	label?: string
-	info?: string
 }
 
 const BooleanInput: React.FC<BooleanInputProps> = (props) => {
-	const { name, value, handleChange, label, info } = props
+	const { name, value, handleChange, label } = props
 
 	const handleTabChange = (ev) => {
 		const newValue = ev.target.value == 'true' ? true : false
@@ -29,7 +28,6 @@ const BooleanInput: React.FC<BooleanInputProps> = (props) => {
 		<TabsInput
 			name={name}
 			label={label}
-			info={info}
 			options={[
 				{ label: 'No', value: 'false' },
 				{ label: 'Yes', value: 'true' },

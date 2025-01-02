@@ -3,8 +3,6 @@
 import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
-import { RemixIcon } from '../../../components'
-import { toast } from 'sonner'
 import { Alert, Button } from '@nextui-org/react'
 import {
 	ShopifyProductFavoriteButton,
@@ -134,8 +132,8 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
           variant="flat" 
           color='danger' 
           title={alert} 
+          description='Warning'
           className='items-center'
-          size='sm'
           isClosable
           onClose={ handleClose }          
         />

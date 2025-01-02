@@ -18,7 +18,7 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 	const stripe = useStripe()
 	const elements = useElements()
 
-	const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleClick = async (e: any) => {
 		e.preventDefault()
 		if (!stripe || !elements) {
 			return
@@ -42,8 +42,14 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 				<CardElement className="text-2xl" />
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button variant="solid" color="primary" onPress={handleClick}>
-					<Icon name="CreditCard" className="mr-2 h-4 w-4" />
+				<Button 
+          variant="solid" 
+          color="primary" 
+          onPress={handleClick}
+          startContent={
+            <Icon name="CreditCard" className="h-4 w-4" />
+          }
+        >					
 					Add Credit Card
 				</Button>
 				<Button variant="ghost" onPress={handleCancel}>

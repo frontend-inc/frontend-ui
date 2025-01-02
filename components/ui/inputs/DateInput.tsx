@@ -14,7 +14,6 @@ type DateInputProps = {
 	name: string
 	value?: DateValue 
 	placeholder?: string
-	info?: string
 	handleChange: (ev: SyntheticEventType) => void
 }
 
@@ -40,6 +39,7 @@ export default function DateInput(props: DateInputProps) {
       name={name}
       placeholder={placeholder}
       className="max-w-[284px]"
+      //@ts-ignore
       onChange={handleDateChange}
     />
 	)

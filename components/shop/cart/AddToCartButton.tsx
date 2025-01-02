@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/react'
 import { useCart } from '../../../hooks'
 
 type AddToCartButtonProps = {
-	size?: 'sm' | 'default' | 'lg'
+	size?: 'sm' | 'md' | 'lg'
 	productId: string | number
 	fullWidth?: boolean
 	buttonText?: string
@@ -17,7 +17,7 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	const {
 		productId,
 		buttonText = 'Add to Cart',
-		size = 'default',
+		size = 'md',
 		fullWidth,
 		availableForSale,
 	} = props

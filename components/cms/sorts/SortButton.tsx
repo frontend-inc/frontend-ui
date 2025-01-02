@@ -73,6 +73,7 @@ export default function SortButton(props: SortButtonProps) {
         disallowEmptySelection
         selectedKeys={[sortBy]}
         selectionMode="single"
+        //@ts-ignore 
         onSelectionChange={handleSortByKeys}
       >
         <ListboxSection title="Sort by">

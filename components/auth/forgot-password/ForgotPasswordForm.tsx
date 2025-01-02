@@ -27,7 +27,7 @@ const ForgotPasswordForm: React.FC<ForgotPasswordFormProps> = (props) => {
 				placeholder="Enter your email"
 				handleChange={handleChange}
 			/>
-			<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
+			<Button variant="solid" fullWidth onPress={handleSubmit} isLoading={loading}>
 				Send Instructions
 			</Button>
 			{handleLogin && (

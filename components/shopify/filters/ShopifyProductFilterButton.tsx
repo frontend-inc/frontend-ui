@@ -68,8 +68,14 @@ const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 			<div className="sm:hidden">
 				<Sheet open={open} onOpenChange={toggleMenu}>
 					<SheetTrigger asChild>
-						<Button variant="default" className="w-full" onClick={toggleMenu}>
-							<ListFilter className="mr-2 h-4 w-4" />
+						<Button 
+              variant="ghost" 
+              className="w-full" 
+              onPress={toggleMenu}
+              startContent={ 
+                <ListFilter className="h-4 w-4" />
+              }
+            >
 							Filter
 						</Button>
 					</SheetTrigger>

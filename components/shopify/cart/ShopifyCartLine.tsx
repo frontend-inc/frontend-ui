@@ -14,8 +14,8 @@ import { cn } from '@nextui-org/react'
 
 type ShopifyCartQuantityInputProps = {
 	quantity: number
-	handleAddQuantity: (event: React.MouseEvent) => void
-	handleRemoveQuantity: (event: React.MouseEvent) => void
+	handleAddQuantity: (event: any) => void
+	handleRemoveQuantity: (event: any) => void
 }
 
 const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props) => {
@@ -58,7 +58,6 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
 	const router = useRouter()
 	const { trackRemoveFromCart } = useSegment()
 	const { loading, cartLineRemove, cartLineUpdate } = useCart()
-	const { shopUrl, setCartOpen } = useContext(ShopifyContext) as any
 
 	const { id, quantity, merchandise, sellingPlanAllocation } = line || {}
 

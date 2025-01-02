@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '@nextui-org/react'
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react'
-import SortList from './ShopifySortList'
+import ShopifySortList from './ShopifySortList'
 import { COLLECTION_SORT_OPTIONS } from 'frontend-shopify'
 import { ProductSortKeyType } from 'frontend-shopify'
 import { ArrowUpDown } from 'lucide-react'
@@ -17,6 +17,7 @@ type ShopifyCollectionSortButtonProps = {
 const ShopifyCollectionSortButton: React.FC<
 	ShopifyCollectionSortButtonProps
 > = (props) => {
+  
 	const { sortKey = 'COLLECTION_DEFAULT', reverse, handleClick } = props
 
 	const [open, setOpen] = useState(false)
@@ -47,11 +48,12 @@ const ShopifyCollectionSortButton: React.FC<
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent>
-				<SortList
+				<ShopifySortList
 					enableIcons
 					value={sortKey}
 					reverse={reverse}
 					options={COLLECTION_SORT_OPTIONS}
+          //@ts-ignore
 					handleClick={handleSortClick}
 				/>
 			</PopoverContent>

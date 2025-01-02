@@ -6,7 +6,7 @@ import { useSubscribe } from '../../../hooks'
 import { toast } from 'sonner'
 
 type SusbcribeButtonProps = {
-	size?: 'sm' | 'default' | 'lg'
+	size?: 'sm' | 'md' | 'lg'
 	productId: string | number
 	fullWidth?: boolean
 	buttonText?: string
@@ -19,10 +19,9 @@ const SusbcribeButton = (props: SusbcribeButtonProps) => {
 	const {
 		productId,
 		buttonText = 'Subscribe',
-		size = 'default',
+		size = 'md',
 		fullWidth,
 		availableForSale,
-		price,
 	} = props
 
 	const { loading, subscribe } = useSubscribe()

@@ -7,7 +7,11 @@ import {
 } from '@nextui-org/react'
 import { AlertModal } from '..'
 
-const AlertButton = forwardRef<HTMLButtonElement, ButtonProps>(
+type AlertButtonProps = ButtonProps & {
+  onPress: () => void
+}
+
+const AlertButton = forwardRef<HTMLButtonElement, AlertButtonProps>(
 	(
 		{
 			onPress,

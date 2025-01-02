@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import { TextInput } from '../..'
+import { OtpInput } from '../..'
 
 type SendPinFormProps = {
 	errors: Record<string, any>
@@ -19,9 +19,8 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-3">
-			<TextInput
+			<OtpInput
 				label="Enter your PIN"
-				errors={errors}
 				name="pin"
 				value={user?.pin}
 				placeholder="Enter PIN for verification"
@@ -30,7 +29,7 @@ const SendPinForm: React.FC<SendPinFormProps> = (props) => {
 			<Button 
         color="primary"
         variant="solid"
-        fullWidth onPress={handleSubmit} loading={loading}>
+        fullWidth onPress={handleSubmit} isloading={loading}>
 				Verify Pin
 			</Button>
 			<Button 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
 	Autocomplete,
   AutocompleteItem  
@@ -30,7 +30,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
 		options = [],
 	} = props
 
-  const handleSelection = (value: string) => {        
+  const handleSelection = (value: any) => {        
     handleChange({
       target: {
         name,
@@ -43,6 +43,7 @@ const Autosuggest: React.FC<AutosuggestProps> = (props) => {
     <Autocomplete 
       aria-label={ label }
       label={ label }
+      //@ts-ignore
       selectedKeys={[value]}
       onSelectionChange={handleSelection}
       defaultItems={options}

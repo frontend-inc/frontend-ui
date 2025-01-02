@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Badge } from 'frontend-shadcn'
-import { Image } from '../../../components'
+import { Badge, Image } from '@nextui-org/react'
 import { formatCurrency } from 'frontend-shopify'
 import { OrderLineItemType } from 'frontend-shopify'
+import { Typography } from '../../../components'
 import { cn } from '@nextui-org/react'
 
 type ShopifyOrderLineItemProps = {
@@ -20,29 +20,25 @@ const ShopifyOrderLineItem: React.FC<ShopifyOrderLineItemProps> = ({
 		<div className={cn('flex items-start space-x-4 py-2', className)}>
 			<div className="relative flex-shrink-0">
 				{lineItem?.variant?.image?.url && (
-					<div className="relative">
+          <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full flex items-center justify-center bg-primary text-primary-foreground">
 						<Image
-							height={100}
-							width={100}
+							height={96}
+							width={96}
 							src={lineItem.variant.image.url}
 							alt={lineItem.title}
-							className="rounded-md object-cover"
 						/>
-						<Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full flex items-center justify-center bg-primary text-primary-foreground">
 							{lineItem.quantity}
 						</Badge>
-					</div>
 				)}
 			</div>
 			<div className="flex-grow">
-				<h4 className="text-sm font-medium">{lineItem.title}</h4>
-				<p className="text-sm text-foreground/70">
+				<Typography variant="body1" className="text-sm text-foreground/70">
 					{lineItem?.variant?.title}
-				</p>
-				<p className="text-sm text-foreground/70">
+        </Typography>
+        <Typography variant="body2" className="text-foreground/70">				
 					{lineItem.quantity} x{' '}
 					{formatCurrency(lineItem?.variant?.price?.amount)}
-				</p>
+        </Typography>
 			</div>
 		</div>
 	)

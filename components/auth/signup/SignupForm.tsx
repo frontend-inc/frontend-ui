@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import { IconLoading, TextInput, GoogleLoginButton } from '../..'
+import { TextInput, GoogleLoginButton } from '../..'
 
 type SignupFormProps = {
 	loading: boolean
@@ -74,7 +74,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-3 w-full">
-				<Button variant="solid" fullWidth onPress={handleSubmit} loading={loading}>
+				<Button variant="solid" fullWidth onPress={handleSubmit} isLoading={loading}>
 					Register
 				</Button>
 				{handleLogin && (

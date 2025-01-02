@@ -12,7 +12,7 @@ import { cn } from '@nextui-org/react'
 type ShopifyProductFavoriteButtonProps = {
 	product: ShopifyProductType
 	variant?: 'rounded' | 'circular'
-	size?: 'small' | 'large'
+	size?: 'sm' | 'md' | 'lg'
 }
 
 const ShopifyProductFavoriteButton: React.FC<
