@@ -50,6 +50,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 	if (!resource) return null
 	return (
 		<Drawer      
+      title={ !disableTitle && resource?.title }
 			open={openShow}
 			handleClose={() => setOpenShow(false)}      
 		>
