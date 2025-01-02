@@ -3,8 +3,9 @@
 import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
 import { useSegment } from '../../../hooks/addons'
+import { RemixIcon } from '../../../components'
 import { toast } from 'sonner'
-import { Button } from '@nextui-org/react'
+import { Alert, Button } from '@nextui-org/react'
 import {
 	ShopifyProductFavoriteButton,
 	ShopifyQuantitySelector,
@@ -27,6 +28,9 @@ type ShopifyAddToCartButtonProps = {
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	props
 ) => {
+
+  const [alert, setAlert] = useState('')
+
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
 	const { loading, cartLineAdd } = useCart()
@@ -59,7 +63,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	const handleAddToCart = async () => {
 		if (!product?.availableForSale) {
-			toast.error('Please select all options')
+      setAlert('This product is not available for sale')			
 			return
 		}
 		if (variant?.id) {
@@ -78,16 +82,21 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
         if(resp?.id){
           setActiveSellingPlanId(null)
           toggleCart()
+          setAlert('')
         }else{
-          toast.error('Oops! There was an error adding to cart')
+          setAlert('Oops! There was an error adding to cart')          
         }				
 			} else {
-				toast.error('This product is not available for sale')
+        setAlert('This product is not available for sale')				
 			}
 		} else {
-			toast.error('Please select all options')
+      setAlert('Please select all options')			
 		}
 	}
+
+  const handleClose = () => {
+    setAlert('')
+  }
 
 	if (!product) return null
 	return (
@@ -120,6 +129,17 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				</Button>
 				{enableFavorites && <ShopifyProductFavoriteButton product={product} />}
 			</div>
+      { alert?.length > 0 && (
+        <Alert 
+          variant="flat" 
+          color='danger' 
+          title={alert} 
+          className='items-center'
+          size='sm'
+          isClosable
+          onClose={ handleClose }          
+        />
+      )}
 		</div>
 	)
 }

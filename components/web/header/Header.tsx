@@ -56,18 +56,17 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-    <div className="dark">
     <Navbar                   
       isMenuOpen={isMenuOpen} 
       onMenuOpenChange={setIsMenuOpen}
     >
       { links?.length > MAX_LINKS ? (
         <NavbarContent justify="start">
-          <NavbarMenuToggle />
+          <NavbarMenuToggle className='text-foreground' />
         </NavbarContent>      
       ):(
         <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle />
+          <NavbarMenuToggle className='text-foreground'/>
         </NavbarContent>      
       )}      
       <NavbarContent justify="start">
@@ -174,7 +173,6 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
         ))}
       </NavbarMenu>
     </Navbar>
-    </div>
 	)
 }
 

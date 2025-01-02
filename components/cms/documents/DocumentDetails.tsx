@@ -23,7 +23,6 @@ const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col space-y-6">
-      <Typography variant="h4" className='text-center'>{ resource?.title }</Typography>
 			{!disableImage && (
 				<div className="w-full flex flex-row justify-center">					
           <Image

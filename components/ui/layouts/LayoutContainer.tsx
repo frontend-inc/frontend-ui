@@ -5,7 +5,6 @@ import { AuthGuard } from '../../../components'
 import { Notifications } from '../../../components'
 import { NotificationType } from '../../../types'
 import { cn } from '@nextui-org/react'
-import { Toaster } from 'frontend-shadcn'
 
 type LayoutContainerProps = {
 	handleClick: (item: any) => void

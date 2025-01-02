@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Drawer, CommentList, Modal, DocumentDetails, SocialButtons } from '../..'
+import { Sheet, CommentList, Drawer, DocumentDetails, SocialButtons } from '../..'
 import { BlurFade } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -49,10 +49,9 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 
 	if (!resource) return null
 	return (
-		<Modal      
+		<Drawer      
 			open={openShow}
-			handleClose={() => setOpenShow(false)}
-      maxWidth='5xl'
+			handleClose={() => setOpenShow(false)}      
 		>
 			<div className="flex flex-col space-y-6 p-6 w-full">
 				<BlurFade delay={0.25} inView className="w-full">
@@ -81,7 +80,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 					</div>
 				</BlurFade>
 			</div>
-		</Modal>
+		</Drawer>
 	)
 }
 
