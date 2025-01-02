@@ -22,7 +22,7 @@ import {
   DropdownMenu,
 } from "@nextui-org/react";
 
-type DesktopHeaderProps = {
+export type HeaderProps = {
 	logo: string
 	links: MenuLinkType[]
 	buttons: ButtonType[]
@@ -35,7 +35,7 @@ type DesktopHeaderProps = {
 
 const MAX_LINKS = 3
 
-const Header: React.FC<DesktopHeaderProps> = (props) => {
+const Header: React.FC<HeaderProps> = (props) => {
 	
   const {
 		logo,
@@ -84,7 +84,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
             <NavbarItem key={ index }>
               <Button 
                 className='text-foreground'
-                variant="link" 
+                variant="light" 
                 onPress={() => handlePress(link?.path)}
               >
                 { link?.label }
@@ -134,7 +134,7 @@ const Header: React.FC<DesktopHeaderProps> = (props) => {
           <NavbarMenuItem key={link?.id}>
             { link?.children?.length == 0 ? (
             <Button 
-              variant="link"
+              variant="light"
               className="w-full"
               onPress={() => handlePress(link?.path)}
               size="lg"

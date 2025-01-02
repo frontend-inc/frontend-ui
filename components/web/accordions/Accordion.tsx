@@ -4,7 +4,7 @@ import React from 'react'
 import { Empty, Typography } from '../../../components'
 import { Accordion as NextAccordion, AccordionItem } from '@nextui-org/react'
 
-export type AccordionProps = NextUIAccordionProps & {
+export type AccordionProps = {
 	variant?: 'light' | 'shadow' | 'bordered' | 'splitted'
 	items?: {
 		title: string

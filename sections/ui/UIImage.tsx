@@ -3,10 +3,10 @@
 import React from 'react'
 import { Section } from '../../components'
 import { Image } from '../../components'
-import { ResponsiveImageProps } from '../../components/ui/images/Image'
+import { ImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
 
-type UIImageProps = SectionProps & ResponsiveImageProps & {
+type UIImageProps = SectionProps & ImageProps & {
 		title?: string
     image: string
 	}

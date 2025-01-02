@@ -7,7 +7,6 @@ import {
   Card, 
   CardBody, 
   CardHeader,
-  CardFooter, 
   User, 
   ScrollShadow 
 } from '@nextui-org/react'
@@ -37,7 +36,6 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
             src: image,
             color: 'primary',
             name: getInitials(author),
-            variant: 'circular',
           }}
           name={author}
           description="Testimonial"

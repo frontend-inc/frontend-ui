@@ -4,9 +4,9 @@ import { cn } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
 import NoImage from './NoImage'
 
-
-type ImageCardProps = {
+export type ImageCardProps = {
   src: string
+  alt?: string
   label?: string
   aspectRatio?: number  
   handleClick?: () => void
@@ -23,6 +23,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 
   const { 
     src, 
+    alt,
     label,
     handleClick,    
     isBlurred,
@@ -51,7 +52,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
         isBlurred={isBlurred}
         isZoomed={!disableZoom}
         src={src}
-        alt={label}
+        alt={alt || label}
         className={cn(
           "w-full h-full object-cover", 
           className
@@ -71,11 +72,12 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 }
 
 
-type NextImageProps = ImageCardProps & {
+export type ImageProps = Omit<ImageCardProps, 'src'> & {
+  src?: string
   aspectRatio?: number
 }
   
-const NextImage: React.FC<NextImageProps> = (props) => {
+const NextImage: React.FC<ImageProps> = (props) => {
 
   const { 
     src,     
