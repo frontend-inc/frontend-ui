@@ -2,8 +2,9 @@
 
 import React, { useState, useContext } from 'react'
 import { useCart } from 'frontend-shopify'
+import { toast } from 'sonner'
 import { useSegment } from '../../../hooks/addons'
-import { Alert, Button } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import {
 	ShopifyProductFavoriteButton,
 	ShopifyQuantitySelector,
@@ -26,8 +27,6 @@ type ShopifyAddToCartButtonProps = {
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	props
 ) => {
-
-  const [alert, setAlert] = useState('')
 
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
@@ -61,7 +60,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	const handleAddToCart = async () => {
 		if (!product?.availableForSale) {
-      setAlert('This product is not available for sale')			
+      toast.error('This product is not available for sale')			
 			return
 		}
 		if (variant?.id) {
@@ -80,20 +79,19 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
         if(resp?.id){
           setActiveSellingPlanId(null)
           toggleCart()
-          setAlert('')
         }else{
-          setAlert('Oops! There was an error adding to cart')          
+          toast.error('Oops! There was an error adding to cart')          
         }				
 			} else {
-        setAlert('This product is not available for sale')				
+        toast.error('This product is not available for sale')				
 			}
 		} else {
-      setAlert('Please select all options')			
+      toast.error('Please select all options')			
 		}
 	}
 
   const handleClose = () => {
-    setAlert('')
+    toast.error('')
   }
 
 	if (!product) return null
@@ -127,17 +125,6 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				</Button>
 				{enableFavorites && <ShopifyProductFavoriteButton product={product} />}
 			</div>
-      { alert?.length > 0 && (
-        <Alert 
-          variant="flat" 
-          color='danger' 
-          title={alert} 
-          description='Warning'
-          className='items-center'
-          isClosable
-          onClose={ handleClose }          
-        />
-      )}
 		</div>
 	)
 }

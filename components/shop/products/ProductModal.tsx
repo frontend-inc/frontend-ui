@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Drawer, ProductDetails, ProductReviews } from '../..'
+import { Modal, ProductDetails, ProductReviews } from '../..'
 import { useProducts } from '../../../hooks'
 
 export type ProductModalProps = {
@@ -39,7 +39,11 @@ const Product: React.FC<ProductModalProps> = (props) => {
 	}, [productId])
 
 	return (
-		<Drawer open={open} handleClose={handleClose}>
+		<Modal 
+      open={open} 
+      handleClose={handleClose}
+      maxWidth="5xl"
+    >
 			<div className="w-full flex flex-row justify-center pb-10">
 				<div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
 					<ProductDetails
@@ -54,7 +58,7 @@ const Product: React.FC<ProductModalProps> = (props) => {
 					{enableRatings && <ProductReviews productId={productId} />}
 				</div>
 			</div>
-		</Drawer>
+		</Modal>
 	)
 }
 
