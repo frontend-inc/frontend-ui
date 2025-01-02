@@ -4,7 +4,6 @@ import React from 'react'
 import { UserAvatar } from '../..'
 import { useAuth } from 'frontend-js'
 import {
-  Avatar,
   Button,
   Dropdown,
 	DropdownMenu,	
@@ -20,12 +19,12 @@ type UserMenuProps = {
 }
 
 const UserMenu: React.FC<UserMenuProps> = (props) => {
-	const { handleLogoutClick, handleClick, children } = props || {}
+	const { handleLogoutClick, handleClick } = props || {}
 
 	const { currentUser } = useAuth()
 
-  const handleAction = (key: string) => {
-    switch(key) {
+  const handleAction = (key: React.Key) => {
+    switch(key){
       case 'logout':
         handleLogoutClick()
         break
@@ -40,7 +39,7 @@ const UserMenu: React.FC<UserMenuProps> = (props) => {
 			<Dropdown>
 				<DropdownTrigger>
           <Button isIconOnly> 
-            <UserAvatar size={36} user={currentUser} />           
+            <UserAvatar user={currentUser} />           
           </Button>
 				</DropdownTrigger>
         <DropdownMenu onAction={ handleAction}>

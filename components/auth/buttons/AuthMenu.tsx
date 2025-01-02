@@ -79,7 +79,7 @@ const Auth: React.FC<AuthProps> = (props) => {
           isIconOnly 
           variant="ghost"           
         >
-					<UserAvatar size={34} user={currentUser} />
+					<UserAvatar user={currentUser} />
 				</Button>
 			</DropdownTrigger>
 			<DropdownMenu onAction={ handleAction }>

@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Heading, Button } from '../../../components'
+import { Heading } from '../../../components'
 import { Image } from '../..'
 import { useNavigate } from '../../../hooks'
-import { cn } from '@nextui-org/react'
+import { cn, Button } from '@nextui-org/react'
 import { HeadingProps } from '../../../types'
 
 export type CoverProps = HeadingProps & {
@@ -75,7 +75,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 					{actions}
 					{buttonText && (
 						<div className="py-2">
-							<Button size="lg" onClick={() => onClick(path)} variant="default">
+							<Button size="lg" variant="solid" color="primary" onPress={() => onClick(path)}>
 								{buttonText}
 							</Button>
 						</div>

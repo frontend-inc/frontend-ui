@@ -6,7 +6,6 @@ import {
   FileCard,
 	ListCard,
 	CoverCard,
-	AvatarCard,
 	TextCard,
 	Typography,
   VideoCard,
@@ -53,7 +52,6 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 
 	const COMPONENTS = {
 		card: Card,
-		avatar: AvatarCard,
 		cover: CoverCard,
 		text: TextCard,
 		list: ListCard,
@@ -66,7 +64,6 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 
 	let typographyVariants = {
 		card: 'subtitle1',
-		avatar: 'subtitle1',
 		cover: 'subtitle1',
 		chip: 'subtitle1',
 		text: 'h5',

@@ -1,4 +1,3 @@
-export { default as AvatarCard } from './AvatarCard'
 export { default as Card } from './Card'
 export { default as CoverCard } from './CoverCard'
 export { default as TextCard } from './TextCard'

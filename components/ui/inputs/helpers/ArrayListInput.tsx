@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Typography, IconButton, Button } from '../../../core'
+import { Typography, IconButton } from '../../../core'
 import { InputPropsType } from '../../../../types'
-import { X, Plus } from 'lucide-react'
+import { X } from 'lucide-react'
 import { TextInput } from '../../..'
 import { RiAddFill } from '@remixicon/react'
+import { Button } from '@nextui-org/react'
 
 type ArrayItemInputProps = {
 	index: number
@@ -35,9 +36,9 @@ const ArrayItemInput: React.FC<ArrayItemInputProps> = (props) => {
 				handleChange={handleInputChange}
 			/>
 			<div>
-				<IconButton onClick={() => handleRemove(index)}>
+				<Button isIconOnly variant="light" className="min-w-8" onPress={() => handleRemove(index)}>
 					<X />
-				</IconButton>
+				</Button>
 			</div>
 		</div>
 	)
@@ -97,9 +98,10 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 				))}
 			<div>
 				<Button
-					color="secondary"
-					onClick={handleAddClick}
-					startIcon={<RiAddFill className="text-foreground" />}
+					onPress={handleAddClick}
+					startContent={
+            <RiAddFill className="text-foreground" />
+          }
 				>
 					Add
 				</Button>

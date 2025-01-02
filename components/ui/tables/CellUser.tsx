@@ -20,7 +20,7 @@ const CellUser: React.FC<CellUserProps> = (props) => {
 				size="sm"
 				variant="ghost"
 				onPress={handleClick}
-				startContent={<UserAvatar size={28} user={user} />}
+				startContent={<UserAvatar user={user} />}
 			>
 				{user?.first_name} {user?.last_name}
 			</Button>

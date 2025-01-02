@@ -60,7 +60,6 @@ const SwipeableTestimonialCard: React.FC<SwipeableTestimonialCardProps> = (
               color: 'primary',
               size: 'lg',
               name: getInitials(author),
-              variant: 'circular',
             }}
             name={author}
             description="Testimonial"

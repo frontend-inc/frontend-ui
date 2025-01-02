@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Badge } from '@nextui-org/react'
+import { Typography } from '../../../components'
 import { cn } from '@nextui-org/react'
 
 type LabelProps = {
@@ -21,8 +21,8 @@ const Label: React.FC<LabelProps> = (props) => {
 
 	if (!children) return null
 	return (
-		<Badge
-      variant='outline'
+		<Typography
+      variant='caption'
 			className={cn(
 				'px-3 py-1 text-xs tracking-wider text-foreground',
 				textAlign && textAlignClasses[textAlign],
@@ -30,7 +30,7 @@ const Label: React.FC<LabelProps> = (props) => {
 			)}
 		>
 			{children}
-		</Badge>
+		</Typography>
 	)
 }
 

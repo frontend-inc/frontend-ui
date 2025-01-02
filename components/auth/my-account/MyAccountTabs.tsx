@@ -52,12 +52,13 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 	return (
 		<div className="w-full">
 			<div className="flex justify-center items-center p-4">
-				<UserAvatar variant="circular" user={currentUser} size={64} />
+				<UserAvatar variant="circular" user={currentUser} />
 			</div>
 			<ul className="divide-y divide-border">
 				{tabs?.map((tab, index) => (
 					<li key={index}>
 						<Button
+              isIconOnly 
 							variant="ghost"
 							className="w-full justify-between py-3 px-4 text-left"
 							onPress={() => handleClick(tab)}

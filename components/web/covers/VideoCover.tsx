@@ -1,5 +1,6 @@
 import React from 'react'
-import { Heading, Button } from '../../../components'
+import { Heading } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 import { HeadingProps } from '../../../types'
 import { cn } from '@nextui-org/react'
@@ -74,9 +75,9 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 						<div>
 							<Button
 								size="lg"
-								//@ts-ignore
-								onClick={onClick}
-								variant="default"
+								color="primary"
+								onPress={onClick}
+								variant="solid"
 							>
 								{buttonText}
 							</Button>

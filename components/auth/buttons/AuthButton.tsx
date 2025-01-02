@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { Button, Typography, IconButton } from '../../../components'
+import { Typography } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { useApp } from '../../../hooks'
 import { useAuth } from 'frontend-js'
 import { RemixIcon, UserAvatar } from '../..'
@@ -36,29 +37,33 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 			{!showLabel ? (
 				<>
 					{currentUser?.id ? (
-						<IconButton onClick={handleMyAccount}>
-							<UserAvatar size={28} user={currentUser} />
-						</IconButton>
+						<Button isIconOnly className='max-w-8' onPress={handleMyAccount}>
+							<UserAvatar user={currentUser} />
+						</Button>
 					) : (
-						<IconButton onClick={handleLogin}>
+						<Button isIconOnly className='max-w-8' onPress={handleLogin}>
 							<RemixIcon name="ri-user-6-line" size="lg" />
-						</IconButton>
+						</Button>
 					)}
 				</>
 			) : (
 				<>
 					{currentUser?.id ? (
 						<Button
-							onClick={handleMyAccount}
-							startIcon={showIcon && <UserAvatar user={currentUser} />}
-							endIcon={<RemixIcon name="ri-arrow-down-s-line" />}
+							onPress={handleMyAccount}
+							startContent={
+                showIcon && <UserAvatar user={currentUser} />}
+							endContent={
+                <RemixIcon name="ri-arrow-down-s-line" />}
 						>
 							<Typography variant="body1">{currentUser?.username}</Typography>
 						</Button>
 					) : (
 						<Button
-							onClick={handleLogin}
-							startIcon={showIcon && <RemixIcon name="ri-user-6-fill" />}
+							onPress={handleLogin}
+							startContent={
+                showIcon && <RemixIcon name="ri-user-6-fill" />
+              }
 						>
 							Sign In
 						</Button>
