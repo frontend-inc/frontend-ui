@@ -22,17 +22,17 @@ type SubscriptionPlanProps = {
 	interval?: string
 	popular?: boolean
   precision?: number  
-  variant?: 'outline' | 'fill' | 'default'
+  variant?: 'default' | 'outline' | 'fill' | 'shadow'
   handleClick?: () => void
 }
 
 const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
 	
   const {
-		popular,
 		title,
     subtitle,
 		features,
+    variant='default',
 		interval = 'month',
 		buttonText = 'Subscribe',
 		price,
@@ -51,6 +51,12 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
     handleClick
 	})
 
+  const variantClass = {
+    default: 'shadow',
+    outline: 'bordered',
+    fill: 'flat',
+    shadow: 'shadow'
+  }
 
   const handleSubscribe = () => {
     setLoading(true)
@@ -59,11 +65,8 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
   }
 
   return (
-		<Card
-      shadow="sm" 
-			className={cn(
-				'w-full bg-background',				
-			)}
+		<Card     
+      isHoverable       			
 		>
         <CardHeader className="flex flex-col p-6 justify-start items-start space-y-1">
           <Typography variant="subtitle2">{title}</Typography>
