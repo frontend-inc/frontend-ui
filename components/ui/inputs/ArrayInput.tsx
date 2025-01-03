@@ -83,7 +83,7 @@ export default function ArrayInput(props: ArrayInputProps) {
 			<div className="relative w-full">
 				<div
 					className={cn(
-						'bg-content1 px-3 py-2 flex flex-col space-y-0 rounded-xl',
+						'bg-content2 hover:bg-content3/50 px-3 py-2 flex flex-col space-y-0 rounded-xl',
 						error && 'border-destructive'
 					)}
 				>
@@ -91,7 +91,7 @@ export default function ArrayInput(props: ArrayInputProps) {
 					<div className=" flex flex-wrap gap-2">
 						{Array.isArray(value) &&
 							value?.map((tag) => (
-								<Chip key={tag} size="lg" onClose={() => removeTag(tag)}>
+								<Chip key={tag} onClose={() => removeTag(tag)}>
 									{tag}
 								</Chip>
 							))}

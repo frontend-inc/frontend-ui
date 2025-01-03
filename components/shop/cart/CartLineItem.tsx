@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useCart } from '../../../hooks'
 import { Icon } from '../../../components'
-import { Badge, Image } from '@nextui-org/react'
+import { Card, Badge, Image } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { LineItemType } from '../../../types'
 import { ProductModal } from '../../../components'
@@ -90,17 +90,21 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 				)}
 			>
 				<div className="flex space-x-4 items-center pt-1">
-					<Badge color="primary" content={quantity}>
-						<button className="p-0" onClick={handleClick}>
+					<Badge color="primary" content={quantity}>						
+            <Card 
+              isPressable 
+              onPress={ () => handleClick() }
+              className="w-[72px] h-[72px] rounded-lg"
+            >
 							<Image
+                removeWrapper 
 								alt={product?.title || ''}
-								// @ts-ignore
 								src={product?.image?.url}
 								height={72}
 								width={72}
-								className="w-full cursor-pointer object-cover"
+								className="w-full object-cover"
 							/>
-						</button>
+						</Card>
 					</Badge>
 					<div className="flex flex-col space-y-1">
 						<Typography variant="body1">{product?.title}</Typography>
