@@ -45,16 +45,16 @@ const Cover: React.FC<CoverProps> = (props) => {
 	})
 
 	return (
-		<div className='relative w-full'>
-      <Image
-        disableZoom
-        disableBorderRadius
-        src={image}
-        alt={alt}	   
-        height={height}       
-        enableGradient={enableGradient}
-        enableOverlay={enableOverlay}
-      />
+		<div className="relative w-full">
+			<Image
+				disableZoom
+				disableBorderRadius
+				src={image}
+				alt={alt}
+				height={height}
+				enableGradient={enableGradient}
+				enableOverlay={enableOverlay}
+			/>
 			<div
 				className={cn(
 					'flex flex-col items-center justify-center z-20',
@@ -75,7 +75,12 @@ const Cover: React.FC<CoverProps> = (props) => {
 					{actions}
 					{buttonText && (
 						<div className="py-2">
-							<Button size="lg" variant="solid" color="primary" onPress={() => onClick(path)}>
+							<Button
+								size="lg"
+								variant="solid"
+								color="primary"
+								onPress={() => onClick(path)}
+							>
 								{buttonText}
 							</Button>
 						</div>

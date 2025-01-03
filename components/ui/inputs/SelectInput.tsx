@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import {Select, SelectItem} from "@nextui-org/select";
+import { Select, SelectItem } from '@nextui-org/select'
 import { SyntheticEventType } from 'frontend-js'
 
 type SelectInputPropsType = {
@@ -19,43 +19,35 @@ type SelectInputPropsType = {
 }
 
 export default function SelectInput(props: SelectInputPropsType) {
+	const { label, placeholder, name, value, options, handleChange } = props
 
-  const {
-    label,    
-    placeholder,
-    name,
-    value,
-    options,
-    handleChange,
-  } = props
-
-  const handleSelect = (keys) => {
-    const value = keys.currentKey 
-    handleChange({
-      target: {
-        name,
-        value 
-      }
-    })
-  }
+	const handleSelect = (keys) => {
+		const value = keys.currentKey
+		handleChange({
+			target: {
+				name,
+				value,
+			},
+		})
+	}
 
 	return (
-			<Select
-        label={ label }
-        placeholder={ placeholder || 'Select an option' }
-        items={options}
-        selectionMode="single"
-				selectedKeys={[value]} 
-        onSelectionChange={ handleSelect }       				
-			>
-        {(option) => (
-				<SelectItem 
-          // @ts-ignore
-          key={option?.value}           
-        >
+		<Select
+			label={label}
+			placeholder={placeholder || 'Select an option'}
+			items={options}
+			selectionMode="single"
+			selectedKeys={[value]}
+			onSelectionChange={handleSelect}
+		>
+			{(option) => (
+				<SelectItem
+					// @ts-ignore
+					key={option?.value}
+				>
 					{option.label}
 				</SelectItem>
-        )}
-			</Select>
+			)}
+		</Select>
 	)
 }

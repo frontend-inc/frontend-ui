@@ -11,12 +11,7 @@ type LoadMoreProps = {
 }
 
 export default function LoadMore(props: LoadMoreProps) {
-
-  const {
-    loading = false,
-    hasNextPage = false,
-    handleSearch,
-  } = props
+	const { loading = false, hasNextPage = false, handleSearch } = props
 
 	if (!hasNextPage) return null
 

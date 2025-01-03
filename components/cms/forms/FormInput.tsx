@@ -14,7 +14,7 @@ import {
 	LocationInput,
 	PhoneInput,
 	RatingInput,
-  SelectInput,
+	SelectInput,
 	StateInput,
 	SwitchInput,
 	TextInput,
@@ -105,18 +105,18 @@ const FormInput: React.FC<FormInputProps> = (props) => {
 			valueParam,
 			defaultQuery: query,
 		},
-    file: {
-      name: 'file'
-    },
-    image: {
-      name: 'image'
-    },
-    audio: {
-      name: 'audio'
-    },
-    video: {
-      name: 'video'
-    },
+		file: {
+			name: 'file',
+		},
+		image: {
+			name: 'image',
+		},
+		audio: {
+			name: 'audio',
+		},
+		video: {
+			name: 'video',
+		},
 		string: {
 			disableDebounce: true,
 		},

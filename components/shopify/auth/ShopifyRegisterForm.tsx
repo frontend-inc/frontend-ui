@@ -57,10 +57,10 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 				handleChange={handleChange}
 			/>
 			<Button
-        color="primary"
-        variant="solid"
+				color="primary"
+				variant="solid"
 				isLoading={loading}
-				fullWidth 
+				fullWidth
 				onPress={handleSubmit}
 				disabled={loading}
 			>

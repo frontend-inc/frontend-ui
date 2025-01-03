@@ -11,14 +11,10 @@ type ShopifyProductVariantOptionsProps = {
 	handleChange: (name: string, value: string) => void
 }
 
-const ShopifyProductVariantOptions: React.FC<ShopifyProductVariantOptionsProps> = (props) => {
-
-  const {
-    name,
-    values,
-    selected,
-    handleChange,
-  } = props
+const ShopifyProductVariantOptions: React.FC<
+	ShopifyProductVariantOptionsProps
+> = (props) => {
+	const { name, values, selected, handleChange } = props
 
 	return (
 		<div className="flex flex-col items-start justify-center space-y-2">

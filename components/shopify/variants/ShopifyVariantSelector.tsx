@@ -20,14 +20,21 @@ const ShopifyProductVariantSelector: React.FC<
 		return product?.options?.find((option) => option?.name == optionName)
 	}
 
-	const SORTED_OPTIONS = ['Title', 'Color', 'Size', 'Style', 'Material', 'Denominations']
+	const SORTED_OPTIONS = [
+		'Title',
+		'Color',
+		'Size',
+		'Style',
+		'Material',
+		'Denominations',
+	]
 
 	return (
 		<>
 			{SORTED_OPTIONS.map((optionName) => {
 				let option = productOption(optionName)
 				if (!option) return null
-        if(optionName === 'Title' && option?.values.length === 1) return null;
+				if (optionName === 'Title' && option?.values.length === 1) return null
 				return optionName == 'Color' ? (
 					<ShopifyColorVariantOptions
 						key={optionName}

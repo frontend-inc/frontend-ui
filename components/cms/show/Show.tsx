@@ -2,9 +2,7 @@
 
 import React from 'react'
 import { ButtonType, MetafieldType } from '../../../types'
-import {
-	HeroList,
-} from '../..'
+import { HeroList } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonActions, SocialButtons } from '../..'
 

@@ -82,16 +82,10 @@ const KanBanCard: React.FC<CardProps> = (props) => {
 			)}
 			<CardContent className="p-4">
 				<h3 className="text-lg font-semibold text-primary mb-1">{primary}</h3>
-				{secondary && (
-					<p className="text-sm text-foreground/70">{secondary}</p>
-				)}
+				{secondary && <p className="text-sm text-foreground/70">{secondary}</p>}
 			</CardContent>
 			<CardFooter className="flex justify-between p-4">
-				<Button
-					onPress={handleClick}
-					size="sm"
-					variant="ghost"
-				>
+				<Button onPress={handleClick} size="sm" variant="ghost">
 					Details
 				</Button>
 				{secondaryAction && (

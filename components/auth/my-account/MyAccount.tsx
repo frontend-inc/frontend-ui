@@ -10,7 +10,6 @@ type MyAccountProps = {
 }
 
 const MyAccount: React.FC<MyAccountProps> = (props) => {
-
 	const {
 		loading,
 		user,

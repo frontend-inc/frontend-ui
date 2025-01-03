@@ -1,7 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Sheet, CommentList, Drawer, DocumentDetails, SocialButtons } from '../..'
+import {
+	Sheet,
+	CommentList,
+	Drawer,
+	DocumentDetails,
+	SocialButtons,
+} from '../..'
 import { BlurFade } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -10,24 +16,23 @@ export type DocumentShowProps = {
 	buttons: ButtonType[]
 	metafields: MetafieldType[]
 	enableFavorites?: boolean
-  enableDownload?: boolean
+	enableDownload?: boolean
 	enableLikes?: boolean
 	enableSharing?: boolean
 	enableComments?: boolean
-  disableTitle?: boolean
+	disableTitle?: boolean
 	disableImage?: boolean
 	enableBorder?: boolean
 	enableOverlay?: boolean
 }
 
 const DocumentShow: React.FC<DocumentShowProps> = (props) => {
-  
 	const { openShow, setOpenShow, resource, url } = useResourceContext()
 
 	const {
 		metafields = [],
-    disableTitle = false,
-    enableDownload,
+		disableTitle = false,
+		enableDownload,
 		enableComments,
 		enableLikes,
 		enableFavorites,
@@ -39,20 +44,20 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 		case 'youtube':
 		case 'vimeo':
 		case 'soundcloud':
-    case 'file':     
+		case 'file':
 		case 'video':
 			disableImage = true
 			break
 		default:
 			disableImage = false
-	}  
+	}
 
 	if (!resource) return null
 	return (
-		<Drawer      
-      title={ !disableTitle && resource?.title }
+		<Drawer
+			title={!disableTitle && resource?.title}
 			open={openShow}
-			handleClose={() => setOpenShow(false)}      
+			handleClose={() => setOpenShow(false)}
 		>
 			<div className="flex flex-col space-y-6 p-6 w-full">
 				<BlurFade delay={0.25} inView className="w-full">
@@ -66,7 +71,7 @@ const DocumentShow: React.FC<DocumentShowProps> = (props) => {
 									size="large"
 									justifyContent={'center'}
 									resource={resource}
-                  enableDownload={enableDownload}
+									enableDownload={enableDownload}
 									enableLikes={enableLikes}
 									enableFavorites={enableFavorites}
 									enableSharing={enableSharing}

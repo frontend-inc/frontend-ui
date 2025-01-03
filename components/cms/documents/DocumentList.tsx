@@ -17,15 +17,15 @@ import {
 	DocumentEmpty,
 } from '../..'
 
-export type DocumentStyleTypes = 
-   'card' | 
-   'cover'| 
-   'avatar' | 
-   'list' | 
-   'text' | 
-   'video' | 
-   'file' | 
-   'image' 
+export type DocumentStyleTypes =
+	| 'card'
+	| 'cover'
+	| 'avatar'
+	| 'list'
+	| 'text'
+	| 'video'
+	| 'file'
+	| 'image'
 
 export type DocumentListProps = {
 	layout?: 'list' | 'grid' | 'slider'
@@ -37,14 +37,14 @@ export type DocumentListProps = {
 
 	filterChoices?: string[]
 
-  enableDownload?: boolean
+	enableDownload?: boolean
 	enableLikes?: boolean
 	enableFavorites?: boolean
 	enableComments?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
 
-  displayTitle?: boolean
+	displayTitle?: boolean
 	displaySubtitle?: boolean
 	displayCategory?: boolean
 	displayLocation?: boolean
@@ -91,9 +91,9 @@ export type DocumentListProps = {
 	filterSimilar?: boolean
 	filterGeo?: boolean
 
-  emptyIcon?: string
-  emptyTitle?: string
-  emptyDescription?: string
+	emptyIcon?: string
+	emptyTitle?: string
+	emptyDescription?: string
 }
 
 const DocumentList: React.FC<DocumentListProps> = (props) => {
@@ -109,14 +109,14 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 	const {
 		contentType = '',
 		query = DEFAULT_QUERY,
-    displayTitle = true,
+		displayTitle = true,
 		displaySubtitle = true,
 		displayTags = false,
 		displayLocation = false,
 		displayCategory = false,
 		displayDescription,
 
-    enableDownload,
+		enableDownload,
 		enableLikes,
 		enableFavorites,
 		enableComments,
@@ -131,25 +131,25 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		enableOverlay,
 
 		style = 'card',
-		buttons = [],		
+		buttons = [],
 		disableImage,
 		enableShow,
 		enableSearch,
 		enableFilters,
 		enableSorting,
 		displayFields = [],
-		filterChoices = [],        
+		filterChoices = [],
 		headers = [], // Used by KanBan
 
-    emptyIcon,
-    emptyTitle,
-    emptyDescription,
+		emptyIcon,
+		emptyTitle,
+		emptyDescription,
 
 		header: Header = DocumentHeader,
 		list: List = DocumentListItems,
 		component: Component = DocumentListItem,
 		show: Show = DocumentShow,
-		empty: Empty = DocumentEmpty,    
+		empty: Empty = DocumentEmpty,
 		slots: defaultSlots = {
 			header: {},
 			toolbar: {},
@@ -198,10 +198,10 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		},
 		show: {
 			...defaultSlots.show,
-      disableTitle: !displayTitle,
+			disableTitle: !displayTitle,
 			displayFields,
 			buttons,
-      enableDownload,
+			enableDownload,
 			enableLikes,
 			enableFavorites,
 			enableComments,
@@ -227,7 +227,7 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 		},
 		item: {
 			...defaultSlots.item,
-      disableTitle: !displayTitle,
+			disableTitle: !displayTitle,
 			disableImage,
 			style,
 			buttons,
@@ -247,9 +247,9 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 			text: 'list',
 			card: 'grid',
 			cover: 'grid',
-      video: 'grid',
-      image: 'grid',
-      file: 'list'
+			video: 'grid',
+			image: 'grid',
+			file: 'list',
 		}[style] || 'list'
 
 	return (
@@ -272,9 +272,9 @@ const DocumentList: React.FC<DocumentListProps> = (props) => {
 			show={Show}
 			empty={Empty}
 			slots={slots}
-      emptyIcon={emptyIcon}
-      emptyTitle={emptyTitle}
-      emptyDescription={emptyDescription}
+			emptyIcon={emptyIcon}
+			emptyTitle={emptyTitle}
+			emptyDescription={emptyDescription}
 		/>
 	)
 }

@@ -9,19 +9,18 @@ import { useDebounce } from 'use-debounce'
 import { cn } from '@nextui-org/react'
 
 export default function InputBase(props: TextInputProps) {
-
-  const {
-    type,
-    name,
-    value = '',
-    handleChange,
-    placeholder,
-    disabled,
-    errors,
-    className,
-    debounceDelay = 350,
-    disableDebounce = false,
-  } = props || {}
+	const {
+		type,
+		name,
+		value = '',
+		handleChange,
+		placeholder,
+		disabled,
+		errors,
+		className,
+		debounceDelay = 350,
+		disableDebounce = false,
+	} = props || {}
 
 	const [text, setText] = useState(value)
 	const [debouncedText] = useDebounce(text, debounceDelay)

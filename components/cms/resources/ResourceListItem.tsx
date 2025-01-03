@@ -33,7 +33,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 	const {
 		icon,
 		avatar,
-		color='bg-accent',
+		color = 'bg-accent',
 		primary,
 		secondary,
 		image,
@@ -41,7 +41,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 		handleEdit,
 		handleDelete,
 		handleSelect,
-		secondaryAction,		
+		secondaryAction,
 		sortable,
 		selectable,
 		selected,
@@ -51,7 +51,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 	return (
 		<div
 			className={cn(
-        'group',
+				'group',
 				'hover:bg-content2 transition-all duration-200 p-1 py-2 overflow-hidden rounded-xl',
 				selected && 'border-primary'
 			)}
@@ -61,10 +61,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					<GripVertical className="w-4 h-4 opacity-0 group-hover:opacity-100 text-foreground cursor-grab active:cursor-grabbing" />
 				)}
 				{selectable && (
-					<Checkbox
-						isSelected={selected}
-						onValueChange={handleSelect}
-					/>
+					<Checkbox isSelected={selected} onValueChange={handleSelect} />
 				)}
 				{avatar && (
 					<div className="mr-2">
@@ -93,7 +90,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 					>
 						<Avatar className="mr-2 rounded">
 							<AvatarFallback className={color}>
-								<RemixIcon name={icon} className='text-white' />
+								<RemixIcon name={icon} className="text-white" />
 							</AvatarFallback>
 						</Avatar>
 					</button>
@@ -109,10 +106,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				<div className="flex items-center space-x-1">
 					{secondaryAction}
 					{(handleEdit || handleDelete) && (
-            <MenuButton 
-              handleEdit={handleEdit}
-              handleDelete={handleDelete}
-            />
+						<MenuButton handleEdit={handleEdit} handleDelete={handleDelete} />
 					)}
 				</div>
 			</div>

@@ -58,7 +58,7 @@ const MyAccountTabs: React.FC<MyAccountTabsProps> = ({ handleClick }) => {
 				{tabs?.map((tab, index) => (
 					<li key={index}>
 						<Button
-              isIconOnly 
+							isIconOnly
 							variant="ghost"
 							className="w-full justify-between py-3 px-4 text-left"
 							onPress={() => handleClick(tab)}

@@ -40,11 +40,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 						</div>
 					</div>
 				)}
-				<div
-					className={cn(
-						'w-full flex flex-col space-y-6',
-					)}
-				>
+				<div className={cn('w-full flex flex-col space-y-6')}>
 					{title && (
 						<Typography variant="h4" className="px-2">
 							{title}

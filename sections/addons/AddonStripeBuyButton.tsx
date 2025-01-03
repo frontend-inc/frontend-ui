@@ -8,8 +8,7 @@ import { SectionProps } from '../../types'
 type AddonStripeBuyButtonProps = SectionProps & StripeBuyButtonProps
 
 const AddonStripeBuyButton: React.FC<AddonStripeBuyButtonProps> = (props) => {
-	
-  const {
+	const {
 		bgColor,
 		bgImage,
 		bgOverlay,

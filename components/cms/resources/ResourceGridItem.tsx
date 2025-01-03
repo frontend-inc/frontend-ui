@@ -2,12 +2,12 @@
 
 import React from 'react'
 import { cn } from '@nextui-org/react'
-import { 
-  Checkbox, 
-  Card, 
-  CardHeader, 
-  CardFooter,
-  Image,  
+import {
+	Checkbox,
+	Card,
+	CardHeader,
+	CardFooter,
+	Image,
 } from '@nextui-org/react'
 import { MenuButton, Typography } from '../../../components'
 
@@ -34,55 +34,48 @@ export type ResourceGridItemProps = {
 }
 
 export default function ResourceGridItem(props: ResourceGridItemProps) {
-
-  const {
-    selectable,
-    selected,
-    primary,
-    secondary,
-    avatar,
-    label,
-    image,
-    handleClick,
-    handleEdit,
-    handleDelete,
-    handleSelect,
-    secondaryAction,
-    slots = {},
-  } = props || {}  
+	const {
+		selectable,
+		selected,
+		primary,
+		secondary,
+		avatar,
+		label,
+		image,
+		handleClick,
+		handleEdit,
+		handleDelete,
+		handleSelect,
+		secondaryAction,
+		slots = {},
+	} = props || {}
 
 	return (
 		<Card
-      isPressable 
-      onPress={ handleClick }
-			className={cn(				
+			isPressable
+			onPress={handleClick}
+			className={cn(
 				'border-2 border-transparent hover:border-primary',
 				selected && 'border-primary'
 			)}
 		>
 			<CardHeader className="w-full p-2 flex flex-row space-x-2 justify-between items-center">
-        <div className="flex flex-row space-x-2 items-center">
-          {selectable && (
-            <Checkbox
-              isSelected={selected}
-              onValueChange={handleSelect}
-            />
-          )}
-          {secondaryAction}
-        </div>
-        {(handleEdit || handleDelete) && (
-          <MenuButton
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-          />          
-        )}
+				<div className="flex flex-row space-x-2 items-center">
+					{selectable && (
+						<Checkbox isSelected={selected} onValueChange={handleSelect} />
+					)}
+					{secondaryAction}
+				</div>
+				{(handleEdit || handleDelete) && (
+					<MenuButton handleEdit={handleEdit} handleDelete={handleDelete} />
+				)}
 			</CardHeader>
-      <div className='w-full h-full'>
-        { avatar && avatar }
-				{ image && (
+			<div className="w-full h-full">
+				{avatar && avatar}
+				{image && (
 					<Image
-            isZoomed
-            radius='none'
+						isZoomed
+						radius="none"
 						src={image}
 						alt={label || 'Resource image'}
 						width={320}

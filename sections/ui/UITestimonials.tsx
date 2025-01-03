@@ -14,7 +14,7 @@ type UITestimonialsProps = SectionProps &
 const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 	const {
 		direction = 'column',
-    layout,
+		layout,
 		label,
 		title,
 		subtitle,
@@ -45,16 +45,16 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack spacing={10}>
-        <Heading
-          label={label}
-          title={title}
-          subtitle={subtitle}
-          textAlign={direction == 'row' ? 'left' : 'center'}
-          size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
-        />				
-				<Testimonials {...rest} layout={ layout } />
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					textAlign={direction == 'row' ? 'left' : 'center'}
+					size={fontSize}
+					editable={editable}
+					handleChange={handleChange}
+				/>
+				<Testimonials {...rest} layout={layout} />
 			</Stack>
 		</Section>
 	)

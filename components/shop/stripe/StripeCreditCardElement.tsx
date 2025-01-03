@@ -42,14 +42,12 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 				<CardElement className="text-2xl" />
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button 
-          variant="solid" 
-          color="primary" 
-          onPress={handleClick}
-          startContent={
-            <Icon name="CreditCard" className="h-4 w-4" />
-          }
-        >					
+				<Button
+					variant="solid"
+					color="primary"
+					onPress={handleClick}
+					startContent={<Icon name="CreditCard" className="h-4 w-4" />}
+				>
 					Add Credit Card
 				</Button>
 				<Button variant="ghost" onPress={handleCancel}>

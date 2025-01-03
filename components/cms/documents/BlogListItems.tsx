@@ -28,8 +28,7 @@ export type BlogListItemsProps = {
 }
 
 const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
-	
-  const {
+	const {
 		setResource,
 		loading,
 		resources,
@@ -70,60 +69,60 @@ const BlogListItems: React.FC<BlogListItemsProps> = (props) => {
 	}
 
 	const firstPost = resources?.[0]
-	const remainingPosts = resources?.slice(1) || []  
+	const remainingPosts = resources?.slice(1) || []
 
-  const firstPostStyle = {
-    card: 'card',
-    cover: 'cover',
-    list: 'card'
-  }
+	const firstPostStyle = {
+		card: 'card',
+		cover: 'cover',
+		list: 'card',
+	}
 
 	return (
-      <div className="flex flex-col w-full space-y-2">
-        {firstPost && (
-          <BlurFade delay={0.25} inView key={firstPost.id}>
-            <DocumentListItem
-              {...slots.item}
-              style={firstPostStyle[style]}
-              selectable={selectable}
-              resource={firstPost}
-              metafields={metafields}
-              handleClick={() => handleShowClick(firstPost)}
-              buttons={buttons}
-              enableComments={enableComments}
-              enableFavorites={enableFavorites}
-              enableLikes={enableLikes}
-              enableGradient={enableGradient}
-              enableOverlay={enableOverlay}
-            />
-          </BlurFade>
-        )}
-        <DataLayout {...slots.list} layout={layout} loading={loading}>
-          {remainingPosts?.map((resource, idx) => (
-            <BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
-              <DocumentListItem
-                style={style}
-                selectable={selectable}
-                resource={resource}
-                metafields={metafields}
-                handleClick={() => handleShowClick(resource)}
-                buttons={buttons}
-                enableComments={enableComments}
-                enableFavorites={enableFavorites}
-                enableLikes={enableLikes}
-                enableGradient={enableGradient}
-                enableOverlay={enableOverlay}
-                {...slots.item}
-              />
-            </BlurFade>
-          ))}
-        </DataLayout>
-        <LoadMore
-          page={page}
-          numPages={numPages}
-          handlePaginate={handlePaginate}
-        />
-      </div>
+		<div className="flex flex-col w-full space-y-2">
+			{firstPost && (
+				<BlurFade delay={0.25} inView key={firstPost.id}>
+					<DocumentListItem
+						{...slots.item}
+						style={firstPostStyle[style]}
+						selectable={selectable}
+						resource={firstPost}
+						metafields={metafields}
+						handleClick={() => handleShowClick(firstPost)}
+						buttons={buttons}
+						enableComments={enableComments}
+						enableFavorites={enableFavorites}
+						enableLikes={enableLikes}
+						enableGradient={enableGradient}
+						enableOverlay={enableOverlay}
+					/>
+				</BlurFade>
+			)}
+			<DataLayout {...slots.list} layout={layout} loading={loading}>
+				{remainingPosts?.map((resource, idx) => (
+					<BlurFade delay={0.25 + idx * 0.05} inView key={resource?.id}>
+						<DocumentListItem
+							style={style}
+							selectable={selectable}
+							resource={resource}
+							metafields={metafields}
+							handleClick={() => handleShowClick(resource)}
+							buttons={buttons}
+							enableComments={enableComments}
+							enableFavorites={enableFavorites}
+							enableLikes={enableLikes}
+							enableGradient={enableGradient}
+							enableOverlay={enableOverlay}
+							{...slots.item}
+						/>
+					</BlurFade>
+				))}
+			</DataLayout>
+			<LoadMore
+				page={page}
+				numPages={numPages}
+				handlePaginate={handlePaginate}
+			/>
+		</div>
 	)
 }
 

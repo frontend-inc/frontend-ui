@@ -9,35 +9,35 @@ import { buildFormMetafields } from '../../../helpers'
 export type LeadFormProps = {
 	buttonText?: string
 	href?: string
-  url?: string
-  path?: string
+	url?: string
+	path?: string
 	handleClick?: () => void
-  enablePhone?: boolean
-  enableCompany?: boolean
-  enableReason?: boolean
-  enableMessage?: boolean
-  reasonOptions?: string[]
+	enablePhone?: boolean
+	enableCompany?: boolean
+	enableReason?: boolean
+	enableMessage?: boolean
+	reasonOptions?: string[]
 }
 
 const LeadForm: React.FC<LeadFormProps> = (props) => {
-	const { 
-    enablePhone,
-    enableCompany,
-    enableReason,    
-    reasonOptions=[],
-    enableMessage,
-    buttonText = 'Submit',
-    url,
-    path 
-  } = props || {}
+	const {
+		enablePhone,
+		enableCompany,
+		enableReason,
+		reasonOptions = [],
+		enableMessage,
+		buttonText = 'Submit',
+		url,
+		path,
+	} = props || {}
 
-  const metafields = buildFormMetafields({
-    enablePhone,
-    enableCompany,
-    enableReason,
-    enableMessage,
-    reasonOptions,
-  })
+	const metafields = buildFormMetafields({
+		enablePhone,
+		enableCompany,
+		enableReason,
+		enableMessage,
+		reasonOptions,
+	})
 
 	const {
 		errors,
@@ -48,10 +48,10 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 		createContact,
 	} = useContacts()
 
-  const onClick = useNavigate({
-    url,
-    path 
-  })
+	const onClick = useNavigate({
+		url,
+		path,
+	})
 
 	const handleSubmit = async () => {
 		if (!contact?.email || !contact?.name) {
@@ -63,11 +63,11 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 			source: 'lead',
 		})
 		if (resp?.id) {
-			setContact({})      
-			toast('Thank you for submitting your information!')      
-      if(onClick){
-        onClick()      
-      }      
+			setContact({})
+			toast('Thank you for submitting your information!')
+			if (onClick) {
+				onClick()
+			}
 		}
 	}
 

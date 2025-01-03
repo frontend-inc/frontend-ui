@@ -9,7 +9,9 @@ const FieldBoolean: React.FC<FieldElementProps> = (props) => {
 	const { value, label } = props
 	return (
 		<FieldWrapper label={label}>
-			<Chip color={ value ? 'success' : 'danger' }>{value ? 'true' : 'false'}</Chip>
+			<Chip color={value ? 'success' : 'danger'}>
+				{value ? 'true' : 'false'}
+			</Chip>
 		</FieldWrapper>
 	)
 }

@@ -17,17 +17,16 @@ type NumberSliderInputProps = {
 }
 
 export default function NumberSliderInput(props: NumberSliderInputProps) {
-
-  const {
-    value = [0],
-    label,
-    info,
-    name,
-    handleChange,
-    min,
-    max,
-    stepSize = 1,
-  } = props || {}
+	const {
+		value = [0],
+		label,
+		info,
+		name,
+		handleChange,
+		min,
+		max,
+		stepSize = 1,
+	} = props || {}
 
 	const handleInputChange = (newValue: number[]) => {
 		handleChange({

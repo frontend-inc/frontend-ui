@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 import { cn } from '@nextui-org/react'
 
-
 type SortableListProps = {
 	items: any[]
 	droppableId?: string
@@ -13,13 +12,12 @@ type SortableListProps = {
 }
 
 export default function SortableList(props: SortableListProps) {
-
-  const {
-    items,
-    droppableId = 'sortable-list',
-    renderItem,
-    handleDrop,
-  } = props || {}
+	const {
+		items,
+		droppableId = 'sortable-list',
+		renderItem,
+		handleDrop,
+	} = props || {}
 
 	const [sorted, setSorted] = useState(items)
 

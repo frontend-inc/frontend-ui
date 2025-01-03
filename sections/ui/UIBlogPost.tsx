@@ -9,8 +9,7 @@ import { SectionProps } from '../../types'
 type UIBlogPostProps = SectionProps & BlogProps
 
 const UIBlogPost: React.FC<UIBlogPostProps> = (props) => {
-	
-  const {
+	const {
 		bgColor,
 		bgImage,
 		bgOverlay,

@@ -36,7 +36,12 @@ const ArrayItemInput: React.FC<ArrayItemInputProps> = (props) => {
 				handleChange={handleInputChange}
 			/>
 			<div>
-				<Button isIconOnly variant="light" className="min-w-8" onPress={() => handleRemove(index)}>
+				<Button
+					isIconOnly
+					variant="light"
+					className="min-w-8"
+					onPress={() => handleRemove(index)}
+				>
 					<X />
 				</Button>
 			</div>
@@ -99,9 +104,7 @@ const ArrayListInput: React.FC<InputPropsType> = (props) => {
 			<div>
 				<Button
 					onPress={handleAddClick}
-					startContent={
-            <RiAddFill className="text-foreground" />
-          }
+					startContent={<RiAddFill className="text-foreground" />}
 				>
 					Add
 				</Button>

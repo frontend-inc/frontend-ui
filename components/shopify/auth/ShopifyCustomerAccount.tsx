@@ -22,16 +22,15 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
 	return (
 		<li>
 			<Button
-        fullWidth
+				fullWidth
 				variant="ghost"
 				className="justify-start"
 				onPress={() => handleClick(item?.path)}
-        startContent={ 
-          //@ts-ignore
-          item.icon && <RemixIcon name={item.icon} />
-        }
+				startContent={
+					//@ts-ignore
+					item.icon && <RemixIcon name={item.icon} />
+				}
 			>
-				
 				{item.label}
 			</Button>
 		</li>

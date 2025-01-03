@@ -22,12 +22,7 @@ export type FeatureCardsProps = {
 }
 
 const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
-	const {
-		items = [],
-		variant,
-		enableGradient,
-		enableOverlay,
-	} = props || {}
+	const { items = [], variant, enableGradient, enableOverlay } = props || {}
 
 	return (
 		<div className="container mx-auto max-w-screen-lg">

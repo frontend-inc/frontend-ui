@@ -3,13 +3,13 @@
 import React, { useState, useMemo } from 'react'
 import { InputLabel } from '../../../components'
 import { Button } from '@nextui-org/react'
-import { 
-  Input,
-  Slider,
-  Tooltip,
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger 
+import {
+	Input,
+	Slider,
+	Tooltip,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
 } from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@nextui-org/react'
@@ -30,16 +30,15 @@ type ColorInputProps = {
 }
 
 export default function ColorInput(props: ColorInputProps) {
-
-  const {
-    label,
-    name,
-    value,
-    placeholder = 'Color',
-    disableTone = false,
-    handleChange,
-    info,
-  } = props || {}
+	const {
+		label,
+		name,
+		value,
+		placeholder = 'Color',
+		disableTone = false,
+		handleChange,
+		info,
+	} = props || {}
 
 	const [tone, setTone] = useState(500)
 	const [selectedColor, setSelectedColor] = useState('slate')
@@ -104,11 +103,7 @@ export default function ColorInput(props: ColorInputProps) {
 			<InputLabel label={label} info={info} />
 			<Popover>
 				<PopoverTrigger>
-					<Button
-            fullWidth            
-						variant="ghost"
-						className="justify-between"
-					>
+					<Button fullWidth variant="ghost" className="justify-between">
 						{placeholder}
 						<div className="flex items-center space-x-2">
 							<div
@@ -121,82 +116,81 @@ export default function ColorInput(props: ColorInputProps) {
 				</PopoverTrigger>
 				<PopoverContent className="bg-content1 p-2 w-64">
 					<div className="grid grid-cols-6 gap-1 mb-2">
-							<Tooltip content="Remove color">
-                <Button
-                  isIconOnly  
-                  radius="md"                 
-                  className={cn(
-                    'relative bg-white h-8 w-8 min-w-8 overflow-hidden',
-                    value === '' &&
-                      'ring-2 ring-offset-2 ring-offset-background'
-                  )}
-                  onPress={handleRemoveColor}
-                >
-                  <span className="sr-only">Remove color</span>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
-                  </div>
-                </Button>
+						<Tooltip content="Remove color">
+							<Button
+								isIconOnly
+								radius="md"
+								className={cn(
+									'relative bg-white h-8 w-8 min-w-8 overflow-hidden',
+									value === '' && 'ring-2 ring-offset-2 ring-offset-background'
+								)}
+								onPress={handleRemoveColor}
+							>
+								<span className="sr-only">Remove color</span>
+								<div className="absolute inset-0 flex items-center justify-center">
+									<div className="w-[1px] h-[140%] bg-gray-300 rotate-45 transform origin-center"></div>
+								</div>
+							</Button>
 						</Tooltip>
 						<Tooltip content="White">
-              <Button 
-                isIconOnly  
-                className={cn(
-                  'h-8 w-8 min-w-8',
-                  selectedColorName === 'white' &&
-                    'ring-2 ring-offset-2 ring-offset-background'
-                )}
-                style={{ backgroundColor: '#FFFFFF' }}
-                onPress={() => handleColorChange('white')}
-              />
-              </Tooltip>
-							<Tooltip content="Black">
-                <Button 
-                  isIconOnly
-                  className={cn(
-                    'h-8 w-8 min-w-8',
-                    selectedColorName === 'black' &&
-                      'ring-2 ring-offset-2 ring-offset-background'
-                  )}
-                  style={{ backgroundColor: '#000000' }}
-                  onPress={() => handleColorChange('black')}
-                />
-							</Tooltip>
+							<Button
+								isIconOnly
+								className={cn(
+									'h-8 w-8 min-w-8',
+									selectedColorName === 'white' &&
+										'ring-2 ring-offset-2 ring-offset-background'
+								)}
+								style={{ backgroundColor: '#FFFFFF' }}
+								onPress={() => handleColorChange('white')}
+							/>
+						</Tooltip>
+						<Tooltip content="Black">
+							<Button
+								isIconOnly
+								className={cn(
+									'h-8 w-8 min-w-8',
+									selectedColorName === 'black' &&
+										'ring-2 ring-offset-2 ring-offset-background'
+								)}
+								style={{ backgroundColor: '#000000' }}
+								onPress={() => handleColorChange('black')}
+							/>
+						</Tooltip>
 						{Object.keys(TAILWIND_COLOR_PICKER_MAP).map((color) => (
 							<Tooltip content={color} key={color}>
-                <Button 
-                  radius="md"
-                  className={cn(
-                    'h-8 w-8 min-w-8',
-                    value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
-                      'ring-2 ring-offset-2 ring-offset-background'
-                  )}
-                  style={{
-                    backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
-                  }}
-                  onPress={() => handleColorChange(color)}
-                />
+								<Button
+									radius="md"
+									className={cn(
+										'h-8 w-8 min-w-8',
+										value === TAILWIND_COLOR_PICKER_MAP[color][tone] &&
+											'ring-2 ring-offset-2 ring-offset-background'
+									)}
+									style={{
+										backgroundColor: TAILWIND_COLOR_PICKER_MAP[color][tone],
+									}}
+									onPress={() => handleColorChange(color)}
+								/>
 							</Tooltip>
 						))}
 					</div>
-          <div className="w-full space-y-4">
-					{!disableTone && (
+					<div className="w-full space-y-4">
+						{!disableTone && (
 							<Slider
 								minValue={100}
 								maxValue={900}
 								step={100}
-                value={tone}
-                onChange={handleToneChange}
+								value={tone}
+								onChange={handleToneChange}
 							/>
-					)}
+						)}
 						<Input
-              fullWidth
-              label='Color'
+							fullWidth
+							label="Color"
 							placeholder="#RRGGBB"
 							value={value?.startsWith('#') ? value : ''}
 							onChange={handleHexColorChange}
 						/>
-          </div>
+					</div>
 				</PopoverContent>
 			</Popover>
 		</div>

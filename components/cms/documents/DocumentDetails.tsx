@@ -24,13 +24,13 @@ const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 	return (
 		<div className="w-full flex flex-col space-y-6">
 			{!disableImage && (
-				<div className="w-full flex flex-row justify-center">					
-          <Image
-            alt={resource?.label}
-            src={resource?.image?.url}
-            label={resource?.label}
-            aspectRatio={1.5}
-          />					
+				<div className="w-full flex flex-row justify-center">
+					<Image
+						alt={resource?.label}
+						src={resource?.image?.url}
+						label={resource?.label}
+						aspectRatio={1.5}
+					/>
 				</div>
 			)}
 			{actions && (

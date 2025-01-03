@@ -18,7 +18,7 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 		redirectUrl,
 		title = 'New Password',
 		subtitle = 'Create a new password',
-		loginUrl='/login',
+		loginUrl = '/login',
 	} = props || {}
 
 	const router = useRouter()

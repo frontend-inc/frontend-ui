@@ -6,11 +6,12 @@ import { SubscriptionPlans } from '../../components'
 import { SubscriptionPlansProps } from '../../components/web/subscriptions/SubscriptionPlans'
 import { SectionProps, HeadingProps } from '../../types'
 
-type UISubscriptionPlansProps = Omit<SectionProps, "variant"> & HeadingProps & SubscriptionPlansProps
+type UISubscriptionPlansProps = Omit<SectionProps, 'variant'> &
+	HeadingProps &
+	SubscriptionPlansProps
 
 const UISubscriptionPlans: React.FC<UISubscriptionPlansProps> = (props) => {
-	
-  const {
+	const {
 		label,
 		title,
 		subtitle,

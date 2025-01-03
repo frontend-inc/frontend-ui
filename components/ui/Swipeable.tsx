@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
 	Button,
 	Carousel,
@@ -8,20 +8,20 @@ import {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from 'frontend-shadcn';
-import { type CarouselApi } from 'frontend-shadcn';
-import { cn } from '@nextui-org/react';
+} from 'frontend-shadcn'
+import { type CarouselApi } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 
 type SwipeableProps = {
-	children: React.ReactNode[];
-	enableDots?: boolean;
-	enableArrows?: boolean;
-	enableAutoPlay?: boolean;
-	interval?: number;
-	itemsPerSlide?: 1 | 2 | 3 | 4 | 5 | 6;
-	arrowHeight?: 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100; // Arrow height in percentage
-	className?: string;
-};
+	children: React.ReactNode[]
+	enableDots?: boolean
+	enableArrows?: boolean
+	enableAutoPlay?: boolean
+	interval?: number
+	itemsPerSlide?: 1 | 2 | 3 | 4 | 5 | 6
+	arrowHeight?: 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 // Arrow height in percentage
+	className?: string
+}
 
 const Swipeable: React.FC<SwipeableProps> = (props) => {
 	const {
@@ -31,11 +31,11 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 		enableArrows,
 		arrowHeight = 50, // Default arrow height is 50% (middle)
 		className,
-	} = props;
+	} = props
 
-	const [api, setApi] = useState<CarouselApi>();
-	const [current, setCurrent] = useState(0);
-	const [count, setCount] = useState(0);
+	const [api, setApi] = useState<CarouselApi>()
+	const [current, setCurrent] = useState(0)
+	const [count, setCount] = useState(0)
 
 	const basisClasses = {
 		2: 'md:basis-1/2',
@@ -43,22 +43,22 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 		5: 'md:basis-1/5',
 		4: 'md:basis-1/4',
 		6: 'md:basis-1/6',
-	};
+	}
 
 	const handleSlide = (index: number) => {
-		api?.scrollTo(index);
-	};
+		api?.scrollTo(index)
+	}
 
 	useEffect(() => {
-		if (!api) return;
-		setCount(api.scrollSnapList().length - itemsPerSlide);
+		if (!api) return
+		setCount(api.scrollSnapList().length - itemsPerSlide)
 		api.on('select', () => {
-			setCurrent(api.selectedScrollSnap() || 0);
-		});
-	}, [api]);
+			setCurrent(api.selectedScrollSnap() || 0)
+		})
+	}, [api])
 
 	// Generate dynamic top style for arrows based on arrowHeight prop
-	const dynamicArrowHeight = `top-[${arrowHeight}%]`;
+	const dynamicArrowHeight = `top-[${arrowHeight}%]`
 
 	return (
 		<Carousel setApi={setApi} className={cn('w-full', className)}>
@@ -67,7 +67,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 					<CarouselItem
 						key={index}
 						className={cn(
-              'basis-1/1 w-full h-full',
+							'basis-1/1 w-full h-full',
 							itemsPerSlide > 1 && basisClasses[itemsPerSlide]
 						)}
 					>
@@ -108,7 +108,7 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 				</div>
 			)}
 		</Carousel>
-	);
-};
+	)
+}
 
-export default Swipeable;
+export default Swipeable

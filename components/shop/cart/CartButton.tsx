@@ -15,15 +15,15 @@ const CartButton: React.FC<CartButtonProps> = (props) => {
 
 	return (
 		<Badge color="primary" content={cart?.total_items}>
-			<Button 
-        isIconOnly 
-        variant='light'
-        className='min-w-8'
-        onPress={() => setCartOpen(!cartOpen)}
-      >
+			<Button
+				isIconOnly
+				variant="light"
+				className="min-w-8"
+				onPress={() => setCartOpen(!cartOpen)}
+			>
 				<RemixIcon name={icon} size="lg" />
 			</Button>
-    </Badge>    
+		</Badge>
 	)
 }
 

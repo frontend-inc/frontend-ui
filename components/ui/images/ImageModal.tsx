@@ -34,15 +34,13 @@ const ImageModal: React.FC<ImageModalProps> = (props) => {
 			maxWidth="md"
 			buttons={
 				<div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:sspace-x-2">
-					<Button onPress={handleCopyUrlClick}>
-						Copy URL
+					<Button onPress={handleCopyUrlClick}>Copy URL</Button>
+					<Button
+						onPress={handleDownloadClick}
+						startContent={<RemixIcon name="ri-download-2-line" />}
+					>
+						Download
 					</Button>
-					<Button 
-            onPress={handleDownloadClick}
-            startContent={
-              <RemixIcon name="ri-download-2-line" />
-            }
-          >Download</Button>
 				</div>
 			}
 		>

@@ -66,7 +66,7 @@ export type PriceType = {
 	title: string
 	subtitle?: string
 	price: number
-  compareAtPrice?: number
+	compareAtPrice?: number
 	features: string[]
 	interval?: string
 	recurring?: boolean

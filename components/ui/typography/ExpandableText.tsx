@@ -16,8 +16,7 @@ type ExpandableTextProps = {
 }
 
 const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
-	
-  const {
+	const {
 		text,
 		className,
 		variant = 'body1',
@@ -32,11 +31,11 @@ const ExpandableText: React.FC<ExpandableTextProps> = (props) => {
 					{text}
 				</Typography>
 			) : (
-        <ScrollShadow>
-          <Typography variant={variant} className={className}>
-            { text }
-          </Typography>
-        </ScrollShadow>
+				<ScrollShadow>
+					<Typography variant={variant} className={className}>
+						{text}
+					</Typography>
+				</ScrollShadow>
 			)}
 			{text?.length > maxChars && (
 				<Button variant="light" onPress={() => setOpen(!open)}>

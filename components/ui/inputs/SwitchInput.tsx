@@ -5,19 +5,11 @@ import { InputPropsType } from '../../../types'
 import { Switch } from '@nextui-org/react'
 
 type SwitchInputProps = InputPropsType & {
-  value: boolean | undefined
+	value: boolean | undefined
 }
 
 export default function SwitchInput(props: SwitchInputProps) {
-
-  const {
-    name,
-    value,
-    label,
-    placeholder,
-    handleChange,
-  } = props
-
+	const { name, value, label, placeholder, handleChange } = props
 
 	const onCheckedChange = (checked: boolean) => {
 		handleChange({
@@ -28,9 +20,9 @@ export default function SwitchInput(props: SwitchInputProps) {
 		})
 	}
 
-	return (				
+	return (
 		<Switch isSelected={value} onValueChange={onCheckedChange}>
-      { label }
-    </Switch>
+			{label}
+		</Switch>
 	)
 }

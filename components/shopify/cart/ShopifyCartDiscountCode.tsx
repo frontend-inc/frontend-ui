@@ -31,16 +31,13 @@ export default function ShopifyCartDiscountCode({
 				loading && 'opacity-50'
 			)}
 		>
-			<Typography variant="body1" className='text-foreground/70'>
-        Discounts
-      </Typography>
+			<Typography variant="body1" className="text-foreground/70">
+				Discounts
+			</Typography>
 			<div className="flex flex-row items-center space-x-2">
-        <Chip   
-          variant='bordered'
-          onClose={handleDelete}
-        >
-          {discountCode.code}
-        </Chip>				
+				<Chip variant="bordered" onClose={handleDelete}>
+					{discountCode.code}
+				</Chip>
 			</div>
 		</div>
 	)

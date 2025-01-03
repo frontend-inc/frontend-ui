@@ -137,7 +137,13 @@ const CurrentUserFormWizard: React.FC<CurrentUserFormWizardProps> = (props) => {
 
 	return (
 		<div className="w-full flex flex-col justify-between items-center">
-			<Button variant="solid" color="primary" onPress={handleStartClick} size="lg" className="mb-4">
+			<Button
+				variant="solid"
+				color="primary"
+				onPress={handleStartClick}
+				size="lg"
+				className="mb-4"
+			>
 				{buttonText}
 			</Button>
 			<Modal open={open} handleClose={() => setOpen(false)}>

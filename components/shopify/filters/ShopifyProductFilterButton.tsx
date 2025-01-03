@@ -42,13 +42,11 @@ const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 					<PopoverTrigger asChild>
 						<Button
 							variant="solid"
-              color="primary"
+							color="primary"
 							className="w-full sm:w-auto"
 							onPress={toggleMenu}
-              startContent={
-                <ListFilter className="h-4 w-4" />
-              }
-						>							
+							startContent={<ListFilter className="h-4 w-4" />}
+						>
 							Filter
 						</Button>
 					</PopoverTrigger>
@@ -68,14 +66,12 @@ const ShopifyProductFilterButton: React.FC<ShopifyProductFilterButtonProps> = (
 			<div className="sm:hidden">
 				<Sheet open={open} onOpenChange={toggleMenu}>
 					<SheetTrigger asChild>
-						<Button 
-              variant="ghost" 
-              className="w-full" 
-              onPress={toggleMenu}
-              startContent={ 
-                <ListFilter className="h-4 w-4" />
-              }
-            >
+						<Button
+							variant="ghost"
+							className="w-full"
+							onPress={toggleMenu}
+							startContent={<ListFilter className="h-4 w-4" />}
+						>
 							Filter
 						</Button>
 					</SheetTrigger>

@@ -9,7 +9,7 @@ import { formatCurrency } from 'frontend-shopify'
 import SwipeableShopifyProductImages from './images/SwipeableShopifyProductImages'
 import { ShopifyProductModal, ShopifyAddToCartButton } from '..'
 import { cn, Card, CardFooter } from '@nextui-org/react'
-import {  CardContent } from 'frontend-shadcn'
+import { CardContent } from 'frontend-shadcn'
 
 type ShopifyProductCardProps = {
 	product: ShopifyProductType
@@ -44,40 +44,37 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
 	}
 
 	return (
-    <>
-      <Card        
-        shadow="sm"
-        className={cn('bg-background', className)}
-      >			
-        <CardContent className="p-0">
-          <SwipeableShopifyProductImages
-            product={product}
-            handleClick={handleItemClick}
-            disableBorderRadius={enableBorder}
-          />			
-        </CardContent>
-        <CardFooter className='bg-content1 w-full'>
-          <div className="flex flex-col space-y-2 w-full">
-            <div className="flex flex-col space-y-0 min-h-[50px]">
-              <Typography variant="subtitle2">
-                {truncate(product?.title)}
-              </Typography>
-              <Typography variant="body2">
-                {formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
-              </Typography>
-            </div>
-            {enableAddToCart && (
-              <ShopifyAddToCartButton
-                product={product}
-                /* @ts-ignore */
-                variant={product?.variants?.edges[0]?.node}
-                enableQuantity={enableQuantity}
-                size="md"
-              />
-            )}
-          </div>
-        </CardFooter>
-      </Card>
+		<>
+			<Card shadow="sm" className={cn('bg-background', className)}>
+				<CardContent className="p-0">
+					<SwipeableShopifyProductImages
+						product={product}
+						handleClick={handleItemClick}
+						disableBorderRadius={enableBorder}
+					/>
+				</CardContent>
+				<CardFooter className="bg-content1 w-full">
+					<div className="flex flex-col space-y-2 w-full">
+						<div className="flex flex-col space-y-0 min-h-[50px]">
+							<Typography variant="subtitle2">
+								{truncate(product?.title)}
+							</Typography>
+							<Typography variant="body2">
+								{formatCurrency(product?.priceRange?.minVariantPrice?.amount)}
+							</Typography>
+						</div>
+						{enableAddToCart && (
+							<ShopifyAddToCartButton
+								product={product}
+								/* @ts-ignore */
+								variant={product?.variants?.edges[0]?.node}
+								enableQuantity={enableQuantity}
+								size="md"
+							/>
+						)}
+					</div>
+				</CardFooter>
+			</Card>
 			<ShopifyProductModal
 				open={open}
 				handleClose={() => setOpen(false)}

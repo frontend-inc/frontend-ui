@@ -15,7 +15,6 @@ type ProductReviewItemProps = {
 export default function ProductReviewItem({
 	resource,
 }: ProductReviewItemProps) {
-
 	return (
 		<div className="w-full flex items-start py-4 border-b border-divider hover:bg-content2/50">
 			<div className="mr-4 mt-1">

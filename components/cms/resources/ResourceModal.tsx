@@ -14,7 +14,7 @@ export type ResourceModalProps = {
 	handleEdit?: () => void
 	handleDelete?: () => void
 	disablePadding?: boolean
-  maxWidth?:'xs' | 'sm' | 'md' | 'lg' | 'xl'
+	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	children?: any
 }
 
@@ -36,24 +36,17 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 		<Sheet
 			open={open}
 			handleClose={handleClose}
-			title={title}			
+			title={title}
 			buttons={
 				(enableEdit || enableDelete) && (
 					<div className="w-full flex flex-row space-x-2">
 						{enableDelete && (
-							<Button 
-                fullWidth
-                color="danger" 
-                onPress={handleDelete}
-              >
+							<Button fullWidth color="danger" onPress={handleDelete}>
 								Delete
 							</Button>
 						)}
-            {enableEdit && (
-							<Button          
-                fullWidth        
-                variant="solid"
-                onPress={handleEdit}>
+						{enableEdit && (
+							<Button fullWidth variant="solid" onPress={handleEdit}>
 								Edit
 							</Button>
 						)}

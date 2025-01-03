@@ -9,8 +9,8 @@ export type ResourceFormProps = {
 	open: boolean
 	handleClose: () => void
 	loading: boolean
-  isPublishLoading?: boolean
-  enablePublish?: boolean
+	isPublishLoading?: boolean
+	enablePublish?: boolean
 	errors: any
 	resource: any
 	setResource: (resource: any) => void
@@ -20,10 +20,10 @@ export type ResourceFormProps = {
 	handleRemoveAttachment?: (name: string) => void
 	handleSubmit: () => void
 	handleReload: () => void
-  handlePublish: () => void
+	handlePublish: () => void
 	inputOptions?: any
 	inputParams?: any
-  maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+	maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export type FormProps = ResourceFormProps & {
@@ -31,11 +31,10 @@ export type FormProps = ResourceFormProps & {
 }
 
 const ResourceForm: React.FC<FormProps> = (props) => {
-	
-  const {
+	const {
 		loading,
-    isPublishLoading,
-    enablePublish,
+		isPublishLoading,
+		enablePublish,
 		errors,
 		title,
 		open,
@@ -44,7 +43,7 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 		handleChange,
 		handleRemove,
 		handleSubmit,
-    handlePublish,
+		handlePublish,
 		handleAddAttachment,
 		handleRemoveAttachment,
 		fields = [],
@@ -58,28 +57,28 @@ const ResourceForm: React.FC<FormProps> = (props) => {
 			handleClose={handleClose}
 			title={title ? title : resource?.id ? 'Edit' : 'Add'}
 			buttons={
-        <div className="flex flex-row space-x-4 justify-between">
-          <Button 
-            fullWidth 
-            variant="solid"
-            color="primary"
-            onPress={handleSubmit} 
-            isLoading={loading}
-          >
-            {resource?.id ? 'Update' : 'Save'}
-          </Button>
-          { enablePublish && (
-            <Button 
-              fullWidth 
-              variant="solid"
-              color="success"
-              onPress={handlePublish} 
-              isLoading={isPublishLoading}
-            >
-              Publish 
-            </Button>
-          )}
-        </div>
+				<div className="flex flex-row space-x-4 justify-between">
+					<Button
+						fullWidth
+						variant="solid"
+						color="primary"
+						onPress={handleSubmit}
+						isLoading={loading}
+					>
+						{resource?.id ? 'Update' : 'Save'}
+					</Button>
+					{enablePublish && (
+						<Button
+							fullWidth
+							variant="solid"
+							color="success"
+							onPress={handlePublish}
+							isLoading={isPublishLoading}
+						>
+							Publish
+						</Button>
+					)}
+				</div>
 			}
 		>
 			<FormFields

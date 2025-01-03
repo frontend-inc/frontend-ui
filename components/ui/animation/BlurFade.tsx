@@ -27,19 +27,18 @@ interface BlurFadeProps {
 }
 
 export default function BlurFade(props: BlurFadeProps) {
+	const {
+		children,
+		className,
+		variant,
+		duration = 0.4,
+		delay = 0,
+		yOffset = 6,
+		inView = false,
+		inViewMargin = '-50px',
+		blur = '6px',
+	} = props || {}
 
-  const {
-    children,
-    className,
-    variant,
-    duration = 0.4,
-    delay = 0,
-    yOffset = 6,
-    inView = false,
-    inViewMargin = '-50px',
-    blur = '6px',
-  } = props || {}
-  
 	const ref = useRef(null)
 	const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
 	const isInView = !inView || inViewResult

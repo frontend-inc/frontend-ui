@@ -25,7 +25,7 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		editable,
 		handleChange,
@@ -44,16 +44,16 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 			maxWidth={maxWidth}
 		>
 			<Stack spacing={4}>
-        <Heading
-          label={label}
-          title={title}
-          subtitle={subtitle}
-          textAlign='center'
-          size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
-        />
-        <FeatureCards {...rest} />
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					textAlign="center"
+					size={fontSize}
+					editable={editable}
+					handleChange={handleChange}
+				/>
+				<FeatureCards {...rest} />
 			</Stack>
 		</Section>
 	)

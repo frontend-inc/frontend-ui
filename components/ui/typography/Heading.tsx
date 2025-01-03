@@ -35,7 +35,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		sm: 'h4',
 		md: 'h3',
 		lg: 'h2',
-		xl: 'h1'		
+		xl: 'h1',
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
@@ -70,55 +70,55 @@ const Heading: React.FC<HeadingProps> = (props) => {
 			>
 				<div className={cn('flex flex-col', spacingClass)}>
 					{label && (
-            <BlurFade delay={0.20} inView>
-              <div
-                className={cn(
-                  textAlign === 'center' && 'text-center',
-                  textAlign === 'right' && 'text-right'
-                )}
-              >
-                <Typography
-                  editable={editable}
-                  variant="caption"
-                  className={cn(
-                    'text-primary/90 uppercase tracking-widest font-semibold',
-                    textAlign === 'center' && 'text-center',
-                    textAlign === 'right' && 'text-right'
-                  )}
-                  name="label"
-                  handleChange={handleChange}
-                >
-                  {label}
-                </Typography>
-              </div>
-            </BlurFade>
+						<BlurFade delay={0.2} inView>
+							<div
+								className={cn(
+									textAlign === 'center' && 'text-center',
+									textAlign === 'right' && 'text-right'
+								)}
+							>
+								<Typography
+									editable={editable}
+									variant="caption"
+									className={cn(
+										'text-primary/90 uppercase tracking-widest font-semibold',
+										textAlign === 'center' && 'text-center',
+										textAlign === 'right' && 'text-right'
+									)}
+									name="label"
+									handleChange={handleChange}
+								>
+									{label}
+								</Typography>
+							</div>
+						</BlurFade>
 					)}
 					{title && (
-            <BlurFade delay={0.25} inView>
-              <Typography
-                editable={editable}
-                variant={titleVariant}
-                textAlign={textAlign}
-                name="title"
-                handleChange={handleChange}
-              >
-                {title}
-              </Typography>
-            </BlurFade>
+						<BlurFade delay={0.25} inView>
+							<Typography
+								editable={editable}
+								variant={titleVariant}
+								textAlign={textAlign}
+								name="title"
+								handleChange={handleChange}
+							>
+								{title}
+							</Typography>
+						</BlurFade>
 					)}
 					{subtitle && (
-            <BlurFade delay={0.30} inView>
-              <Typography
-                variant={subtitleVariant}
-                className="leading-8 text-foreground/80"
-                textAlign={textAlign}
-                editable={editable}
-                name="subtitle"
-                handleChange={handleChange}
-              >
-                {subtitle}
-              </Typography>
-            </BlurFade>
+						<BlurFade delay={0.3} inView>
+							<Typography
+								variant={subtitleVariant}
+								className="leading-8 text-foreground/80"
+								textAlign={textAlign}
+								editable={editable}
+								name="subtitle"
+								handleChange={handleChange}
+							>
+								{subtitle}
+							</Typography>
+						</BlurFade>
 					)}
 				</div>
 				{secondaryAction}

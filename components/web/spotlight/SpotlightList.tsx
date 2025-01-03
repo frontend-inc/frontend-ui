@@ -44,10 +44,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 				/>
 				{actions && actions}
 				<Container maxWidth="lg">
-					<Image
-						src={image}
-						alt={title}
-					/>
+					<Image src={image} alt={title} />
 				</Container>
 			</div>
 		</div>

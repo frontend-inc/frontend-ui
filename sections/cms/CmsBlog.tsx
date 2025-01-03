@@ -20,7 +20,7 @@ const CmsList: React.FC<CmsListProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth="md",
+		maxWidth = 'md',
 		requireAuth,
 		...rest
 	} = props

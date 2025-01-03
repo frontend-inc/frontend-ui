@@ -61,13 +61,13 @@ const SocialLink: React.FC<SocialLinkProps> = (props) => {
 	}
 
 	return (
-		<Button 
-      isIconOnly 
-      className="min-w-10" 
-      variant="light"
-      radius="full" 
-      onPress={handleClick}
-    >
+		<Button
+			isIconOnly
+			className="min-w-10"
+			variant="light"
+			radius="full"
+			onPress={handleClick}
+		>
 			<SocialIcon
 				network={provider}
 				style={{

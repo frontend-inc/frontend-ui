@@ -49,12 +49,12 @@ export type ResourceListProps = {
 	exportHeaders?: string[]
 	enableSearch?: boolean
 	buttonText?: string
-  enablePublish?: boolean
+	enablePublish?: boolean
 	enableShow?: boolean
 	enableEdit?: boolean
 	enableCreate?: boolean
 	enableDelete?: boolean
-	enableExport?: boolean	
+	enableExport?: boolean
 	direction?: 'row' | 'column'
 	emptyIcon?: string
 	emptyTitle?: string
@@ -115,10 +115,10 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		enableDelete,
 		enableCreate,
 		enableShow,
-    enablePublish,
+		enablePublish,
 		enableExport,
 		handleClick,
-		slots = SLOT_PROPS,		
+		slots = SLOT_PROPS,
 		direction = 'row',
 		emptyIcon = 'Search',
 		emptyTitle = 'No results found',
@@ -132,7 +132,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [openDelete, setOpenDelete] = useState(false)
 	const [openExport, setOpenExport] = useState(false)
 
-  const {
+	const {
 		loading: isPublishLoading,
 		update: updatePublish,
 		create: createPublish,
@@ -153,19 +153,19 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		updatePositions,
 		handleChange,
 		query,
-    findOne,
+		findOne,
 		findMany,
 		reloadMany,
-    publish,
-    unpublish,
-    deleteMany,
+		publish,
+		unpublish,
+		deleteMany,
 		addAttachment,
 		removeAttachment,
 		page,
 		numPages,
 		totalCount,
 		loadMore,
-		paginate,		
+		paginate,
 		selected,
 		selectedIds,
 		handleSelect,
@@ -212,12 +212,12 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		})
 	}
 
-  const handleSortBy = (sortBy: string) => {
-    findMany({
-      ...query,
-      sort_by: sortBy,
-    })
-  }
+	const handleSortBy = (sortBy: string) => {
+		findMany({
+			...query,
+			sort_by: sortBy,
+		})
+	}
 
 	const handleSortDirection = (sortDirection: 'asc' | 'desc') => {
 		findMany({
@@ -229,25 +229,25 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	const [activeFilters, setActiveFilters] = useState<any[]>([])
 
 	const handleFilter = (name: string, value: string | number | boolean) => {
-    let currentFilters = [] as any 
+		let currentFilters = [] as any
 		if (activeFilters?.find((f) => f.name === name && f.value === value)) {
 			currentFilters = []
 		} else {
 			currentFilters = [{ name, operator: 'eq', value }]
 		}
-    setActiveFilters(currentFilters)
-    findMany({
-      ...query,
-      ...defaultQuery,
-      filters: buildQueryFilters(currentFilters),
-    })
+		setActiveFilters(currentFilters)
+		findMany({
+			...query,
+			...defaultQuery,
+			filters: buildQueryFilters(currentFilters),
+		})
 	}
 
-  const buildQueryFilters = (filters) => {
-    return filters.map((f) => ({
-      [f.name]: { [f.operator]: f.value },
-    }))
-  }
+	const buildQueryFilters = (filters) => {
+		return filters.map((f) => ({
+			[f.name]: { [f.operator]: f.value },
+		}))
+	}
 
 	// Filter methods
 	const handleClearFilters = () => {
@@ -274,7 +274,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenCreate(false)
 		setOpenEdit(true)
 	}
-  
+
 	const handleSubmit = async () => {
 		try {
 			let resp
@@ -298,23 +298,23 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		}
 	}
 
-  const handlePublish = async () => {
+	const handlePublish = async () => {
 		try {
 			let resp
 			if (resource?.id) {
-				resp = await updatePublish({ 
-          ...resource,
-          published: true 
-        })
+				resp = await updatePublish({
+					...resource,
+					published: true,
+				})
 			} else {
 				resp = await createPublish({
 					...defaultValue,
 					...resource,
-          published: true
+					published: true,
 				})
 			}
 			if (resp?.id) {
-				setResource({})        
+				setResource({})
 				setOpenShow(false)
 				setOpenCreate(false)
 				setOpenEdit(false)
@@ -325,39 +325,39 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		}
 	}
 
-  const handlePublishMany = async () => {
-    try {
-      let resp = await publish(selectedIds)
-      if (resp?.ids) {
-        reloadMany() 
-        handleClear()       
-      }
-    } catch (err) {
-      console.log('Error', err)
-    }
-  }
+	const handlePublishMany = async () => {
+		try {
+			let resp = await publish(selectedIds)
+			if (resp?.ids) {
+				reloadMany()
+				handleClear()
+			}
+		} catch (err) {
+			console.log('Error', err)
+		}
+	}
 
-  const handleUnpublishMany = async () => {
-    try {
-      let resp = await unpublish(selectedIds)
-      if (resp?.ids) {
-        reloadMany() 
-        handleClear()       
-      }
-    } catch (err) {
-      console.log('Error', err)
-    }
-  }
+	const handleUnpublishMany = async () => {
+		try {
+			let resp = await unpublish(selectedIds)
+			if (resp?.ids) {
+				reloadMany()
+				handleClear()
+			}
+		} catch (err) {
+			console.log('Error', err)
+		}
+	}
 
-  const handleDeleteMany = async () => {
-    try {
-      await deleteMany(selectedIds)
-      reloadMany() 
-      handleClear()       
-    } catch (err) {
-      console.log('Error', err)
-    }
-  }
+	const handleDeleteMany = async () => {
+		try {
+			await deleteMany(selectedIds)
+			reloadMany()
+			handleClear()
+		} catch (err) {
+			console.log('Error', err)
+		}
+	}
 
 	const handleShowClick = async (resource) => {
 		if (handleClick) {
@@ -410,7 +410,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 
 	const handleExport = async () => {
 		let resources = await findMany(query)
-    //@ts-ignore 
+		//@ts-ignore
 		exportJsonToCSV(exportHeaders, resources)
 	}
 
@@ -418,13 +418,13 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 		setOpenExport(true)
 	}
 
-  const mounted = useRef(false)
+	const mounted = useRef(false)
 
 	useEffect(() => {
 		if (url && name && !mounted.current) {
-      mounted.current = true
+			mounted.current = true
 			findMany({
-				...defaultQuery
+				...defaultQuery,
 			})
 		}
 	}, [url, name])
@@ -435,17 +435,17 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 	return (
 		<>
 			<Toolbar
-        enableDelete={enableDelete}
-        enablePublish={enablePublish}        
+				enableDelete={enableDelete}
+				enablePublish={enablePublish}
 				selected={selected}
 				selectedIds={selectedIds}
 				open={selectedIds?.length > 0}
 				handleClose={handleClear}
 				buttons={buttons}
 				onSuccess={handleSuccess}
-        handlePublish={handlePublishMany}
-        handleUnpublish={handleUnpublishMany}
-        handleDelete={handleDeleteMany}
+				handlePublish={handlePublishMany}
+				handleUnpublish={handleUnpublishMany}
+				handleDelete={handleDeleteMany}
 				handleReload={reloadMany}
 				{...slots.toolbar}
 			/>
@@ -491,7 +491,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 							handleEdit={handleEdit}
 							handleShow={handleShowClick}
 							handleDelete={handleDeleteClick}
-              handleSelect={handleSelect}
+							handleSelect={handleSelect}
 							resources={resources}
 							renderItem={(resource, props) => (
 								<Component
@@ -506,12 +506,12 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 										handleClick
 											? () => handleClick(resource)
 											: () => handleShowClick(resource)
-                  }
+									}
 									handleEdit={() => handleEdit(resource)}
-                  handleSelect={() => handleSelect(resource)}
+									handleSelect={() => handleSelect(resource)}
 									handleDelete={() => handleDeleteClick(resource)}
 									handleReload={reloadMany}
-                  {...slots.item}
+									{...slots.item}
 								/>
 							)}
 							{...slots.list}
@@ -535,7 +535,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 										// @ts-ignore
 										selectedIds?.includes(resource?.id)
 									}
-									resource={resource}									
+									resource={resource}
 									enableEdit={enableEdit}
 									enableDelete={enableDelete}
 									handleClick={
@@ -565,7 +565,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					open={openCreate}
 					handleClose={() => setOpenCreate(false)}
 					loading={loading}
-          isPublishLoading={isPublishLoading}
+					isPublishLoading={isPublishLoading}
 					errors={errors}
 					resource={resource}
 					setResource={setResource}
@@ -574,7 +574,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleAddAttachment={handleAddAttachment}
 					handleRemoveAttachment={handleRemoveAttachment}
 					handleSubmit={handleSubmit}
-          handlePublish={handlePublish}          
+					handlePublish={handlePublish}
 					handleReload={reloadMany}
 					fields={fields}
 					{...slots.create}
@@ -583,8 +583,8 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					open={openEdit}
 					handleClose={() => setOpenEdit(false)}
 					loading={loading}
-          isPublishLoading={isPublishLoading}
-          enablePublish={enablePublish}
+					isPublishLoading={isPublishLoading}
+					enablePublish={enablePublish}
 					errors={errors}
 					resource={resource}
 					setResource={setResource}
@@ -593,7 +593,7 @@ const ResourceList: React.FC<ResourceListProps> = (props) => {
 					handleAddAttachment={handleAddAttachment}
 					handleRemoveAttachment={handleRemoveAttachment}
 					handleSubmit={handleSubmit}
-          handlePublish={handlePublish}
+					handlePublish={handlePublish}
 					handleReload={reloadMany}
 					handleReloadOne={findOne}
 					fields={fields}

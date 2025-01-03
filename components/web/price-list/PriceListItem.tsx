@@ -10,7 +10,7 @@ export type PriceListItemProps = {
 	title: string
 	subtitle: string
 	price?: string
-  precision?: number
+	precision?: number
 	path?: string
 	url?: string
 	handleImageClick: () => void
@@ -21,7 +21,7 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 		variant,
 		image,
 		price,
-    precision=0,
+		precision = 0,
 		title,
 		subtitle,
 		path,
@@ -29,15 +29,15 @@ const PriceListItem: React.FC<PriceListItemProps> = (props) => {
 		handleImageClick,
 	} = props || {}
 
-	const onClick = useNavigate({		
+	const onClick = useNavigate({
 		path,
-		url		
+		url,
 	})
 
 	return (
 		<li className={'w-full'}>
 			<button
-        //@ts-ignore
+				//@ts-ignore
 				onClick={onClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-content2',

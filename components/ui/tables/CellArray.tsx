@@ -38,7 +38,7 @@ const CellArray: React.FC<CellArrayProps> = (props) => {
 	return (
 		<div className="flex flex-row gap-2">
 			{visibleTags?.map((value, index) => (
-				<Label key={index}>{ value }</Label>
+				<Label key={index}>{value}</Label>
 			))}
 			{!open && visibleTags && visibleTags?.length > MAX_TAGS && (
 				<Button onPress={handleToggleSeeAll}>

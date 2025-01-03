@@ -8,10 +8,10 @@ import { toast } from 'sonner'
 import { buildFormMetafields } from '../../../helpers'
 
 export type ContactFormProps = {
-  enablePhone?: boolean
-  enableCompany?: boolean
-  enableReason?: boolean
-  reasonOptions?: string[]
+	enablePhone?: boolean
+	enableCompany?: boolean
+	enableReason?: boolean
+	reasonOptions?: string[]
 	buttonText?: string
 	href?: string
 	handleClick?: () => void
@@ -19,13 +19,13 @@ export type ContactFormProps = {
 
 // Call To Action
 const ContactForm: React.FC<ContactFormProps> = (props) => {
-	const { 
-    enablePhone,
-    enableCompany,
-    enableReason,
-    reasonOptions=[],
-    buttonText = 'Send Message',
-  } = props || {}
+	const {
+		enablePhone,
+		enableCompany,
+		enableReason,
+		reasonOptions = [],
+		buttonText = 'Send Message',
+	} = props || {}
 
 	const {
 		errors,
@@ -36,12 +36,12 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		createContact,
 	} = useContacts()
 
-  const metafields = buildFormMetafields({
-    enablePhone,
-    enableCompany,
-    enableReason,
-    reasonOptions,
-  })
+	const metafields = buildFormMetafields({
+		enablePhone,
+		enableCompany,
+		enableReason,
+		reasonOptions,
+	})
 
 	const handleSubmit = async () => {
 		if (!contact?.email || !contact?.name || !contact?.message) {

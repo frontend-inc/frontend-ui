@@ -8,7 +8,7 @@ import { useDebounce } from 'use-debounce'
 import { cn } from '@nextui-org/react'
 
 type InputOtpProps = TextInputProps & {
-  length?: number
+	length?: number
 }
 
 export default function TextInput(props: InputOtpProps) {
@@ -21,7 +21,7 @@ export default function TextInput(props: InputOtpProps) {
 		placeholder,
 		disabled,
 		errors,
-    length=6,		
+		length = 6,
 		className,
 		debounceDelay = 350,
 		disableDebounce = false,
@@ -39,12 +39,12 @@ export default function TextInput(props: InputOtpProps) {
 		clearError()
 		setText(value)
 		if (disableDebounce) {
-			handleChange({ 
-        target: {
-          name, 
-          value
-        }
-      })
+			handleChange({
+				target: {
+					name,
+					value,
+				},
+			})
 		}
 	}
 
@@ -64,20 +64,18 @@ export default function TextInput(props: InputOtpProps) {
 	}, [value])
 
 	return (
-    <InputOtp
-      label={ label }
-      className={cn(									
-        className
-      )}
-      length={length}
-      type={type}
-      name={name}
-      disabled={disabled}
-      placeholder={placeholder || `Enter ${label}`}
-      onValueChange={handleInputChange}
-      value={text}
-      autoComplete="off"
-      errorMessage={error}
-    />
+		<InputOtp
+			label={label}
+			className={cn(className)}
+			length={length}
+			type={type}
+			name={name}
+			disabled={disabled}
+			placeholder={placeholder || `Enter ${label}`}
+			onValueChange={handleInputChange}
+			value={text}
+			autoComplete="off"
+			errorMessage={error}
+		/>
 	)
 }

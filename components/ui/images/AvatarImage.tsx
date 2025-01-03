@@ -20,25 +20,26 @@ const AvatarImage: React.FC<AvatarImageProps> = (props) => {
 		enableOverlay = false,
 	} = props
 
-  if(!src)return(
-    <div
-      className="rounded-full bg-gradient-to-br from-black to-gray-600"
-      style={{ 
-        width: `${size}px`, 
-        height: `${size}px` 
-      }}
-    />
-  )
+	if (!src)
+		return (
+			<div
+				className="rounded-full bg-gradient-to-br from-black to-gray-600"
+				style={{
+					width: `${size}px`,
+					height: `${size}px`,
+				}}
+			/>
+		)
 	return (
-		<div className='relative rounded-full overflow-hidden'>			
-      <Image 
-        src={src} 
-        alt={alt} 
-        height={size}
-        width={size}
-        radius="full"
-        className="object-cover"
-      />			
+		<div className="relative rounded-full overflow-hidden">
+			<Image
+				src={src}
+				alt={alt}
+				height={size}
+				width={size}
+				radius="full"
+				className="object-cover"
+			/>
 			{enableGradient && (
 				<div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-full" />
 			)}

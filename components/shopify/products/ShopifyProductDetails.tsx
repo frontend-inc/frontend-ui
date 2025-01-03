@@ -22,15 +22,14 @@ export type ShopifyProductDetailsProps = {
 }
 
 const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
-
-  const {
-    shopifyProduct,
-    buttonText,
-    enableQuantity = true,
-    enableSubscription = true,
-    enableFavorites,
-    disableZoom = false,
-  } = props 
+	const {
+		shopifyProduct,
+		buttonText,
+		enableQuantity = true,
+		enableSubscription = true,
+		enableFavorites,
+		disableZoom = false,
+	} = props
 
 	const { product, findProduct } = useProducts()
 
@@ -54,7 +53,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 	}, [shopifyProduct])
 
 	return (
-		<div className='flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 w-full pb-[60px]'>
+		<div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 w-full pb-[60px]">
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>
 				<ShopifyProductImages
 					product={product}

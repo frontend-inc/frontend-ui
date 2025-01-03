@@ -17,7 +17,6 @@ type ShopifyCollectionSortButtonProps = {
 const ShopifyCollectionSortButton: React.FC<
 	ShopifyCollectionSortButtonProps
 > = (props) => {
-  
 	const { sortKey = 'COLLECTION_DEFAULT', reverse, handleClick } = props
 
 	const [open, setOpen] = useState(false)
@@ -36,15 +35,13 @@ const ShopifyCollectionSortButton: React.FC<
 	return (
 		<Popover isOpen={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
-				<Button 
-          variant="ghost" 
-          fullWidth 
-          onPress={handleOpen}
-          endContent={ 
-            <ArrowUpDown className="h-4 w-4" />
-          }
-        >
-					{currentSortLabel}					
+				<Button
+					variant="ghost"
+					fullWidth
+					onPress={handleOpen}
+					endContent={<ArrowUpDown className="h-4 w-4" />}
+				>
+					{currentSortLabel}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent>
@@ -53,7 +50,7 @@ const ShopifyCollectionSortButton: React.FC<
 					value={sortKey}
 					reverse={reverse}
 					options={COLLECTION_SORT_OPTIONS}
-          //@ts-ignore
+					//@ts-ignore
 					handleClick={handleSortClick}
 				/>
 			</PopoverContent>

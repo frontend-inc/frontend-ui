@@ -32,9 +32,9 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 	const { name, label, variant: fieldVariant, icon } = field
 	let value = get(resource, name)
 
-  if(value === null || value === undefined) {
-    value = '-'
-  }
+	if (value === null || value === undefined) {
+		value = '-'
+	}
 
 	const components = {
 		boolean: FieldBoolean,
@@ -105,8 +105,6 @@ const ShowField: React.FC<ShowFieldProps> = (props) => {
 
 	const Component = components[fieldVariant] || FieldString
 	const componentProps = variantProps?.[fieldVariant] || {}
-	
-
 
 	return (
 		<div className="w-full p-3 rounded-lg bg-content1/40 hover:bg-content2/60">

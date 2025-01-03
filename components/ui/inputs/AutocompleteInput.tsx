@@ -2,11 +2,7 @@
 
 import React from 'react'
 import { TextInputProps } from '../../../types'
-import { 
-  Avatar,
-  Autocomplete, 
-  AutocompleteItem 
-} from '@nextui-org/react'
+import { Avatar, Autocomplete, AutocompleteItem } from '@nextui-org/react'
 
 type AutocompleteInput = TextInputProps & {
 	handleInputChange: (keywords: string) => void
@@ -15,7 +11,7 @@ type AutocompleteInput = TextInputProps & {
 export default function AutocompleteInput(props: AutocompleteInput) {
 	const {
 		name = 'title',
-    value='',
+		value = '',
 		label,
 		placeholder = 'Search',
 		handleChange,
@@ -23,44 +19,40 @@ export default function AutocompleteInput(props: AutocompleteInput) {
 		options = [],
 	} = props
 
-  const handleKeywordsChange = (input: string) => {
-    if(input){
-      handleInputChange(input)
-    }    
-  }
+	const handleKeywordsChange = (input: string) => {
+		if (input) {
+			handleInputChange(input)
+		}
+	}
 
 	const handleSelectionChange = (value: any) => {
-    handleChange({
+		handleChange({
 			target: {
 				name,
-				value
+				value,
 			},
-		}) 
-  }
+		})
+	}
 
 	return (
-    <Autocomplete 
-      name={name}
-      label={ label }
-      placeholder={ placeholder }
-      onInputChange={ handleKeywordsChange}
-      items={ options }
-      onSelectionChange={ handleSelectionChange }
-    >
-      {((option) => (
-        <AutocompleteItem 
-          key={ option.value }
-          startContent={
-            <Avatar 
-              alt="Argentina" 
-              src={ option?.image } 
-              radius="sm"              
-            />
-          }
-        > 
-          { option.label }
-        </AutocompleteItem>
-      ))}
-    </Autocomplete>
+		<Autocomplete
+			name={name}
+			label={label}
+			placeholder={placeholder}
+			onInputChange={handleKeywordsChange}
+			items={options}
+			onSelectionChange={handleSelectionChange}
+		>
+			{(option) => (
+				<AutocompleteItem
+					key={option.value}
+					startContent={
+						<Avatar alt="Argentina" src={option?.image} radius="sm" />
+					}
+				>
+					{option.label}
+				</AutocompleteItem>
+			)}
+		</Autocomplete>
 	)
 }

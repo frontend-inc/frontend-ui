@@ -33,7 +33,12 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = (props) => {
 	if (!calendlyUrl) return null
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<Button size="lg" variant="solid" color="primary" onPress={() => setOpen(true)}>
+			<Button
+				size="lg"
+				variant="solid"
+				color="primary"
+				onPress={() => setOpen(true)}
+			>
 				{buttonText}
 			</Button>
 			<Drawer open={open} handleClose={() => setOpen(false)}>

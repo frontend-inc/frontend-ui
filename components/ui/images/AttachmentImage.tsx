@@ -10,17 +10,14 @@ type AttachmentImageProps = {
 }
 
 const AttachmentImage: React.FC<AttachmentImageProps> = (props) => {
-
-  const {
-    icon = 'ri-file-2-fill',
-  } = props
+	const { icon = 'ri-file-2-fill' } = props
 
 	return (
-    <Avatar className="rounded-lg">
-      <AvatarFallback className="bg-accent rounded-lg">
-        <RemixIcon name={ icon } size="lg" className="text-accent-foreground" />
-      </AvatarFallback>
-    </Avatar>    
+		<Avatar className="rounded-lg">
+			<AvatarFallback className="bg-accent rounded-lg">
+				<RemixIcon name={icon} size="lg" className="text-accent-foreground" />
+			</AvatarFallback>
+		</Avatar>
 	)
 }
 

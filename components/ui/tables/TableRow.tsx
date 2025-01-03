@@ -46,7 +46,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					<div className="mx-2">
 						<Checkbox
 							name={`select-${row.id}`}
-              //@ts-ignore
+							//@ts-ignore
 							isSelected={selected}
 							onValueChange={handleSelect ? () => handleSelect(row) : undefined}
 						/>
@@ -58,7 +58,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					<div className="flex flex-row space-x-1">
 						{enableShow && (
 							<Button
-								size="sm"								
+								size="sm"
 								onPress={handleShow ? () => handleShow(row) : undefined}
 							>
 								View

@@ -27,11 +27,7 @@ const ShopifyCartDiscountCodeInput: React.FC = () => {
 				handleChange={handleChange}
 				placeholder="Enter discount code"
 			/>
-			<Button
-				onPress={handleSubmit}
-				variant="ghost"
-				isLoading={loading}
-			>
+			<Button onPress={handleSubmit} variant="ghost" isLoading={loading}>
 				Apply
 			</Button>
 		</div>

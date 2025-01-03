@@ -6,14 +6,15 @@ import { Image } from '../../components'
 import { ImageProps } from '../../components/ui/images/Image'
 import { SectionProps } from '../../types'
 
-type UIImageProps = SectionProps & ImageProps & {
+type UIImageProps = SectionProps &
+	ImageProps & {
 		title?: string
-    image: string
+		image: string
 	}
 
 const UIImage: React.FC<UIImageProps> = (props) => {
 	const {
-    image,
+		image,
 		title,
 		variant,
 		bgColor,
@@ -21,7 +22,7 @@ const UIImage: React.FC<UIImageProps> = (props) => {
 		bgOverlay,
 		mode,
 		py,
-		px,    
+		px,
 		maxWidth = 'sm',
 		aspectRatio = 1.5,
 		requireAuth,

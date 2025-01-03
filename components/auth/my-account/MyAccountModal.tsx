@@ -45,7 +45,7 @@ const MyAccountModal: React.FC<MyAccountModalProps> = (props) => {
 
 	return (
 		<Modal
-      maxWidth='sm'
+			maxWidth="sm"
 			open={myAccountOpen}
 			handleClose={
 				currentTab != 0 ? () => setCurrentTab(0) : () => setMyAccountOpen(false)

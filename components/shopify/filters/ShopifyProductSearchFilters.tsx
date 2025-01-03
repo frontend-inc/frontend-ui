@@ -30,19 +30,15 @@ const ShopifyProductSearchFilters: React.FC<
 		handleFilterArray,
 	} = props
 
-  const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	return (
 		<>
-      <Button variant="ghost" fullWidth>
-        <SlidersHorizontal className="mr-2 h-4 w-4" />
-        Filters
-      </Button>
-			<Sheet 
-        open={open}
-        handleClose={() => setOpen(false)}
-        title="Filter"
-      >
+			<Button variant="ghost" fullWidth>
+				<SlidersHorizontal className="mr-2 h-4 w-4" />
+				Filters
+			</Button>
+			<Sheet open={open} handleClose={() => setOpen(false)} title="Filter">
 				<ProductFiltersList
 					filters={filters}
 					options={options}
@@ -50,8 +46,8 @@ const ShopifyProductSearchFilters: React.FC<
 					handleFilter={handleFilter}
 					handleFilterArray={handleFilterArray}
 				/>
-		  </Sheet>
-    </>
+			</Sheet>
+		</>
 	)
 }
 

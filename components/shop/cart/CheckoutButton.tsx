@@ -29,14 +29,14 @@ const CheckoutButton = () => {
 	const cartDisabled = cart?.total_items === 0 ? true : false
 
 	return (
-		<Button     
-      variant="solid"
-      color="primary"
-      fullWidth 
-      isLoading={loading} 
-      onPress={handleClick} 
-      size="lg"
-    >
+		<Button
+			variant="solid"
+			color="primary"
+			fullWidth
+			isLoading={loading}
+			onPress={handleClick}
+			size="lg"
+		>
 			Checkout {!cartDisabled && cart?.display_subtotal}
 		</Button>
 	)

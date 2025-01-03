@@ -12,13 +12,8 @@ interface ResourceToolbarModalProps {
 }
 
 export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
+	const { open, handleClose, children } = props || {}
 
-  const {
-    open,
-    handleClose,
-    children,
-  } = props || {}
-  
 	return (
 		<div
 			className={cn(
@@ -32,9 +27,9 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 						<div className="w-10 h-10"></div>
 						{children}
 						<Button
-              isIconOnly 
-							variant="ghost"							
-              radius='full'
+							isIconOnly
+							variant="ghost"
+							radius="full"
 							className="min-w-8 w-8 h-8"
 							onPress={handleClose}
 						>

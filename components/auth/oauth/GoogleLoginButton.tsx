@@ -42,11 +42,11 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = (props) => {
 	return (
 		//@ts-ignore
 		<Button
-			variant="solid"      
+			variant="solid"
 			//@ts-ignore
 			onPress={handleLogin}
-			isLoading={loading}      
-      size='lg'
+			isLoading={loading}
+			size="lg"
 		>
 			<div className="mr-2">
 				<svg

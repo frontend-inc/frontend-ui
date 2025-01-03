@@ -34,24 +34,22 @@ const ShopifyProductSortButton: React.FC<ShopifyProductSortButtonProps> = (
 
 	return (
 		<>
-			<Button 
-        variant="ghost" 
-        fullWidth 
-        onPress={handleOpen}
-        endContent={ 
-          <ArrowUpDown className="h-4 w-4" />
-        }
-        >
-				{currentSortLabel}				
+			<Button
+				variant="ghost"
+				fullWidth
+				onPress={handleOpen}
+				endContent={<ArrowUpDown className="h-4 w-4" />}
+			>
+				{currentSortLabel}
 			</Button>
 			<Sheet title="Sort by" open={open} handleClose={() => setOpen(false)}>
-        <ShopifySortList
-          enableIcons
-          value={sortKey}
-          reverse={reverse}
-          options={PRODUCT_SORT_OPTIONS}
-          handleClick={handleSortClick}
-        />
+				<ShopifySortList
+					enableIcons
+					value={sortKey}
+					reverse={reverse}
+					options={PRODUCT_SORT_OPTIONS}
+					handleClick={handleSortClick}
+				/>
 			</Sheet>
 		</>
 	)

@@ -12,14 +12,13 @@ type SimplePageProps = {
 }
 
 const SimplePage: React.FC<SimplePageProps> = (props) => {
-
-  const {
-    title,
-    subtitle,
-    body,
-    html = false,
-    disablePadding = false,
-  } = props || {}
+	const {
+		title,
+		subtitle,
+		body,
+		html = false,
+		disablePadding = false,
+	} = props || {}
 
 	return (
 		<div
@@ -32,12 +31,10 @@ const SimplePage: React.FC<SimplePageProps> = (props) => {
 					{title}
 				</Typography>
 				<Typography variant="caption" className="block text-center">
-					{ subtitle }
+					{subtitle}
 				</Typography>
-				{html ? (					
-					<div 
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: body }} />					
+				{html ? (
+					<div className="prose" dangerouslySetInnerHTML={{ __html: body }} />
 				) : (
 					<Typography variant="body1" className="whitespace-pre-line">
 						{body}

@@ -7,23 +7,19 @@ import { getInitials } from '../../../helpers'
 type UserAvatarProps = {
 	user: any
 	variant?: 'circular' | 'rounded'
-	size?: 'sm' | 'md' | 'lg' 
+	size?: 'sm' | 'md' | 'lg'
 	enableGradient?: boolean
 	className?: string
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = (props) => {
-	const {
-		user,
-		size = 'md',
-		className,
-	} = props
-  
+	const { user, size = 'md', className } = props
+
 	return (
 		<Avatar
-      radius='md'
-      isBordered
-      showFallback
+			radius="md"
+			isBordered
+			showFallback
 			name={getInitials(user?.name)}
 			size={size}
 			src={user?.avatar?.url}

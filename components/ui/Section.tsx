@@ -47,41 +47,42 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'px-48',
 	}
 
-	const backgroundStyle = bgImage ? { 
-    backgroundImage: `url(${bgImage})` } : {
-    backgroundColor: bgColor,
-  }
-  
+	const backgroundStyle = bgImage
+		? {
+				backgroundImage: `url(${bgImage})`,
+		  }
+		: {
+				backgroundColor: bgColor,
+		  }
+
 	return (
 		<section
 			className={cn(
-        'z-0',
+				'z-0',
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
-        theme && mode && `${theme}-${mode}`,
+				theme && mode && `${theme}-${mode}`,
 				pyClasses[py],
 				pxClasses[px],
 				!bgImage && bgColor,
-				bgImage && bgOverlay &&
+				bgImage &&
+					bgOverlay &&
 					"after:content-[''] after:absolute after:inset-0 after:bg-black/50"
 			)}
 			style={backgroundStyle}
 		>
 			<div
 				className={cn(
-          'relative z-[1]',
+					'relative z-[1]',
 					variant == 'outline' && 'p-8 border-2 border-divider rounded-xl',
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
-          variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content1/50',
+					variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content1/50',
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}
 			>
 				<div
-					className={cn(
-						'w-full',
-						'transition-all duration-300 ease-in-out'
-					)}
+					className={cn('w-full', 'transition-all duration-300 ease-in-out')}
 				>
 					<AuthGuard requireAuth={requireAuth}>{children}</AuthGuard>
 				</div>

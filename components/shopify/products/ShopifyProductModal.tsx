@@ -23,11 +23,7 @@ const ShopifyProductModal: React.FC<ShopifyProductModalProps> = (props) => {
 	} = props
 
 	return (
-		<Modal 
-      open={open} 
-      handleClose={handleClose} 
-      maxWidth="5xl" 
-    >
+		<Modal open={open} handleClose={handleClose} maxWidth="5xl">
 			<BlurFade delay={0.25} inView>
 				<ShopifyProductDetails
 					disableZoom

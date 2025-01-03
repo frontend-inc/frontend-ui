@@ -11,8 +11,7 @@ export type ShowVideoModalProps = {
 }
 
 const ShowVideoModal: React.FC<ShowVideoModalProps> = (props) => {
-
-  const { openShow, setOpenShow, resource } = useResourceContext()
+	const { openShow, setOpenShow, resource } = useResourceContext()
 
 	if (!resource?.video?.url) return null
 	return (

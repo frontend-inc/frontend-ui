@@ -19,30 +19,29 @@ type CartQuantityInputProps = {
 }
 
 const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
-	const {
-		quantity,
-		handleAddQuantity,
-		handleRemoveQuantity,
-	} = props
+	const { quantity, handleAddQuantity, handleRemoveQuantity } = props
 
 	return (
-		<ButtonGroup variant="light" className="border-2 border-divider rounded-lg" size='sm'>
+		<ButtonGroup
+			variant="light"
+			className="border-2 border-divider rounded-lg"
+			size="sm"
+		>
 			<Button
-				isIconOnly								
-        size='sm'
+				isIconOnly
+				size="sm"
+				className="min-w-8"
 				onPress={handleRemoveQuantity}
 			>
 				<Minus size={20} />
 			</Button>
-			<Button
-        size='sm'
-				isIconOnly				
-			>
+			<Button isIconOnly size="sm" className="min-w-8">
 				{quantity}
 			</Button>
 			<Button
-        size='sm'
-				isIconOnly				
+				isIconOnly
+				size="sm"
+				className="min-w-8"
 				onPress={handleAddQuantity}
 			>
 				<Plus size={20} />
@@ -90,19 +89,19 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 					loading && 'opacity-30'
 				)}
 			>
-				<div className="flex space-x-4 items-center pt-1">					
-          <Badge content={ quantity}>
-            <button className="p-0" onClick={handleClick}>
-              <Image
-                alt={product?.title || ''}
-                // @ts-ignore
-                src={product?.image?.url}
-                height={72}
-                width={72}									
-                className="w-full cursor-pointer object-cover"
-              />
-            </button>
-            </Badge>
+				<div className="flex space-x-4 items-center pt-1">
+					<Badge color="primary" content={quantity}>
+						<button className="p-0" onClick={handleClick}>
+							<Image
+								alt={product?.title || ''}
+								// @ts-ignore
+								src={product?.image?.url}
+								height={72}
+								width={72}
+								className="w-full cursor-pointer object-cover"
+							/>
+						</button>
+					</Badge>
 					<div className="flex flex-col space-y-1">
 						<Typography variant="body1">{product?.title}</Typography>
 						<Typography className="text-foreground/70" variant="body2">
@@ -115,18 +114,18 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 						/>
 					</div>
 				</div>
-        <Button 
-          isIconOnly
-          size="sm"
-          variant="light"
-          radius="full"
-          onPress={handleRemoveFromCart}
-        >
+				<Button
+					isIconOnly
+					size="sm"
+					variant="light"
+					radius="full"
+					onPress={handleRemoveFromCart}
+				>
 					<Icon
 						name="X"
 						className="h-4 w-4 text-foreground/70 hover:text-foreground"
 					/>
-        </Button>				
+				</Button>
 			</div>
 			<ProductModal
 				open={open}

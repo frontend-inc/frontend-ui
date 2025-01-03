@@ -156,12 +156,8 @@ export default function TableFilterForm({
 				handleChange={handleFilterChange}
 				handleRemove={handleRemoveFilter}
 			/>
-			<Button
-        isIconOnly 
-				variant="ghost"				
-				onPress={handleAddFilter}
-			>
-				<Plus className="w-4 h-4 text-foreground" />				
+			<Button isIconOnly variant="ghost" onPress={handleAddFilter}>
+				<Plus className="w-4 h-4 text-foreground" />
 			</Button>
 			<button
 				className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors duration-200 flex items-center justify-center space-x-2"
@@ -174,12 +170,10 @@ export default function TableFilterForm({
 				)}
 				<span>Search</span>
 			</button>
-			<Button				
+			<Button
 				onPress={handleClearFilters}
-        startContent={
-          <FilterIcon className="w-4 h-4" />
-        }
-			>				
+				startContent={<FilterIcon className="w-4 h-4" />}
+			>
 				Reset filters
 			</Button>
 		</div>

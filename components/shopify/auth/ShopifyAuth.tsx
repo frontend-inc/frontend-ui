@@ -17,12 +17,12 @@ const DesktopAuthButton: React.FC<DesktopAuthButtonProps> = (props) => {
 	const { handleClick, icon } = props
 
 	return (
-		<Button 
-      isIconOnly 
-      variant="ghost"       
-      onPress={handleClick} 
-      className="max-w-8"
-    >
+		<Button
+			isIconOnly
+			variant="ghost"
+			onPress={handleClick}
+			className="max-w-8"
+		>
 			<RemixIcon name={icon} />
 		</Button>
 	)
@@ -42,12 +42,10 @@ const MobileShopifyAuthButton: React.FC<MobileShopifyAuthButtonProps> = (
 		<Button
 			variant="ghost"
 			onPress={handleClick}
-      startContent={ 
-        <RemixIcon name={icon} />
-      }
+			startContent={<RemixIcon name={icon} />}
 		>
-      Orders
- 		</Button>
+			Orders
+		</Button>
 	)
 }
 

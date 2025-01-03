@@ -35,17 +35,17 @@ const MyAccountForm: React.FC<MyAccountFormProps> = (props) => {
 	]
 
 	return (
-    <Form
-      loading={loading}
-      errors={errors}
-      //@ts-ignore
-      fields={formFields}
-      resource={user}
-      handleChange={handleChange}
-      handleRemove={handleDeleteAvatar}
-      handleSubmit={handleSubmit}
-      buttonText="Save"
-    />
+		<Form
+			loading={loading}
+			errors={errors}
+			//@ts-ignore
+			fields={formFields}
+			resource={user}
+			handleChange={handleChange}
+			handleRemove={handleDeleteAvatar}
+			handleSubmit={handleSubmit}
+			buttonText="Save"
+		/>
 	)
 }
 

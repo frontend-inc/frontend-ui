@@ -27,28 +27,21 @@ export type ShopifyProductSearchProps = {
 }
 
 const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
-
-  const {
-    options,
-    enableSearch = false,
-    enableFilters = false,
-    enableSorting = false,
-    enableAddToCart = false,
-    enableQuantity = false,
-  } = props || {}
+	const {
+		options,
+		enableSearch = false,
+		enableFilters = false,
+		enableSorting = false,
+		enableAddToCart = false,
+		enableQuantity = false,
+	} = props || {}
 
 	let { handle } = useParams() as any
 	if (handle == 'index' || handle == undefined) handle = ''
 
 	const [keywords, setKeywords] = useState('')
 
-	const {
-		loading,
-		cursor,
-		hasNextPage,
-		products,
-		findProducts,		
-	} = useProducts()
+	const { loading, cursor, hasNextPage, products, findProducts } = useProducts()
 
 	const [sortKey, setSortKey] = useState<ProductSortKeyType>('BEST_SELLING')
 
@@ -73,7 +66,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
 			query: keywords,
 			sortKey,
 			reverse,
-			after: cursor
+			after: cursor,
 		})
 	}
 
@@ -88,7 +81,7 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
 	}
 
 	useEffect(() => {
-		findProducts({      
+		findProducts({
 			sortKey: sortKey,
 			reverse: reverse,
 		})
@@ -98,15 +91,15 @@ const ShopifyProductSearch: React.FC<ShopifyProductSearchProps> = (props) => {
 		<div className="flex flex-col space-y-4 w-full">
 			<div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 w-full items-center">
 				{enableSearch && (
-          <div className="w-full sm:max-w-screen-sm">
-            <SearchInput
-              label="Search"
-              value={keywords}
-              handleChange={handleChange}
-              handleSearch={handleSearch}
-              placeholder={'Enter keywords...'}
-            />
-          </div>
+					<div className="w-full sm:max-w-screen-sm">
+						<SearchInput
+							label="Search"
+							value={keywords}
+							handleChange={handleChange}
+							handleSearch={handleSearch}
+							placeholder={'Enter keywords...'}
+						/>
+					</div>
 				)}
 
 				{enableFilters && (

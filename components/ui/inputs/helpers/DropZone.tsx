@@ -11,12 +11,11 @@ type DropZoneProps = {
 }
 
 const DropZone: React.FC<DropZoneProps> = (props) => {
-
-  const {
-    onDrop,
-    label = 'Upload file',
-    dropLabel = 'Drop file here',
-  } = props || {}
+	const {
+		onDrop,
+		label = 'Upload file',
+		dropLabel = 'Drop file here',
+	} = props || {}
 
 	const [loading, setLoading] = useState(false)
 
@@ -42,14 +41,11 @@ const DropZone: React.FC<DropZoneProps> = (props) => {
 				}
 			}
 			reader.readAsDataURL(file)
-		}, [onDrop]
+		},
+		[onDrop]
 	)
 
-	const { 
-    getRootProps, 
-    getInputProps, 
-    isDragActive 
-  } = useDropzone({
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		onDrop: handleOnDrop,
 	})
 

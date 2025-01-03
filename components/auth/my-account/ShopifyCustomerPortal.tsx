@@ -23,12 +23,10 @@ const ShopifyCustomerPortal = () => {
 			title="Shopify Customer Portal"
 			description="Manage your order history and returns."
 			buttons={
-				<Button 
-          onPress={handleClick} 
-          endContent={
-            <RemixIcon name='ri-external-link-line' />
-          }
-        >
+				<Button
+					onPress={handleClick}
+					endContent={<RemixIcon name="ri-external-link-line" />}
+				>
 					Open Customer Portal
 				</Button>
 			}

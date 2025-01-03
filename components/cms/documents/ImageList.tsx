@@ -8,13 +8,13 @@ export type ImageListProps = DocumentListProps
 
 const ImageList: React.FC<ImageListProps> = (props) => {
 	return (
-    <DocumentList 
-      {...props} 
-      style="image" 
-      layout="grid"
-      show={ShowImageModal} 
-    />
-  )
+		<DocumentList
+			{...props}
+			style="image"
+			layout="grid"
+			show={ShowImageModal}
+		/>
+	)
 }
 
 export default ImageList

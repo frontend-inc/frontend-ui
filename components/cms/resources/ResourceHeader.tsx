@@ -106,7 +106,7 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 			>
 				{secondaryAction}
 				{enableExport && (
-					<Button						
+					<Button
 						variant="ghost"
 						className="w-full sm:w-auto"
 						onPress={handleExport}
@@ -122,12 +122,11 @@ const ResourceHeader: React.FC<ResourceHeaderProps> = (props) => {
 				)}
 				{(enableCreate || secondaryAction) && (
 					<Button
-            color="primary"
-            variant="solid"
+						color="primary"
+						variant="solid"
 						onPress={handleAdd}
-            className="w-full sm:w-auto"
-						startContent={
-              <RiAddFill className="text-primary-foreground" />}
+						className="w-full sm:w-auto"
+						startContent={<RiAddFill className="text-primary-foreground" />}
 					>
 						{buttonText}
 					</Button>

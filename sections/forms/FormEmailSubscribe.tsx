@@ -62,7 +62,7 @@ const FormEmailSubscribe: React.FC<FormEmailSubscribeProps> = (props) => {
 					size="2/3"
 					className="items-center h-full justify-center"
 				>
-					<EmailSubscribe size='lg' {...rest} />
+					<EmailSubscribe size="lg" {...rest} />
 				</Stack>
 			</Stack>
 		</Section>

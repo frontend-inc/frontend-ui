@@ -29,7 +29,8 @@ const ShopifyColorVariantsOptions: React.FC<
 							className={cn(
 								'p-0 overflow-hidden rounded-lg border-3 border-transparent hover:opacity-85 transition-opacity',
 								'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
-								selected === value && 'ring-2 ring-offset-2 ring-primary opacity-100'
+								selected === value &&
+									'ring-2 ring-offset-2 ring-primary opacity-100'
 							)}
 							onClick={() => handleChange(name, value)}
 						>

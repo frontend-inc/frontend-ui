@@ -20,7 +20,7 @@ const ShopifyOrderItem: React.FC<ShopifyOrderItemProps> = ({
 }) => {
 	return (
 		<Card
-      isPressable
+			isPressable
 			className={cn(
 				'w-full justify-start text-left hover:bg-content2',
 				className

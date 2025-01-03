@@ -22,7 +22,7 @@ const Label: React.FC<LabelProps> = (props) => {
 	if (!children) return null
 	return (
 		<Typography
-      variant='caption'
+			variant="caption"
 			className={cn(
 				'px-3 py-1 text-xs tracking-wider text-foreground',
 				textAlign && textAlignClasses[textAlign],

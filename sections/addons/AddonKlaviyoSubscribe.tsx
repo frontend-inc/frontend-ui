@@ -7,7 +7,7 @@ import { KlaviyoSubscribeProps } from '../../components/addons/klaviyo/KlaviyoSu
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type AddonKlaviyoSubscribeProps = SectionProps &
-  StackProps & 
+	StackProps &
 	HeadingProps &
 	KlaviyoSubscribeProps
 
@@ -61,9 +61,9 @@ const AddonKlaviyoSubscribe: React.FC<AddonKlaviyoSubscribeProps> = (props) => {
 					size="2/3"
 					className="items-center h-full justify-center"
 				>
-			    <KlaviyoSubscribe {...rest} />
-        </Stack>
-      </Stack>
+					<KlaviyoSubscribe {...rest} />
+				</Stack>
+			</Stack>
 		</Section>
 	)
 }

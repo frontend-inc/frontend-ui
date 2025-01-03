@@ -25,44 +25,35 @@ export type CardsProps = {
 }
 
 type CardItemsProps = {
-  item: CardType
-  enableGradient?: boolean
-  enableOverlay?: boolean
-  enablePadding?: boolean
-  handleClick: (path: string) => void
+	item: CardType
+	enableGradient?: boolean
+	enableOverlay?: boolean
+	enablePadding?: boolean
+	handleClick: (path: string) => void
 }
 
 const CardItems: React.FC<CardItemsProps> = (props) => {
-  
-  const { 
-    item,
-    enableGradient,
-    enableOverlay,
-    handleClick
-  } = props || {}
-  
-  return(
-    <Card
-      height={240}      
-      label={item?.label}
-      image={item?.image}
-      title={item?.title}
-      subtitle={item?.subtitle}
-      actions={
-        item?.buttonText && (
-          <Button 
-            fullWidth 
-            onPress={() => handleClick(item?.path)}
-          >
-            {item?.buttonText}
-          </Button>
-        )
-      }
-      handleClick={() => handleClick(item?.path)}
-      enableGradient={enableGradient}
-      enableOverlay={enableOverlay}
-    />
-  )
+	const { item, enableGradient, enableOverlay, handleClick } = props || {}
+
+	return (
+		<Card
+			height={240}
+			label={item?.label}
+			image={item?.image}
+			title={item?.title}
+			subtitle={item?.subtitle}
+			actions={
+				item?.buttonText && (
+					<Button fullWidth onPress={() => handleClick(item?.path)}>
+						{item?.buttonText}
+					</Button>
+				)
+			}
+			handleClick={() => handleClick(item?.path)}
+			enableGradient={enableGradient}
+			enableOverlay={enableOverlay}
+		/>
+	)
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
@@ -73,39 +64,39 @@ const Cards: React.FC<CardsProps> = (props) => {
 	return (
 		<div className="w-full justify-center flex flow-row">
 			<div className="container mx-auto max-w-screen-2xl">
-				  {layout === 'carousel' ? (
-            <Swipeable enableArrows itemsPerSlide={3} arrowHeight={40}>
-              { items?.map((item, idx) => (
-                <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-                  <div className="py-2 w-full">
-                    <CardItems 
-                      enablePadding 
-                      item={item} 
-                      enableGradient={enableGradient} 
-                      enableOverlay={enableOverlay} 
-                      handleClick={onClick }
-                    />
-                  </div>
-                </BlurFade>
-              ))}              
-            </Swipeable>
+				{layout === 'carousel' ? (
+					<Swipeable enableArrows itemsPerSlide={3} arrowHeight={40}>
+						{items?.map((item, idx) => (
+							<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
+								<div className="py-2 w-full">
+									<CardItems
+										enablePadding
+										item={item}
+										enableGradient={enableGradient}
+										enableOverlay={enableOverlay}
+										handleClick={onClick}
+									/>
+								</div>
+							</BlurFade>
+						))}
+					</Swipeable>
 				) : (
 					<div
 						className={
 							'w-full justify-center grid grid-cols-1 sm:grid-cols-3 gap-6'
 						}
 					>
-						{ items?.map((item, idx) => (
-              <BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-                <CardItems 
-                  enablePadding 
-                  item={item} 
-                  enableGradient={enableGradient} 
-                  enableOverlay={enableOverlay} 
-                  handleClick={onClick }
-                />
-              </BlurFade>
-            ))}   
+						{items?.map((item, idx) => (
+							<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
+								<CardItems
+									enablePadding
+									item={item}
+									enableGradient={enableGradient}
+									enableOverlay={enableOverlay}
+									handleClick={onClick}
+								/>
+							</BlurFade>
+						))}
 					</div>
 				)}
 				{items?.length === 0 && (

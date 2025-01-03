@@ -35,13 +35,13 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		textAlign = 'left',
 		className,
 		children,
-		name='text',
+		name = 'text',
 		editable,
 		handleChange,
 	} = props
 
-  const [text, setText] = useState(children)
-  const [debouncedText] = useDebounce(text, 350)
+	const [text, setText] = useState(children)
+	const [debouncedText] = useDebounce(text, 350)
 
 	const variantClasses = {
 		h1: 'text-5xl sm:text-6xl font-bold tracking-tight',
@@ -85,15 +85,15 @@ const Typography: React.FC<TypographyProps> = (props) => {
 
 	const handleInputChange = (ev: SyntheticEventType) => {
 		if (!handleChange) return null
-    //@ts-ignore
-    setText(ev.target.innerText)		
+		//@ts-ignore
+		setText(ev.target.innerText)
 	}
 
-  useEffect(() => {
-    if(handleChange && debouncedText !== children) {
-      handleChange({ target: { name, value: debouncedText } })
-    }
-  }, [debouncedText])
+	useEffect(() => {
+		if (handleChange && debouncedText !== children) {
+			handleChange({ target: { name, value: debouncedText } })
+		}
+	}, [debouncedText])
 
 	return (
 		<div

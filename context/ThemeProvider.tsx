@@ -16,20 +16,19 @@ type ThemeProviderProps = {
 }
 
 type GoogleFont = {
-  font: string
-  weights: number[]
+	font: string
+	weights: number[]
 }
 
 const ThemeProvider = (props: ThemeProviderProps) => {
-	
-  const [googleFonts, setGoogleFonts] = useState<any>()
+	const [googleFonts, setGoogleFonts] = useState<any>()
 
-  const {
+	const {
 		mode = 'dark',
 		theme = 'dark',
 		primaryColor,
-		headerFont='Inter',
-		bodyFont='Inter',
+		headerFont = 'Inter',
+		bodyFont = 'Inter',
 		borderRadius,
 		children,
 	} = props || {}
@@ -57,42 +56,38 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 			)
 		}
 	}, [headerFont, bodyFont, borderRadius])
-  
-    useEffect(() => {
-      if (headerFont || bodyFont) {
-        let fonts: GoogleFont[] = [] 
-        if (headerFont) {
-          fonts.push({
-            font: headerFont,
-            weights: [400, 600, 700, 800, 900],
-          })
-        }
-        if (bodyFont) {
-          fonts.push({
-            font: bodyFont,
-            weights: [400, 600, 700, 800, 900],
-          })
-        }
-        setGoogleFonts(fonts)
-      }
-    }, [headerFont, bodyFont])
 
-  let themeClass = `${theme}-${mode}`
-  if(theme == 'light'){
-    themeClass = `light`
-  }
-  if(theme == 'dark'){
-    themeClass = `dark`
-  }
+	useEffect(() => {
+		if (headerFont || bodyFont) {
+			let fonts: GoogleFont[] = []
+			if (headerFont) {
+				fonts.push({
+					font: headerFont,
+					weights: [400, 600, 700, 800, 900],
+				})
+			}
+			if (bodyFont) {
+				fonts.push({
+					font: bodyFont,
+					weights: [400, 600, 700, 800, 900],
+				})
+			}
+			setGoogleFonts(fonts)
+		}
+	}, [headerFont, bodyFont])
+
+	let themeClass = `${theme}-${mode}`
+	if (theme == 'light') {
+		themeClass = `light`
+	}
+	if (theme == 'dark') {
+		themeClass = `dark`
+	}
 
 	return (
 		<ThemeContext.Provider value={value}>
-      { googleFonts?.length > 0 && (
-        <GoogleFontLoader fonts={googleFonts} />
-      )}
-      <NextUIProvider className={themeClass}>			
-				{children}			
-      </NextUIProvider>
+			{googleFonts?.length > 0 && <GoogleFontLoader fonts={googleFonts} />}
+			<NextUIProvider className={themeClass}>{children}</NextUIProvider>
 		</ThemeContext.Provider>
 	)
 }

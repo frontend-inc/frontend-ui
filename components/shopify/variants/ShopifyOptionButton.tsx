@@ -15,17 +15,9 @@ type ShopifyOptionButtonProps = {
 }
 
 const ShopifyOptionButton: React.FC<ShopifyOptionButtonProps> = (props) => {
+	const { value, name, active, handleClick, children, width, justifyContent } =
+		props
 
-  const {
-    value,
-    name,
-    active,
-    handleClick,
-    children,
-    width,
-    justifyContent,
-  } = props
-  
 	return (
 		<Button
 			variant={active ? 'solid' : 'ghost'}

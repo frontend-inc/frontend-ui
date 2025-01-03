@@ -2,12 +2,7 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import {
-	Drawer,
-	RatingInput,
-	TextArea,
-	TextInput,
-} from '../..'
+import { Drawer, RatingInput, TextArea, TextInput } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { SyntheticEventType } from '../../../types'
 
@@ -54,7 +49,7 @@ const ProductReviewForm: React.FC<ProductReviewFormProps> = () => {
 				<Button
 					fullWidth
 					variant="solid"
-          color="primary"
+					color="primary"
 					onPress={handleSubmit}
 					disabled={loading}
 					isLoading={loading}

@@ -3,12 +3,7 @@
 import React from 'react'
 import { Typography } from '../../../components'
 import { Image } from '@nextui-org/react'
-import {
-	ButtonActions,
-	ExpandableText,
-	ListFields,
-	SocialFields,
-} from '../..'
+import { ButtonActions, ExpandableText, ListFields, SocialFields } from '../..'
 import { SocialFieldType, MetafieldType, ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 
@@ -35,12 +30,8 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 			<div className="flex flex-col sm:flex-row items-start sm:space-x-4 max-w-[600px]">
 				<div className="flex flex-col items-center">
 					{avatar?.url && (
-            <Image 
-              radius="full" 
-              src={user?.avatar?.url} 
-              alt={name}
-            />
-          )}
+						<Image radius="full" src={user?.avatar?.url} alt={name} />
+					)}
 					<SocialFields fields={socialFields} resource={user} />
 				</div>
 				<div className="flex flex-col space-y-1">
@@ -59,10 +50,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 					<div className="flex flex-col space-y-1">
 						<ListFields resource={user} fields={displayFields} />
 						{about_me && (
-							<ExpandableText
-								text={about_me}
-								className="text-foreground/70"
-							/>
+							<ExpandableText text={about_me} className="text-foreground/70" />
 						)}
 					</div>
 				</div>

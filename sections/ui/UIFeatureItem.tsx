@@ -6,13 +6,10 @@ import { FeatureItem } from '../../components'
 import { FeatureItemProps } from '../../components/web/feature-item/FeatureItem'
 import { SectionProps, StackProps } from '../../types'
 
-type UIFeatureItemProps = SectionProps &
-	StackProps &
-	FeatureItemProps
+type UIFeatureItemProps = SectionProps & StackProps & FeatureItemProps
 
 const UIFeatureItem: React.FC<UIFeatureItemProps> = (props) => {
-	
-  const {
+	const {
 		variant,
 		bgColor,
 		bgImage,
@@ -37,13 +34,9 @@ const UIFeatureItem: React.FC<UIFeatureItemProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant} 
+			variant={variant}
 		>
-			<FeatureItem 
-        {...rest} 
-        editable={editable}
-        handleChange={handleChange}
-      />
+			<FeatureItem {...rest} editable={editable} handleChange={handleChange} />
 		</Section>
 	)
 }

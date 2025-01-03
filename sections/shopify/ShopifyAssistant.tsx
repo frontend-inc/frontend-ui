@@ -11,12 +11,11 @@ type ShopifyAssistantProps = SectionProps &
 	ShopifyAiAssistantProps
 
 const ShopifyAssistant: React.FC<ShopifyAssistantProps> = (props) => {
-
 	const {
 		label,
 		title,
 		subtitle,
-		textAlign='center',
+		textAlign = 'center',
 		bgColor,
 		bgImage,
 		bgOverlay,

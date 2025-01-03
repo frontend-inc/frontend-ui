@@ -27,20 +27,15 @@ const TableFilterMenu: React.FC<FilterMenuProps> = ({
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<Button 
-          isIconOnly        
-          variant="ghost"
-        >										
-          <FilterIcon className="h-4 w-4" />
+				<Button isIconOnly variant="ghost">
+					<FilterIcon className="h-4 w-4" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-80 p-0">
 				<div className="bg-background max-w-[420px] w-full">
 					<div className="flex items-center justify-start h-[46px] py-0 px-4 border-b">
 						<FilterIcon className="h-5 w-5 text-primary mr-2" />
-						<span className="text-sm text-foreground/70">
-							Search filters
-						</span>
+						<span className="text-sm text-foreground/70">Search filters</span>
 					</div>
 					<div className="p-4">
 						<TableFilterForm
@@ -51,13 +46,11 @@ const TableFilterMenu: React.FC<FilterMenuProps> = ({
 							handleClearFilters={handleClearFilters}
 							handleSearch={handleSearch}
 						/>
-						<Button  
-              className="w-full mt-2" 
-              onPress={handleSearch}
-              startContent={ 
-                <Search className="h-4 w-4" />
-              }
-            >
+						<Button
+							className="w-full mt-2"
+							onPress={handleSearch}
+							startContent={<Search className="h-4 w-4" />}
+						>
 							Search
 						</Button>
 					</div>

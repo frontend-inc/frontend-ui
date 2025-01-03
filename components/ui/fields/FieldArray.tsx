@@ -24,10 +24,7 @@ const FieldArray: React.FC<FieldArrayProps> = (props) => {
 			>
 				{Array.isArray(values) &&
 					values?.map((value, index) => (
-						<Chip					
-							className="whitespace-nowrap"
-							key={index}
-						>
+						<Chip className="whitespace-nowrap" key={index}>
 							{value}
 						</Chip>
 					))}

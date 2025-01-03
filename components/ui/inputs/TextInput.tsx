@@ -36,12 +36,12 @@ export default function TextInput(props: TextInputProps) {
 		clearError()
 		setText(value)
 		if (disableDebounce) {
-			handleChange({ 
-        target: {
-          name, 
-          value
-        }
-      })
+			handleChange({
+				target: {
+					name,
+					value,
+				},
+			})
 		}
 	}
 
@@ -61,19 +61,17 @@ export default function TextInput(props: TextInputProps) {
 	}, [value])
 
 	return (
-    <Input
-      label={ label }
-      className={cn(									
-        className
-      )}
-      type={type}
-      name={name}
-      disabled={disabled}
-      placeholder={placeholder || `Enter ${label}`}
-      onValueChange={handleInputChange}
-      value={text}
-      autoComplete="off"
-      errorMessage={error}
-    />
+		<Input
+			label={label}
+			className={cn(className)}
+			type={type}
+			name={name}
+			disabled={disabled}
+			placeholder={placeholder || `Enter ${label}`}
+			onValueChange={handleInputChange}
+			value={text}
+			autoComplete="off"
+			errorMessage={error}
+		/>
 	)
 }

@@ -20,11 +20,9 @@ export default function LoadMore(props: LoadMoreProps) {
 					variant="ghost"
 					onPress={handlePaginate}
 					className="flex items-center"
-          endContent={
-            <ChevronDown className="h-5 w-5" />
-          }
+					endContent={<ChevronDown className="h-5 w-5" />}
 				>
-					Load More					
+					Load More
 				</Button>
 			)}
 		</div>

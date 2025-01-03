@@ -21,7 +21,6 @@ export type ShopifyCollectionCoverProps = {
 const ShopifyCollectionCover: React.FC<ShopifyCollectionCoverProps> = (
 	props
 ) => {
-
 	const {
 		shopifyCollection,
 		alt = 'image',

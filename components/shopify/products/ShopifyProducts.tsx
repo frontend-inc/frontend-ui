@@ -14,13 +14,12 @@ type ShopifyProductsProps = {
 }
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
-
-  const {
-    products,
-    enableBorder = false,
-    enableAddToCart,
-    enableQuantity,
-  } = props || {}
+	const {
+		products,
+		enableBorder = false,
+		enableAddToCart,
+		enableQuantity,
+	} = props || {}
 
 	return (
 		<div className="w-full gap-6 pb-1 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">

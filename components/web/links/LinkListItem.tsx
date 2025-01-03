@@ -15,9 +15,7 @@ export type LinkListItemProps = {
 }
 
 const LinkListItem: React.FC<LinkListItemProps> = (props) => {
-	
-  const { variant, color, icon, title, subtitle, path, url } =
-		props
+	const { variant, color, icon, title, subtitle, path, url } = props
 
 	const onClick = useNavigate({
 		path,
@@ -27,7 +25,7 @@ const LinkListItem: React.FC<LinkListItemProps> = (props) => {
 	return (
 		<li className="w-full">
 			<button
-        //@ts-ignore
+				//@ts-ignore
 				onClick={onClick}
 				className={cn(
 					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-content2',

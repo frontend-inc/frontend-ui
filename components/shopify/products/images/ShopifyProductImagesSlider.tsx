@@ -66,7 +66,7 @@ const ShopifyProductImageSlider: React.FC<ShopifyProductImageSliderProps> = (
 						</Zoom>
 					))}
 			</div>
-      <div className="flex flex-row flex-wrap gap-2">			
+			<div className="flex flex-row flex-wrap gap-2">
 				{images?.map((img) => (
 					<Thumbnail
 						key={img?.id}

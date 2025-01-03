@@ -68,14 +68,14 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 					)}
 					{sortable && <GripVertical className="text-foreground/70" />}
 					<div className="pr-0 sm:pr-2 mr-0 sm:mr-2 w-full sm:w-[220px] sm:min-w-[220px] h-full">
-							<Image
-								label={label}
-								src={image}
-								height={height}
-								alt={primary}
-                handleClick={handleClick}
-								{...slots.image}
-							/>						
+						<Image
+							label={label}
+							src={image}
+							height={height}
+							alt={primary}
+							handleClick={handleClick}
+							{...slots.image}
+						/>
 					</div>
 				</div>
 				<div className="flex flex-row space-x-1 w-full">
@@ -87,16 +87,13 @@ const DataListItem: React.FC<DataListItemProps> = (props) => {
 							</Typography>
 						</div>
 						<div className="flex flex-row justify-end">
-              { actions }
-              { secondaryAction }
-            </div>
+							{actions}
+							{secondaryAction}
+						</div>
 					</div>
 					<div className="flex flex-row justify-end">
 						{(handleEdit || handleDelete) && (
-							<MenuButton 
-                handleEdit={handleEdit} 
-                handleDelete={handleDelete} 
-              />
+							<MenuButton handleEdit={handleEdit} handleDelete={handleDelete} />
 						)}
 					</div>
 				</div>

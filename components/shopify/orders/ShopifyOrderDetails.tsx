@@ -76,22 +76,16 @@ const ShopifyOrderDetails: React.FC<ShopifyOrderDetailsProps> = (props) => {
 				</>
 			)}
 			<Button
-				fullWidth 
+				fullWidth
 				variant="solid"
-        color="primary"
+				color="primary"
 				onPress={handleOrderStatusClick}
-        endContent={ 
-          <ExternalLink className="h-4 w-4" />
-        }
+				endContent={<ExternalLink className="h-4 w-4" />}
 			>
-				Order status				
+				Order status
 			</Button>
 			{supportUrl && (
-				<Button
-          fullWidth 
-          variant="ghost"
-					onPress={handleSupportClick}
-				>
+				<Button fullWidth variant="ghost" onPress={handleSupportClick}>
 					Customer support
 				</Button>
 			)}

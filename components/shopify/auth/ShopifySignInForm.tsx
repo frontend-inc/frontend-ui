@@ -43,13 +43,13 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				placeholder="Password"
 				handleChange={handleChange}
 			/>
-			<Button 
-        fullWidth 
-        onPress={handleSubmit} 
-        disabled={loading}
-        isLoading={loading}
-      >
-				Sign In				
+			<Button
+				fullWidth
+				onPress={handleSubmit}
+				disabled={loading}
+				isLoading={loading}
+			>
+				Sign In
 			</Button>
 			{handleSignup && (
 				<Button fullWidth variant="ghost" onPress={handleSignup}>
@@ -57,11 +57,7 @@ const SignInForm: React.FC<SignInFormProps> = (props) => {
 				</Button>
 			)}
 			{handleForgotPassword && (
-				<Button
-          fullWidth
-					variant="ghost"
-					onPress={handleForgotPassword}
-				>
+				<Button fullWidth variant="ghost" onPress={handleForgotPassword}>
 					Forgot password?
 				</Button>
 			)}

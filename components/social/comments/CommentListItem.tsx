@@ -84,10 +84,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 							{parentComment?.body}
 						</Typography>
 					</div>
-					<Button
-						variant="light"
-						onPress={handleReply}						
-					>
+					<Button variant="light" onPress={handleReply}>
 						reply
 					</Button>
 				</div>
@@ -105,10 +102,7 @@ const CommentListItem: React.FC<CommentListItemProps> = (props) => {
 				<>
 					{!showReplies && (
 						<div>
-							<Button
-								variant="light"								
-								onPress={handleShowReplies}
-							>
+							<Button variant="light" onPress={handleShowReplies}>
 								show {parentComment?.replies?.length}{' '}
 								{parentComment?.replies?.length > 1 ? 'replies' : 'reply'}
 							</Button>

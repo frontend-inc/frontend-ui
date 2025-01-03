@@ -13,18 +13,13 @@ type FieldMarkdownProps = FieldElementProps & {
 }
 
 const FieldMarkdown: React.FC<FieldMarkdownProps> = (props) => {
-	
-  const {
-		value,
-		label,
-		className,
-	} = props
+	const { value, label, className } = props
 
 	return (
 		<FieldWrapper label={label}>
-			<div className={ cn('prose', className) }>
-        <Markdown>{ value }</Markdown>      
-      </div>
+			<div className={cn('prose', className)}>
+				<Markdown>{value}</Markdown>
+			</div>
 		</FieldWrapper>
 	)
 }

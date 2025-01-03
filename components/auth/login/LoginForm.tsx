@@ -56,12 +56,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-2">
-				<Button 
-          variant="solid" 
-          fullWidth 
-          onPress={handleSubmit} 
-          isLoading={loading}
-        >
+				<Button
+					variant="solid"
+					fullWidth
+					onPress={handleSubmit}
+					isLoading={loading}
+				>
 					Sign In
 				</Button>
 				{handleSignup && (
@@ -70,20 +70,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					</Button>
 				)}
 				{handleForgotPassword && (
-					<Button
-						fullWidth
-						variant="ghost"
-						onPress={handleForgotPassword}
-					>
+					<Button fullWidth variant="ghost" onPress={handleForgotPassword}>
 						Forgot password?
 					</Button>
 				)}
 				{handleOneTimePassword && (
-					<Button
-						fullWidth
-						variant="ghost"
-						onPress={handleOneTimePassword}
-					>
+					<Button fullWidth variant="ghost" onPress={handleOneTimePassword}>
 						One-time password
 					</Button>
 				)}

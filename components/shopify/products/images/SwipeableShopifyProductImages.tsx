@@ -18,15 +18,16 @@ type SwipeableShopifyProductImagesProps = {
 	disableBorderRadius?: boolean
 }
 
-export default function SwipeableShopifyProductImages(props: SwipeableShopifyProductImagesProps) {
+export default function SwipeableShopifyProductImages(
+	props: SwipeableShopifyProductImagesProps
+) {
+	const {
+		product,
+		height = 320,
+		handleClick,
+		disableBorderRadius = false,
+	} = props || {}
 
-  const {
-    product,
-    height = 320,
-    handleClick,
-    disableBorderRadius = false,
-  } = props || {}
-  
 	// @ts-ignore
 	const images = product?.images?.edges?.map((edge) => edge?.node) || []
 
@@ -36,25 +37,24 @@ export default function SwipeableShopifyProductImages(props: SwipeableShopifyPro
 
 	return (
 		<Swipeable enableDots>
-			{images.map((image, index) => (		
-        <div  
-          className="relative"
-          key={index}
-          onMouseDown={onMouseDown}
-          onMouseUp={onMouseUp}  
-          
-        >
-          <AspectRatio ratio={1.0}>            
-            <Image   
-              radius='none'                  
-              removeWrapper
-              key={index}          
-              src={image?.url}
-              alt={product?.title}                
-              className='object-cover'
-            />
-          </AspectRatio>
-        </div>
+			{images.map((image, index) => (
+				<div
+					className="relative"
+					key={index}
+					onMouseDown={onMouseDown}
+					onMouseUp={onMouseUp}
+				>
+					<AspectRatio ratio={1.0}>
+						<Image
+							radius="none"
+							removeWrapper
+							key={index}
+							src={image?.url}
+							alt={product?.title}
+							className="object-cover"
+						/>
+					</AspectRatio>
+				</div>
 			))}
 		</Swipeable>
 	)

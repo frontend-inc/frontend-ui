@@ -37,11 +37,11 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 			{!showLabel ? (
 				<>
 					{currentUser?.id ? (
-						<Button isIconOnly className='max-w-8' onPress={handleMyAccount}>
+						<Button isIconOnly className="max-w-8" onPress={handleMyAccount}>
 							<UserAvatar user={currentUser} />
 						</Button>
 					) : (
-						<Button isIconOnly className='max-w-8' onPress={handleLogin}>
+						<Button isIconOnly className="max-w-8" onPress={handleLogin}>
 							<RemixIcon name="ri-user-6-line" size="lg" />
 						</Button>
 					)}
@@ -51,19 +51,15 @@ const AuthButton: React.FC<AuthButtonProps> = (props) => {
 					{currentUser?.id ? (
 						<Button
 							onPress={handleMyAccount}
-							startContent={
-                showIcon && <UserAvatar user={currentUser} />}
-							endContent={
-                <RemixIcon name="ri-arrow-down-s-line" />}
+							startContent={showIcon && <UserAvatar user={currentUser} />}
+							endContent={<RemixIcon name="ri-arrow-down-s-line" />}
 						>
 							<Typography variant="body1">{currentUser?.username}</Typography>
 						</Button>
 					) : (
 						<Button
 							onPress={handleLogin}
-							startContent={
-                showIcon && <RemixIcon name="ri-user-6-fill" />
-              }
+							startContent={showIcon && <RemixIcon name="ri-user-6-fill" />}
 						>
 							Sign In
 						</Button>

@@ -41,11 +41,7 @@ const ShopifyProductFavoriteButton: React.FC<
 	}, [currentUser?.id, product?.handle])
 
 	return (
-		<Button
-      isIconOnly
-			onPress={handleClick}
-      size={size}			
-		>
+		<Button isIconOnly onPress={handleClick} size={size}>
 			<Heart
 				className={cn(
 					'w-5 h-5 text-foreground',

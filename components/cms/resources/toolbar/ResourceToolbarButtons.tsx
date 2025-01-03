@@ -31,9 +31,7 @@ const ResourceToolbarButtons: React.FC<ResourceToolbarButtonsProps> = (
 							? () => button?.onClick(selected)
 							: undefined
 					}
-          startContent={
-            button?.icon && <RemixIcon name={button?.icon} />
-          }
+					startContent={button?.icon && <RemixIcon name={button?.icon} />}
 				>
 					{button?.label}
 				</Button>

@@ -27,7 +27,6 @@ type ShopifyAddToCartButtonProps = {
 const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	props
 ) => {
-
 	const { trackAddToCart } = useSegment()
 	const { toggleCart } = useContext(ShopifyContext) as any
 	const { loading, cartLineAdd } = useCart()
@@ -45,7 +44,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 	const [quantity, setQuantity] = useState<number>(1)
 	const [activeSellingPlanId, setActiveSellingPlanId] = useState<any>(null)
 
-	const handleSellingPlanChange = (value) => { 
+	const handleSellingPlanChange = (value) => {
 		setActiveSellingPlanId(value)
 	}
 
@@ -60,7 +59,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 
 	const handleAddToCart = async () => {
 		if (!product?.availableForSale) {
-      toast.error('This product is not available for sale')			
+			toast.error('This product is not available for sale')
 			return
 		}
 		if (variant?.id) {
@@ -76,23 +75,23 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 					variant: variant,
 					product: product,
 				})
-        if(resp?.id){
-          setActiveSellingPlanId(null)
-          toggleCart()
-        }else{
-          toast.error('Oops! There was an error adding to cart')          
-        }				
+				if (resp?.id) {
+					setActiveSellingPlanId(null)
+					toggleCart()
+				} else {
+					toast.error('Oops! There was an error adding to cart')
+				}
 			} else {
-        toast.error('This product is not available for sale')				
+				toast.error('This product is not available for sale')
 			}
 		} else {
-      toast.error('Please select all options')			
+			toast.error('Please select all options')
 		}
 	}
 
-  const handleClose = () => {
-    toast.error('')
-  }
+	const handleClose = () => {
+		toast.error('')
+	}
 
 	if (!product) return null
 	return (
@@ -107,7 +106,7 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 			<div className="flex w-full flex-row space-x-2 justify-content items-center">
 				{enableQuantity == true && (
 					<ShopifyQuantitySelector
-            size={size}
+						size={size}
 						quantity={quantity}
 						handleAddQuantity={handleAddQuantity}
 						handleRemoveQuantity={handleRemoveQuantity}
@@ -116,10 +115,10 @@ const ShopifyAddToCartButton: React.FC<ShopifyAddToCartButtonProps> = (
 				<Button
 					fullWidth
 					onPress={handleAddToCart}
-					variant='solid'
-          color="primary"
+					variant="solid"
+					color="primary"
 					isLoading={loading}
-					size={size}                  
+					size={size}
 				>
 					{label}
 				</Button>

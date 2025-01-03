@@ -22,12 +22,7 @@ const SignInButton: React.FC<SignInButtonProps> = (props) => {
 
 	if (currentUser?.id) return null
 	return (
-		<Button 
-      fullWidth 
-      variant="solid"
-      color="primary"
-      onPress={handleLogin}
-    >
+		<Button fullWidth variant="solid" color="primary" onPress={handleLogin}>
 			{buttonText}
 		</Button>
 	)

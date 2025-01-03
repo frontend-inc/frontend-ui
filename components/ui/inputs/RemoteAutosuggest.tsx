@@ -53,7 +53,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		name: name,
 	})
 
-  const { loading, resources, findOne, findMany } = useResource({
+	const { loading, resources, findOne, findMany } = useResource({
 		url: url,
 		name: name,
 	})
@@ -79,7 +79,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 
 	const findOption = async (value) => {
 		if (!value) return null
-		await findOne(value)		
+		await findOne(value)
 	}
 
 	useEffect(() => {
@@ -87,7 +87,6 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 			findOption(value)
 		}
 	}, [value, url])
-
 
 	useEffect(() => {
 		if (url) {
@@ -99,7 +98,7 @@ const RemoteAutosuggest: React.FC<RemoteAutosuggestProps> = (props) => {
 		}
 	}, [url])
 
-  const options = formatResources(resources)  
+	const options = formatResources(resources)
 
 	if (!options || options?.length == 0) return null
 	return (

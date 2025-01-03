@@ -3,12 +3,12 @@
 import React from 'react'
 import { TestimonialType } from '../../../types'
 import { Typography } from '../../../components'
-import { 
-  Card, 
-  CardBody, 
-  CardHeader,
-  User, 
-  ScrollShadow 
+import {
+	Card,
+	CardBody,
+	CardHeader,
+	User,
+	ScrollShadow,
 } from '@nextui-org/react'
 import { getInitials } from '../../../helpers'
 
@@ -16,40 +16,38 @@ type TestimonialProps = {
 	text: string
 	author: string
 	image?: string
-	size?: 'small' | 'large'	
-  variant?: 'outline' | 'fill' | 'default'
+	size?: 'small' | 'large'
+	variant?: 'outline' | 'fill' | 'default'
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = (props) => {
-	const { text, author, image = '', variant='default' } = props || {}
+	const { text, author, image = '', variant = 'default' } = props || {}
 
 	return (
-		<Card 
-      shadow={ variant == "default" ? "none" : "md" }
-      className={
-        variant == 'fill' ? 'bg-content1' : ''
-      }
-    >
-      <CardHeader className="p-6">
-        <User 
-          avatarProps={{
-            src: image,
-            color: 'primary',
-            name: getInitials(author),
-          }}
-          name={author}
-          description="Testimonial"
-        />				
-      </CardHeader>      
-			<CardBody className="p-6">				
-        {text && (
-          <ScrollShadow style={{ height: '200px' }}>
-            <Typography variant="body1" className="font-normal leading-loose">
-              {text}
-            </Typography>
-          </ScrollShadow>
-        )}				
-      </CardBody>
+		<Card
+			shadow={variant == 'default' ? 'none' : 'md'}
+			className={variant == 'fill' ? 'bg-content1' : ''}
+		>
+			<CardHeader className="p-6">
+				<User
+					avatarProps={{
+						src: image,
+						color: 'primary',
+						name: getInitials(author),
+					}}
+					name={author}
+					description="Testimonial"
+				/>
+			</CardHeader>
+			<CardBody className="p-6">
+				{text && (
+					<ScrollShadow style={{ height: '200px' }}>
+						<Typography variant="body1" className="font-normal leading-loose">
+							{text}
+						</Typography>
+					</ScrollShadow>
+				)}
+			</CardBody>
 		</Card>
 	)
 }

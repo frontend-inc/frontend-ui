@@ -12,11 +12,7 @@ type UserListItemProps = {
 }
 
 const UserListItem: React.FC<UserListItemProps> = (props) => {
-	let {
-		resource: user,
-		displayFields = [],
-		handleClick,
-	} = props || {}
+	let { resource: user, displayFields = [], handleClick } = props || {}
 
 	return (
 		<ResourceListItem

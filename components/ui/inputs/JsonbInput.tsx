@@ -221,10 +221,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 				)}
 			/>
 			<div>
-				<Button
-					onPress={handleAddClick}
-					startContent={<RiAddFill />}
-				>
+				<Button onPress={handleAddClick} startContent={<RiAddFill />}>
 					Add
 				</Button>
 			</div>
@@ -233,10 +230,7 @@ const JsonbInput: React.FC<JsonbInputProps> = (props) => {
 				open={open}
 				handleClose={closeMenu}
 				buttons={
-					<Button 
-            fullWidth 
-            onPress={handleSubmit}
-          >
+					<Button fullWidth onPress={handleSubmit}>
 						Save
 					</Button>
 				}

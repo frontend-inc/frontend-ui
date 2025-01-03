@@ -12,10 +12,7 @@ const CommentReplyButton: React.FC<CommentReplyButtonProps> = (props) => {
 	const { reply, handleClick } = props
 
 	return (
-		<Button
-			variant="ghost"
-			onPress={handleClick}			
-		>
+		<Button variant="ghost" onPress={handleClick}>
 			{reply ? 'Reply' : 'Leave a Comment'}
 		</Button>
 	)

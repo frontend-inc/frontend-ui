@@ -9,7 +9,7 @@ import {
 	FieldHTML,
 	FieldLocation,
 	FieldImage,
-  FieldMarkdown,
+	FieldMarkdown,
 	FieldURL,
 	FieldPrice,
 	FieldRating,
@@ -50,7 +50,7 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		url: FieldURL,
 		rating: FieldRating,
 		text: FieldText,
-    markdown: FieldMarkdown,
+		markdown: FieldMarkdown,
 		number: FieldText,
 		array: FieldArray,
 		string: FieldString,
@@ -70,15 +70,14 @@ const DisplayField: React.FC<DisplayFieldProps> = (props) => {
 		email: {
 			className: 'w-full text-center text-sm italic',
 		},
-    file: {
-      className: 'w-full justify-center'
-    },
+		file: {
+			className: 'w-full justify-center',
+		},
 		string: {
 			className: 'w-full text-center text-md font-normal tracking-wide',
 		},
 		text: {
-			className:
-				'px-[40px] sm:px-[100px] leading-relaxed text-lg',
+			className: 'px-[40px] sm:px-[100px] leading-relaxed text-lg',
 		},
 		html: {
 			className: 'prose',

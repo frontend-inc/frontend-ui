@@ -17,13 +17,10 @@ const ShopifySearchTags: React.FC<ShopifySearchTagsProps> = (props) => {
 	return (
 		<div className="mb-6 flex flex-row justify-start items-center gap-2 overflow-x-auto scrollbar-hide">
 			{tags.map((tag, index) => (
-        <Chip 
-          key={ index } 
-          onClose={() => handleClick(tag)}
-        > 
-          { tag }
-        </Chip>
-      ))}
+				<Chip key={index} onClose={() => handleClick(tag)}>
+					{tag}
+				</Chip>
+			))}
 			<Button variant="ghost" onPress={handleClearAll}>
 				Clear All
 			</Button>

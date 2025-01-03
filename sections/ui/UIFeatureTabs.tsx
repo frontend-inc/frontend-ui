@@ -13,7 +13,7 @@ type UIFeatureTabsProps = SectionProps &
 
 const UIFeatureTabs: React.FC<UIFeatureTabsProps> = (props) => {
 	const {
-    variant,
+		variant,
 		direction = 'column',
 		label,
 		title,
@@ -26,7 +26,7 @@ const UIFeatureTabs: React.FC<UIFeatureTabsProps> = (props) => {
 		mode,
 		py,
 		px,
-		maxWidth='lg',
+		maxWidth = 'lg',
 		requireAuth,
 		editable,
 		handleChange,
@@ -43,22 +43,19 @@ const UIFeatureTabs: React.FC<UIFeatureTabsProps> = (props) => {
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant}
+			variant={variant}
 		>
 			<Stack spacing={10}>
-        <Heading
-          label={label}
-          title={title}
-          subtitle={subtitle}
-          textAlign={direction == 'row' ? 'left' : 'center'}
-          size={fontSize}
-          editable={editable}
-          handleChange={handleChange}
-        />
-				<FeatureTabs 
-          {...rest} 
-          direction={direction}
-        />
+				<Heading
+					label={label}
+					title={title}
+					subtitle={subtitle}
+					textAlign={direction == 'row' ? 'left' : 'center'}
+					size={fontSize}
+					editable={editable}
+					handleChange={handleChange}
+				/>
+				<FeatureTabs {...rest} direction={direction} />
 			</Stack>
 		</Section>
 	)

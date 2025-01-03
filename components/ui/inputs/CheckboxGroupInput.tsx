@@ -17,16 +17,15 @@ type CheckboxGroupInputProps = {
 }
 
 export default function CheckboxGroupInput(props: CheckboxGroupInputProps) {
-
-  const {
-    errors,
-    label,
-    name,
-    value: values = [],
-    options,
-    handleChange,
-    info,
-  } = props || {}
+	const {
+		errors,
+		label,
+		name,
+		value: values = [],
+		options,
+		handleChange,
+		info,
+	} = props || {}
 
 	const handleCheckboxChange = (checked: boolean, value: string) => {
 		let newValues = checked

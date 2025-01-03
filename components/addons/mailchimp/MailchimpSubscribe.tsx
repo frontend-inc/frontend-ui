@@ -42,15 +42,15 @@ const MailchimpSubscribe: React.FC<MailchimpSubscribeProps> = (props) => {
 	}, [message])
 
 	return (
-    <EmailSubscribeInput 
-      name="EMAIL"
-      value={email}
-      placeholder='Enter your email'
-      handleChange={handleChange}
-      buttonText={buttonText}
-      handleSubmit={handleFormSubmit}
-      loading={loading}
-    />		
+		<EmailSubscribeInput
+			name="EMAIL"
+			value={email}
+			placeholder="Enter your email"
+			handleChange={handleChange}
+			buttonText={buttonText}
+			handleSubmit={handleFormSubmit}
+			loading={loading}
+		/>
 	)
 }
 

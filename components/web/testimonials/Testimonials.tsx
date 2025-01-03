@@ -18,10 +18,7 @@ const Testimonials: React.FC<TestimonialsProps> = (props) => {
 	return (
 		<div className="flex flex-col w-full">
 			{layout == 'carousel' ? (
-				<SwipeableTestimonials
-					variant={variant}
-					items={items}
-				/>
+				<SwipeableTestimonials variant={variant} items={items} />
 			) : (
 				<TestimonialCards variant={variant} items={items} />
 			)}

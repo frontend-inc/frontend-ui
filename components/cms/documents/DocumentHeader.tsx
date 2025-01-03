@@ -3,11 +3,7 @@
 import React from 'react'
 import { Button } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
-import {
-	FilterButton,
-	SortButton,
-	SearchInput,
-} from '../..'
+import { FilterButton, SortButton, SearchInput } from '../..'
 import { SortOptionType, SearchFilterOptionType } from '../../../types'
 import { useSearch, useDocumentForms } from '../../../hooks'
 import { RiAddFill } from '@remixicon/react'
@@ -17,7 +13,7 @@ export type DocumentHeaderProps = {
 	url: string
 	enableSearch?: boolean
 	enableFilters?: boolean
-	enableSorting?: boolean	
+	enableSorting?: boolean
 	filterOptions?: SearchFilterOptionType[]
 	sortOptions?: SortOptionType[]
 	enableCreate?: boolean
@@ -104,11 +100,9 @@ const DocumentHeader: React.FC<DocumentHeaderProps> = (props) => {
 				{enableCreate && (
 					<div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-1">
 						<Button
-              variant="solid"
-              color="primary"
-							className={cn(
-								'w-full sm:w-auto',
-							)}
+							variant="solid"
+							color="primary"
+							className={cn('w-full sm:w-auto')}
 							onPress={handleAdd}
 							startContent={<RiAddFill />}
 						>

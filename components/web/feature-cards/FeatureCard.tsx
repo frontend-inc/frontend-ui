@@ -8,14 +8,14 @@ import { useRouter } from 'next/navigation'
 import { cn } from '@nextui-org/react'
 
 export type FeaturedCardProps = {
-  direction?: 'column' | 'row' | 'row-reverse'
+	direction?: 'column' | 'row' | 'row-reverse'
 	label?: string
 	title?: string
 	subtitle?: string
 	image?: string
 	buttonText?: string
-	href?: string	
-  height?: number
+	href?: string
+	height?: number
 	handleClick?: () => void
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
@@ -25,8 +25,8 @@ export type FeaturedCardProps = {
 
 const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 	const { clientUrl } = useApp()
-	
-  const {
+
+	const {
 		label,
 		title,
 		subtitle,
@@ -41,11 +41,11 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 		variant,
 	} = props || {}
 
-  const flexDirectionClass = {
-    'row': 'flex-row',
-    'column': 'flex-col',
-    'row-reverse': 'flex-row-reverse',
-  }
+	const flexDirectionClass = {
+		row: 'flex-row',
+		column: 'flex-col',
+		'row-reverse': 'flex-row-reverse',
+	}
 
 	const router = useRouter()
 
@@ -77,11 +77,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 					disableBorderRadius={variant == 'outline' ? true : false}
 				/>
 			</div>
-			<div 
-        className={cn(
-          "flex flex-col gap-4 w-full",
-          "md:w-1/2"
-        )}>
+			<div className={cn('flex flex-col gap-4 w-full', 'md:w-1/2')}>
 				<Typography variant="h5">{title}</Typography>
 				<Typography variant="subtitle2" className="text-foreground/70">
 					{subtitle}

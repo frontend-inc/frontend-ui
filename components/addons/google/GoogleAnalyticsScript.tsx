@@ -11,30 +11,30 @@ type GoogleAnalyticsProps = {
 const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = (props) => {
 	const { id } = props || {}
 
-  const mounted = useRef(false)
-  const pathname = usePathname()
+	const mounted = useRef(false)
+	const pathname = usePathname()
 
-  useEffect(() => {
-    if(id && !mounted.current) {
-      mounted.current = true
-      ReactGA.initialize([
-        { 
-          trackingId: id
-        }
-      ])
-    }
-  }, [id])
+	useEffect(() => {
+		if (id && !mounted.current) {
+			mounted.current = true
+			ReactGA.initialize([
+				{
+					trackingId: id,
+				},
+			])
+		}
+	}, [id])
 
-  useEffect(() => {
-    if (id) {
-      ReactGA.send({ 
-        hitType: 'pageview', 
-        page: pathname 
-      })
-    }
-  }, [pathname])
-  	
-	return null	
+	useEffect(() => {
+		if (id) {
+			ReactGA.send({
+				hitType: 'pageview',
+				page: pathname,
+			})
+		}
+	}, [pathname])
+
+	return null
 }
 
 export default GoogleAnalytics

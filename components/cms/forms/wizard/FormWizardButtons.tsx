@@ -15,16 +15,15 @@ type FormWizardButtonsProps = {
 }
 
 export default function FormWizardButtons(props: FormWizardButtonsProps) {
-
-  const {
-    loading = false,
-    buttonText,
-    currentStep,
-    totalSteps,
-    handleNextStep,
-    handlePrevStep,
-    handleSubmit,
-  } = props
+	const {
+		loading = false,
+		buttonText,
+		currentStep,
+		totalSteps,
+		handleNextStep,
+		handlePrevStep,
+		handleSubmit,
+	} = props
 
 	return (
 		<div className="fixed bottom-0 left-0 w-full py-2 px-2 flex justify-center space-x-4">
@@ -40,8 +39,8 @@ export default function FormWizardButtons(props: FormWizardButtonsProps) {
 			{currentStep !== totalSteps ? (
 				<Button
 					size="lg"
-          variant="solid"
-          color="primary"
+					variant="solid"
+					color="primary"
 					onPress={handleNextStep}
 					disabled={currentStep === totalSteps}
 					className="w-full sm:w-[260px]"
@@ -54,8 +53,8 @@ export default function FormWizardButtons(props: FormWizardButtonsProps) {
 				<Button
 					size="lg"
 					onPress={handleSubmit}
-          variant="solid"
-          color="primary"
+					variant="solid"
+					color="primary"
 					disabled={currentStep !== totalSteps}
 					className="w-full sm:w-[260px]"
 					isLoading={loading}

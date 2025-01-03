@@ -113,18 +113,18 @@ const MenuBar = ({ editor }) => {
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-          variant="solid"
-          color={ btn.isActive ? 'primary' : 'secondary' }
+					variant="solid"
+					color={btn.isActive ? 'primary' : 'secondary'}
 					onClick={btn.action}
-					disabled={!editor.can().chain().focus().run()}					
+					disabled={!editor.can().chain().focus().run()}
 					aria-label={btn.label}
 				>
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
 					/>
 				</IconButton>
 			))}
@@ -132,17 +132,17 @@ const MenuBar = ({ editor }) => {
 				<IconButton
 					key={index}
 					onClick={btn.action}
-          variant="solid"
-          color={ btn.isActive ? 'primary' : 'secondary' }
-					disabled={!editor.can().chain().focus().run()}					
+					variant="solid"
+					color={btn.isActive ? 'primary' : 'secondary'}
+					disabled={!editor.can().chain().focus().run()}
 					aria-label={btn.label}
 				>
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
 					/>
 				</IconButton>
 			))}
@@ -152,15 +152,15 @@ const MenuBar = ({ editor }) => {
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant="solid"
-          color={ btn.isActive ? 'primary' : 'secondary' }
+					color={btn.isActive ? 'primary' : 'secondary'}
 					aria-label={btn.label}
 				>
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
 					/>
 				</IconButton>
 			))}
@@ -170,15 +170,15 @@ const MenuBar = ({ editor }) => {
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant="solid"
-          color={ btn.isActive ? 'primary' : 'secondary' }
+					color={btn.isActive ? 'primary' : 'secondary'}
 					aria-label={btn.label}
 				>
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
 					/>
 				</IconButton>
 			))}
@@ -188,15 +188,15 @@ const MenuBar = ({ editor }) => {
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant="solid"
-          color={ btn.isActive ? 'primary' : 'secondary' }
+					color={btn.isActive ? 'primary' : 'secondary'}
 					aria-label={btn.label}
 				>
 					<RemixIcon
 						name={btn.icon}
 						className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
 					/>
 				</IconButton>
 			))}

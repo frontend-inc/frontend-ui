@@ -6,7 +6,7 @@ import { SortOptionType, SyntheticEventType } from '../../types'
 import { formatFilterArray } from '../../helpers'
 
 const useSearch = (props) => {
-	const { query: defaultQuery = { filters: []} } = props
+	const { query: defaultQuery = { filters: [] } } = props
 
 	const {
 		loading,
@@ -25,46 +25,48 @@ const useSearch = (props) => {
 	const [keywords, setKeywords] = useState('')
 	const [location, setLocation] = useState('')
 
-// Finds the index of a filter that has the exact same name, operator, and value.
-const findExactFilterIndex = (filters, filter) => {
-    const { name, operator, value } = filter || {}
-    return filters.findIndex(
-      (f) => f.name == name && f.operator == operator && f.value == value
-    )
-  }
+	// Finds the index of a filter that has the exact same name, operator, and value.
+	const findExactFilterIndex = (filters, filter) => {
+		const { name, operator, value } = filter || {}
+		return filters.findIndex(
+			(f) => f.name == name && f.operator == operator && f.value == value
+		)
+	}
 
-  // Removes all filters that share the same name and operator (regardless of value)
-  const removeDuplicateNameOperatorFilters = (filters, filter) => {
-    return filters.filter((f) => f.name !== filter.name || f.operator !== filter.operator)
-  }
+	// Removes all filters that share the same name and operator (regardless of value)
+	const removeDuplicateNameOperatorFilters = (filters, filter) => {
+		return filters.filter(
+			(f) => f.name !== filter.name || f.operator !== filter.operator
+		)
+	}
 
-  const handleToggleFilter = (filter) => {
-    let currentFilters = buildQueryFilters(activeFilters || [])
-    let exactIndex = findExactFilterIndex(activeFilters, filter)
-    let updatedFilters;
-    if (exactIndex > -1) {
-      // The exact filter is present, so we remove it (toggling off)
-      updatedFilters = currentFilters.filter((f, index) => index !== exactIndex)
-    } else {
-      // No exact match. We need to ensure only one filter with the same name/operator.
-      // Remove any existing filters with the same name & operator.
-      updatedFilters = removeDuplicateNameOperatorFilters(currentFilters, filter)
-      // Add the new filter
-      updatedFilters = [...updatedFilters, filter]
-    }
-    // Convert back to the desired query format (assuming buildQueryFilters works both ways)
-    let queryFilters = buildQueryFilters(updatedFilters)
+	const handleToggleFilter = (filter) => {
+		let currentFilters = buildQueryFilters(activeFilters || [])
+		let exactIndex = findExactFilterIndex(activeFilters, filter)
+		let updatedFilters
+		if (exactIndex > -1) {
+			// The exact filter is present, so we remove it (toggling off)
+			updatedFilters = currentFilters.filter((f, index) => index !== exactIndex)
+		} else {
+			// No exact match. We need to ensure only one filter with the same name/operator.
+			// Remove any existing filters with the same name & operator.
+			updatedFilters = removeDuplicateNameOperatorFilters(
+				currentFilters,
+				filter
+			)
+			// Add the new filter
+			updatedFilters = [...updatedFilters, filter]
+		}
+		// Convert back to the desired query format (assuming buildQueryFilters works both ways)
+		let queryFilters = buildQueryFilters(updatedFilters)
 
-    findMany({
-      ...defaultQuery,
-      filters: [
-        ...defaultQuery?.filters,
-        ...queryFilters, 
-      ],
-      keywords: '',
-      page: 1,
-    })
-  }
+		findMany({
+			...defaultQuery,
+			filters: [...defaultQuery?.filters, ...queryFilters],
+			keywords: '',
+			page: 1,
+		})
+	}
 
 	const isBlank = (value) => {
 		return (
@@ -75,13 +77,13 @@ const findExactFilterIndex = (filters, filter) => {
 		)
 	}
 
-	const buildQueryFilters = (filters) => {		
+	const buildQueryFilters = (filters) => {
 		return filters
 			.filter((filter) => !isBlank(filter?.value))
 			.map((filter) => {
 				let { name, operator, value } = filter
 				return { [name]: { [operator]: value } }
-			})		
+			})
 	}
 
 	const handleKeywordChange = (ev: SyntheticEventType) => {
@@ -96,11 +98,11 @@ const findExactFilterIndex = (filters, filter) => {
 		let searchQuery = {
 			...query,
 			...defaultQuery,
-      filters: [
-        //@ts-ignore
-        ...(query.filters || []),
-        ...(defaultQuery.filters || [])
-      ],
+			filters: [
+				//@ts-ignore
+				...(query.filters || []),
+				...(defaultQuery.filters || []),
+			],
 			keywords: keywords,
 			page: 1,
 		}
@@ -137,9 +139,9 @@ const findExactFilterIndex = (filters, filter) => {
 		setActiveFilters([])
 	}
 
-  useEffect(() => {
-    setActiveFilters(formatFilterArray(query?.filters))
-  }, [query?.filters])
+	useEffect(() => {
+		setActiveFilters(formatFilterArray(query?.filters))
+	}, [query?.filters])
 
 	return {
 		loading,

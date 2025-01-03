@@ -2,14 +2,14 @@
 
 import React from 'react'
 import {
-  Card,
-  FileCard,
+	Card,
+	FileCard,
 	ListCard,
 	CoverCard,
 	TextCard,
 	Typography,
-  VideoCard,
-  ImageCard
+	VideoCard,
+	ImageCard,
 } from '../..'
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
@@ -23,11 +23,11 @@ type DocumentListItemProps = {
 	buttonText?: string
 	href?: string
 	handleClick: () => void
-  disableTitle?: boolean
+	disableTitle?: boolean
 	enableBorder?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
-  enableDownload?: boolean
+	enableDownload?: boolean
 	enableComments?: boolean
 	enableFavorites?: boolean
 	enableLikes?: boolean
@@ -39,10 +39,10 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		resource,
 		listFields = [],
 		handleClick,
-    disableTitle = false,
+		disableTitle = false,
 		enableGradient = false,
 		enableOverlay = false,
-    enableDownload = false,
+		enableDownload = false,
 		enableComments = false,
 		enableFavorites = false,
 		enableLikes = false,
@@ -55,9 +55,9 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		cover: CoverCard,
 		text: TextCard,
 		list: ListCard,
-    image: ImageCard,
-    file: FileCard,
-    video: VideoCard
+		image: ImageCard,
+		file: FileCard,
+		video: VideoCard,
 	}
 
 	let Component = COMPONENTS[style] || Card
@@ -76,26 +76,22 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 			image={resource?.image?.url}
 			// @ts-ignore
 			title={
-        !disableTitle && 
-				//@ts-ignore
-				<Typography variant={typographyVariants[style]}>
-					{resource?.title}
-				</Typography>
+				!disableTitle && (
+					//@ts-ignore
+					<Typography variant={typographyVariants[style]}>
+						{resource?.title}
+					</Typography>
+				)
 			}
 			handleClick={handleClick}
 			// @ts-ignore
-			subtitle={
-        <ListFields 
-          fields={listFields} 
-          resource={resource} 
-        />
-      }
+			subtitle={<ListFields fields={listFields} resource={resource} />}
 			actions={
 				<SocialButtons
 					size="small"
 					justifyContent="flex-start"
 					resource={resource}
-          enableDownload={enableDownload}
+					enableDownload={enableDownload}
 					enableLikes={enableLikes}
 					enableFavorites={enableFavorites}
 					enableComments={enableComments}

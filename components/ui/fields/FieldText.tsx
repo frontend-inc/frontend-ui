@@ -10,13 +10,7 @@ type FieldTextProps = FieldElementProps & {
 }
 
 const FieldText: React.FC<FieldTextProps> = (props) => {
-	const {
-		value,
-		label,
-		expandable,
-		maxChars = 80,
-		className,
-	} = props
+	const { value, label, expandable, maxChars = 80, className } = props
 	return (
 		<FieldWrapper label={label}>
 			{expandable ? (

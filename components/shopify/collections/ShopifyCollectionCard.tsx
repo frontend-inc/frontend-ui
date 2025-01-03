@@ -38,23 +38,23 @@ export default function ShopifyCollectionCard(
 	}
 
 	return (
-		  <>
-			  <Card isFooterBlurred>				
-					<Image
-            handleClick={ handleShowClick }
-            disableBorderRadius
-						// @ts-ignore
-						src={image?.url}
-						alt={title || 'Collection image'}
-						aspectRatio={1.0}						
-						enableGradient={enableGradient}
-						enableOverlay={enableOverlay}
-					/>
-				<CardFooter className='dark absolute bottom-0 left-0 w-full p-4 z-20'>									
-          <Typography variant="body1" className="text-white text-ellipsis">
-            { title }
-          </Typography>					
-        </CardFooter>
+		<>
+			<Card isFooterBlurred>
+				<Image
+					handleClick={handleShowClick}
+					disableBorderRadius
+					// @ts-ignore
+					src={image?.url}
+					alt={title || 'Collection image'}
+					aspectRatio={1.0}
+					enableGradient={enableGradient}
+					enableOverlay={enableOverlay}
+				/>
+				<CardFooter className="dark absolute bottom-0 left-0 w-full p-4 z-20">
+					<Typography variant="body1" className="text-white text-ellipsis">
+						{title}
+					</Typography>
+				</CardFooter>
 			</Card>
 			<ShopifyProductCollectionModal
 				open={open}

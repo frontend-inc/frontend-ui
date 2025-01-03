@@ -30,9 +30,9 @@ const AddToCartButton = (props: AddToCartButtonProps) => {
 	}
 
 	return (
-		<Button      
-      variant="solid"
-      color="primary"
+		<Button
+			variant="solid"
+			color="primary"
 			fullWidth={fullWidth}
 			isLoading={loading}
 			onPress={handleClick}

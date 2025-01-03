@@ -76,7 +76,7 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 							<Button
 								size="lg"
 								color="primary"
-                //@ts-ignore
+								//@ts-ignore
 								onPress={onClick}
 								variant="solid"
 							>

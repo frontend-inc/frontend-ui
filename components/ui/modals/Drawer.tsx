@@ -54,12 +54,7 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 	return (
 		<Drawer open={open} onOpenChange={handleClose}>
 			<DrawerPortal>
-				<DrawerContent
-					className={cn(
-						themeClass,
-						className
-					)}
-				>
+				<DrawerContent className={cn(themeClass, className)}>
 					<DrawerHeader>
 						<div className="flex w-full justify-end">
 							<DrawerClose>

@@ -18,29 +18,22 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 
 	return (
 		<>
-			<NextAccordion
-        variant={ variant }
-        selectionMode="multiple"
-      >
+			<NextAccordion variant={variant} selectionMode="multiple">
 				{items?.map((item, i) => (
-					<AccordionItem
-						key={i}
-            aria-label={item?.title}
-						title={item?.title}
-					>
-            <Typography variant="subtitle2" className='pb-2'>
-              { item?.subtitle }
-            </Typography>
-          </AccordionItem>
+					<AccordionItem key={i} aria-label={item?.title} title={item?.title}>
+						<Typography variant="subtitle2" className="pb-2">
+							{item?.subtitle}
+						</Typography>
+					</AccordionItem>
 				))}
-      </NextAccordion>
-      {items?.length == 0 && (
-        <Empty
-          icon="ri-search-line"
-          title="No content"
-          description="Your content will appear here."
-        />
-      )}
+			</NextAccordion>
+			{items?.length == 0 && (
+				<Empty
+					icon="ri-search-line"
+					title="No content"
+					description="Your content will appear here."
+				/>
+			)}
 		</>
 	)
 }

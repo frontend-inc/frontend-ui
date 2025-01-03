@@ -65,7 +65,7 @@ export type TextInputProps = InputPropsType & {
 	direction?: 'row' | 'column'
 	type?: string
 	className?: string
-  debounceDelay?: number
+	debounceDelay?: number
 	disableDebounce?: boolean
 }
 

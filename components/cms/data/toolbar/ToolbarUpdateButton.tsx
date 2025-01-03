@@ -38,7 +38,7 @@ const ToolbarUpdateButton: React.FC<ToolbarUpdateProps> = (props) => {
 
 	return (
 		<>
-			<Button				
+			<Button
 				onPress={() => setOpen(true)}
 				startContent={icon && <RemixIcon name={icon} />}
 			>

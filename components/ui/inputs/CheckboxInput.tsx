@@ -15,14 +15,8 @@ type CheckboxInputProps = {
 }
 
 export default function CheckboxInput(props: CheckboxInputProps) {
+	const { name, value, label, handleChange } = props || {}
 
-  const {
-    name,
-    value,
-    label,
-    handleChange,
-  } = props || {}
-  
 	const handleCheckboxChange = (checked: boolean) => {
 		handleChange({
 			target: {
@@ -33,12 +27,8 @@ export default function CheckboxInput(props: CheckboxInputProps) {
 	}
 
 	return (
-    <Checkbox
-      id={name}
-      isSelected={value}
-      onValueChange={handleCheckboxChange}
-    >
-      { label }
-    </Checkbox>
+		<Checkbox id={name} isSelected={value} onValueChange={handleCheckboxChange}>
+			{label}
+		</Checkbox>
 	)
 }

@@ -8,7 +8,7 @@ import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type AddonMailchimpSubscribeProps = SectionProps &
 	HeadingProps &
-  StackProps &
+	StackProps &
 	MailchimpSubscribeProps
 
 const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
@@ -45,7 +45,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 			py={py}
 			px={px}
 			maxWidth={maxWidth}
-      variant={variant}
+			variant={variant}
 		>
 			<Stack direction={direction} spacing={10} className="items-center">
 				<Stack direction={direction} size="1/3">
@@ -64,9 +64,9 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 					size="2/3"
 					className="items-center h-full justify-center"
 				>
-			    <MailchimpSubscribe {...rest} />
-        </Stack>
-      </Stack>
+					<MailchimpSubscribe {...rest} />
+				</Stack>
+			</Stack>
 		</Section>
 	)
 }

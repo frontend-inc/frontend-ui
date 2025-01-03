@@ -116,18 +116,16 @@ const MenuBar = (props) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					className={cn(
-            btn.isActive && 'bg-primary text-primary-foreground'
-          )}
+					className={cn(btn.isActive && 'bg-primary text-primary-foreground')}
 					aria-label={btn.label}
 				>
 					<RemixIcon
-            name={btn.icon}
-            className={cn(
-              'text-foreground', 
-              btn.isActive && 'text-primary-foreground'
-            )}
-          />
+						name={btn.icon}
+						className={cn(
+							'text-foreground',
+							btn.isActive && 'text-primary-foreground'
+						)}
+					/>
 				</IconButton>
 			))}
 		</div>

@@ -39,14 +39,14 @@ export default function VideoCard({
 				)}
 				{...slots.item}
 			>
-        <Image
-          src={image}
-          height={360}
-          alt={primary}
-          handleClick={ handleClick }
-          className="w-full h-auto"
-          {...slots.image}
-        />
+				<Image
+					src={image}
+					height={360}
+					alt={primary}
+					handleClick={handleClick}
+					className="w-full h-auto"
+					{...slots.image}
+				/>
 				<button
 					className={cn(
 						'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',

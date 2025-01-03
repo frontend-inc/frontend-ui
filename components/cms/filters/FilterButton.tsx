@@ -4,14 +4,14 @@ import React from 'react'
 import { RemixIcon } from '../..'
 import { FilterOptionType, SearchFilterOptionType } from '../../..'
 import { cn } from '@nextui-org/react'
-import { 
-  Button,
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger,
-  Listbox,
-  ListboxSection,
-  ListboxItem 
+import {
+	Button,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+	Listbox,
+	ListboxSection,
+	ListboxItem,
 } from '@nextui-org/react'
 
 type FilterGroupProps = {
@@ -23,32 +23,28 @@ type FilterGroupProps = {
 export const FilterGroup: React.FC<FilterGroupProps> = (props) => {
 	const { filters, filterOption, handleFilter } = props || {}
 
-  const selectedKeys = filters
-    ?.filter(filter => filter?.name == filterOption?.name)
-    ?.map(filter => filter?.value)
+	const selectedKeys = filters
+		?.filter((filter) => filter?.name == filterOption?.name)
+		?.map((filter) => filter?.value)
 
-  const handleSelectionChange = (keys) => {
-    handleFilter(filterOption?.name, keys.currentKey)
-  }
+	const handleSelectionChange = (keys) => {
+		handleFilter(filterOption?.name, keys.currentKey)
+	}
 
 	return (
-    <Listbox
-      selectionMode="single"
-      selectedKeys={selectedKeys}
-      onSelectionChange={ handleSelectionChange }
-    >
-      <ListboxSection 
-        title={ filterOption?.label}
-      >
-        { filterOption?.options?.map((option) => (
-          //@ts-ignore
-          <ListboxItem key={ option?.value }>
-            { option?.label}
-          </ListboxItem>
-        ))}
-      </ListboxSection>
-    </Listbox>	
-  )
+		<Listbox
+			selectionMode="single"
+			selectedKeys={selectedKeys}
+			onSelectionChange={handleSelectionChange}
+		>
+			<ListboxSection title={filterOption?.label}>
+				{filterOption?.options?.map((option) => (
+					//@ts-ignore
+					<ListboxItem key={option?.value}>{option?.label}</ListboxItem>
+				))}
+			</ListboxSection>
+		</Listbox>
+	)
 }
 
 export type FilterButtonProps = {
@@ -67,35 +63,30 @@ const FilterButton: React.FC<FilterButtonProps> = (props) => {
 	} = props || {}
 
 	return (
-			<Popover>
-				<PopoverTrigger>
-					<Button
-						variant="ghost"
-						isLoading={loading}
-						className={cn(
-							'text-foreground relative w-full sm:w-auto',
-						)}
-						startContent={
-							<RemixIcon
-								name="ri-filter-3-line"
-								className="text-foreground"
-							/>
-						}
-					>
-						Filters
-					</Button>
-				</PopoverTrigger>
-				<PopoverContent className="w-full md:min-w-[220px]">
-          {filterOptions.map((filterOption, index) => (
-            <FilterGroup
-              key={index}
-              filters={filters}
-              filterOption={filterOption}
-              handleFilter={handleFilter}
-            />
-          ))}
-      </PopoverContent>
-    </Popover>
+		<Popover>
+			<PopoverTrigger>
+				<Button
+					variant="ghost"
+					isLoading={loading}
+					className={cn('text-foreground relative w-full sm:w-auto')}
+					startContent={
+						<RemixIcon name="ri-filter-3-line" className="text-foreground" />
+					}
+				>
+					Filters
+				</Button>
+			</PopoverTrigger>
+			<PopoverContent className="w-full md:min-w-[220px]">
+				{filterOptions.map((filterOption, index) => (
+					<FilterGroup
+						key={index}
+						filters={filters}
+						filterOption={filterOption}
+						handleFilter={handleFilter}
+					/>
+				))}
+			</PopoverContent>
+		</Popover>
 	)
 }
 

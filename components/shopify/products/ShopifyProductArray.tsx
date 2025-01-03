@@ -12,8 +12,7 @@ export type ShopifyProductArrayProps = {
 }
 
 const ShopifyProductArray: React.FC<ShopifyProductArrayProps> = (props) => {
-	
-  const {
+	const {
 		handles,
 		enableBorder = false,
 		enableAddToCart = false,
@@ -25,9 +24,9 @@ const ShopifyProductArray: React.FC<ShopifyProductArrayProps> = (props) => {
 			{handles?.map((handle) => {
 				const { product, findProduct } = useProducts()
 				useEffect(() => {
-          if(handle){          
-					  findProduct(handle)
-          }
+					if (handle) {
+						findProduct(handle)
+					}
 				}, [handle])
 
 				if (!product) return null

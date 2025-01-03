@@ -31,14 +31,14 @@ const ShopifyCheckoutButton: React.FC<ShopifyCheckoutButtonProps> = (props) => {
 	}
 
 	return (
-		<Button 
-      fullWidth 
-      variant="solid"
-      color="primary"
-      onPress={handleCheckoutClick} 
-      size="lg" 
-      isLoading={loading}
-    >
+		<Button
+			fullWidth
+			variant="solid"
+			color="primary"
+			onPress={handleCheckoutClick}
+			size="lg"
+			isLoading={loading}
+		>
 			Checkout
 		</Button>
 	)

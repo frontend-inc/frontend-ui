@@ -14,24 +14,25 @@ type DownloadButtonProps = {
 export default function DownloadButton(props: DownloadButtonProps) {
 	const { resource, size = 'small', variant = 'rounded' } = props
 
-  let { image, file, video } = resource || {}
+	let { image, file, video } = resource || {}
 
-  let downloadUrl = file?.url || video?.url || image?.url || '#'
-  let fileName = file?.filename || video?.filename || image?.filename || 'download'
-  downloadUrl = cloudinaryDownloadUrl(downloadUrl,  fileName)
+	let downloadUrl = file?.url || video?.url || image?.url || '#'
+	let fileName =
+		file?.filename || video?.filename || image?.filename || 'download'
+	downloadUrl = cloudinaryDownloadUrl(downloadUrl, fileName)
 
 	return (
 		<div>
-      <a href={downloadUrl} download={downloadUrl}>
-        <IconButton
-          className={cn(
-            variant == 'circular' ? 'rounded-full' : 'rounded-lg',
-            size === 'large' && 'border border-divider'
-          )}
-        >
-          <RemixIcon name="ri-download-line" />
-        </IconButton>
-      </a>
+			<a href={downloadUrl} download={downloadUrl}>
+				<IconButton
+					className={cn(
+						variant == 'circular' ? 'rounded-full' : 'rounded-lg',
+						size === 'large' && 'border border-divider'
+					)}
+				>
+					<RemixIcon name="ri-download-line" />
+				</IconButton>
+			</a>
 		</div>
 	)
 }

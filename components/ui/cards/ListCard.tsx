@@ -8,7 +8,7 @@ import { Typography } from '../../../components'
 export type ListCardProps = CardProps & {
 	circular?: boolean
 	disableImage?: boolean
-  height?: number
+	height?: number
 }
 
 const ListCard: React.FC<ListCardProps> = (props) => {
@@ -21,7 +21,7 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 		secondaryAction,
 		handleClick,
 		image,
-    height=140,
+		height = 140,
 		disableImage,
 		enableGradient,
 		enableOverlay,
@@ -36,15 +36,15 @@ const ListCard: React.FC<ListCardProps> = (props) => {
 				<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row justify-start items-start flex-grow">
 					{!disableImage && (
 						<div className="flex-shrink-0 w-full md:w-[260px]">
-							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">								
-                <Image
-                  label={label}
-                  src={image}
-                  height={height}
-                  alt={title}                  
-                  enableGradient={enableGradient}
-                  enableOverlay={enableOverlay}
-                />								
+							<div className="w-full pr-2 h-full flex flex-row justify-center items-center">
+								<Image
+									label={label}
+									src={image}
+									height={height}
+									alt={title}
+									enableGradient={enableGradient}
+									enableOverlay={enableOverlay}
+								/>
 							</div>
 						</div>
 					)}

@@ -14,12 +14,12 @@ type UIHeaderProps = HeaderProps & {
 
 const UIHeader: React.FC<UIHeaderProps> = (props) => {
 	const router = useRouter()
-	const { mode='light', ...rest } = props || {}
+	const { mode = 'light', ...rest } = props || {}
 
 	const { clientUrl } = useApp()
 
 	const handleClick = (link: any) => {
-    const path = link?.path || '/'
+		const path = link?.path || '/'
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
@@ -27,8 +27,8 @@ const UIHeader: React.FC<UIHeaderProps> = (props) => {
 		router.push(`${clientUrl}${path}`)
 	}
 
-  const { theme } = useTheme() 
-  const themeClass = `${theme}-${mode}`
+	const { theme } = useTheme()
+	const themeClass = `${theme}-${mode}`
 
 	return (
 		<div className={cn(themeClass, 'bg-background w-full')}>

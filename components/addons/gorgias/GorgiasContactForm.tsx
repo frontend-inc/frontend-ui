@@ -5,7 +5,7 @@ import Script from 'next/script'
 
 export type GorgiasContactFormProps = {
 	src?: string
-  gorgiasContactFormSrc?: string
+	gorgiasContactFormSrc?: string
 }
 
 const GorgiasContactForm: React.FC<GorgiasContactFormProps> = (props) => {
@@ -13,7 +13,7 @@ const GorgiasContactForm: React.FC<GorgiasContactFormProps> = (props) => {
 	if (!src) return null
 	return (
 		<div>
-      <Script strategy="beforeInteractive" src={gorgiasContactFormSrc} />
+			<Script strategy="beforeInteractive" src={gorgiasContactFormSrc} />
 			<iframe src={src} />
 		</div>
 	)

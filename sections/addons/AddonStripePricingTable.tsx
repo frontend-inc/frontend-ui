@@ -10,8 +10,7 @@ type AddonStripePricingTableProps = SectionProps & StripePricingTableProps
 const AddonStripePricingTable: React.FC<AddonStripePricingTableProps> = (
 	props
 ) => {
-	
-  const {
+	const {
 		bgColor,
 		bgImage,
 		bgOverlay,

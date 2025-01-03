@@ -105,9 +105,7 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 											>
 												Publish
 											</Button>
-											<Button												
-												onPress={() => handleUnpublish(selected)}
-											>
+											<Button onPress={() => handleUnpublish(selected)}>
 												Unpublish
 											</Button>
 										</>

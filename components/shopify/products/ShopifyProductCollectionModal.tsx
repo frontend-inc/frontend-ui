@@ -22,18 +22,14 @@ const ShopifyProductCollectionModal: React.FC<
 	const { collection, open = false, handleClose, ...rest } = props
 
 	return (
-		<Modal
-			open={open}
-			handleClose={handleClose}
-			maxWidth="full"
-		>
+		<Modal open={open} handleClose={handleClose} maxWidth="full">
 			<div className="w-full flex flex-col space-y-6">
-        <Heading 
-          size='sm'
-          textAlign="center"
-          title={collection?.title}
-          subtitle={collection?.description}
-        />        
+				<Heading
+					size="sm"
+					textAlign="center"
+					title={collection?.title}
+					subtitle={collection?.description}
+				/>
 				<ShopifyProductCollection
 					{...rest}
 					shopifyCollection={collection?.handle}

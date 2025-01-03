@@ -7,18 +7,12 @@ import { useRouter } from 'next/navigation'
 import { useApp } from '../../hooks'
 import { SectionProps } from '../../types'
 
-type UIFooterProps = FooterProps & SectionProps 
+type UIFooterProps = FooterProps & SectionProps
 
 const UIFooter: React.FC<UIFooterProps> = (props) => {
 	const router = useRouter()
-	
-  const { 
-    bgColor, 
-    mode, 
-    maxWidth='lg', 
-    links = [], 
-    ...rest 
-  } = props || {}
+
+	const { bgColor, mode, maxWidth = 'lg', links = [], ...rest } = props || {}
 
 	const { clientUrl } = useApp()
 
@@ -31,11 +25,7 @@ const UIFooter: React.FC<UIFooterProps> = (props) => {
 	}
 
 	return (
-		<Section
-      bgColor={bgColor}
-      mode={mode}
-      maxWidth={maxWidth}
-    >
+		<Section bgColor={bgColor} mode={mode} maxWidth={maxWidth}>
 			<Footer {...rest} links={links} handleClick={handleClick} />
 		</Section>
 	)

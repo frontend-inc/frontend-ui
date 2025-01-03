@@ -41,12 +41,12 @@ export default function TextArea(props: TextAreaProps) {
 		clearError()
 		setText(text)
 		if (disableDebounce) {
-			handleChange({ 
-        target: {
-          name, 
-          value: text
-        }
-      })
+			handleChange({
+				target: {
+					name,
+					value: text,
+				},
+			})
 		}
 	}
 
@@ -66,18 +66,16 @@ export default function TextArea(props: TextAreaProps) {
 	}, [value])
 
 	return (
-    <Textarea
-      label={label}          
-      className={cn(
-        className
-      )}
-      name={name}
-      disabled={disabled}
-      placeholder={placeholder || `Enter ${label}`}
-      onValueChange={handleTextAreaChange}
-      value={text}
-      rows={rows}
-      errorMessage={error}
-    />
+		<Textarea
+			label={label}
+			className={cn(className)}
+			name={name}
+			disabled={disabled}
+			placeholder={placeholder || `Enter ${label}`}
+			onValueChange={handleTextAreaChange}
+			value={text}
+			rows={rows}
+			errorMessage={error}
+		/>
 	)
 }

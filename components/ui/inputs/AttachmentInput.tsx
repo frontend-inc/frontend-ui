@@ -22,15 +22,14 @@ type RenderAttachmentProps = {
 }
 
 function RenderAttachment(props: RenderAttachmentProps) {
-
-  const {
-    src,
-    objectFit = 'cover',
-    size = IMAGE_WIDTH,
-    onDelete,
-    variant = 'file',
-    alt = '',
-  } = props || {}
+	const {
+		src,
+		objectFit = 'cover',
+		size = IMAGE_WIDTH,
+		onDelete,
+		variant = 'file',
+		alt = '',
+	} = props || {}
 
 	return (
 		<div className="relative">
@@ -51,12 +50,12 @@ function RenderAttachment(props: RenderAttachmentProps) {
 			{variant === 'file' && (
 				<Avatar className="rounded-lg h-16 w-16">
 					<AvatarFallback className="rounded-lg">
-						<RemixIcon name='ri-file-2-line' size='lg' />
+						<RemixIcon name="ri-file-2-line" size="lg" />
 					</AvatarFallback>
 				</Avatar>
 			)}
 			<Button
-        isIconOnly				
+				isIconOnly
 				size="sm"
 				className={cn(
 					'text-foreground absolute -top-3 left-2',
@@ -71,18 +70,17 @@ function RenderAttachment(props: RenderAttachmentProps) {
 }
 
 export default function AttachmentInput(props: AttachmentInputProps) {
-
-  const {
-    name,
-    label,
-    handleChange,
-    value: attachment,
-    handleRemove,
-    variant = 'file',
-    size = IMAGE_WIDTH,
-    objectFit = 'cover',  
-    info,
-  } = props || {}
+	const {
+		name,
+		label,
+		handleChange,
+		value: attachment,
+		handleRemove,
+		variant = 'file',
+		size = IMAGE_WIDTH,
+		objectFit = 'cover',
+		info,
+	} = props || {}
 
 	const [src, setSrc] = useState<string | null>(null)
 

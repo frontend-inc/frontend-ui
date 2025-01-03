@@ -12,8 +12,7 @@ export type ShowImageModalProps = {
 }
 
 const ShowImageModal: React.FC<ShowImageModalProps> = (props) => {
-  
-  const { openShow, setOpenShow, resource } = useResourceContext()
+	const { openShow, setOpenShow, resource } = useResourceContext()
 
 	const { enableGradient } = props || {}
 

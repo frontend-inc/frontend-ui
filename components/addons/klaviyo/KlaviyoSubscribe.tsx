@@ -47,16 +47,16 @@ const KlaviyoSubscribe: React.FC<KlaviyoSubscribeProps> = (props) => {
 	}
 
 	return (
-    <EmailSubscribeInput
-      loading={loading}
-      errors={[]}
-      name='email'
-      value={email}
-      placeholder='Enter your email'
-      handleChange={handleChange}
-      handleSubmit={handleFormSubmit}
-      buttonText={buttonText}
-    />
+		<EmailSubscribeInput
+			loading={loading}
+			errors={[]}
+			name="email"
+			value={email}
+			placeholder="Enter your email"
+			handleChange={handleChange}
+			handleSubmit={handleFormSubmit}
+			buttonText={buttonText}
+		/>
 	)
 }
 

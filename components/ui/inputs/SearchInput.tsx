@@ -18,7 +18,7 @@ type SearchInputProps = {
 
 const SearchInput: React.FC<SearchInputProps> = (props) => {
 	const {
-    label='Search',
+		label = 'Search',
 		name = 'keywords',
 		fullWidth = false,
 		value,
@@ -35,41 +35,41 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
 	}
 
 	useEffect(() => {
-    handleChange({
-      target: {
-        name,
-        value: debouncedValue,
-      },
-    })		
+		handleChange({
+			target: {
+				name,
+				value: debouncedValue,
+			},
+		})
 	}, [debouncedValue])
 
-	return (		
-    <form
-      className={'w-full'}
-      onSubmit={(e) => {
-        e.preventDefault()
-        handleSearch(text)
-      }}
-    >
-      <Input
-        fullWidth 
-        label={label}
-        className={ fullWidth ? 'w-full' : 'max-w-screen-sm' }
-        placeholder={placeholder}
-        value={text}
-        onChange={handleInputChange}        
-        endContent={
-          <Button 
-            variant="light"
-            isIconOnly 
-            onPress={() => handleSearch(text) }
-            className='text-foreground'
-          >
-            <RemixIcon name='ri-search-line' className='text-foreground' />
-          </Button>
-        }
-      />
-    </form>
+	return (
+		<form
+			className={'w-full'}
+			onSubmit={(e) => {
+				e.preventDefault()
+				handleSearch(text)
+			}}
+		>
+			<Input
+				fullWidth
+				label={label}
+				className={fullWidth ? 'w-full' : 'max-w-screen-sm'}
+				placeholder={placeholder}
+				value={text}
+				onChange={handleInputChange}
+				endContent={
+					<Button
+						variant="light"
+						isIconOnly
+						onPress={() => handleSearch(text)}
+						className="text-foreground"
+					>
+						<RemixIcon name="ri-search-line" className="text-foreground" />
+					</Button>
+				}
+			/>
+		</form>
 	)
 }
 

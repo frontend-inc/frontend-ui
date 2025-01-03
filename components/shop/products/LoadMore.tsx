@@ -19,9 +19,7 @@ const LoadMore: React.FC<LoadMoreProps> = (props) => {
 			<Button
 				color="secondary"
 				onPress={handlePaginate}
-				endContent={
-          <RemixIcon name="ri-arrow-down-line" />
-        }
+				endContent={<RemixIcon name="ri-arrow-down-line" />}
 			>
 				Load More
 			</Button>

@@ -45,13 +45,18 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 
 	const [segment, setSegment] = useState(null)
 
-	useTikTok({ tikTokPixelId: !disableAnalytics && tikTokPixelId ? tikTokPixelId : '' })
-	useFacebookPixel({ facebookPixelId: !disableAnalytics && facebookPixelId ? facebookPixelId : '' })
+	useTikTok({
+		tikTokPixelId: !disableAnalytics && tikTokPixelId ? tikTokPixelId : '',
+	})
+	useFacebookPixel({
+		facebookPixelId:
+			!disableAnalytics && facebookPixelId ? facebookPixelId : '',
+	})
 
 	useEffect(() => {
 		if (!disableAnalytics && segmentWriteKey) {
 			setSegment(
-        //@ts-ignore
+				//@ts-ignore
 				AnalyticsBrowser.load({
 					writeKey: segmentWriteKey,
 				})
@@ -92,7 +97,7 @@ const ScriptProvider = (props: ScriptProviderProps) => {
 						<VisualWebsiteOptimizerScript id={visualWebsiteOptimizerId} />
 					)}
 				</>
-			)}			
+			)}
 			{wrapGTMProvider(gtmId, children)}
 		</ScriptContext.Provider>
 	)

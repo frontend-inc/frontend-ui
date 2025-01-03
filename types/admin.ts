@@ -4,4 +4,3 @@ export type AdminMenuType = {
 	label: string
 	value: string
 }
-

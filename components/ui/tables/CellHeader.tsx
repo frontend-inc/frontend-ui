@@ -31,20 +31,20 @@ export default function CellHeader({
 		<Button
 			variant="ghost"
 			onPress={() => handleSort(field)}
-      endContent={ 
-        active && (
-          <span
-            className={cn(
-              'transition-transform duration-200',
-              sortDirection === 'desc' && 'rotate-180'
-            )}
-          >
-            <ChevronUp className="h-5 w-5 text-foreground/70" />
-          </span>
-        )
-      }
+			endContent={
+				active && (
+					<span
+						className={cn(
+							'transition-transform duration-200',
+							sortDirection === 'desc' && 'rotate-180'
+						)}
+					>
+						<ChevronUp className="h-5 w-5 text-foreground/70" />
+					</span>
+				)
+			}
 		>
-			{field?.label}			
+			{field?.label}
 		</Button>
 	)
 }

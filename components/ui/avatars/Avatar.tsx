@@ -9,7 +9,7 @@ import {
 import { cn } from '@nextui-org/react'
 
 type AvatarProps = {
-  alt?: string
+	alt?: string
 	src?: string
 	variant?: 'circular' | 'rounded'
 	label?: string
@@ -21,15 +21,14 @@ type AvatarProps = {
 }
 
 export default function Avatar(props: AvatarProps) {
-
-  const {
-    src,
-    alt,
-    label,
-    variant = 'rounded',
-    size = 40,
-    className,
-  } = props || {}
+	const {
+		src,
+		alt,
+		label,
+		variant = 'rounded',
+		size = 40,
+		className,
+	} = props || {}
 
 	const avatarClasses = cn(
 		variant === 'circular' ? 'rounded-full' : 'rounded-lg'
@@ -42,7 +41,7 @@ export default function Avatar(props: AvatarProps) {
 				width: size,
 				height: size,
 			}}
-      alt={alt}
+			alt={alt}
 		>
 			<AvatarImage src={src} alt="Avatar" className="object-cover" />
 			<AvatarFallback

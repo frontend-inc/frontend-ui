@@ -74,7 +74,7 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 					handleDelete={handleDeleteClick}
 				/>
 				<Button
-					fullWidth          					
+					fullWidth
 					onPress={handleAddAddress}
 					startContent={<RiAddFill />}
 				>

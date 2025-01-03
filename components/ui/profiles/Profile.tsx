@@ -33,27 +33,29 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		<Container maxWidth="lg">
 			<Stack direction={direction}>
 				<Stack direction={direction} size="1/4">
-					<Stack className={direction == 'row' ? 'items-start' : 'items-center'}>
-            <div className="w-full flex flex-col space-y-2 items-center justify-center ">
-              <div className="h-[160px] w-[160px]">
-                <AvatarImage
-                  //@ts-ignore
-                  alt={title}
-                  src={image}
-                  size={160}
-                />
-              </div>
-              <div className="w-full flex flex-row items-center justify-center ">
-							{socialLinks?.map((link, index) => (
-								<div className="p-[2px]" key={index}>
-									<SocialButton
-										url={link.url}
-										size={28}
-										provider={link.provider}
-									/>
-								</div>
-							))}
-              </div>
+					<Stack
+						className={direction == 'row' ? 'items-start' : 'items-center'}
+					>
+						<div className="w-full flex flex-col space-y-2 items-center justify-center ">
+							<div className="h-[160px] w-[160px]">
+								<AvatarImage
+									//@ts-ignore
+									alt={title}
+									src={image}
+									size={160}
+								/>
+							</div>
+							<div className="w-full flex flex-row items-center justify-center ">
+								{socialLinks?.map((link, index) => (
+									<div className="p-[2px]" key={index}>
+										<SocialButton
+											url={link.url}
+											size={28}
+											provider={link.provider}
+										/>
+									</div>
+								))}
+							</div>
 						</div>
 					</Stack>
 				</Stack>
@@ -71,7 +73,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 						<Typography
 							variant="subtitle2"
 							className="w-full text-foreground/70 italic leading-loose"
-              textAlign={direction == 'row' ? 'left' : 'center'}
+							textAlign={direction == 'row' ? 'left' : 'center'}
 						>
 							{description}
 						</Typography>

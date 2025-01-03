@@ -50,13 +50,13 @@ const Form: React.FC<FormProps> = (props) => {
 				inputParams={inputParams}
 			/>
 			{handleSubmit && (
-				<Button 
-          variant="solid"
-          color="primary"
-          isLoading={loading}
-          onPress={handleSubmit} 
-          disabled={loading} 
-        >
+				<Button
+					variant="solid"
+					color="primary"
+					isLoading={loading}
+					onPress={handleSubmit}
+					disabled={loading}
+				>
 					{buttonText}
 				</Button>
 			)}

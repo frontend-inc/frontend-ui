@@ -6,7 +6,7 @@ import { getInitials } from '../../../helpers'
 
 type UserProps = {
 	user: any
-  isBordered?: boolean
+	isBordered?: boolean
 	radius?: 'sm' | 'md' | 'lg' | 'full'
 	size?: 'sm' | 'md' | 'lg'
 	enableGradient?: boolean
@@ -14,28 +14,22 @@ type UserProps = {
 }
 
 const User: React.FC<UserProps> = (props) => {
-	const {
-    isBordered,
-		user,
-		size = 'md',
-    radius,
-		className,
-	} = props
-  
+	const { isBordered, user, size = 'md', radius, className } = props
+
 	return (
 		<NextUser
-      avatarProps={{
-        src: user?.avatar?.url,
-        name: getInitials(user?.name),
-        alt: user?.name,
-        radius,
-        isBordered,
-        className: isBordered ? 'mr-1' : '',
-        size
-      }}
-      name={ user?.name }
-      description={ user?.email }      
-      className={ className }    
+			avatarProps={{
+				src: user?.avatar?.url,
+				name: getInitials(user?.name),
+				alt: user?.name,
+				radius,
+				isBordered,
+				className: isBordered ? 'mr-1' : '',
+				size,
+			}}
+			name={user?.name}
+			description={user?.email}
+			className={className}
 		/>
 	)
 }
