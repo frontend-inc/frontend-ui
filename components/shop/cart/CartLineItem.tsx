@@ -24,7 +24,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 	return (
 		<ButtonGroup
 			variant="light"
-			className="border-2 border-divider rounded-lg"
+			className="border-2 border-divider rounded-xl w-[100px]"
 			size="sm"
 		>
 			<Button
@@ -35,7 +35,7 @@ const CartQuantityInput: React.FC<CartQuantityInputProps> = (props) => {
 			>
 				<Minus size={20} />
 			</Button>
-			<Button isIconOnly size="sm" className="min-w-8">
+			<Button isIconOnly size="sm" className="min-w-8 w-full">
 				{quantity}
 			</Button>
 			<Button

@@ -25,13 +25,13 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (
 	return (
 		<ButtonGroup
 			variant="light"
-			className="border-1 border-divider rounded-xl"
+			className="border-1 border-divider rounded-xl w-[100px]"
 			size="sm"
 		>
 			<Button isIconOnly className="min-w-8" onPress={handleRemoveQuantity}>
 				<RemixIcon name="ri-subtract-line" />
 			</Button>
-			<Button isIconOnly className="min-w-8">
+			<Button isIconOnly fullWidth>
 				{quantity}
 			</Button>
 			<Button isIconOnly onPress={handleAddQuantity} className="min-w-8">
