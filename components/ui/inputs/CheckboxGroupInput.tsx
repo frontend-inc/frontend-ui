@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Checkbox } from 'frontend-shadcn'
+import { Checkbox } from '@nextui-org/react'
 import { InputLabel } from '../../../components'
 import { OptionType, SyntheticEventType } from '../../../types'
 import { cn } from '@nextui-org/react'
@@ -16,15 +16,18 @@ type CheckboxGroupInputProps = {
 	handleChange: (e: SyntheticEventType) => void
 }
 
-export default function CheckboxGroupInput({
-	errors,
-	label,
-	name,
-	value: values = [],
-	options,
-	handleChange,
-	info,
-}: CheckboxGroupInputProps) {
+export default function CheckboxGroupInput(props: CheckboxGroupInputProps) {
+
+  const {
+    errors,
+    label,
+    name,
+    value: values = [],
+    options,
+    handleChange,
+    info,
+  } = props || {}
+
 	const handleCheckboxChange = (checked: boolean, value: string) => {
 		let newValues = checked
 			? [...values, value]
@@ -47,8 +50,8 @@ export default function CheckboxGroupInput({
 					<div key={idx} className="flex items-center space-x-2">
 						<Checkbox
 							id={`${name}-${option.value}`}
-							checked={values.includes(String(option.value))}
-							onCheckedChange={(checked) =>
+							isSelected={values.includes(String(option.value))}
+							onValueChange={(checked) =>
 								handleCheckboxChange(checked as boolean, String(option.value))
 							}
 						/>

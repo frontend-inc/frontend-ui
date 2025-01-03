@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Fade, Typography } from '../../../core'
+import { Fade, Typography } from '../../../../components'
 
 export type FormWizardInputWrapperProps = {
 	title: string

@@ -34,4 +34,4 @@ const Fade: React.FC<FadeProps> = ({
 	)
 }
 
-export { Fade }
+export default Fade

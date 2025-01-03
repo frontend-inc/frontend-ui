@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '@nextui-org/react'
-import { Sheet, SheetContent, SheetTrigger } from 'frontend-shadcn'
+import { Sheet } from '../../../components'
 import ProductFiltersList from './ShopifyProductFiltersList'
 import {
 	SearchFilterType,
@@ -30,15 +30,19 @@ const ShopifyProductSearchFilters: React.FC<
 		handleFilterArray,
 	} = props
 
+  const [open, setOpen] = useState(false)
+
 	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<Button variant="ghost" fullWidth>
-					<SlidersHorizontal className="mr-2 h-4 w-4" />
-					Filters
-				</Button>
-			</SheetTrigger>
-			<SheetContent side="right">
+		<>
+      <Button variant="ghost" fullWidth>
+        <SlidersHorizontal className="mr-2 h-4 w-4" />
+        Filters
+      </Button>
+			<Sheet 
+        open={open}
+        handleClose={() => setOpen(false)}
+        title="Filter"
+      >
 				<ProductFiltersList
 					filters={filters}
 					options={options}
@@ -46,8 +50,8 @@ const ShopifyProductSearchFilters: React.FC<
 					handleFilter={handleFilter}
 					handleFilterArray={handleFilterArray}
 				/>
-			</SheetContent>
-		</Sheet>
+		  </Sheet>
+    </>
 	)
 }
 

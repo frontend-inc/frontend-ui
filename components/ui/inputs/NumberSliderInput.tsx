@@ -3,7 +3,7 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
 import { InputLabel } from '../../../components'
-import { Slider } from 'frontend-shadcn'
+import { Slider } from '@nextui-org/react'
 
 type NumberSliderInputProps = {
 	label?: string
@@ -16,16 +16,19 @@ type NumberSliderInputProps = {
 	info?: string
 }
 
-export default function NumberSliderInput({
-	value = [0],
-	label,
-	info,
-	name,
-	handleChange,
-	min,
-	max,
-	stepSize = 1,
-}: NumberSliderInputProps) {
+export default function NumberSliderInput(props: NumberSliderInputProps) {
+
+  const {
+    value = [0],
+    label,
+    info,
+    name,
+    handleChange,
+    min,
+    max,
+    stepSize = 1,
+  } = props || {}
+
 	const handleInputChange = (newValue: number[]) => {
 		handleChange({
 			target: {

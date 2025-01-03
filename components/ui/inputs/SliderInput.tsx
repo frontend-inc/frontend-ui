@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Slider } from 'frontend-shadcn'
+import { Slider } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
 
 type SliderInputProps = {

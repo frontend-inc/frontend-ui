@@ -5,7 +5,7 @@ import {
 	Button, 
   ButtonProps 
 } from '@nextui-org/react'
-import { AlertModal } from '..'
+import { AlertModal } from '../../../components'
 
 type AlertButtonProps = ButtonProps & {
   onPress: () => void
@@ -45,6 +45,4 @@ const AlertButton = forwardRef<HTMLButtonElement, AlertButtonProps>(
 	}
 )
 
-AlertButton.displayName = 'AlertButton'
-
-export { AlertButton }
+export default AlertButton

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { cn } from '@nextui-org/react'
-import { SyntheticEventType } from '../../types'
+import { SyntheticEventType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
 type TypographyProps = {
@@ -115,4 +115,4 @@ const Typography: React.FC<TypographyProps> = (props) => {
 	)
 }
 
-export { Typography }
+export default Typography

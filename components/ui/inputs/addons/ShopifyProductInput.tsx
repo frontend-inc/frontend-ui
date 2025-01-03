@@ -8,7 +8,7 @@ import { useProducts } from 'frontend-shopify'
 import { ShopifyContext } from 'frontend-shopify'
 import { Button } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
-import { Collapse } from '../../../core'
+import { Collapse } from '../../../../components'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 

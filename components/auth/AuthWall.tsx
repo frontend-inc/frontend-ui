@@ -17,11 +17,14 @@ const AuthWall: React.FC = () => {
 			<Empty
 				title="Sign in to view content"
 				description="You are not logged in."
-				buttons={<Button 
+				buttons={
+          <Button 
             variant="solid"
             color="primary"
             onPress={handleLoginClick}
-          > Sign in</Button>
+          >
+            Sign in
+          </Button>
       }
 			/>
 		</div>

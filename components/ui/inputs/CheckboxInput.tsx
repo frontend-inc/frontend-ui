@@ -3,8 +3,6 @@
 import React from 'react'
 import { SyntheticEventType } from '../../../types'
 import { Checkbox } from '@nextui-org/react'
-import { InputLabel } from '../../../components'
-import { cn } from '@nextui-org/react'
 
 type CheckboxInputProps = {
 	name: string
@@ -16,15 +14,15 @@ type CheckboxInputProps = {
 	info?: string
 }
 
-export default function CheckboxInput({
-	name,
-	value,
-	placeholder,
-	label,
-	handleChange,
-	disableBorder = false,
-	info,
-}: CheckboxInputProps) {
+export default function CheckboxInput(props: CheckboxInputProps) {
+
+  const {
+    name,
+    value,
+    label,
+    handleChange,
+  } = props || {}
+  
 	const handleCheckboxChange = (checked: boolean) => {
 		handleChange({
 			target: {

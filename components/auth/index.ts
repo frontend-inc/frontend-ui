@@ -34,6 +34,3 @@ export { default as VerifySendPinForm } from './verify/VerifySendPinForm'
 
 // Users
 export * from './users'
-
-// Lists
-export { default as AuthUserListItem } from './lists/AuthUserListItem'

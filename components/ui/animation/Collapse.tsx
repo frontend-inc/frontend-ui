@@ -44,3 +44,5 @@ export const Collapse: React.FC<CollapseProps> = ({
 		</AnimatePresence>
 	)
 }
+
+export default Collapse

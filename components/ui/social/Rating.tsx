@@ -115,4 +115,4 @@ function Rating({
 	)
 }
 
-export { Rating }
+export default Rating

@@ -53,12 +53,12 @@ export default function Modal(props: ModalProps) {
           <ModalHeader className="mt-4 text-foreground">
             {title}					
           </ModalHeader>
-          <ModalBody className='px-1'>    
+          <ModalBody>    
             <div 
               style={{ 
                 maxHeight: maxWidth == 'full' ? 'calc(100vh - 100px)' : 'calc(100vh - 400px)'
               }} 
-              className="w-full overflow-y-scroll"
+              className="px-1 w-full overflow-y-scroll"
             >
               {loading ? (
                 <div className="w-full flex items-center justify-center h-[160px]">

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Cell, TableCell } from '../../../components'
-import { Button, Checkbox } from '../../../components'
+import { Button, Checkbox } from '@nextui-org/react'
 import { get } from 'lodash'
 import { TableRow as ShadcnTableRow } from 'frontend-shadcn'
 
@@ -46,9 +46,9 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					<div className="mx-2">
 						<Checkbox
 							name={`select-${row.id}`}
-							value={selected}
-							//@ts-ignore
-							handleChange={handleSelect ? () => handleSelect(row) : undefined}
+              //@ts-ignore
+							isSelected={selected}
+							onValueChange={handleSelect ? () => handleSelect(row) : undefined}
 						/>
 					</div>
 				</TableCell>
@@ -58,9 +58,8 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 					<div className="flex flex-row space-x-1">
 						{enableShow && (
 							<Button
-								size="sm"
-								color="secondary"
-								onClick={handleShow ? () => handleShow(row) : undefined}
+								size="sm"								
+								onPress={handleShow ? () => handleShow(row) : undefined}
 							>
 								View
 							</Button>
@@ -69,7 +68,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 							<Button
 								size="sm"
 								variant="ghost"
-								onClick={handleEdit ? () => handleEdit(row) : undefined}
+								onPress={handleEdit ? () => handleEdit(row) : undefined}
 							>
 								Edit
 							</Button>
@@ -78,7 +77,7 @@ const TableRow: React.FC<TableRowProps> = (props) => {
 							<Button
 								size="sm"
 								variant="ghost"
-								onClick={handleDelete ? () => handleDelete(row) : undefined}
+								onPress={handleDelete ? () => handleDelete(row) : undefined}
 							>
 								Delete
 							</Button>

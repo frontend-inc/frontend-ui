@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CircularProgress } from '../../../components'
+import { Spinner } from '@nextui-org/react'
 
 type LoaderProps = {
 	size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -11,7 +11,7 @@ const Loader: React.FC<LoaderProps> = (props) => {
 	const { size = 'sm' } = props || {}
 	return (
 		<div className="w-full h-full flex justify-center items-center">
-			<CircularProgress size={size} />
+			<Spinner />
 		</div>
 	)
 }

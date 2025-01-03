@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Typography, IconButton } from '../../../core'
+import { Typography, IconButton } from '../../../../components'
 import { InputPropsType } from '../../../../types'
 import { X } from 'lucide-react'
 import { TextInput } from '../../..'

@@ -14,8 +14,8 @@ const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(({
 		return (
 			<Button
 				ref={ref}
-				isIconOnly			
-        variant={variant}	
+				isIconOnly	
+        variant={variant}		
 				className={cn(
           'min-w-8 w-8 h-8',
 					className
@@ -28,6 +28,4 @@ const IconButton = forwardRef<HTMLButtonElement, ButtonProps>(({
 	}
 )
 
-IconButton.displayName = 'IconButton'
-
-export { IconButton }
+export default IconButton

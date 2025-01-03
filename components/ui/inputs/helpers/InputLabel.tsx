@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { IconButton, Tooltip } from '../../../core'
+import { Button, Tooltip } from '@nextui-org/react'
 import { RiInformation2Line } from '@remixicon/react'
 
 type InputLabelProps = {
@@ -19,13 +19,17 @@ const InputLabel: React.FC<InputLabelProps> = (props) => {
 			)}
 			{info && (
 				<Tooltip title={info}>
-					<IconButton>
+					<Button
+            isIconOnly 
+            variant="light"
+            className="min-w-8 h-8 w-8"
+          >
 						<RiInformation2Line
 							name="Info"
 							size="sm"
 							className="text-foreground/70"
 						/>
-					</IconButton>
+					</Button>
 				</Tooltip>
 			)}
 		</div>

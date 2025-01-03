@@ -9,7 +9,7 @@ interface BackdropProps extends React.HTMLAttributes<HTMLDivElement> {
 	onClick?: () => void
 }
 
-export function Backdrop(props: BackdropProps) {
+const Backdrop = (props: BackdropProps) => {
 	const { children, open, onClick, className, ...rest } = props
 
 	return (
@@ -55,3 +55,5 @@ export function Backdrop(props: BackdropProps) {
 		</AnimatePresence>
 	)
 }
+
+export default Backdrop

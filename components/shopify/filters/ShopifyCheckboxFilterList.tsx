@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Checkbox } from 'frontend-shadcn'
+import { Checkbox } from '@nextui-org/react'
 import { Label } from 'frontend-shadcn'
 import { SearchFilterOptionType, SearchFilterType } from 'frontend-shopify'
 
@@ -31,8 +31,8 @@ const ShopifyCheckboxFilterList: React.FC<ShopifyCheckboxFilterListProps> = (
 				<div key={index} className="flex items-center space-x-2">
 					<Checkbox
 						id={`${option.name}-${index}`}
-						checked={values?.includes(optionValue)}
-						onCheckedChange={() => handleFilterClick(optionValue)}
+						isSelected={values?.includes(optionValue)}
+						onValueChange={() => handleFilterClick(optionValue)}
 					/>
 					<Label
 						htmlFor={`${option.name}-${index}`}

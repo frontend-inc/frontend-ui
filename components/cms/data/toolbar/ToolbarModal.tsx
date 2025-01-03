@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Collapse, IconButton } from '../../../core'
+import { Collapse, IconButton } from '../../../../components'
 import { useResourceContext } from 'frontend-js'
 import { RiCloseFill } from '@remixicon/react'
 

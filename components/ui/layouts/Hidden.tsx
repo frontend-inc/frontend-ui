@@ -37,4 +37,4 @@ const Hidden: React.FC<HiddenProps> = ({
 	return <>{children}</>
 }
 
-export { Hidden }
+export default Hidden

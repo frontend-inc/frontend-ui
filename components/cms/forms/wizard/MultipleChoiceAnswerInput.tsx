@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Typography } from '../../../core'
+import { Typography } from '../../../../components'
 import { ResourceListItem, ResourceGridItem } from '../../..'
 import { AnswerType } from '../../../../types'
 

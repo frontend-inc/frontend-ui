@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Checkbox } from '../../../components'
+import { Checkbox } from '@nextui-org/react'
 import { CellHeader, TableCell } from '../../../components'
 import { TableRow } from 'frontend-shadcn'
 
@@ -40,7 +40,7 @@ const TableHeaders: React.FC<TableHeaderProps> = (props) => {
 				<TableCell variant="head" sticky header small>
 					<div className="mx-2">
 						{/* @ts-ignore */}
-						<Checkbox value={checked} handleChange={handleSelectAll} />
+						<Checkbox isSelected={checked} onValueChange={handleSelectAll} />
 					</div>
 				</TableCell>
 			)}

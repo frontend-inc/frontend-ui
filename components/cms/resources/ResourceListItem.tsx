@@ -5,7 +5,7 @@ import { cn } from '@nextui-org/react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { Checkbox } from '@nextui-org/react'
 import { MenuButton } from '../../../components'
-import { GripVertical, MoreVertical } from 'lucide-react'
+import { GripVertical } from 'lucide-react'
 import { Typography } from '../../../components'
 import { Image, RemixIcon } from '../../../components'
 

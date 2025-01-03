@@ -7,7 +7,7 @@ import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { ButtonType, MenuLinkType } from '../../..'
 import {
-  cn,
+  Button,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -15,7 +15,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-  Button,
   DropdownItem,
   DropdownTrigger,
   Dropdown,

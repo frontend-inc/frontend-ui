@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Hidden } from '../../../core'
+import { Hidden } from '../../../../components'
 import ShopifyProductImagesSlider from './ShopifyProductImagesSlider'
 import SwipeableShopifyProductImages from './SwipeableShopifyProductImages'
 import { PDP_IMAGE_HEIGHT } from '../../../../constants/index'

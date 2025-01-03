@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Typography } from '../../../components'
-import { SocialLink } from '../../../components'
+import { SocialButton } from '../../../components'
 import { SocialLinkType, MenuLinkType } from '../../../types'
 import AppStoreButton from './AppStoreButton'
 import GooglePlayButton from './GooglePlayButton'
@@ -108,7 +108,7 @@ export default function Footer(props: FooterProps) {
             <div className="flex flex-row space-x-1">
               { socialLinks?.map((socialLink, index) => (
                 <div key={index}>
-                  <SocialLink 
+                  <SocialButton 
                     key={ index }
                     url={ socialLink.url }
                     provider={ socialLink.provider }
