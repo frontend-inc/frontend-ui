@@ -66,7 +66,8 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
 
   return (
 		<Card     
-      isHoverable       			
+      isHoverable    
+      className='w-full'   			
 		>
         <CardHeader className="flex flex-col p-6 justify-start items-start space-y-1">
           <Typography variant="subtitle2">{title}</Typography>
