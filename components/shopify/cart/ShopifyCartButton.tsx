@@ -21,7 +21,7 @@ export default function ShopifyCartButton(props: ShopifyCartButtonProps) {
 		toggleCart()
 	}
 	return (
-    <Badge content={ cart?.totalQuantity}>
+    <Badge color="primary" variant="light" content={ cart?.totalQuantity}>
       <Button isIconOnly onPress={handleCartClick}>
         <RemixIcon name={icon} size="lg" />
       </Button>
