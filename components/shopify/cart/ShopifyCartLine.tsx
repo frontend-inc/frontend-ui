@@ -30,19 +30,21 @@ const ShopifyCartQuantityInput: React.FC<ShopifyCartQuantityInputProps> = (props
 		<ButtonGroup variant="light" className="border-1 border-divider rounded-xl" size='sm'>
 			<Button
         isIconOnly
-				className="px-2 rounded-r-none"
+				className="min-w-8"
 				onPress={handleRemoveQuantity}
 			>
 				<RemixIcon name="ri-subtract-line" />
 			</Button>
 			<Button 
         isIconOnly
+        className="min-w-8"
       >
 				{quantity}
 			</Button>
 			<Button
         isIconOnly
 				onPress={handleAddQuantity}
+        className="min-w-8"
 			>
 				<RemixIcon name="ri-add-line" />
 			</Button>
@@ -157,7 +159,7 @@ const ShopifyCartLine: React.FC<ShopifyCartLineProps> = ({ line }) => {
         isIconOnly
         variant="light"
         radius="full"
-				className="text-foreground/70"
+				className="min-w-8"
 				onPress={handleRemoveLineItem}
 			>
 				<RemixIcon name='ri-close-fill' />
