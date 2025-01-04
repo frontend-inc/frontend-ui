@@ -113,8 +113,10 @@ const MenuBar = ({ editor }) => {
 			{formattingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-					variant="solid"
-					color={btn.isActive ? 'primary' : 'secondary'}
+					variant={ btn.isActive ? 'solid' : 'light' }
+          className={cn(
+            btn.isActive && 'bg-black'
+          )}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					aria-label={btn.label}
@@ -132,7 +134,10 @@ const MenuBar = ({ editor }) => {
 				<IconButton
 					key={index}
 					onClick={btn.action}
-					variant="solid"
+					variant={ btn.isActive ? 'solid' : 'light' }
+          className={cn(
+            btn.isActive && 'bg-black'
+          )}
 					color={btn.isActive ? 'primary' : 'secondary'}
 					disabled={!editor.can().chain().focus().run()}
 					aria-label={btn.label}
@@ -151,8 +156,10 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant="solid"
-					color={btn.isActive ? 'primary' : 'secondary'}
+					variant={ btn.isActive ? 'solid' : 'light' }
+					className={cn(
+            btn.isActive && 'bg-black'
+          )}
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -169,8 +176,10 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant="solid"
-					color={btn.isActive ? 'primary' : 'secondary'}
+					variant={ btn.isActive ? 'solid' : 'light' }
+					className={cn(
+            btn.isActive && 'bg-black'
+          )}
 					aria-label={btn.label}
 				>
 					<RemixIcon
@@ -187,8 +196,10 @@ const MenuBar = ({ editor }) => {
 					key={index}
 					onClick={btn.action}
 					disabled={!editor.can().chain().focus().run()}
-					variant="solid"
-					color={btn.isActive ? 'primary' : 'secondary'}
+					variant={ btn.isActive ? 'solid' : 'light' }
+					className={cn(
+            btn.isActive && 'bg-black'
+          )}
 					aria-label={btn.label}
 				>
 					<RemixIcon
