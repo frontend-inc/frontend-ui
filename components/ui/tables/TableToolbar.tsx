@@ -118,7 +118,7 @@ const TableToolbar: React.FC<TableToolbarProps> = (props) => {
 					<Hidden mdUp>
 						<div className="flex flex-row justify-start items-center">
 							<div className="relative">
-								<IconButton onClick={handleFilter}>
+								<IconButton onPress={handleFilter}>
 									<Filter className="w-5 h-5 text-foreground" />
 								</IconButton>
 								<Badge className="py-0 px-1 rounded-full absolute top-0 right-0 transform translate-x-[3px] -translate-y-[3px]">

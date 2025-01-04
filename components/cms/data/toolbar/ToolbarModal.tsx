@@ -24,7 +24,7 @@ const ToolbarModal: React.FC<ToolbarModalProps> = (props) => {
 			<div>
 				<div className="flex flex-row justify-between items-center w-full">
 					<div className="flex flex-row space-x-1 items-center">
-						<IconButton onClick={handleClose}>
+						<IconButton onPress={handleClose}>
 							<RiCloseFill />
 						</IconButton>
 						{children}
