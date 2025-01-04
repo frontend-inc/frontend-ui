@@ -47,7 +47,7 @@ export default function ProductLikeButton(props: ProductLikeButtonProps) {
 	return (
 		<div>
 			<IconButton
-				onClick={handleClick}
+				onPress={handleClick}
 				className={cn(
 					size === 'large' && 'border border-divider',
 					'transition-transform duration-200',

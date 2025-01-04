@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { Button, Typography } from '../../../components'
+import { Typography } from '../../../components'
+import { Button } from '@nextui-org/react'
 import { Image } from '../..'
 import { useRouter } from 'next/navigation'
 import { cn } from '@nextui-org/react'
@@ -84,7 +85,7 @@ const FeaturedCard: React.FC<FeaturedCardProps> = (props) => {
 				</Typography>
 				{buttonText && (
 					<div className="flex flex-row gap-4">
-						<Button size="lg" onClick={handleItemClick}>
+						<Button size="lg" onPress={handleItemClick}>
 							{buttonText}
 						</Button>
 					</div>

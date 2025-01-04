@@ -25,7 +25,7 @@ export default function CommentButton({
 	return (
 		<div>
 			<IconButton
-				onClick={handleClick}
+				onPress={handleClick}
 				className={cn(size === 'large' && 'border border-divider')}
 			>
 				<RemixIcon name="ri-message-2-fill" className="text-foreground" />

@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import {
-	Button,
 	Carousel,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
 } from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
 import { type CarouselApi } from 'frontend-shadcn'
 import { cn } from '@nextui-org/react'
 
@@ -96,13 +96,13 @@ const Swipeable: React.FC<SwipeableProps> = (props) => {
 					{children.map((_, index) => (
 						<Button
 							key={index}
-							variant="ghost"
+							variant="light"
 							size="sm"
 							className={cn(
 								'w-2 h-2 rounded-full p-0 transition-all duration-300 ease-in-out hover:bg-white',
 								index === current ? 'bg-white w-5' : 'bg-white/50'
 							)}
-							onClick={() => handleSlide(index)}
+							onPress={() => handleSlide(index)}
 						/>
 					))}
 				</div>

@@ -117,7 +117,7 @@ const MenuBar = ({ editor }) => {
           className={cn(
             btn.isActive && 'bg-black'
           )}
-					onClick={btn.action}
+					onPress={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					aria-label={btn.label}
 				>
@@ -133,7 +133,7 @@ const MenuBar = ({ editor }) => {
 			{headingOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-					onClick={btn.action}
+					onPress={btn.action}
 					variant={ btn.isActive ? 'solid' : 'light' }
           className={cn(
             btn.isActive && 'bg-black'
@@ -154,7 +154,7 @@ const MenuBar = ({ editor }) => {
 			{listOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-					onClick={btn.action}
+					onPress={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant={ btn.isActive ? 'solid' : 'light' }
 					className={cn(
@@ -174,7 +174,7 @@ const MenuBar = ({ editor }) => {
 			{textAlignOptions.map((btn, index) => (
 				<IconButton
 					key={index}
-					onClick={btn.action}
+					onPress={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant={ btn.isActive ? 'solid' : 'light' }
 					className={cn(
@@ -194,7 +194,7 @@ const MenuBar = ({ editor }) => {
 			{redoButtons.map((btn, index) => (
 				<IconButton
 					key={index}
-					onClick={btn.action}
+					onPress={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					variant={ btn.isActive ? 'solid' : 'light' }
 					className={cn(

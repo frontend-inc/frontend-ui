@@ -114,7 +114,7 @@ const MenuBar = (props) => {
 			{buttons.map((btn, index) => (
 				<IconButton
 					key={index}
-					onClick={btn.action}
+					onPress={btn.action}
 					disabled={!editor.can().chain().focus().run()}
 					className={cn(btn.isActive && 'bg-primary text-primary-foreground')}
 					aria-label={btn.label}

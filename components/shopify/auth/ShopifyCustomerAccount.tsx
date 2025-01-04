@@ -100,7 +100,7 @@ const ShopifyCustomerAccount: React.FC<ShopifyCustomerAccountProps> = (
 				<Empty
 					title="Please sign in."
 					description="You must be signed in to manage your account."
-					buttons={<Button onClick={handleLogin}>Sign In</Button>}
+					buttons={<Button onPress={handleLogin}>Sign In</Button>}
 				/>
 			)}
 		</AuthScreen>

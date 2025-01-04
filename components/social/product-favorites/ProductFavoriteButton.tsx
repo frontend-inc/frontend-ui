@@ -47,7 +47,7 @@ export default function ProductFavoriteButton({
 	return (
 		<div>
 			<IconButton
-				onClick={handleClick}
+				onPress={handleClick}
 				className={cn(
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',

@@ -39,14 +39,6 @@ const Auth: React.FC<AuthProps> = (props) => {
 
 	const router = useRouter()
 
-	const handleClick = (menuItem) => {
-		if (menuItem.onClick) {
-			menuItem.onClick()
-		} else {
-			router.push(menuItem?.path)
-		}
-	}
-
 	const handleLogout = () => {
 		logout()
 		router.push('/')

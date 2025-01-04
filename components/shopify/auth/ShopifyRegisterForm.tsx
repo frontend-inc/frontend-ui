@@ -66,7 +66,7 @@ const ShopifyRegisterForm: React.FC<ShopifyRegisterFormProps> = (props) => {
 			>
 				Register
 			</Button>
-			<Button className="w-full" variant="ghost" onClick={handleLogin}>
+			<Button className="w-full" variant="ghost" onPress={handleLogin}>
 				Already have an account? Sign in
 			</Button>
 		</div>

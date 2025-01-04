@@ -45,7 +45,7 @@ export default function LikeButton(props: LikeButtonProps) {
 	return (
 		<div>
 			<IconButton
-				onClick={handleClick}
+				onPress={handleClick}
 				className={cn(
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					size === 'large' && 'border border-divider'

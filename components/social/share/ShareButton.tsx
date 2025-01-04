@@ -22,7 +22,7 @@ export default function ShareButton(props: ShareButtonProps) {
 	return (
 		<div>
 			<IconButton
-				onClick={handleClick}
+				onPress={handleClick}
 				className={cn(
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					'text-foreground',
