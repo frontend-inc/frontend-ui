@@ -20,13 +20,17 @@ const Statistic: React.FC<StatisticProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex justify-start py-6 w-full items-start h-full',
-				'flex-row items-center space-x-3 min-h-[90px]',
-				variant == 'outline' && 'border-2 border-divider rounded-lg p-6',
-				variant == 'fill' && 'bg-content1 rounded-lg p-6'
+				'flex justify-start w-full items-start h-full',
+				'flex-row space-x-3 min-h-[90px]',
+				variant == 'outline' && 'border-2 border-divider rounded-lg p-4',
+				variant == 'fill' && 'bg-content1 rounded-lg p-4'
 			)}
 		>
-			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
+			{icon && (
+        <div className="w-8 h-8 rounded-lg bg-content1 flex items-center justify-center">
+          <RemixIcon name={icon} size="lg" className="text-primary" />
+        </div>
+      )}
 			<div
 				className={cn(
 					'flex flex-col space-y-2',
@@ -57,7 +61,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">
-			<div className={'grid grid-cols-2 md:grid-cols-4 gap-6'}>
+			<div className='w-full grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4'>
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
 						<Statistic

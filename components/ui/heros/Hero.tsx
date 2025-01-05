@@ -76,7 +76,13 @@ const Hero: React.FC<HeroProps> = (props) => {
 			subtitle={subtitle}
 			description={description}
 			image={image}
-			secondaryAction={buttons && <ButtonActions buttons={buttons} />}
+			secondaryAction={buttons && (
+        <ButtonActions 
+          size='lg'
+          buttons={buttons} 
+          justifyContent={ style == 'card' ? 'justify-start' : 'justify-center' }
+        />
+      )}
 			enableGradient={enableGradient}
 			enableOverlay={enableOverlay}
 			objectFit={objectFit}

@@ -103,7 +103,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 									onAction={handlePress}
 								>
 									{link?.children?.map((child) => (
-										<DropdownItem key={child?.path}>
+										<DropdownItem key={child?.path || child?.url}>
 											{child?.label}
 										</DropdownItem>
 									))}
@@ -150,7 +150,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 								</DropdownTrigger>
 								<DropdownMenu onAction={handlePress}>
 									{link?.children?.map((child) => (
-										<DropdownItem key={child?.path}>
+										<DropdownItem key={child?.path || child?.url}>
 											{child?.label}
 										</DropdownItem>
 									))}

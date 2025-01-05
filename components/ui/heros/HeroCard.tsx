@@ -20,7 +20,6 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 overflow-hidden">
-			{secondaryAction}
 			<div className="w-full flex justify-center items-center">
 				<div className="w-full flex flex-col md:flex-row gap-4 space-y-4 md:space-y-0 md:space-x-4 justify-start items-center md:items-start">
 					<div className="w-full md:w-1/2 flex flex-col gap-2">
@@ -34,7 +33,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 						/>
 						{actions}
 					</div>
-					<div className="w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-2">
+					<div className="w-full md:w-1/2 max-w-full md:max-w-[500px] flex flex-col space-y-4">
 						<Heading
 							label={label}
 							title={title}
@@ -43,6 +42,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 							size="lg"
 						/>
 						<Typography variant="body1">{description}</Typography>
+            {secondaryAction}
 					</div>
 				</div>
 			</div>

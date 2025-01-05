@@ -42,6 +42,7 @@ const Images: React.FC<ImagesProps> = (props) => {
 							<Image
 								label={item?.label}
 								src={item?.image}
+                height={240}
 								handleClick={() => handleClick(item)}
 								enableGradient={enableGradient}
 								enableOverlay={enableOverlay}
@@ -51,7 +52,7 @@ const Images: React.FC<ImagesProps> = (props) => {
 				</div>
 				{items?.length == 0 && (
 					<Empty
-						icon="ri-collage-fill"
+						icon="ri-multi-image-fill"
 						title="No images yet."
 						description="Images will appear here."
 					/>

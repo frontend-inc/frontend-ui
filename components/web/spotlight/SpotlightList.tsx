@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Container, Heading } from '../../../components'
-import { Image } from '@nextui-org/react'
+import { Image, Container, Heading } from '../../../components'
 import { TypographyVariantsType } from '../../../types'
 import { HeadingProps } from '../../../types'
 
@@ -45,6 +44,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 				{actions && actions}
 				<Container maxWidth="lg">
 					<Image 
+            aspectRatio={1.5}
             src={image} 
             alt={title} 
             enableGradient={enableGradient}

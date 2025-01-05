@@ -29,7 +29,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 							}
 						>
 							<Image
-								src={logo?.image}
+								src={logo?.image }
 								height={height}
 								width={width}
 								style={{

@@ -44,8 +44,8 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
 		<button
 			onClick={handleClick}
 			className={cn(
-				'rounded-md',
-				isActive && 'bg-content1',
+				'rounded-lg border-1 border-transparent',
+				isActive && 'border-divider shadow-lg bg-content1',
 				'hover:bg-content2 cursor-pointer p-3 w-full transition-all duration-200'
 			)}
 		>
@@ -58,7 +58,7 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
 					<RemixIcon
 						name={icon}
 						size="lg"
-						className={cn(isActive ? 'text-foreground' : 'text-foreground/70')}
+						className='text-primary'
 					/>
 				)}
 				<div
