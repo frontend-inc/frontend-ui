@@ -45,7 +45,7 @@ const FormContactUs: React.FC<FormContactUsProps> = (props) => {
 			maxWidth={maxWidth}
 			variant={variant}
 		>
-			<Stack direction={direction} spacing={4}>
+			<Stack direction={direction} spacing={direction == 'row' ? 10 : 2 }>
 				<Stack direction={direction} size="1/3">
 					<Heading
 						label={label}

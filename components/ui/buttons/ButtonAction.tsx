@@ -9,7 +9,7 @@ import { Button } from '@nextui-org/react'
 type ButtonActionProps = {
 	icon?: string
 	action: ActionType
-	color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success'
+	color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'info'
 	variant?: 'solid' | 'ghost' | 'light'
 	size?: 'sm' | 'md' | 'lg'
 	url?: string
@@ -25,7 +25,7 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		url,
 		path,
 		src,
-		color,
+		color='default',
 		variant = 'solid',
 		size = 'md',
 		children,
@@ -54,16 +54,11 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 				{...rest}
 				size={size}
 				variant={variant}
-				color="primary"
+				color={ color }
 				startContent={
 					icon && (
 						<RemixIcon
-							name={icon}
-							className={
-								color == 'primary'
-									? 'text-primary-foreground'
-									: 'text-secondary-foreground'
-							}
+							name={icon}							
 						/>
 					)
 				}

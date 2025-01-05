@@ -22,7 +22,7 @@ const Gradient: React.FC<GradientProps> = (props) => {
 				height: height ? `${height}px` : '100%',
 			}}
 			className={cn(
-				'min-h-[200px] cursor-pointer',
+				'cursor-pointer',
 				disableBorderRadius ? 'rounded-none' : 'rounded-large',
 				'h-full w-full bg-gradient-to-br from-black to-gray-600'
 			)}

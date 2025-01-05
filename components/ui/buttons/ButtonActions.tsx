@@ -39,6 +39,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 						<div key={index} className="w-full sm:w-auto">
 							<ButtonAction
 								size={size}
+                color={ button?.color }                
 								icon={button?.icon}
 								path={button?.path}
 								url={button?.url}

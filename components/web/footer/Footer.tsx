@@ -52,18 +52,16 @@ export default function Footer(props: FooterProps) {
 	} = props || {}
 
 	return (
-		<footer className="w-full py-10 px-4">
-			{(enableNewsletter || logo) && (
-				<div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
-					<NavLogo src={logo} handleClick={() => handleClick('/')} />
+		<footer className="w-full py-10 px-4">			
+      <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
+        <NavLogo src={logo} handleClick={() => handleClick('/')} />
 
-					{enableNewsletter && (
-						<div className="w-[260px]">
-							<EmailSubscribe size="md" />
-						</div>
-					)}
-				</div>
-			)}
+        {enableNewsletter && (
+          <div className="w-[260px]">
+            <EmailSubscribe size="md" />
+          </div>
+        )}
+      </div>
 			<div className="w-full gap-6 py-6 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
 				{links.map((topLevelLink) => {
 					const hasChildren =

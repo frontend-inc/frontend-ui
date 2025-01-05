@@ -69,10 +69,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 				</NavbarBrand>
 			</NavbarContent>
 			{links?.length <= MAX_LINKS && (
-				<NavbarContent className="hidden sm:flex gap-4" justify="center">
+				<NavbarContent  className="hidden sm:flex gap-4" justify="center">
 					{links?.map((link, index) =>
 						link?.children?.length == 0 ? (
-							<NavbarItem key={index}>
+							<NavbarItem key={link.id}>
 								<Button
 									className="text-foreground"
 									variant="light"
@@ -82,7 +82,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 								</Button>
 							</NavbarItem>
 						) : (
-							<Dropdown key={index}>
+							<Dropdown key={link.id}>
 								<DropdownTrigger>
 									<Button
 										variant="light"

@@ -15,6 +15,7 @@ export type ButtonType = {
 	icon?: string
 	label: string
 	action_type: ActionType
+  color?: string
 	variant?: 'solid' | 'ghost' | 'light'
 	url?: string
 	path?: string

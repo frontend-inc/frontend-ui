@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Typography, Heading, RemixIcon, Image, Stack } from '../..'
-import { BlurFade } from '../..'
 import { HeadingProps } from '../../../types'
 
 export type FeatureItemProps = HeadingProps & {
@@ -38,6 +37,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 		<Stack direction={direction} spacing={10} className="items-center">
 			<Stack direction="row" size="1/2">
 				<Image
+          aspectRatio={1.0}
 					src={image}
 					enableOverlay={enableOverlay}
 					enableGradient={enableGradient}
