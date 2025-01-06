@@ -6,7 +6,6 @@ import { Swipeable } from '../../../../components'
 import { useClickOrDrag } from '../../../../hooks'
 import { Card, Image } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
-import NextImage from 'next/image'
 
 type SwipeableShopifyProductImagesProps = {
 	product: ShopifyProductType
