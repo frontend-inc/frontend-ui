@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardFooter, Image } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
-import NoImage from './NoImage'
+import { NO_IMAGE_URL } from '../../../constants'
 
 export type ImageCardProps = {
 	src: string
@@ -35,7 +35,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		enableGradient,
 		enableOverlay,    
 		className,
-	} = props || {}
+	} = props || {}  
 
 	return (
 		<Card
@@ -55,7 +55,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}
-				src={src}
+				src={src || NO_IMAGE_URL}
 				alt={alt || label}
 				className={cn(
           'object-cover',  
@@ -84,9 +84,10 @@ export type ImageProps = Omit<ImageCardProps, 'src'> & {
 }
 
 const NextImage: React.FC<ImageProps> = (props) => {
-	const {
+	
+  const {
 		src,
-    aspectRatio,
+    aspectRatio=0,
 		height=512,
     width=512,
     fullWidth,
@@ -95,20 +96,8 @@ const NextImage: React.FC<ImageProps> = (props) => {
 		...rest
 	} = props || {}
 
-
-
-	if (!src)
-		return (
-			<NoImage
-				disableBorderRadius={disableBorderRadius}
-				aspectRatio={aspectRatio}
-				height={height}
-        width={width}        
-				onClick={handleClick}
-			/>
-		)
 	return (    
-    aspectRatio ?
+    aspectRatio > 0 ?
     <AspectRatio ratio={aspectRatio }>
       <ImageCard
         src={src}

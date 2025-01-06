@@ -41,7 +41,7 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
                 src={image} 
                 label={label} 
                 height={240}
-                width={240}
+                fullWidth
               />
 						</div>
 					</div>

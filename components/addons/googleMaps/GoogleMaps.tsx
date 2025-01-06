@@ -76,8 +76,8 @@ export default function GoogleMap({
 	return (
 		<div
 			className={cn(
-				'sticky rounded overflow-hidden transition-shadow duration-300 hover:shadow-md',
-				enableBorder && 'border border-divider'
+				'sticky rounded-xl overflow-hidden transition-shadow duration-300 hover:shadow-md',
+				enableBorder && 'border-2 border-divider'
 			)}
 			style={{
 				height: height,

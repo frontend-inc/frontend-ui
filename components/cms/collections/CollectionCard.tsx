@@ -49,7 +49,8 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 				<div className="min-h-[240px] w-full relative overflow-hidden">
 					<Image
 						src={image}
-						height={240}
+            fullWidth
+						height={240}            
 						alt={primary}
 						label={label}
 						aspectRatio={4 / 3}

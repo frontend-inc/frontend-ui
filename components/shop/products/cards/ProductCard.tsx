@@ -35,7 +35,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			height = 300,
+			height = 240,
 			addToCart,
 			enableGradient = false,
 			enableOverlay = false,
@@ -45,11 +45,11 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 			<div ref={ref} className={cn('w-full overflow-hidden bg-background')}>
 				<div className="min-h-[250px] w-full relative overflow-hidden">
 					<Image
-						src={image}
-						height={height}
+            fullWidth
+						src={image}            
+						height={height}            
 						alt={title}
 						label={label}
-						aspectRatio={1.0}
 						handleClick={handleClick}
 						enableGradient={enableGradient}
 						enableOverlay={enableOverlay}
