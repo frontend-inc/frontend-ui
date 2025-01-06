@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '@nextui-org/react'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { toast } from 'sonner'
-import { Icon } from '../..'
+import { LucideIcon } from '../..'
 
 type StripeCreditCardElementProps = {
 	handleSubmit: (stripeToken: string, last4: string) => void
@@ -46,7 +46,7 @@ const StripeCreditCardElement: React.FC<StripeCreditCardElementProps> = (
 					variant="solid"
 					color="primary"
 					onPress={handleClick}
-					startContent={<Icon name="CreditCard" className="h-4 w-4" />}
+					startContent={<LucideIcon name="CreditCard" className="h-4 w-4" />}
 				>
 					Add Credit Card
 				</Button>
