@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from '@nextui-org/react'
 import { Typography } from '../../../components'
-import { Image } from '../..'
+import { Image } from '../../../components'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
@@ -17,7 +17,8 @@ export type CardProps = {
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
 	handleSelect?: () => void
-	height?: number
+	imageHeight?: number
+  imageWidth?: number
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	classNames?: string
@@ -35,7 +36,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			height,
+      imageHeight,
+      imageWidth,
+      fullWidth,
 			enableGradient,
 			enableOverlay,
 			classNames,
@@ -45,8 +48,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
 				<Image
 					src={image}
-					height={height}
-					aspectRatio={1.0}
+					height={imageHeight}
+          width={imageWidth}
+          fullWidth={fullWidth}
 					alt={title}
 					label={label}
 					handleClick={handleClick}

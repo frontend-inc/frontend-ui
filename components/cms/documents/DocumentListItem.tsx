@@ -74,6 +74,9 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		<Component
 			label={resource?.label}
 			image={resource?.image?.url}
+      fullWidth
+      imageHeight={320}
+      imageWidth={480}
 			// @ts-ignore
 			title={
 				!disableTitle && (

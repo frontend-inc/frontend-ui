@@ -28,23 +28,22 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		handleClick,
 		isBlurred,
 		disableZoom = false,
-		disableBorderRadius = false,
+		disableBorderRadius = false,    
 		height=512,
     width=512,
-		enableGradient,
-		enableOverlay,
     fullWidth,  
+		enableGradient,
+		enableOverlay,    
 		className,
 	} = props || {}
-
-  const aspectRatio = height / width
 
 	return (
 		<Card
 			isFooterBlurred
 			isPressable={handleClick ? true : false}
 			onPress={handleClick}
-			className={cn(          
+			className={cn(     
+        fullWidth && 'w-full',     
 				disableBorderRadius ? 'rounded-none' : 'rounded-large',
 				'relative'
 			)}
@@ -52,7 +51,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<Image
 				removeWrapper
 				height={height}
-        width={width}
+        width={!fullWidth && width && width}
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}
