@@ -47,6 +47,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	return (
 		<div className="relative w-full">
 			<Image
+        fullWidth
 				disableZoom
 				disableBorderRadius
 				src={image}

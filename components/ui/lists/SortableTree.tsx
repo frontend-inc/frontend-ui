@@ -75,7 +75,7 @@ function SortableItem(props: SortableItemProps) {
 					{...listeners}
 					onClick={handleItemClick}
 					className={`
-            bg-content1 hover:bg-content2 rounded-lg
+            bg-content2 hover:bg-content3 rounded-lg
             w-full p-2 cursor-move
             transition-colors duration-200 ease-in-out
             flex items-center space-x-2

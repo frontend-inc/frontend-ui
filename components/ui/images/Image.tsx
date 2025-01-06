@@ -10,6 +10,7 @@ export type ImageCardProps = {
 	label?: string
 	aspectRatio?: number
 	handleClick?: () => void
+  fullWidth?: boolean
 	height?: number
   width?: number
 	isBlurred?: boolean
@@ -29,6 +30,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		isBlurred,
 		disableZoom = false,
 		disableBorderRadius = false,
+    fullWidth,
 		height,
     width,
 		enableGradient,
@@ -41,7 +43,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			isFooterBlurred
 			isPressable={handleClick ? true : false}
 			onPress={handleClick}
-			className={cn(        
+			className={cn(    
+        fullWidth && 'w-full',    
 				disableBorderRadius ? 'rounded-none' : 'rounded-large',
 				'relative'
 			)}
@@ -49,13 +52,17 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<Image
 				removeWrapper
 				height={height}
-        width={width || height}
+        width={ !fullWidth && (width || height)}
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}
 				src={src}
 				alt={alt || label}
-				className={cn('object-cover', className)}
+				className={cn(
+          'object-cover', 
+          fullWidth && 'w-full',
+          className
+        )}
 			/>
 			{enableGradient && (
 				<div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent bg-opacity-50" />
