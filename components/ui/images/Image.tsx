@@ -8,11 +8,10 @@ export type ImageCardProps = {
 	src: string
 	alt?: string
 	label?: string
-	aspectRatio?: number
 	handleClick?: () => void
-  fullWidth?: boolean
 	height?: number
   width?: number
+  fullWidth?: boolean
 	isBlurred?: boolean
 	disableZoom?: boolean
 	disableBorderRadius?: boolean
@@ -30,21 +29,22 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		isBlurred,
 		disableZoom = false,
 		disableBorderRadius = false,
-    fullWidth,
-		height,
-    width,
+		height=512,
+    width=512,
 		enableGradient,
 		enableOverlay,
+    fullWidth,  
 		className,
 	} = props || {}
+
+  const aspectRatio = height / width
 
 	return (
 		<Card
 			isFooterBlurred
 			isPressable={handleClick ? true : false}
 			onPress={handleClick}
-			className={cn(    
-        fullWidth && 'w-full',    
+			className={cn(          
 				disableBorderRadius ? 'rounded-none' : 'rounded-large',
 				'relative'
 			)}
@@ -52,15 +52,15 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<Image
 				removeWrapper
 				height={height}
-        width={ !fullWidth && (width || height)}
+        width={width}
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}
 				src={src}
 				alt={alt || label}
 				className={cn(
-          'object-cover', 
-          fullWidth && 'w-full',
+          'object-cover',  
+          fullWidth && 'w-full',         
           className
         )}
 			/>
@@ -87,13 +87,16 @@ export type ImageProps = Omit<ImageCardProps, 'src'> & {
 const NextImage: React.FC<ImageProps> = (props) => {
 	const {
 		src,
-		height,
-    width,
-		aspectRatio,
+    aspectRatio,
+		height=512,
+    width=512,
+    fullWidth,
 		handleClick,
 		disableBorderRadius,
 		...rest
 	} = props || {}
+
+
 
 	if (!src)
 		return (
@@ -101,28 +104,32 @@ const NextImage: React.FC<ImageProps> = (props) => {
 				disableBorderRadius={disableBorderRadius}
 				aspectRatio={aspectRatio}
 				height={height}
-        width={width}
+        width={width}        
 				onClick={handleClick}
 			/>
 		)
-	return aspectRatio ? (
-		<AspectRatio ratio={aspectRatio}>
-			<ImageCard
-				src={src}
-				handleClick={handleClick}
-				disableBorderRadius={disableBorderRadius}
-				{...rest}
-			/>
-		</AspectRatio>
-	) : (
-		<ImageCard
-			src={src}
-			height={height}
+	return (    
+    aspectRatio ?
+    <AspectRatio ratio={aspectRatio }>
+      <ImageCard
+        src={src}
+        height={height}
+        width={width}
+        fullWidth={fullWidth}
+        handleClick={handleClick}
+        disableBorderRadius={disableBorderRadius}
+        {...rest}
+      />
+    </AspectRatio> : 
+    <ImageCard
+      src={src}
+      height={height}
       width={width}
-			handleClick={handleClick}
-			disableBorderRadius={disableBorderRadius}
-			{...rest}
-		/>
+      fullWidth={fullWidth}
+      handleClick={handleClick}
+      disableBorderRadius={disableBorderRadius}
+      {...rest}
+    />
 	)
 }
 
