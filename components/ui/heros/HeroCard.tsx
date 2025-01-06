@@ -27,7 +27,8 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 							src={image}
 							alt={title}
 							label={label}
-							aspectRatio={4 / 3}
+							height={512}
+              fullWidth
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 						/>

@@ -44,7 +44,8 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 				{actions && actions}
 				<Container maxWidth="lg">
 					<Image 
-            aspectRatio={1.5}
+            fullWidth
+            height={512}            
             src={image} 
             alt={title} 
             enableGradient={enableGradient}

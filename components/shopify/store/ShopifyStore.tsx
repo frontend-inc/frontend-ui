@@ -39,7 +39,9 @@ const ShopifyStore: React.FC<ShopifyStoreProps> = (props) => {
 		>
 			<ShopifyCart />
 			<ShopifyProductProvider>
-				<ShopifyCollectionProvider>{children}</ShopifyCollectionProvider>
+				<ShopifyCollectionProvider>
+          {children}
+        </ShopifyCollectionProvider>
 			</ShopifyProductProvider>
 		</ShopifyProvider>
 	) : (

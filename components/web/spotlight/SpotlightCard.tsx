@@ -33,7 +33,12 @@ const SpotlightCard: React.FC<SpotlightListProps> = (props) => {
 						</Stack>
 					</Stack>
 					<Stack direction="row" size="1/2">
-						<Image src={image} alt={title} />
+						<Image
+              fullWidth 
+              height={512}
+              src={image} 
+              alt={title} 
+            />
 					</Stack>
 				</Stack>
 			</Container>

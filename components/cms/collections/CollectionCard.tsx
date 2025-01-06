@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from '@nextui-org/react'
+import { cn, Card, CardFooter } from '@nextui-org/react'
 import { Typography } from '../..'
 import { Image } from '../..'
 
@@ -31,7 +31,6 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 			primary,
 			handleClick,
 			image,
-			disableBorder,
 			slots = {
 				item: {},
 				image: {},
@@ -39,30 +38,27 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 		} = props
 
 		return (
-			<div
-				ref={ref}
-				className={cn(
-					!disableBorder && 'border border-divider hover:shadow-md',
-					'w-full overflow-hidden rounded-lg transition-shadow duration-300 bg-background'
-				)}
-			>
-				<div className="min-h-[240px] w-full relative overflow-hidden">
-					<Image
-						src={image}
-            fullWidth
-						height={240}            
-						alt={primary}
-						label={label}
-						aspectRatio={4 / 3}
-						handleClick={handleClick}
-						disableBorderRadius={!disableBorder}
-						{...slots.image}
-					/>
-				</div>
-				<div className="px-4 pt-2 pb-4 w-full">
-					<Typography variant="subtitle1">{primary}</Typography>
-				</div>
-			</div>
+      <Card 
+        ref={ ref }
+        isFooterBlurred>
+				<Image
+					handleClick={handleClick}
+					disableBorderRadius
+					// @ts-ignore
+					src={image}
+					alt={primary}
+					aspectRatio={1.0}
+          {...slots.image}
+				/>
+				<CardFooter className="dark absolute bottom-0 left-0 w-full flex flex-col space-y-2 p-4 z-20">
+          <Typography variant="caption" className="text-white text-ellipsis">
+            { label }
+          </Typography>
+					<Typography variant="body1" className="text-white text-ellipsis">
+						{primary}
+					</Typography>
+				</CardFooter>
+			</Card>
 		)
 	}
 )

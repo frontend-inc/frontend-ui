@@ -40,7 +40,7 @@ const Product: React.FC<ProductModalProps> = (props) => {
 
 	return (
 		<Modal open={open} handleClose={handleClose} maxWidth="3xl">
-			<div className="w-full flex flex-row justify-center pb-10">
+			<div className="w-full flex flex-row justify-center p-10">
 				<div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
 					<ProductDetails
 						direction="column"
