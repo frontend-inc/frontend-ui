@@ -62,12 +62,6 @@ export default function Modal(props: ModalProps) {
 						<ModalHeader className="mt-4 text-foreground">{title}</ModalHeader>
 						<ModalBody>
 							<div
-								style={{
-									maxHeight:
-										maxWidth == 'full'
-											? 'calc(100vh - 100px)'
-											: 'calc(100vh - 400px)',
-								}}
 								className="px-1 w-full overflow-y-scroll"
 							>
 								{loading ? (
@@ -75,7 +69,7 @@ export default function Modal(props: ModalProps) {
 										<Spinner />
 									</div>
 								) : (
-									<div className="w-full">{children}</div>
+									children
 								)}
 							</div>
 						</ModalBody>
