@@ -34,9 +34,15 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 		<div className="w-full py-4">
 			<div className="w-full flex flex-col space-y-6">
 				{!disableImage && (
-					<div className="flex flex-col space-y-6 w-full">
-						<div className="w-full h-full">
-							<Image alt={label} src={image} label={label} />
+					<div className="justify-center items-center flex flex-col space-y-6 w-full">
+						<div className="min-w-[240px] min-h-[240px]">
+							<Image 
+                alt={label} 
+                src={image} 
+                label={label} 
+                height={240}
+                width={240}
+              />
 						</div>
 					</div>
 				)}

@@ -11,6 +11,7 @@ export type ImageCardProps = {
 	aspectRatio?: number
 	handleClick?: () => void
 	height?: number
+  width?: number
 	isBlurred?: boolean
 	disableZoom?: boolean
 	disableBorderRadius?: boolean
@@ -29,6 +30,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		disableZoom = false,
 		disableBorderRadius = false,
 		height,
+    width,
 		enableGradient,
 		enableOverlay,
 		className,
@@ -39,20 +41,21 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			isFooterBlurred
 			isPressable={handleClick ? true : false}
 			onPress={handleClick}
-			className={cn(
+			className={cn(        
 				disableBorderRadius ? 'rounded-none' : 'rounded-large',
-				'relative w-full h-full'
+				'relative'
 			)}
 		>
 			<Image
 				removeWrapper
 				height={height}
+        width={width || height}
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}
 				src={src}
 				alt={alt || label}
-				className={cn('w-full h-full object-cover', className)}
+				className={cn('object-cover', className)}
 			/>
 			{enableGradient && (
 				<div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent bg-opacity-50" />
@@ -78,6 +81,7 @@ const NextImage: React.FC<ImageProps> = (props) => {
 	const {
 		src,
 		height,
+    width,
 		aspectRatio,
 		handleClick,
 		disableBorderRadius,
@@ -90,6 +94,7 @@ const NextImage: React.FC<ImageProps> = (props) => {
 				disableBorderRadius={disableBorderRadius}
 				aspectRatio={aspectRatio}
 				height={height}
+        width={width}
 				onClick={handleClick}
 			/>
 		)
@@ -106,6 +111,7 @@ const NextImage: React.FC<ImageProps> = (props) => {
 		<ImageCard
 			src={src}
 			height={height}
+      width={width}
 			handleClick={handleClick}
 			disableBorderRadius={disableBorderRadius}
 			{...rest}

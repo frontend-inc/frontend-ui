@@ -22,7 +22,7 @@ type IconProps = {
 
 const Icon: React.FC<IconProps> = (props) => {
   
-  const { name, variant='solid', size='md', color, className } = props
+  const { name, variant='default', size='md', color, className } = props
 
   const ghostClasses = {
     default: 'bg-content1',
@@ -37,7 +37,7 @@ const Icon: React.FC<IconProps> = (props) => {
   }
 
   const solidClasses = {
-    default: 'bg-content1',
+    default: 'bg-transparent',
     primary: 'bg-primary',
     secondary: 'bg-secondary',
     success: 'bg-success',
@@ -55,6 +55,18 @@ const Icon: React.FC<IconProps> = (props) => {
     xl: 'w-12 h-12',
   }
 
+  const textClasses = {
+    default: 'text-foreground',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    success: 'text-success',
+    warning: 'text-warning',
+    error: 'text-error',    
+    background: 'text-foreground',
+    content1: 'text-foreground',
+    content2: 'text-foreground',
+  }
+
   return (
     <div 
       className={cn(
@@ -67,7 +79,11 @@ const Icon: React.FC<IconProps> = (props) => {
       <RemixIcon
         name={name}
         size={size}
-        className={className}
+        className={cn(
+          variant == 'ghost' && textClasses[color || 'default'],
+          variant == 'default' && textClasses[color || 'default'],
+          className
+        )}
       />
     </div>
   )

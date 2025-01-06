@@ -75,12 +75,13 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				)}
 				{!disableImage && (
 					<div className="mr-2 min-w-[64px] min-h-[64px]">
-						<button
-							className="w-full h-full focus:outline-none focus:ring-2 items-center justify-center"
-							onClick={handleClick}
-						>
-							<Image src={image || null} aspectRatio={1.0} alt={image} />
-						</button>
+            <Image 
+              src={image || null} 
+              height={64} 
+              width={64} 
+              alt={image} 
+              handleClick={handleClick}
+            />						
 					</div>
 				)}
 				{icon && (

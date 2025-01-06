@@ -5,6 +5,7 @@ import { AspectRatio } from 'frontend-shadcn'
 type GradientProps = {
 	disableBorderRadius?: boolean
 	height?: number
+  width?: number
 	onClick?: () => void
 }
 
@@ -14,12 +15,13 @@ type NoImageProps = GradientProps & {
 }
 
 const Gradient: React.FC<GradientProps> = (props) => {
-	const { disableBorderRadius, onClick, height } = props || {}
+	const { disableBorderRadius, onClick, height, width } = props || {}
 	return (
 		<div
 			onClick={onClick}
 			style={{
 				height: height ? `${height}px` : '100%',
+        width: width ? `${width}px` : '100%',
 			}}
 			className={cn(
 				'cursor-pointer',
@@ -31,14 +33,17 @@ const Gradient: React.FC<GradientProps> = (props) => {
 }
 
 const NoImage: React.FC<NoImageProps> = (props) => {
-	const { aspectRatio, height, ...rest } = props || {}
+	const { aspectRatio, height, width, ...rest } = props || {}
 
 	return aspectRatio ? (
 		<AspectRatio ratio={aspectRatio}>
 			<Gradient {...rest} />
 		</AspectRatio>
 	) : (
-		<Gradient height={height} {...rest} />
+		<Gradient 
+      height={height} 
+      width={width}
+      {...rest} />
 	)
 }
 
