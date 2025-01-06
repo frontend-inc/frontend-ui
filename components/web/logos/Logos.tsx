@@ -36,8 +36,7 @@ const Logos: React.FC<LogosProps> = (props) => {
 									objectFit: 'contain',
 									height,
 									width,
-								}}
-								layout="responsive"
+								}}								
 								alt={logo?.title}
 							/>
 						</div>
