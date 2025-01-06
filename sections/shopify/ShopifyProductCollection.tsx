@@ -2,13 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ShopifyProductSearch as ProductSearch } from '../../components/shopify'
-import { ShopifyProductSearchProps as ProductSearchProps } from '../../components/shopify/products/ShopifyProductSearch'
+import { ShopifyProductCollection as ProductCollection } from '../../components/shopify'
+import { ShopifyProductCollectionProps as ProductCollectionProps } from '../../components/shopify/products/ShopifyProductCollection'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifySearchProps = SectionProps & HeadingProps & ProductSearchProps
+type ShopifyProductsProps = SectionProps & HeadingProps & ProductCollectionProps
 
-const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
+const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 	const {
 		label,
 		title,
@@ -22,7 +22,6 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-
 		...rest
 	} = props
 
@@ -43,9 +42,9 @@ const ShopifySearch: React.FC<ShopifySearchProps> = (props) => {
 				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
-			<ProductSearch {...rest} />
+			<ProductCollection {...rest} />
 		</Section>
 	)
 }
 
-export default ShopifySearch
+export default ShopifyProducts

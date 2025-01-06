@@ -10,7 +10,7 @@ type ShopifyProductsCarouselProps = SectionProps &
 	HeadingProps &
 	ProductCollectionCarouselProps
 
-const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
+const ShopifyProductCollectionCarousel: React.FC<ShopifyProductsCarouselProps> = (
 	props
 ) => {
 	const {
@@ -52,4 +52,4 @@ const ShopifyProductsCarousel: React.FC<ShopifyProductsCarouselProps> = (
 	)
 }
 
-export default ShopifyProductsCarousel
+export default ShopifyProductCollectionCarousel

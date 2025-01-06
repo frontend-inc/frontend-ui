@@ -15,7 +15,7 @@ const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
 	const { product } = props
 
 	if (!product?.description || product?.description?.length == 0) return null
-	return <Typography variant="body1">{product?.description}</Typography>
+	return <Typography variant="body1" className='text-md leading-loose'>{product?.description}</Typography>
 }
 
 export default ShopifyProductDescription

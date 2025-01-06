@@ -20,13 +20,13 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 		<div className="flex flex-col space-y-2">
 			<Typography variant="h4">{product.title}</Typography>
 			<div className="flex flex-row space-x-2 items-center">
-				<div className="text-lg font-normal">
-					{price && formatCurrency(price)}
-				</div>
+        <Typography variant="body1">				
+					{price && formatCurrency(price)}				
+        </Typography>
 				{compareAtPrice && (
-					<div className="text-md text-foreground/70 line-through">
+          <Typography variant="body2" className="text-foreground/70 line-through">									
 						{formatCurrency(compareAtPrice)}
-					</div>
+          </Typography>
 				)}
 			</div>
 		</div>

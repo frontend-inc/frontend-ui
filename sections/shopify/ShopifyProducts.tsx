@@ -2,11 +2,11 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ShopifyProductCollection as ProductCollection } from '../../components/shopify'
-import { ShopifyProductCollectionProps as ProductCollectionProps } from '../../components/shopify/products/ShopifyProductCollection'
+import { ShopifyProductSearch  } from '../../components/shopify'
+import { ShopifyProductSearchProps } from '../../components/shopify/products/ShopifyProductSearch'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifyProductsProps = SectionProps & HeadingProps & ProductCollectionProps
+type ShopifyProductsProps = SectionProps & HeadingProps & ShopifyProductSearchProps
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 	const {
@@ -43,7 +43,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 				subtitle={subtitle}
 				textAlign={textAlign}
 			/>
-			<ProductCollection {...rest} />
+			<ShopifyProductSearch {...rest} />
 		</Section>
 	)
 }

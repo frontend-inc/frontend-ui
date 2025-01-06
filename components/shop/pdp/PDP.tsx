@@ -59,10 +59,10 @@ const PDP: React.FC<PDPProps> = (props) => {
 					>
 						<div className="rounded-lg w-full">
 							<Image
+                fullWidth 
 								src={image}
 								alt={title}
-								height={400}
-								aspectRatio={4 / 3}
+								height={400}								
 								label={label}
 								enableGradient={enableGradient}
 								enableOverlay={enableOverlay}

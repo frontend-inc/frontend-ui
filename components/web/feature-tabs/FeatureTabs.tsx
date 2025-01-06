@@ -169,11 +169,12 @@ const FeatureTabs: React.FC<FeatureTabsProps> = (props) => {
 							<div className="w-full">
 								<BlurFade inView delay={0.25} className="w-full p-2">
 									<Image
+                    fullWidth 
+                    height={512}
 										src={item?.image}
 										alt={item?.title}
 										enableGradient={enableGradient}
-										enableOverlay={enableOverlay}
-										aspectRatio={1.5}
+										enableOverlay={enableOverlay}										
 									/>
 								</BlurFade>
 							</div>

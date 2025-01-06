@@ -69,8 +69,8 @@ const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
 						key={i}
 						size={size}
 						image={testimonial.image}
-						author={testimonial.title}
-						text={testimonial.subtitle}
+						author={testimonial.subtitle}
+						text={testimonial.title}
 						variant={variant}
 					/>
 				))}

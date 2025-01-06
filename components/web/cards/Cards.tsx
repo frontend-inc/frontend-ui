@@ -37,7 +37,7 @@ const CardItems: React.FC<CardItemsProps> = (props) => {
 
 	return (
 		<Card
-			height={240}
+			imageHeight={300}
 			label={item?.label}
 			image={item?.image}
 			title={item?.title}

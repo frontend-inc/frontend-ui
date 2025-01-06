@@ -39,7 +39,7 @@ const Product: React.FC<ProductModalProps> = (props) => {
 	}, [productId])
 
 	return (
-		<Modal open={open} handleClose={handleClose} maxWidth="3xl">
+		<Modal open={open} handleClose={handleClose} maxWidth="full">
 			<div className="w-full flex flex-row justify-center p-10">
 				<div className="md:max-w-screen-sm flex flex-col space-y-[20px]">
 					<ProductDetails
