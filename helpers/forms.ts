@@ -19,7 +19,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 
 	let metafields = [] as any
 
-  if (enableCompany) {
+  if (enableName) {
 		metafields.push({
 			label: 'Name',
 			name: 'name',
