@@ -14,7 +14,7 @@ const LightDarkIconButton: React.FC = () => {
 			onClick={handleClick}
 			className="flex items-center justify-center"
 		>
-			{theme === 'light' ? (
+			{theme === 'dark' ? (
 				<RemixIcon
 					name="ri-sun-fill"
 					className="text-md text-foreground transition duration-200 hover:scale-110"
