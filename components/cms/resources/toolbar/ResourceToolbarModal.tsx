@@ -17,12 +17,12 @@ export default function ResourceToolbarModal(props: ResourceToolbarModalProps) {
 	return (
 		<div
 			className={cn(
-        !open && 'hidden',
-        'dark-dark bg-background',
-				'fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out '
+        'fixed top-0 left-0 right-0 z-50 bg-background dark-dark',
+        'transition-transform duration-300 ease-in-out transform',
+        open ? 'translate-y-0 shadow-md' : '-translate-y-full'
 			)}
 		>
-			<div className="text-secondary-foreground shadow-md">
+			<div className="text-secondary-foreground">
 				<div className="container mx-auto px-4">
 					<div className="h-16 flex items-center justify-between">
 						<div className="w-10 h-10"></div>
