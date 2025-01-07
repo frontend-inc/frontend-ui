@@ -7,16 +7,17 @@ import {
 	DropdownMenu,
 	DropdownItem,
 } from '@nextui-org/react'
-import { Button } from '@nextui-org/react'
+import { cn, Button } from '@nextui-org/react'
 import { RemixIcon } from '../../components'
 
-type MenuButtonProps = {
+type MenuButtonProps = {  
 	handleEdit?: (item: any) => void
 	handleDelete?: (item: any) => void
+  className?: string
 }
 
 const MenuButton: React.FC<MenuButtonProps> = (props) => {
-	const { handleEdit, handleDelete } = props
+	const { handleEdit, handleDelete, className } = props
 
 	const handleAction = (action: React.Key) => {
 		switch (action) {
@@ -40,7 +41,10 @@ const MenuButton: React.FC<MenuButtonProps> = (props) => {
 					variant="light"
 					className="min-w-8 w-8 h-8"
 				>
-					<RemixIcon name="ri-more-2-line" />
+					<RemixIcon 
+            name="ri-more-2-line"
+            className={className} 
+          />
 				</Button>
 			</DropdownTrigger>
 			<DropdownMenu onAction={handleAction}>
