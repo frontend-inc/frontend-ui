@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { isProductFavorited } from '../../../helpers'
 import { useAuth } from 'frontend-js'
 import { useSocial, useApp } from '../../../hooks'
-import { RemixIcon, IconButton } from '../../../components'
-import { cn } from '@nextui-org/react'
+import { RemixIcon } from '../../../components'
+import { cn, Button } from '@nextui-org/react'
 
 type ProductFavoriteButtonProps = {
 	product: any
@@ -23,7 +23,7 @@ export default function ProductFavoriteButton({
 
 	const { favoriteProduct, unfavoriteProduct } = useSocial()
 
-	const handleClick = async (ev: React.MouseEvent) => {
+	const handleClick = async () => {
 		if (!currentUser?.id) {
 			return setAuthOpen(true)
 		}
@@ -46,19 +46,20 @@ export default function ProductFavoriteButton({
 
 	return (
 		<div>
-			<IconButton
+			<Button
 				onPress={handleClick}
 				className={cn(
+          'min-w-8',
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
 					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
-				{isFavorite && (
-					<RemixIcon name="ri-bookmark-fill" className="fill-primary" />
-				)}
-				{!isFavorite && <RemixIcon name="ri-bookmark-line" />}
-			</IconButton>
+				{isFavorite ?
+					<RemixIcon name="ri-bookmark-fill" className="fill-primary" /> : 				
+				  <RemixIcon name="ri-bookmark-line" />
+        }
+			</Button>
 		</div>
 	)
 }

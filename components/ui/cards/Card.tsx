@@ -15,6 +15,7 @@ export type CardProps = {
 	description?: string
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
+  fullWidth?: boolean
 	handleClick?: () => void
 	handleSelect?: () => void
 	imageHeight?: number

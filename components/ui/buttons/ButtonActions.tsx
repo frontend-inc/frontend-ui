@@ -13,7 +13,8 @@ export type ButtonActionsProps = {
 }
 
 const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
-	const {
+	
+  const {
 		buttons,
 		size = 'md',
 		justifyContent = 'justify-center',
@@ -44,7 +45,7 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 								path={button?.path}
 								url={button?.url}
 								src={button?.src}
-								action={button?.action_type}
+								action={button?.action }
 								variant={button?.variant}
 							>
 								{button?.label}

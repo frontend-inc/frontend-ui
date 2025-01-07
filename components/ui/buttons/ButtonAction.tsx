@@ -3,18 +3,11 @@
 import React from 'react'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
-import { ActionType } from '../../../types'
 import { Button } from '@nextui-org/react'
+import { ButtonType } from '../../../types'
 
-type ButtonActionProps = {
-	icon?: string
-	action: ActionType
-	color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'info'
-	variant?: 'solid' | 'ghost' | 'light'
+type ButtonActionProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
-	url?: string
-	path?: string
-	src?: string
 	children: React.ReactNode
 }
 

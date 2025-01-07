@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Button, Pagination as NextUIPagination } from '@nextui-org/react'
-import { Loader2 } from 'lucide-react'
+import { Spinner, Pagination as NextUIPagination } from '@nextui-org/react'
 
 type PaginationProps = {
 	loading?: boolean
@@ -44,7 +43,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 		<div className="p-2 flex flex-row justify-between items-center border-t border-divider w-full">
 			<div className="hidden sm:block mx-2">
 				{loading ? (
-					<Loader2 className="h-6 w-6 animate-spin text-primary" />
+					<Spinner />
 				) : (
 					<p className="text-sm text-foreground/70">
 						Results {startIndex} - {endIndex} of {totalCount}
@@ -56,7 +55,6 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 					total={numPages}
 					initialPage={page}
 					onChange={(page) => handleChangePage(page)}
-					disabled={loading}
 				/>
 			</div>
 		</div>

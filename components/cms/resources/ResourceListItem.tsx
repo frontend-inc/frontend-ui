@@ -18,7 +18,7 @@ export type ResourceListItemProps = {
 	icon?: string
 	color?: string
 	image?: string
-	handleClick?: (resource: any) => void
+	handleClick?: () => void
 	handleEdit?: (resource: any) => void
 	handleDelete?: (resource: any) => void
 	handleSelect?: () => void
@@ -76,7 +76,7 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				{!disableImage && (
 					<div className="mr-2 min-w-[64px] min-h-[64px]">
             <Image 
-              src={image || null} 
+              src={image} 
               height={64} 
               width={64} 
               alt={image} 

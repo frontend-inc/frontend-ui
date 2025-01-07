@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Heading, Stack, Container } from '../../../components'
-import { Image } from '@nextui-org/react'
+import { Image, Heading, Stack, Container } from '../../../components'
 import { SpotlightListProps } from './SpotlightList'
 
 const SpotlightCard: React.FC<SpotlightListProps> = (props) => {

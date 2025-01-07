@@ -12,9 +12,8 @@ import {
 	DrawerPortal,
 	ScrollArea,
 } from 'frontend-shadcn'
-import { Loader2 } from 'lucide-react'
 import { X } from 'lucide-react'
-import { cn } from '@nextui-org/react'
+import { cn, Spinner } from '@nextui-org/react'
 import { useTheme } from '../../../hooks'
 
 type CustomDrawerProps = {
@@ -92,7 +91,7 @@ export default function CustomDrawer(props: CustomDrawerProps) {
 									children
 								) : (
 									<div className="flex justify-center items-center w-full">
-										<Loader2 className="animate-spin h-12 w-12 text-foreground" />
+										<Spinner />
 									</div>
 								)}
 							</div>

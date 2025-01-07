@@ -4,11 +4,13 @@ import React from 'react'
 import { Slider } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
 
+type SliderValue = number | number[]
+
 type SliderInputProps = {
 	label?: string
 	name: string
-	value?: number[]
-	handleChange: (value: number[]) => void
+	value: SliderValue
+	handleChange: (value: SliderValue) => void
 	min: number
 	max: number
 	stepSize?: number
@@ -30,10 +32,10 @@ const SliderInput: React.FC<SliderInputProps> = (props) => {
 		<Slider
 			name={name}
 			defaultValue={value}
-			onValueChange={handleChange}
+			onChangeEnd={handleChange}
 			step={stepSize}
-			min={min}
-			max={max}
+			minValue={min}
+			maxValue={max}
 			value={value}
 			className={cn('w-full', className)}
 		/>

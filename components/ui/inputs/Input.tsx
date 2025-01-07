@@ -16,7 +16,6 @@ import {
 	JsonArrayInput,
 	SlugInput,
 	NumberRangeInput,
-	NumberSliderInput,
 	PhoneInput,
 	PriceRangeInput,
 	RadioInput,
@@ -49,7 +48,6 @@ type InputVariantType =
 	| 'jsonArray'
 	| 'noSpace'
 	| 'numberRange'
-	| 'numberSlider'
 	| 'phone'
 	| 'priceRange'
 	| 'radio'
@@ -90,7 +88,6 @@ const Input: React.FC<InputProps> = (props) => {
 		jsonArray: JsonArrayInput,
 		noSpace: SlugInput,
 		numberRange: NumberRangeInput,
-		numberSlider: NumberSliderInput,
 		phone: PhoneInput,
 		priceRange: PriceRangeInput,
 		radio: RadioInput,

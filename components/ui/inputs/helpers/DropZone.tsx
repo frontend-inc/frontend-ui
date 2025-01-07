@@ -2,7 +2,8 @@
 
 import React, { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Loader2, UploadCloud, DownloadCloud } from 'lucide-react'
+import { UploadCloud, DownloadCloud } from 'lucide-react'
+import { Spinner } from '@nextui-org/react'
 
 type DropZoneProps = {
 	onDrop: (file: File, preview: any) => Promise<void>
@@ -56,7 +57,7 @@ const DropZone: React.FC<DropZoneProps> = (props) => {
 		>
 			<input {...getInputProps()} />
 			{loading ? (
-				<Loader2 className="text-foreground w-5 h-5 animate-spin" />
+				<Spinner />
 			) : (
 				<>
 					{isDragActive ? (
