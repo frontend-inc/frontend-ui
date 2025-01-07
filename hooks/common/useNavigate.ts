@@ -27,15 +27,13 @@ const useNavigate = (params?: UseNavigateParams) => {
 				top: 0,
 				behavior: 'smooth',
 			})
-			//router.push(`${clientUrl}${_path}`)
-      router.push(_path)
+			router.push(`${clientUrl}${_path}`)
 		} else if (path) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-			//router.push(`${clientUrl}${path}`)
-      router.push(path)
+			router.push(`${clientUrl}${path}`)
 		}
 	}
 
