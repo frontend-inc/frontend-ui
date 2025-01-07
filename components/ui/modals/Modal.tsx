@@ -60,14 +60,14 @@ export default function Modal(props: ModalProps) {
 				{(onClose) => (
 					<>
 						<ModalHeader className="mt-4 text-foreground">{title}</ModalHeader>
-						<ModalBody className="px-4 w-full overflow-y-scroll">
-								{loading ? (
-									<div className="w-full flex items-center justify-center h-[160px]">
-										<Spinner />
-									</div>
-								) : (
-									children
-								)}
+						<ModalBody className="px-4 w-full overflow-y-scroll max-h-[calc(100vh-200px)]">
+              {loading ? (
+                <div className="w-full flex items-center justify-center h-[160px]">
+                  <Spinner />
+                </div>
+              ) : (
+                children
+              )}
 						</ModalBody>
 						{!loading && buttons && <ModalFooter>{buttons}</ModalFooter>}
 					</>
