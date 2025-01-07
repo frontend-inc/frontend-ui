@@ -39,13 +39,13 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 					{buttons.map((button, index) => (
 						<div key={index} className="w-full sm:w-auto">
 							<ButtonAction
-								size={size}
-                color={ button?.color }                
+								size={size}                
 								icon={button?.icon}
 								path={button?.path}
 								url={button?.url}
 								src={button?.src}
-								action={button?.action }
+								action={button?.action }                
+                color={ button?.color }                
 								variant={button?.variant}
 							>
 								{button?.label}

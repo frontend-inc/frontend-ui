@@ -46,7 +46,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 				size="2/3"
 				className={cn(
 					'w-full',
-					direction == 'row' && 'items-center justify-center'
+					direction == 'column' && 'items-center justify-center'
 				)}
 			>
 				{buttons?.length > 0 && (
