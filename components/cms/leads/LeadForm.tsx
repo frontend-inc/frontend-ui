@@ -57,8 +57,8 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 	})
 
 	const handleSubmit = async () => {
-		if (!contact?.email || !contact?.name) {
-			toast('Please fill out all required fields')
+		if (!contact?.email) {
+			toast('Please enter your email address')
 			return
 		}
 		let resp = await createContact({
