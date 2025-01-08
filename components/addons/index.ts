@@ -16,6 +16,7 @@ export { default as VisualWebsiteOptimizerScript } from './visual-website-optimi
 
 //Embeds
 export { default as Calendly } from './calendly/Calendly'
+export { default as CalendlyEmbed } from './calendly/CalendlyEmbed'
 export { default as GiftUp } from './giftup/GiftUp'
 export { default as GorgiasChat } from './gorgias/GorgiasChat'
 export { default as MailchimpSubscribe } from './mailchimp/MailchimpSubscribe'

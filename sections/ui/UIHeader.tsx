@@ -18,8 +18,7 @@ const UIHeader: React.FC<UIHeaderProps> = (props) => {
 
 	const { clientUrl } = useApp()
 
-	const handleClick = (link: any) => {
-		const path = link?.path || '/'
+	const handleClick = (path: string) => {		
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
