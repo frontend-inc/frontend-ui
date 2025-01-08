@@ -8,7 +8,6 @@ import { MediaModal } from '../../../components'
 
 export type CalendlyProps = {
 	calendlyUrl: string
-	enableTheme?: boolean
 	buttonText?: string
 }
 
@@ -47,7 +46,7 @@ const Calendly: React.FC<CalendlyProps> = (props) => {
 						styles={{
 							width: '100%',
 							overflow: 'none',
-							height: '1200px',
+							height: '1000px',
 						}}
 						url={calendlyUrl}
 						prefill={prefill}

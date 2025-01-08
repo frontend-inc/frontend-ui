@@ -9,22 +9,29 @@ export type KlaviyoButtonProps = {
 	formId?: string
 	justifyContent?: string
 	buttonText?: string
+  size?: 'sm' | 'md' | 'lg'
+  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  variant?: 'solid' | 'ghost' | 'light'
 }
 
 const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
-	const { formId, buttonText = 'Subscribe' } = props || {}
+	const { formId, size='lg', color='primary', variant='solid', buttonText = 'Subscribe' } = props || {}
 
 	const handleClick = () => {
 		// @ts-ignore
 		window._klOnsite = window._klOnsite || []
 		// @ts-ignore
-		window._klOnsite.push(['openForm', 'Tpqv7M'])
+		window._klOnsite.push(['openForm', formId])
 	}
 
-	if (!formId) return null
 	return (
 		<div className="flex flex-row justify-center">
-			<Button variant="solid" onPress={handleClick}>
+			<Button 
+        color={ color } 
+        variant={ variant } 
+        size={size} 
+        onPress={handleClick}        
+      >
 				{buttonText}
 			</Button>
 		</div>

@@ -6,7 +6,6 @@ import { useAuth } from 'frontend-js'
 
 export type CalendlyEmbedProps = {
 	calendlyUrl: string
-	enableTheme?: boolean
 	buttonText?: string
 }
 
@@ -36,6 +35,7 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = (props) => {
 						width: '100%',
 						overflow: 'none',
 						height: '1000px',
+            backgroundColor: 'black',
 					}}
 					url={calendlyUrl}
 					prefill={prefill}

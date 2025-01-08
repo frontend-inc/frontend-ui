@@ -4,11 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { InlineWidget } from 'react-calendly'
 import { Button } from '@nextui-org/react'
 import { useAuth } from 'frontend-js'
-import { Drawer } from '../..'
+import { Modal } from '../..'
 
 export type CalendlyButtonProps = {
 	calendlyUrl: string
-	enableTheme?: boolean
 	buttonText?: string
 }
 
@@ -41,7 +40,7 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = (props) => {
 			>
 				{buttonText}
 			</Button>
-			<Drawer open={open} handleClose={() => setOpen(false)}>
+			<Modal open={open} handleClose={() => setOpen(false)}>
 				<div className="w-full sm:w-[620px] md:w-[960px] h-full">
 					<InlineWidget
 						styles={{
@@ -54,7 +53,7 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = (props) => {
 						data-resize="true"
 					/>
 				</div>
-			</Drawer>
+			</Modal>
 		</div>
 	)
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import { useChat, experimental_useObject as useObject } from 'ai/react'
 import { ToolInvocation } from 'ai'
