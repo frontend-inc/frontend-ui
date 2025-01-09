@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Section, Stack, Heading } from '../../components'
-import { PriceList } from '../../components'
-import { PriceListProps } from '../../components/web/price-list/PriceList'
+import { Prices } from '../../components'
+import { PriceListProps } from '../../components/web/price-list/Prices'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UIPricesProps = SectionProps & HeadingProps & StackProps & PriceListProps
@@ -53,7 +53,7 @@ const UIPrices: React.FC<UIPricesProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<PriceList {...rest} />
+					<Prices {...rest} />
 				</Stack>
 			</Stack>
 		</Section>

@@ -19,7 +19,7 @@ export type PriceListProps = {
 	items: PriceListType[]
 }
 
-const PriceList: React.FC<PriceListProps> = (props) => {
+const Prices: React.FC<PriceListProps> = (props) => {
 	const { variant, items } = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -63,4 +63,4 @@ const PriceList: React.FC<PriceListProps> = (props) => {
 	)
 }
 
-export default PriceList
+export default Prices

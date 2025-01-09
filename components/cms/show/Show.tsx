@@ -4,7 +4,7 @@ import React from 'react'
 import { ButtonType, MetafieldType } from '../../../types'
 import { HeroList } from '../..'
 import { useResourceContext } from 'frontend-js'
-import { ButtonActions, SocialButtons } from '../..'
+import { Buttons, SocialButtons } from '../..'
 
 export type ShowContainerProps = {
 	resource: any
@@ -91,7 +91,7 @@ const Show: React.FC<ShowProps> = (props) => {
 			secondaryAction={
 				buttons && (
 					<div className="w-full">
-						<ButtonActions
+						<Buttons
 							justifyContent={buttonAlignClasses}
 							buttons={buttons}
 						/>

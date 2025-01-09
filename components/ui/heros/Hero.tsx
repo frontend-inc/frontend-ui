@@ -6,7 +6,7 @@ import {
 	HeroCard,
 	HeroCover,
 	HeroList,
-	ButtonActions,
+	Buttons,
 } from '../../../components'
 import { ButtonType } from '../../../types'
 
@@ -77,7 +77,7 @@ const Hero: React.FC<HeroProps> = (props) => {
 			description={description}
 			image={image}
 			secondaryAction={buttons && (
-        <ButtonActions 
+        <Buttons 
           size='lg'
           buttons={buttons} 
           justifyContent={ style == 'card' ? 'justify-start' : 'justify-center' }

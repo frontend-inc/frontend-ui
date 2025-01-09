@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { RemixIcon, ButtonActions, AuthButton } from '../..'
+import { RemixIcon, Buttons, AuthButton } from '../..'
 import NavLogo from './NavLogo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
@@ -114,7 +114,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				</NavbarContent>
 			)}
 			<NavbarContent justify="end">
-				{buttons?.length > 0 && <ButtonActions size="sm" buttons={buttons} />}
+				{buttons?.length > 0 && <Buttons size="sm" buttons={buttons} />}
 				{enableAuth && <AuthButton />}
 				{enableStripe && <CartButton />}
 				{enableShopify && <ShopifyCartButton />}

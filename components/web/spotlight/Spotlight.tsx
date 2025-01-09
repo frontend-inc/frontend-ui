@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ButtonActions } from '../..'
+import { Buttons } from '../..'
 import { ButtonType } from '../../../types'
 import SpotlightList from './SpotlightList'
 import SpotlightCard from './SpotlightCard'
@@ -50,7 +50,7 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 			handleChange={handleChange}
 			actions={
 				buttons?.length > 0 && (
-					<ButtonActions
+					<Buttons
 						size="lg"
 						buttons={buttons}
 						// @ts-ignore

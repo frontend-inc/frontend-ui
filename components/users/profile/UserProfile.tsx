@@ -3,7 +3,7 @@
 import React from 'react'
 import { Typography } from '../../../components'
 import { Image } from '@nextui-org/react'
-import { ButtonActions, ExpandableText, ListFields, SocialFields } from '../..'
+import { Buttons, ExpandableText, ListFields, SocialFields } from '../..'
 import { SocialFieldType, MetafieldType, ButtonType } from '../../../types'
 import { UserType } from 'frontend-js'
 
@@ -56,7 +56,7 @@ const UserProfile: React.FC<UserProfileProps> = (props) => {
 				</div>
 				{buttons?.length > 0 && (
 					<div className="w-full flex justify-end items-start">
-						<ButtonActions buttons={buttons} />
+						<Buttons buttons={buttons} />
 					</div>
 				)}
 			</div>

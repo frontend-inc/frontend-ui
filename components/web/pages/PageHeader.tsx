@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ButtonType } from '../../../types'
-import { Heading, ButtonActions, Breadcrumbs } from '../../../components'
+import { Heading, Buttons, Breadcrumbs } from '../../../components'
 
 export type PageHeaderProps = {
 	label?: string
@@ -35,7 +35,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 				/>
 				{buttons?.length > 0 && (
 					<div className="w-full flex justify-center sm:justify-end pb-2 sm:pb-0">
-						<ButtonActions buttons={buttons} />
+						<Buttons buttons={buttons} />
 					</div>
 				)}
 			</div>
