@@ -3,7 +3,7 @@
 import React from 'react'
 import { Heading, Stack } from '../../../components'
 import { ButtonType } from '../../../types'
-import { ButtonActions } from '../..'
+import { Buttons } from '../..'
 import { HeadingProps } from '../../../types'
 import { cn } from '@nextui-org/react'
 
@@ -50,7 +50,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 				)}
 			>
 				{buttons?.length > 0 && (
-					<ButtonActions
+					<Buttons
 						buttons={buttons}
 						size="lg"
 						justifyContent="justify-center"

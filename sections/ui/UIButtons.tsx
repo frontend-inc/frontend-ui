@@ -2,14 +2,14 @@
 
 import React from 'react'
 import { Section, Stack } from '../../components'
-import { ButtonActions } from '../../components'
-import { ButtonActionsProps } from '../../components/ui/buttons/ButtonActions'
+import { Buttons } from '../../components'
+import { ButtonsProps } from '../../components/ui/buttons/Buttons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UIButtonsProps = SectionProps &
 	HeadingProps &
 	StackProps &
-	ButtonActionsProps
+	ButtonsProps
 
 const UIButtons: React.FC<UIButtonsProps> = (props) => {
 	const {
@@ -39,7 +39,7 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 			maxWidth={maxWidth}
 			variant={variant}
 		>
-			<ButtonActions {...rest} />
+			<Buttons {...rest} />
 		</Section>
 	)
 }

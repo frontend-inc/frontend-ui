@@ -5,14 +5,14 @@ import ButtonAction from './ButtonAction'
 import { ButtonType } from '../../../types'
 import { cn } from '@nextui-org/react'
 
-export type ButtonActionsProps = {
+export type ButtonsProps = {
 	buttons: ButtonType[]
 	size?: 'sm' | 'md' | 'lg'
 	justifyContent?: 'justify-start' | 'justify-center' | 'justify-end'
 	className?: string
 }
 
-const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
+const Buttons: React.FC<ButtonsProps> = (props) => {
 	
   const {
 		buttons,
@@ -58,4 +58,4 @@ const ButtonActions: React.FC<ButtonActionsProps> = (props) => {
 	)
 }
 
-export default ButtonActions
+export default Buttons

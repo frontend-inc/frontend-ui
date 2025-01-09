@@ -3,7 +3,7 @@
 import React from 'react'
 import { Empty } from '../..'
 import { BlurFade } from '../..'
-import { RemixIcon, Typography } from '../../../components'
+import { RemixIcon, Typography } from '../..'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { useNavigate } from '../../../hooks'
 import { cn } from '@nextui-org/react'

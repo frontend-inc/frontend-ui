@@ -23,7 +23,7 @@ const Row: React.FC<RowProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col items-center w-full',
+				'flex flex-col space-y-4 md:space-y-0 items-center w-full',
 				sizeClasses[size],
 				className
 			)}
