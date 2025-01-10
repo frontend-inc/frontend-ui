@@ -6,8 +6,8 @@ import { getInitials } from '../../../helpers'
 
 type AvatarUserProps = {
 	image?: string
-  title?: string
-  subtitle?: string
+  name?: string
+  description?: string
 	isBordered?: boolean
 	radius?: 'sm' | 'md' | 'lg' | 'full'
 	size?: 'sm' | 'md' | 'lg'	
@@ -15,21 +15,21 @@ type AvatarUserProps = {
 }
 
 const AvatarUser: React.FC<AvatarUserProps> = (props) => {
-	const { image, title, subtitle, isBordered, size = 'md', radius, className } = props
+	const { image, name, description, isBordered, size = 'md', radius, className } = props
 
 	return (
 		<User
 			avatarProps={{        
 				src: image,
-				name: getInitials(title),
-				alt: title,
+				name: getInitials(name),
+				alt: name,
 				radius,
 				isBordered,
 				className: isBordered ? 'mr-1' : '',
 				size,
 			}}
-			name={title}
-			description={subtitle}
+			name={name}
+			description={description}
 			className={className}
 		/>
 	)
