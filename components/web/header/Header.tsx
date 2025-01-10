@@ -6,6 +6,7 @@ import NavLogo from './NavLogo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { ButtonType, MenuLinkType } from '../../..'
+import { useTheme } from '../../../hooks'
 import {
 	Button,
 	Navbar,
@@ -20,8 +21,10 @@ import {
 	Dropdown,
 	DropdownMenu,
 } from '@nextui-org/react'
+import { cn } from 'frontend-shadcn'
 
 export type HeaderProps = {
+  mode?: 'light' | 'dark'
 	logo?: string
 	links?: MenuLinkType[]
 	buttons?: ButtonType[]
@@ -37,6 +40,7 @@ const MAX_LINKS = 3
 const Header: React.FC<HeaderProps> = (props) => {
 	const {
 		logo,
+    mode='dark',
 		links = [],
 		buttons,
 		handleClick,
@@ -45,6 +49,9 @@ const Header: React.FC<HeaderProps> = (props) => {
 		enableShopify = false,
 	} = props
 
+  const { theme } = useTheme()
+
+
 	const handlePress = (path: string) => {
 		setIsMenuOpen(false)
 		handleClick(path)
@@ -52,7 +59,11 @@ const Header: React.FC<HeaderProps> = (props) => {
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-	return (
+	return (  
+  <div className={cn(
+    theme && mode && `${theme}-${mode}`,
+    'bg-background',
+  )}>
 		<Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
 			{links?.length > MAX_LINKS ? (
 				<NavbarContent justify="start">
@@ -161,6 +172,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 				))}
 			</NavbarMenu>
 		</Navbar>
+    </div>  
 	)
 }
 

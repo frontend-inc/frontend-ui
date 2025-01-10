@@ -5,7 +5,7 @@ import { User } from '@nextui-org/react'
 import { getInitials } from '../../../helpers'
 
 type AvatarUserProps = {
-	image?: string
+	avatar?: string
   name?: string
   description?: string
 	isBordered?: boolean
@@ -15,12 +15,12 @@ type AvatarUserProps = {
 }
 
 const AvatarUser: React.FC<AvatarUserProps> = (props) => {
-	const { image, name, description, isBordered, size = 'md', radius, className } = props
+	const { avatar, name, description, isBordered, size = 'md', radius, className } = props
 
 	return (
 		<User
 			avatarProps={{        
-				src: image,
+				src: avatar,
 				name: getInitials(name),
 				alt: name,
 				radius,
