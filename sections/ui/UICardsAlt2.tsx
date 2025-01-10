@@ -25,7 +25,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 		fontSize = 'md',
 		maxWidth,
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -50,7 +50,7 @@ const UICards: React.FC<UICardsProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Grid>

@@ -24,7 +24,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 		actions,
 		enableGradient,
 		enableOverlay,
-		editable,
+		isEditing,
 		handleChange,
 		fontSize = 'xl',
 	} = props || {}
@@ -38,7 +38,7 @@ const Spotlight: React.FC<SpotlightListProps> = (props) => {
 					subtitle={subtitle}
 					textAlign="center"
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				{actions && actions}

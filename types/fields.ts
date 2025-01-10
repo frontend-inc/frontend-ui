@@ -73,7 +73,7 @@ export type FieldBase = {
 	db_type?: FieldDbType
 	variant?: FieldVariantTypes
 	position: number
-	editable: boolean
+	isEditing: boolean
 	visible: boolean
 	internal: boolean
 	reference: boolean

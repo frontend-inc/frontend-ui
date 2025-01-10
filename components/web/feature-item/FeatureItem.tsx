@@ -29,7 +29,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 		items = [],
-		editable,
+		isEditing,
 		handleChange,
 	} = props || {}
 
@@ -50,7 +50,7 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 						label={label}
 						title={title}
 						subtitle={subtitle}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 						size="lg"
 					/>

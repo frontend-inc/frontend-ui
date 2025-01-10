@@ -1,6 +1,6 @@
 export const BASE_FIELD_TEMPLATE = {
 	internal: true,
-	editable: true,
+	isEditing: true,
 	visible: true,
 	options: [],
 	array: false,

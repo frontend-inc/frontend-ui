@@ -30,7 +30,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -55,7 +55,7 @@ const AddonMailchimpSubscribe: React.FC<AddonMailchimpSubscribeProps> = (
 						subtitle={subtitle}
 						size={fontSize}
 						textAlign={direction == 'row' ? 'left' : 'center'}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

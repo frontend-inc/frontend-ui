@@ -25,7 +25,7 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -49,7 +49,7 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

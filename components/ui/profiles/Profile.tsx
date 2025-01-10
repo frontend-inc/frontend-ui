@@ -25,7 +25,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 		description,
 		socialLinks = [],
 		fontSize = 'md',
-		editable,
+		isEditing,
 		handleChange,
 	} = props || {}
 
@@ -67,7 +67,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 							subtitle={subtitle}
 							size={fontSize}
 							textAlign={direction == 'row' ? 'left' : 'center'}
-							editable={editable}
+							isEditing={isEditing}
 							handleChange={handleChange}
 						/>
 						<Typography

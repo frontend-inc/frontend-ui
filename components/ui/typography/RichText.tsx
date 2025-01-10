@@ -6,14 +6,14 @@ import { SyntheticEventType } from '../../../types'
 
 export type RichTextProps = {
 	html: string
-	editable?: boolean
+	isEditing?: boolean
 	handleChange: (event: SyntheticEventType) => void
 }
 
 const RichText: React.FC<RichTextProps> = (props) => {
-	const { html, editable, handleChange } = props || {}
+	const { html, isEditing, handleChange } = props || {}
 
-	return !editable ? (
+	return !isEditing ? (
 		<div className="w-full prose">
 			<div dangerouslySetInnerHTML={{ __html: html }} />
 		</div>

@@ -28,7 +28,7 @@ const AddonKlaviyoSubscribe: React.FC<AddonKlaviyoSubscribeProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -52,7 +52,7 @@ const AddonKlaviyoSubscribe: React.FC<AddonKlaviyoSubscribeProps> = (props) => {
 						subtitle={subtitle}
 						size={fontSize}
 						textAlign={direction == 'row' ? 'left' : 'center'}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

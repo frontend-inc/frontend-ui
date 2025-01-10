@@ -28,7 +28,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -52,7 +52,7 @@ const UIFeatureIcons: React.FC<UIFeatureIconsProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

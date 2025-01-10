@@ -36,7 +36,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 		buttonText,
 		actions,
 		path,
-		editable,
+		isEditing,
 		handleChange,
 	} = props
 
@@ -72,7 +72,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size="lg"
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 					{actions}

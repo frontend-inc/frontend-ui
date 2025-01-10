@@ -28,7 +28,7 @@ const UIFeatureTabs: React.FC<UIFeatureTabsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -52,7 +52,7 @@ const UIFeatureTabs: React.FC<UIFeatureTabsProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={direction == 'row' ? 'left' : 'center'}
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				<FeatureTabs {...rest} direction={direction} />

@@ -23,7 +23,7 @@ type TypographyProps = {
 		| 'destructive'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
-	editable?: boolean
+	isEditing?: boolean
 	name?: string
 	handleChange?: (ev: SyntheticEventType) => void
 	children: React.ReactNode
@@ -35,8 +35,8 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		textAlign = 'left',
 		className,
 		children,
-		name = 'text',
-		editable,
+		name = 'innerHTML',
+		isEditing,
 		handleChange,
 	} = props
 
@@ -97,13 +97,13 @@ const Typography: React.FC<TypographyProps> = (props) => {
 
 	return (
 		<div
-			contentEditable={editable}
+			contentEditable={isEditing}
 			// @ts-ignore
 			onInput={handleInputChange}
 			suppressContentEditableWarning
 			className={cn(
 				'text-foreground outline-none focus:outline-none focus:ring-0',
-				editable && 'cursor-text',
+				isEditing && 'cursor-text',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],

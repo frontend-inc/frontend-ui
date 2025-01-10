@@ -14,13 +14,13 @@ type HeadingProps = {
 	size?: 'sm' | 'md' | 'lg' | 'xl'
 	className?: string
 	secondaryAction?: React.ReactNode
-	editable?: boolean
+	isEditing?: boolean
 	handleChange?: (ev: SyntheticEventType) => void
 }
 
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
-		editable,
+		isEditing,
 		label,
 		title,
 		subtitle,
@@ -78,7 +78,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								)}
 							>
 								<Typography
-									editable={editable}
+									isEditing={isEditing}
 									variant="caption"
 									className={cn(
 										'text-primary/90 uppercase tracking-widest font-semibold',
@@ -96,7 +96,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 					{title && (
 						<BlurFade delay={0.25} inView>
 							<Typography
-								editable={editable}
+								isEditing={isEditing}
 								variant={titleVariant}
 								textAlign={textAlign}
 								name="title"
@@ -112,7 +112,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 								variant={subtitleVariant}
 								className="leading-8 text-foreground/80"
 								textAlign={textAlign}
-								editable={editable}
+								isEditing={isEditing}
 								name="subtitle"
 								handleChange={handleChange}
 							>

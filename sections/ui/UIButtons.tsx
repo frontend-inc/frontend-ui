@@ -21,7 +21,7 @@ const UIButtons: React.FC<UIButtonsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		variant,
 		...rest

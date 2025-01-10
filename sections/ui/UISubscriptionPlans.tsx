@@ -25,7 +25,7 @@ const UISubscriptionPlans: React.FC<UISubscriptionPlansProps> = (props) => {
 		px,
 		maxWidth = 'xl',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -48,7 +48,7 @@ const UISubscriptionPlans: React.FC<UISubscriptionPlansProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={textAlign}
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				<SubscriptionPlans {...rest} />

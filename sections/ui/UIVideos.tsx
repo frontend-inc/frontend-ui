@@ -23,7 +23,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -46,7 +46,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={textAlign}
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				<Videos {...rest} />

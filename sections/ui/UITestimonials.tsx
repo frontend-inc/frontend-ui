@@ -28,7 +28,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 		px,
 		maxWidth,
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -51,7 +51,7 @@ const UITestimonials: React.FC<UITestimonialsProps> = (props) => {
 					subtitle={subtitle}
 					textAlign={direction == 'row' ? 'left' : 'center'}
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				<Testimonials {...rest} layout={layout} />

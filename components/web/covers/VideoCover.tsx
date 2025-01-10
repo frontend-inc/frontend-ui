@@ -30,7 +30,7 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 		height = 400,
 		enableOverlay,
 		fontSize = 'md',
-		editable,
+		isEditing,
 		handleChange,
 	} = props
 
@@ -67,7 +67,7 @@ const VideoCover: React.FC<VideoCoverProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={alignItems === 'items-center' ? 'center' : 'left'}
 						size={fontSize}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 					{actions}

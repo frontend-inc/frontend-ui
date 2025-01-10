@@ -21,7 +21,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 		subtitle,
 		fontSize = 'md',
 		buttons = [],
-		editable,
+		isEditing,
 		handleChange,
 	} = props || {}
 
@@ -37,7 +37,7 @@ const CallToAction: React.FC<CallToActionProps> = (props) => {
 					subtitle={subtitle}
 					size={fontSize}
 					textAlign={direction == 'row' ? 'left' : 'center'}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 			</Stack>

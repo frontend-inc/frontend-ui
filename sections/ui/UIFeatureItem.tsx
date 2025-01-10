@@ -19,7 +19,7 @@ const UIFeatureItem: React.FC<UIFeatureItemProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -36,7 +36,7 @@ const UIFeatureItem: React.FC<UIFeatureItemProps> = (props) => {
 			maxWidth={maxWidth}
 			variant={variant}
 		>
-			<FeatureItem {...rest} editable={editable} handleChange={handleChange} />
+			<FeatureItem {...rest} isEditing={isEditing} handleChange={handleChange} />
 		</Section>
 	)
 }

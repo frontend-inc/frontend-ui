@@ -24,7 +24,7 @@ const UIPrices: React.FC<UIPricesProps> = (props) => {
 		px,
 		maxWidth = 'sm',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -48,7 +48,7 @@ const UIPrices: React.FC<UIPricesProps> = (props) => {
 						subtitle={subtitle}
 						textAlign={direction == 'row' ? 'left' : 'center'}
 						size={fontSize}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

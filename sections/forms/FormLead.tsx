@@ -28,7 +28,7 @@ const FormLead: React.FC<FormContactUsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -53,7 +53,7 @@ const FormLead: React.FC<FormContactUsProps> = (props) => {
 						subtitle={subtitle}
 						size={fontSize}
 						textAlign={direction == 'row' ? 'left' : 'center'}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 				</Stack>

@@ -9,7 +9,7 @@ type AppProviderProps = {
 	children: React.ReactNode
 	logo?: any
 	name: string
-	editable?: boolean
+	isEditing?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
 }
@@ -22,7 +22,7 @@ const AppProvider = (props: AppProviderProps) => {
 		clientUrl,
 		enableShopify,
 		enableStripe,
-		editable,
+		isEditing,
 		children,
 	} = props || {}
 
@@ -58,7 +58,7 @@ const AppProvider = (props: AppProviderProps) => {
 		menuOpen,
 		setMenuOpen,
 
-		editable,
+		isEditing,
 
 		enableShopify,
 		enableStripe,

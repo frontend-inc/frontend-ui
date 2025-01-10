@@ -27,7 +27,7 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 		px,
 		maxWidth = 'lg',
 		requireAuth,
-		editable,
+		isEditing,
 		handleChange,
 		...rest
 	} = props
@@ -50,7 +50,7 @@ const UIFeatureCards: React.FC<UIFeatureCardsProps> = (props) => {
 					subtitle={subtitle}
 					textAlign="center"
 					size={fontSize}
-					editable={editable}
+					isEditing={isEditing}
 					handleChange={handleChange}
 				/>
 				<FeatureCards {...rest} />

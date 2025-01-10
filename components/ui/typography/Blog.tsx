@@ -20,7 +20,7 @@ export type BlogProps = HeadingProps & {
 
 const Blog: React.FC<BlogProps> = (props) => {
 	const {
-		editable,
+		isEditing,
 		handleChange,
 		image,
 		variant = 'h2',
@@ -45,7 +45,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 							variant="caption"
 							textAlign={textAlign}
 							name="label"
-							editable={editable}
+							isEditing={isEditing}
 							handleChange={handleChange}
 						>
 							{label}
@@ -57,7 +57,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 							textAlign={textAlign}
 							className="text-foreground tracking-tight font-semibold"
 							name="title"
-							editable={editable}
+							isEditing={isEditing}
 							handleChange={handleChange}
 						>
 							{title}
@@ -73,7 +73,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 						<div className="flex flex-col space-y-0">
 							<Typography
 								name="author"
-								editable={editable}
+								isEditing={isEditing}
 								handleChange={handleChange}
 								variant="body2"
 								className="font-medium text-foreground"
@@ -82,7 +82,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 							</Typography>
 							<Typography
 								name="description"
-								editable={editable}
+								isEditing={isEditing}
 								handleChange={handleChange}
 								variant="body2"
 								className="text-foreground/70"
@@ -96,7 +96,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 							variant="subtitle2"
 							className="text-lg text-foreground/70"
 							name="subtitle"
-							editable={editable}
+							isEditing={isEditing}
 							handleChange={handleChange}
 						>
 							{subtitle}
@@ -109,7 +109,7 @@ const Blog: React.FC<BlogProps> = (props) => {
 				<div className="flex flex-col space-y-10">
 					<RichText
 						html={html}
-						editable={editable}
+						isEditing={isEditing}
 						handleChange={handleChange}
 					/>
 					{tags.length > 0 && (

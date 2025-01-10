@@ -25,7 +25,7 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 		buttons = [],
 		enableGradient,
 		enableOverlay,
-		editable,
+		isEditing,
 		handleChange,
 	} = props || {}
 
@@ -46,7 +46,7 @@ const Spotlight: React.FC<SpotlightProps> = (props) => {
 			label={label}
 			title={title}
 			subtitle={subtitle}
-			editable={editable}
+			isEditing={isEditing}
 			handleChange={handleChange}
 			actions={
 				buttons?.length > 0 && (
