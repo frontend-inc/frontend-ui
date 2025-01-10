@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { AuthScreen, Loader } from '../../../components'
+import { AuthScreen } from '../../../components'
 import { useOrders } from 'frontend-shopify'
 import { ShopifyOrderList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
@@ -38,7 +38,6 @@ const ShopifyCustomerOrders: React.FC<ShopifyCustomerOrdersProps> = (props) => {
 
 	return (
 		<>
-			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ShopifyOrderList orders={orders} handleClick={handleClick} />
 			</AuthScreen>

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Sheet, CircularLoader } from '../..'
-import { Button } from '@nextui-org/react'
+import { Sheet } from '../..'
+import { Spinner, Button } from '@nextui-org/react'
 
 export type ResourceModalProps = {
 	title?: string
@@ -55,8 +55,8 @@ const ResourceModal: React.FC<ResourceModalProps> = (props) => {
 			}
 		>
 			{loading == true ? (
-				<div className="min-h-[400px] flex flex-col items-center justify-center">
-					<CircularLoader size="lg" />
+				<div className="min-h-[400px] flex flex-col items-center justify-center">          
+          <Spinner />          
 				</div>
 			) : (
 				children

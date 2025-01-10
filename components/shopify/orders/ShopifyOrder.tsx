@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { AuthScreen, Loader } from '../..'
+import { AuthScreen } from '../..'
 import { useOrders } from 'frontend-shopify'
 import { ShopifyOrderDetails } from '..'
 import { useParams } from 'next/navigation'
@@ -33,7 +33,6 @@ const ShopifyCustomerOrder: React.FC<ShopifyCustomerOrderProps> = (props) => {
 
 	return (
 		<>
-			<Loader loading={loading} />
 			<AuthScreen
 				title={`Order ${order.name}`}
 				subtitle={moment(order?.processedAt).format('MMMM Do, YYYY')}

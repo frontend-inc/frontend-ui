@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { ForgotPasswordForm, AuthScreen, Loader } from '../..'
+import { ForgotPasswordForm, AuthScreen } from '../..'
 import { toast } from 'sonner'
 import { useAuth } from 'frontend-js'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type ForgotPasswordProps = {
 	title: string
@@ -33,8 +33,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ForgotPasswordForm
 					loading={loading}
@@ -45,7 +43,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</>
 	)
 }
 

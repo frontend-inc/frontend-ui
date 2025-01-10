@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { AuthScreen, Loader, OneTimePasswordVerifyMessage } from '../..'
+import { AuthScreen, OneTimePasswordVerifyMessage } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter, useParams } from 'next/navigation'
 
@@ -51,16 +51,13 @@ const OneTimePasswordVerify: React.FC<OneTimePasswordVerifyProps> = (props) => {
 	}, [oneTimePassword])
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<OneTimePasswordVerifyMessage
-					verified={verified}
-					handleRedirect={handleRedirect}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <OneTimePasswordVerifyMessage
+        verified={verified}
+        handleRedirect={handleRedirect}
+        handleLogin={handleLogin}
+      />
+    </AuthScreen>
 	)
 }
 

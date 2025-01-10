@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { LoginForm, AuthScreen, Loader } from '../..'
+import { LoginForm, AuthScreen } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter } from 'next/navigation'
 import { useApp } from '../../../hooks'
@@ -63,29 +63,24 @@ const Login: React.FC<LoginProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
-			{!loading && (
-				<AuthScreen title={title} subtitle={subtitle}>
-					<LoginForm
-						errors={errors}
-						loading={loading}
-						user={user}
-						handleChange={handleChange}
-						handleSubmit={handleSubmit}
-						handleOneTimePassword={
-							oneTimePasswordUrl ? handleOneTimePassword : false
-						}
-						handleSignup={signupUrl ? handleSignup : false}
-						handleForgotPassword={
-							forgotPasswordUrl ? handleForgotPassword : false
-						}
-						enableGoogle={enableGoogle}
-						handleGoogleSuccess={handleGoogleSuccess}
-					/>
-				</AuthScreen>
-			)}
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <LoginForm
+        errors={errors}
+        loading={loading}
+        user={user}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleOneTimePassword={
+          oneTimePasswordUrl ? handleOneTimePassword : false
+        }
+        handleSignup={signupUrl ? handleSignup : false}
+        handleForgotPassword={
+          forgotPasswordUrl ? handleForgotPassword : false
+        }
+        enableGoogle={enableGoogle}
+        handleGoogleSuccess={handleGoogleSuccess}
+      />
+    </AuthScreen>
 	)
 }
 

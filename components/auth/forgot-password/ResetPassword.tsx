@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { ResetPasswordForm, AuthScreen, Loader } from '../..'
+import React from 'react'
+import { ResetPasswordForm, AuthScreen } from '../..'
 import { useAuth } from 'frontend-js'
 import { useRouter, useParams } from 'next/navigation'
 
@@ -46,8 +46,6 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ResetPasswordForm
 					loading={loading}
@@ -58,7 +56,6 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 					handleLogin={handleLogin}
 				/>
 			</AuthScreen>
-		</>
 	)
 }
 

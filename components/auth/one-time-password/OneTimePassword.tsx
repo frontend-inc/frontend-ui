@@ -40,19 +40,16 @@ const OneTimePassword: React.FC<OneTimePasswordProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<OneTimePasswordForm
-					loading={loading}
-					errors={errors}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <OneTimePasswordForm
+        loading={loading}
+        errors={errors}
+        user={user}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleLogin={handleLogin}
+      />
+    </AuthScreen>
 	)
 }
 

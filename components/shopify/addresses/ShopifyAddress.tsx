@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { AuthScreen, AlertModal, Loader } from '../..'
+import { AuthScreen, AlertModal } from '../..'
 import { Button } from '@nextui-org/react'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressForm } from '..'
@@ -64,8 +64,6 @@ const Address: React.FC<AddressProps> = (props) => {
 	}, [addressId])
 
 	return (
-		<>
-			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<div className="flex flex-col space-y-3">
 					<ShopifyAddressForm address={address} handleChange={handleChange} />
@@ -82,7 +80,6 @@ const Address: React.FC<AddressProps> = (props) => {
 					handleConfirm={handleDeleteAddress}
 				/>
 			</AuthScreen>
-		</>
 	)
 }
 

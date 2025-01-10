@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { NewPasswordForm, AuthScreen, Loader } from '../..'
+import { NewPasswordForm, AuthScreen } from '../..'
 import { useAuth } from 'frontend-js'
-
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type NewPasswordProps = {
 	redirectUrl: string
@@ -37,19 +36,16 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<NewPasswordForm
-					loading={loading}
-					errors={errors}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <NewPasswordForm
+        loading={loading}
+        errors={errors}
+        user={user}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleLogin={handleLogin}
+      />
+    </AuthScreen>
 	)
 }
 

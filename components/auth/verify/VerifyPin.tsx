@@ -5,7 +5,7 @@ import { Button } from '@nextui-org/react'
 import { VerifyPinForm, VerifySendPinForm, AuthScreen, Loader } from '../..'
 import { useAuth } from 'frontend-js'
 
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type VerifyPinProps = {
 	title: string
@@ -51,35 +51,32 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<div className="flex flex-col space-y-3">
-					{!showVerifyPin ? (
-						<VerifySendPinForm
-							errors={errors}
-							user={user}
-							handleChange={handleChange}
-							handleSubmit={handleSendPin}
-							handleLogin={handleLogin}
-						/>
-					) : (
-						<VerifyPinForm
-							errors={errors}
-							user={user}
-							handleChange={handleChange}
-							handleSubmit={handleVerifyPin}
-							handleResendPin={handleResendPin}
-						/>
-					)}
-					{loginUrl && (
-						<Button variant="ghost" fullWidth onPress={handleLogin}>
-							Back to login
-						</Button>
-					)}
-				</div>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <div className="flex flex-col space-y-3">
+        {!showVerifyPin ? (
+          <VerifySendPinForm
+            errors={errors}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleSendPin}
+            handleLogin={handleLogin}
+          />
+        ) : (
+          <VerifyPinForm
+            errors={errors}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleVerifyPin}
+            handleResendPin={handleResendPin}
+          />
+        )}
+        {loginUrl && (
+          <Button variant="ghost" fullWidth onPress={handleLogin}>
+            Back to login
+          </Button>
+        )}
+      </div>
+    </AuthScreen>
 	)
 }
 

@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { AuthScreen, Loader } from '../..'
+import { AuthScreen } from '../..'
 import { useAuth } from 'frontend-shopify'
 import ShopifySignInForm from './ShopifySignInForm'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type ShopifySignInProps = {
 	redirectUrl: string
@@ -44,7 +44,6 @@ const ShopifySignIn: React.FC<ShopifySignInProps> = (props) => {
 
 	return (
 		<>
-			<Loader loading={loading} />
 			<AuthScreen title={title} subtitle={subtitle}>
 				<ShopifySignInForm
 					errors={errors}

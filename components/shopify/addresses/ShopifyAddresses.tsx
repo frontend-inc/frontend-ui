@@ -1,12 +1,12 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { AuthScreen, AlertModal, Loader } from '../../../components'
+import { AuthScreen, AlertModal } from '../../../components'
 import { Button } from '@nextui-org/react'
 import { useAddresses } from 'frontend-shopify'
 import { ShopifyAddressList } from '../../../components/shopify'
 import { useApp } from '../../../hooks'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { getShopifyIdFromGid } from 'frontend-shopify'
 import { RiAddFill } from '@remixicon/react'
 
@@ -64,29 +64,26 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}, [addresses])
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<ShopifyAddressList
-					addresses={addresses}
-					handleClick={handleClick}
-					handleEdit={handleEdit}
-					handleDelete={handleDeleteClick}
-				/>
-				<Button
-					fullWidth
-					onPress={handleAddAddress}
-					startContent={<RiAddFill />}
-				>
-					Add Address
-				</Button>
-				<AlertModal
-					open={showDeleteModal}
-					handleClose={() => setShowDeleteModal(false)}
-					handleConfirm={handleDelete}
-				/>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <ShopifyAddressList
+        addresses={addresses}
+        handleClick={handleClick}
+        handleEdit={handleEdit}
+        handleDelete={handleDeleteClick}
+      />
+      <Button
+        fullWidth
+        onPress={handleAddAddress}
+        startContent={<RiAddFill />}
+      >
+        Add Address
+      </Button>
+      <AlertModal
+        open={showDeleteModal}
+        handleClose={() => setShowDeleteModal(false)}
+        handleConfirm={handleDelete}
+      />
+    </AuthScreen>
 	)
 }
 

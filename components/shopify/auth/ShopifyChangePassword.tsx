@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AuthScreen, Loader } from '../..'
+import { AuthScreen } from '../..'
 import { ShopifyChangePasswordForm } from '..'
 import { useAuth } from 'frontend-shopify'
 import { toast } from 'sonner'
@@ -42,18 +42,15 @@ const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	}
 
 	return (
-		<>
-			<Loader loading={loading} />
-			<AuthScreen title={title} subtitle={subtitle}>
-				<ShopifyChangePasswordForm
-					errors={errors}
-					customer={customer}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
-		</>
+    <AuthScreen title={title} subtitle={subtitle}>
+      <ShopifyChangePasswordForm
+        errors={errors}
+        customer={customer}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleLogin={handleLogin}
+      />
+    </AuthScreen>
 	)
 }
 

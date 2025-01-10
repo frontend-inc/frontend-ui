@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@nextui-org/react'
-import { TextInput, IconLoading } from '../..'
+import { TextInput } from '../..'
 import { ShopifyCustomerType } from 'frontend-shopify'
 
 type SignInFormProps = {
