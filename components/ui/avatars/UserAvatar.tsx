@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import AvatarUser from './AvatarUser'
+import { Avatar } from '@nextui-org/react'
+import { getInitials } from '../../../helpers'
 
 type UserAvatarProps = {
 	user: any
@@ -15,13 +16,13 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const { user, size = 'md', className } = props
 
 	return (
-		<AvatarUser 
+		<Avatar 
 			radius={size}
 			isBordered
-			title={user?.name}
-      subtitle={user?.email}
+			name={getInitials(user?.name)}
+      description={user?.email}
 			size={size}
-			image={user?.avatar?.url}
+			src={user?.avatar?.url}
 			className={className}
 		/>
 	)

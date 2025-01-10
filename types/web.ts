@@ -30,6 +30,7 @@ export type SectionProps = {
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	requireAuth?: boolean
+  className?: string
 }
 
 export type FormProps = {

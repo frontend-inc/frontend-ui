@@ -6,7 +6,7 @@ export type GridProps = {
 	sm?: number
 	lg?: number
 	xl?: number
-	spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10
+	gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10
 	className?: string
 	children: React.ReactNode
 }
@@ -16,8 +16,8 @@ const Grid: React.FC<GridProps> = (props) => {
 		sm = 2,
 		md = 3,
 		lg = 3,
-		xl = 3,
-		spacing = 2,
+		xl = 4,
+		gap = 4,
 		className,
 		children,
 	} = props
@@ -27,9 +27,17 @@ const Grid: React.FC<GridProps> = (props) => {
 		2: 'grid-cols-2',
 		3: 'grid-cols-3',
 		4: 'grid-cols-4',
+    5: 'grid-cols-5',
+    6: 'grid-cols-6',
+    7: 'grid-cols-7',
+    8: 'grid-cols-8',
+    9: 'grid-cols-9',
+    10: 'grid-cols-10',
+    11: 'grid-cols-11',
+    12: 'grid-cols-12'
 	}
 
-	const spacingClasses = {
+	const gapClasses = {
 		0: 'gap-0',
 		1: 'gap-1',
 		2: 'gap-2',
@@ -49,12 +57,12 @@ const Grid: React.FC<GridProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'grid w-full grid-cols-1',
+				'w-full grid grid-cols-1',
 				smGridClasses,
 				mdGridClasses,
 				lgGridClasses,
 				xlGridClasses,
-				spacingClasses[spacing],
+				gapClasses[gap],
 				className
 			)}
 		>

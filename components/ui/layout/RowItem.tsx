@@ -1,17 +1,17 @@
 import React from 'react'
 import { cn } from '@nextui-org/react'
 
-interface RowProps {
-	size: '1/2' | '1/3' | '1/4' | '2/3' | '3/4' | 'full'
+interface RowItemProps {
+	width: '1/2' | '1/3' | '1/4' | '2/3' | '3/4' | 'full'
 	spacing?: number
 	children: React.ReactNode
 	className?: string
 }
 
-const Row: React.FC<RowProps> = (props) => {
-	const { size = '1/3', className, children } = props
+const RowItem: React.FC<RowItemProps> = (props) => {
+	const { width = '1/3', className, children } = props
 
-	const sizeClasses: Record<RowProps['size'], string> = {
+	const widthClasses: Record<RowItemProps['width'], string> = {
 		'1/2': 'md:w-1/2',
 		'1/3': 'md:w-1/3',
 		'1/4': 'md:w-1/4',
@@ -23,8 +23,8 @@ const Row: React.FC<RowProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col space-y-4 md:space-y-0 items-center w-full',
-				sizeClasses[size],
+				'w-full flex flex-row md:items-center',
+				widthClasses[width],
 				className
 			)}
 		>
@@ -33,4 +33,4 @@ const Row: React.FC<RowProps> = (props) => {
 	)
 }
 
-export default Row
+export default RowItem

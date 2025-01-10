@@ -25,7 +25,6 @@ const AvatarUser: React.FC<AvatarUserProps> = (props) => {
 				alt: title,
 				radius,
 				isBordered,
-        showFallback: true, 
 				className: isBordered ? 'mr-1' : '',
 				size,
 			}}
