@@ -27,14 +27,12 @@ const useNavigate = (params?: UseNavigateParams) => {
 				top: 0,
 				behavior: 'smooth',
 			})
-      console.log('clientUrl', `${clientUrl}${_path}`, clientUrl, _path)
 			router.push(`${clientUrl}${_path}`)
 		} else if (path) {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
-      console.log('clientUrl2', `${clientUrl}${path}`, clientUrl, path)
 			router.push(`${clientUrl}${path}`)
 		}
 	}
