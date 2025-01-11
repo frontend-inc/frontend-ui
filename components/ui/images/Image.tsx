@@ -51,7 +51,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<Image
 				removeWrapper
 				height={height}
-        width={!fullWidth && width && width}
+        width={!fullWidth && width > 0 ? width : undefined}
 				radius="none"
 				isBlurred={isBlurred}
 				isZoomed={!disableZoom}

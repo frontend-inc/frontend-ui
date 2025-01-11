@@ -6,7 +6,7 @@ import NavLogo from './NavLogo'
 import { CartButton } from '../..'
 import { ShopifyCartButton } from '../../shopify'
 import { ButtonType, MenuLinkType } from '../../..'
-import { useTheme } from '../../../hooks'
+import { useTheme, useNavigate } from '../../../hooks'
 import {
 	Button,
 	Navbar,
@@ -52,9 +52,11 @@ const Header: React.FC<HeaderProps> = (props) => {
   const { theme } = useTheme()
 
 
+  const navigate = useNavigate()
+
 	const handlePress = (path: string) => {
 		setIsMenuOpen(false)
-		handleClick(path)
+		navigate(path)
 	}
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false)

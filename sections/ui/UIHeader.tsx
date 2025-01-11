@@ -3,9 +3,6 @@
 import React from 'react'
 import { Header } from '../../components'
 import { HeaderProps } from '../../components/web/header/Header'
-import { useRouter } from 'next/navigation'
-import { useApp, useTheme } from '../../hooks'
-import { cn } from '@nextui-org/react'
 
 type UIHeaderProps = HeaderProps & {
 	bgColor?: string
@@ -13,26 +10,10 @@ type UIHeaderProps = HeaderProps & {
 }
 
 const UIHeader: React.FC<UIHeaderProps> = (props) => {
-	const router = useRouter()
 	const { mode = 'light', ...rest } = props || {}
-
-	const { clientUrl } = useApp()
-
-	const handleClick = (path: string) => {		
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		})
-		router.push(`${clientUrl}${path}`)
-	}
-
-	const { theme } = useTheme()
-	const themeClass = `${theme}-${mode}`
-
+	
 	return (
-		<div className={cn(themeClass, 'bg-background w-full')}>
-			<Header {...rest} handleClick={handleClick} />
-		</div>
+		<Header {...rest} />
 	)
 }
 

@@ -7,6 +7,7 @@ import { SocialLinkType, MenuLinkType } from '../../../types'
 import AppStoreButton from './AppStoreButton'
 import GooglePlayButton from './GooglePlayButton'
 import { NavLogo, EmailSubscribe } from '../../../components'
+import { useNavigate } from '../../../hooks'
 
 type FooterLinkProps = {
 	link: MenuLinkType
@@ -47,14 +48,15 @@ export default function Footer(props: FooterProps) {
 		enableNewsletter = false,
 		logo,
 		links = [],
-		socialLinks = [],
-		handleClick,
+		socialLinks = [],		
 	} = props || {}
+
+  const navigate = useNavigate()
 
 	return (
 		<footer className="w-full py-10 px-4">			
       <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
-        <NavLogo src={logo} handleClick={() => handleClick('/')} />
+        <NavLogo src={logo} handleClick={() => navigate('/')} />
 
         {enableNewsletter && (
           <div className="w-[260px]">
@@ -83,7 +85,7 @@ export default function Footer(props: FooterProps) {
 												<FooterLink
 													link={child}
 													handleClick={() =>
-														handleClick(child?.url || child?.path)
+														navigate(child?.url || child?.path)
 													}
 												/>
 											</li>
@@ -95,7 +97,7 @@ export default function Footer(props: FooterProps) {
 									<FooterLink
 										link={topLevelLink}
 										handleClick={() =>
-											handleClick(topLevelLink?.url || topLevelLink?.path)
+											navigate(topLevelLink?.url || topLevelLink?.path)
 										}
 									/>
 								</div>
