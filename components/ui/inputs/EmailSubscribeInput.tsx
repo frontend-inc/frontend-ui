@@ -10,8 +10,8 @@ import { RemixIcon } from '../../../components'
 export type EmailSubscribeInputProps = TextInputProps & {
 	loading?: boolean
 	buttonText?: string
+  size?: 'sm' | 'md' | 'lg'
 	handleSubmit?: () => void
-	size?: 'sm' | 'md' | 'lg'
 }
 
 const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
@@ -24,7 +24,8 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
 		placeholder = 'Enter your email',
 		buttonText = 'Subscribe',
 		handleSubmit,
-		size = 'md',
+    size,
+    className,
 		...rest
 	} = props || {}
 
@@ -38,7 +39,10 @@ const EmailSubscribeInput: React.FC<EmailSubscribeInputProps> = (props) => {
 	}
 
 	return (
-		<div className="flex flex-row space-x-2 items-center w-full max-w-[280px]">
+		<div className={ cn(
+      "flex flex-row space-x-2 items-center w-full min-w-[240px] max-w-[320px]",
+      className
+    )}>
 			<Input
 				label={label}
 				name={name}

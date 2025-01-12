@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Container, Stack, AvatarImage, Typography, SocialButton } from '../..'
+import { Container, Stack, AvatarImage, Typography, SocialLinks } from '../..'
 import { Heading } from '../../../components'
 import { HeadingProps } from '../../../types'
 
@@ -46,15 +46,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 								/>
 							</div>
 							<div className="w-full flex flex-row items-center justify-center ">
-								{socialLinks?.map((link, index) => (
-									<div className="p-[2px]" key={index}>
-										<SocialButton
-											url={link.url}
-											size={28}
-											provider={link.provider}
-										/>
-									</div>
-								))}
+                <SocialLinks links={ socialLinks } />								
 							</div>
 						</div>
 					</Stack>

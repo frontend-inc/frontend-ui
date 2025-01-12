@@ -25,7 +25,6 @@ const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 
 	return (
 		<Card
-			shadow={variant == 'default' ? 'none' : 'md'}
 			className={variant == 'fill' ? 'bg-content1' : ''}
 		>
 			<CardHeader className="p-6">

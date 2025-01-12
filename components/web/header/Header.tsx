@@ -32,7 +32,6 @@ export type HeaderProps = {
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
-	handleClick: (path: string) => void
 }
 
 const MAX_LINKS = 3
@@ -43,14 +42,12 @@ const Header: React.FC<HeaderProps> = (props) => {
     mode='dark',
 		links = [],
 		buttons,
-		handleClick,
 		enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
 	} = props
 
   const { theme } = useTheme()
-
 
   const navigate = useNavigate()
 

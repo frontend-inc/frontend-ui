@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { SocialButton, FieldString, FieldText } from '../../../components'
+import { SocialLinks, FieldString, FieldText } from '../../../components'
 
 type ProfileInfoProps = {
 	title: string
@@ -25,13 +25,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 					className="text-foreground/70"
 				/>
 				<FieldString value={title} />
-				{socialLinks?.length > 0 && (
-					<div className="flex flex-row space-x-1">
-						{socialLinks?.map((link, index) => (
-							<SocialButton key={index} provider={link.value} url={link.url} />
-						))}
-					</div>
-				)}
+        <SocialLinks links={socialLinks} />				
 				<FieldText
 					value={description}
 					variant="body2"

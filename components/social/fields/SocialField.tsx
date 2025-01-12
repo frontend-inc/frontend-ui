@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { SocialFieldType } from '../../../types'
-import { SocialButton } from '../..'
+import { SocialLink } from '../..'
 import { get } from 'lodash'
 
 type SocialFieldProps = {
@@ -14,7 +14,7 @@ const SocialField: React.FC<SocialFieldProps> = (props) => {
 	const { field, resource } = props || {}
 	const { provider, name } = field || {}
 	let url = get(resource, name)
-	return <SocialButton provider={provider} url={url} />
+	return <SocialLink provider={provider} url={url} />
 }
 
 export default SocialField

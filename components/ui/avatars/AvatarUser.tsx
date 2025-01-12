@@ -3,6 +3,7 @@
 import React from 'react'
 import { User } from '@nextui-org/react'
 import { getInitials } from '../../../helpers'
+import { cn } from '@nextui-org/react'
 
 type AvatarUserProps = {
 	avatar?: string
@@ -30,7 +31,10 @@ const AvatarUser: React.FC<AvatarUserProps> = (props) => {
 			}}
 			name={name}
 			description={description}
-			className={className}
+			className={cn(
+        'justify-start',
+        className
+      )}
 		/>
 	)
 }

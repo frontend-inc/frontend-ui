@@ -17,7 +17,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
 
 	return (
 		<div className="flex flex-col space-y-2 p-3">
-			<Stack direction="row" spacing={4}>
+			<div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
 				{items?.map((item, index) => (
 					<SubscriptionPlan
 						key={index}
@@ -27,7 +27,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = (props) => {
 						{...item}
 					/>
 				))}
-			</Stack>
+			</div>
 			{items?.length === 0 && (
 				<Empty
 					icon="ri-bank-card-fill"

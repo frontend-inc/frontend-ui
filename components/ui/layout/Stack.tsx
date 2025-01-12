@@ -30,7 +30,7 @@ const Stack: React.FC<StackProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'flex flex-col items-start w-full',
+				'flex flex-col w-full text-center',
 				spaceClasses[spacing],
 				className,        
 			)}

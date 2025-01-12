@@ -10,7 +10,7 @@ export type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center'
-	fontSize?: 'sm' | 'md' | 'lg' | 'xl'
+	fontSize?: 'sm' | 'md' | 'lg' | 'xl'  
 	isEditing?: boolean
 	handleChange?: (ev: SyntheticEventType) => void
 }
@@ -29,6 +29,7 @@ export type SectionProps = {
 	variant?: 'fill' | 'outline' | 'default'
 	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10 
 	requireAuth?: boolean
   className?: string
 }

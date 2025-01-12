@@ -20,8 +20,23 @@ const Section: React.FC<SectionProps> = (props) => {
 		variant,
 		py = 'md',
 		px = 'sm',
+    spacing=6,
     className
 	} = props
+
+
+  const spacingClasses = {
+    1: 'space-y-1',
+    2: 'space-y-2',
+    3: 'space-y-3',
+    4: 'space-y-4',
+    5: 'space-y-5',
+    6: 'space-y-6',
+    7: 'space-y-7',
+    8: 'space-y-8',
+    9: 'space-y-9',
+    10: 'space-y-10'    
+  }
 
 
   const maxWidthClasses: Record<ContainerMaxWidth, string> = {
@@ -61,7 +76,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				'z-0',
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
-        'flex flex-col space-y-4',
+        'flex flex-col',
 				theme && mode && `${theme}-${mode}`,
 				pyClasses[py],
 				pxClasses[px],
@@ -74,11 +89,12 @@ const Section: React.FC<SectionProps> = (props) => {
 		>
 			<div
 				className={cn(
-					'relative z-[1] flex flex-col space-y-6',
+					'relative z-[1] flex flex-col',
 					variant == 'outline' && 'p-8 border-2 border-divider rounded-xl',
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
 					variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content2/50',
 					maxWidth && maxWidthClasses[maxWidth],
+          spacingClasses[spacing],
 					'w-full mx-auto min-h-[60px]',
           className
 				)}

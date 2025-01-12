@@ -1,13 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../../components'
-import { SocialButton } from '../../../components'
+import { Typography, Container } from '../../../components'
+import { SocialLink } from '../../../components'
 import { SocialLinkType, MenuLinkType } from '../../../types'
 import AppStoreButton from './AppStoreButton'
 import GooglePlayButton from './GooglePlayButton'
 import { NavLogo, EmailSubscribe } from '../../../components'
-import { useNavigate } from '../../../hooks'
+import { useNavigate, useTheme } from '../../../hooks'
+import { cn } from '@nextui-org/react'
 
 type FooterLinkProps = {
 	link: MenuLinkType
@@ -32,6 +33,8 @@ const FooterLink: React.FC<FooterLinkProps> = (props) => {
 }
 
 export type FooterProps = {
+  mode?: 'light' | 'dark'
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' 
 	logo?: string
 	iOSUrl?: string
 	androidUrl?: string
@@ -43,6 +46,8 @@ export type FooterProps = {
 
 export default function Footer(props: FooterProps) {
 	const {
+    mode='dark',
+    maxWidth='lg',
 		iOSUrl,
 		androidUrl,
 		enableNewsletter = false,
@@ -52,8 +57,15 @@ export default function Footer(props: FooterProps) {
 	} = props || {}
 
   const navigate = useNavigate()
+  
+  const { theme } = useTheme()
 
 	return (
+    <div className={cn(
+      theme && mode && `${theme}-${mode}`,
+      'bg-background',
+    )}>
+    <Container maxWidth={maxWidth}>
 		<footer className="w-full py-10 px-4">			
       <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-between items-center pb-6">
         <NavLogo src={logo} handleClick={() => navigate('/')} />
@@ -112,7 +124,7 @@ export default function Footer(props: FooterProps) {
 						<div className="flex flex-row space-x-1">
 							{socialLinks?.map((socialLink, index) => (
 								<div key={index}>
-									<SocialButton
+									<SocialLink
 										key={index}
 										url={socialLink.url}
 										provider={socialLink.provider}
@@ -129,5 +141,7 @@ export default function Footer(props: FooterProps) {
 				</div>
 			)}
 		</footer>
+    </Container>
+    </div>
 	)
 }

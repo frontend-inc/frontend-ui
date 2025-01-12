@@ -13,10 +13,11 @@ export type ImageCardProps = {
   width?: number
   fullWidth?: boolean
 	isBlurred?: boolean
-	disableZoom?: boolean
+	isZoomed?: boolean
 	disableBorderRadius?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  radius?: "none" | "small" | "medium" | "large" | "full"
 	className?: string
 }
 
@@ -27,7 +28,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		label,
 		handleClick,
 		isBlurred,
-		disableZoom = false,
+		isZoomed = true,
 		disableBorderRadius = false,    
 		height=512,
     width=512,
@@ -35,46 +36,56 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		enableGradient,
 		enableOverlay,    
 		className,
+    radius="large"
 	} = props || {}  
 
+  const radiusClasses = {
+    none: 'rounded-none',
+    small: 'rounded-small',
+    medium: 'rounded-medium',
+    large: 'rounded-large',
+    full: 'rounded-full'
+  }
+
 	return (
-		<Card
-			isFooterBlurred
-			isPressable={handleClick ? true : false}
-			onPress={handleClick}
-			className={cn(     
-        fullWidth && 'w-full',     
-				disableBorderRadius ? 'rounded-none' : 'rounded-large',
-				'relative'
-			)}
-		>
-			<Image
-				removeWrapper
-				height={height}
-        width={!fullWidth && width > 0 ? width : undefined}
-				radius="none"
-				isBlurred={isBlurred}
-				isZoomed={!disableZoom}
-				src={src || NO_IMAGE_URL}
-				alt={alt || label}
-				className={cn(
-          'object-cover',  
-          fullWidth && 'w-full',         
-          className
+    <div className='w-full h-full flex items-center justify-center'>
+      <div
+        onClick={handleClick ? handleClick : undefined}
+        className={cn(     
+          handleClick ? 'cursor-pointer' : '',
+          fullWidth ? 'w-full' : 'w-auto',     
+          disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
+          'overflow-hidden',
+          'relative'
         )}
-			/>
-			{enableGradient && (
-				<div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent bg-opacity-50" />
-			)}
-			{enableOverlay && (
-				<div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
-			)}
-			{label && (
-				<CardFooter className="z-20 w-full overflow-hidden py-1 absolute left-0 bottom-0 text-white text-sm">
-					<div className="truncate p-4">{label}</div>
-				</CardFooter>
-			)}
-		</Card>
+      >
+        <Image
+          removeWrapper
+          height={height}
+          width={!fullWidth && width > 0 ? width : undefined}
+          isBlurred={isBlurred}
+          isZoomed={isZoomed}
+          src={src || NO_IMAGE_URL}
+          alt={alt || label}
+          className={cn(
+            'object-cover',  
+            fullWidth && 'w-full',         
+            className
+          )}
+        />
+        {enableGradient && (
+          <div className="z-20 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent bg-opacity-50" />
+        )}
+        {enableOverlay && (
+          <div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
+        )}
+        {label && (
+          <div className="z-20 w-full overflow-hidden py-1 absolute left-2 top-2 text-white text-sm">
+            <div className="truncate p-4">{label}</div>
+          </div>
+        )}
+      </div>
+    </div>
 	)
 }
 
