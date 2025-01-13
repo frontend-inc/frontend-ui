@@ -12,7 +12,7 @@ const Row: React.FC<RowProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0',				
+				'w-full flex flex-col space-y-4 md:flex-row md:space-x-10 md:space-y-0',				
 				className
 			)}
 		>

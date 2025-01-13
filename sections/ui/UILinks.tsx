@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Section, Stack, Heading } from '../../components'
-import { Links } from '../../components'
-import { LinkListProps } from '../../components/web/links/Links'
+import { LinkList } from '../../components'
+import { LinkListProps } from '../../components/web/links/LinkList'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
 type UILinksProps = SectionProps & HeadingProps & StackProps & LinkListProps
@@ -54,7 +54,7 @@ const UILinks: React.FC<UILinksProps> = (props) => {
 					/>
 				</Stack>
 				<Stack direction={direction} size="2/3">
-					<Links {...rest} variant={variant} />
+					<LinkList {...rest} variant={variant} />
 				</Stack>
 			</Stack>
 		</Section>

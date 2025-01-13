@@ -7,9 +7,7 @@ import { SocialIcon as ReactSocialIcon } from 'react-social-icons'
 
 type SocialIconProps = {
 	provider: string
-	url?: string
 	handleClick?: () => void
-	color?: string
 	size?: number
 }
 

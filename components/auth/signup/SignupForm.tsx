@@ -76,6 +76,7 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 			<div className="flex flex-col space-y-3 w-full">
 				<Button
 					variant="solid"
+          color="primary"
 					fullWidth
 					onPress={handleSubmit}
 					isLoading={loading}
@@ -83,7 +84,11 @@ const SignupForm: React.FC<SignupFormProps> = (props) => {
 					Register
 				</Button>
 				{handleLogin && (
-					<Button fullWidth variant="ghost" onPress={handleLogin}>
+					<Button 
+            fullWidth 
+            variant="solid"
+            onPress={handleLogin}
+          >
 						Already have an account? Sign in
 					</Button>
 				)}

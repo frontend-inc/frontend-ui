@@ -1,5 +1,6 @@
 export * from './links'
 export * from './testimonials'
+export * from './list-items'
 
 // Web Components
 export { default as Accordion } from './accordions/Accordion'

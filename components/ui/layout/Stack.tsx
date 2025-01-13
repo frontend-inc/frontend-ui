@@ -2,6 +2,7 @@ import React from 'react'
 import { cn } from '@nextui-org/react'
 
 export type StackProps = {
+  align?: 'left' | 'center' | 'right'
 	spacing?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10
 	children: React.ReactNode
 	className?: string
@@ -10,6 +11,7 @@ export type StackProps = {
 const Stack: React.FC<StackProps> = (props) => {
 
   const {
+    align = 'center',
 		spacing = 6,
 		className,
 		children,
@@ -27,11 +29,18 @@ const Stack: React.FC<StackProps> = (props) => {
 		10: 'space-y-10',
 	}
 
+  const alignClasses = {
+    left: 'items-start',
+    center: 'items-center',
+    right: 'items-end',
+  }
+
 	return (
 		<div
 			className={cn(
 				'flex flex-col w-full text-center',
 				spaceClasses[spacing],
+        alignClasses[align],
 				className,        
 			)}
 		>

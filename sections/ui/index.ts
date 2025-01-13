@@ -1,3 +1,5 @@
+export { default as Header } from './UIHeader'
+export { default as Footer } from './UIFooter'
 export { default as UIAccordion } from './UIAccordion'
 export { default as UIBlogPost } from './UIBlogPost'
 export { default as UIButtons } from './UIButtons'
