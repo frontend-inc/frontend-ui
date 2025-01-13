@@ -33,7 +33,7 @@ const GridItem: React.FC<GridItemProps> = (props) => {
 	return (
 		<div
 			className={cn(
-				'w-full',				
+				'w-full col-span-full',				
 				spanClasses[span],
 				className
 			)}

@@ -32,7 +32,7 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
 			{buttons?.length > 0 && (
 				<div
 					className={cn(
-						'w-full flex flex-col sm:flex-row sm:space-x-3',
+						'w-full flex flex-col space-y-2 sm:flex-row sm:space-x-3 sm:space-y-0',
 						justifyContent
 					)}
 				>

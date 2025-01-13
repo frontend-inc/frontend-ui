@@ -37,7 +37,7 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
         { ...(injectProps[node?.name] || {}) }
         className={cn(
           ...(node?.classNames || []),
-          node?.props?.className
+          node?.props?.className,
         )}
       >
         {node?.innerHTML }        

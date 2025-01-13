@@ -80,8 +80,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
           <div className="z-20 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
         )}
         {label && (
-          <div className="z-20 w-full overflow-hidden py-1 absolute left-2 top-2 text-white text-sm">
-            <div className="truncate p-4">{label}</div>
+          <div className="z-20 w-full overflow-hidden py-1 absolute left-2 top-2">
+            <span className="truncate rounded-lg bg-white/70 text-black p-1 px-2 text-xs font-medium">{label}</span>
           </div>
         )}
       </div>

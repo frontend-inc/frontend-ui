@@ -141,7 +141,7 @@ const FeatureTabs: React.FC<FeatureTabsProps> = (props) => {
 					'flex flex-col space-y-4 space-x-0 px-1',
 					'w-full flex sm:flex-row sm:space-y-0 sm:space-x-4 sm:overflow-x-auto py-2',
 					direction == 'row' &&
-						'sm:basis-1/3 sm:flex-col sm:space-y-0 sm:space-x-0'
+						'sm:basis-1/3 sm:flex-col sm:space-y-4 sm:space-x-0'
 				)}
 			>
 				{items?.map((item, i) => (

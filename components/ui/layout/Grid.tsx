@@ -2,7 +2,7 @@ import React from 'react'
 import { cn } from '@nextui-org/react'
 
 export type GridProps = {	
-	cols?:  1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+	cols?:  'auto' | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 	gap?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10
 	className?: string
 	children: React.ReactNode
@@ -11,13 +11,14 @@ export type GridProps = {
 const Grid: React.FC<GridProps> = (props) => {
 	
   const {
-		cols = 3,
+		cols = 12,
 		gap = 4,
 		className,
 		children,
 	} = props
 
 	const gridClasses = {
+    'auto': 'md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]',
 		1: 'md:grid-cols-1',
 		2: 'md:grid-cols-2',
 		3: 'md:grid-cols-3',

@@ -89,7 +89,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		>
 			<div
 				className={cn(
-					'relative z-[1] flex flex-col',
+					'relative z-[1]',
 					variant == 'outline' && 'p-8 border-2 border-divider rounded-xl',
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
 					variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content2/50',
