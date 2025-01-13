@@ -4,7 +4,7 @@ import React from 'react'
 import { Empty } from '../..'
 import { BlurFade } from '../..'
 import { Typography } from '../..'
-import { SocialIcon } from '../../../components'
+import { SocialIcon } from 'react-social-icons'
 import { cn } from '@nextui-org/react'
 
 type SocialLinkListType = {
@@ -17,7 +17,7 @@ type SocialLinkListType = {
 
 export type SocialLinkListProps = {
 	variant?: 'fill' | 'outline' | 'default'
-	items: SocialLinkListType[]
+	links: SocialLinkListType[]
 }
 
 const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
@@ -81,8 +81,11 @@ const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
 			>
 				<div className=" flex flex-row space-x-6 items-center">
           <SocialIcon 
-            provider={provider}
-            
+            network={provider}
+            style={{
+              height: 32,
+              width: 32,
+            }}
           />					
 					<div className="flex flex-col space-y-0">
 						<Typography variant="subtitle2">{title}</Typography>
@@ -99,19 +102,19 @@ const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
 
 
 const SocialLinkList: React.FC<SocialLinkListProps> = (props) => {
-	const { variant, items } = props || {}
+	const { variant, links } = props || {}
 
 	return (
 		<div className="w-full justify-center flex flow-row">
 			<div className="container mx-auto max-w-screen-2xl">
 				<ul className="list-none w-full flex flex-col space-y-2 py-2">
-					{items?.map((item, idx) => (
+					{links?.map((item, idx) => (
 						<BlurFade delay={0.25 + idx * 0.05} key={idx}>
 							<SocialLinkListItem {...item} variant={variant} />
 						</BlurFade>
 					))}
 				</ul>
-				{items?.length == 0 && (
+				{links?.length == 0 && (
 					<Empty
 						icon="ri-instagram-fill"
 						title="No social media links"

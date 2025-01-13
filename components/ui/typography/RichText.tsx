@@ -14,7 +14,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
 	const { html, isEditing, handleChange } = props || {}
 
 	return !isEditing ? (
-		<div className="w-full prose">
+		<div className="w-full prose text-left items-start justify-start">
 			<div dangerouslySetInnerHTML={{ __html: html }} />
 		</div>
 	) : (

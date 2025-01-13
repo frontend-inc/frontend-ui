@@ -19,25 +19,23 @@ const AvatarUser: React.FC<AvatarUserProps> = (props) => {
 	const { avatar, name, description, isBordered, size = 'md', radius, className } = props
 
 	return (
-    <div>
-      <User
-        avatarProps={{        
-          src: avatar,
-          name: getInitials(name),
-          alt: name,
-          radius,
-          isBordered,
-          className: isBordered ? 'mr-1' : '',
-          size,
-        }}
-        name={name}
-        description={description}
-        className={cn(
-          'justify-start',
-          className
-        )}
-      />
-    </div>
+    <User
+      avatarProps={{        
+        src: avatar,
+        name: getInitials(name),
+        alt: name,
+        radius,
+        isBordered,
+        className: isBordered ? 'mr-1' : '',
+        size,
+      }}
+      name={name}
+      description={description}
+      className={cn(
+        'items-start justify-start',
+        className
+      )}
+    />
 	)
 }
 
