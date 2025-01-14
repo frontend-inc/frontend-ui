@@ -41,43 +41,43 @@ const useButtons = (params: UseButtonParams) => {
 				}
 				break
 			case 'copy':
-				if (src) {
-					copy(src)
+				if (url) {
+					copy(url)
 					toast('Copied to clipboard')
 				}
 				break
 			case 'email':
-				if (src) {
-					window.location.href = `mailto:${src}`
+				if (url) {
+					window.location.href = `mailto:${url}`
 				}
 				break
 			case 'phone':
-				if (src) {
-					window.location.href = `tel:${src}`
+				if (url) {
+					window.location.href = `tel:${url}`
 				}
 				break
 			case 'sms':
-				if (src) {
-					window.location.href = `sms:${src}`
+				if (url) {
+					window.location.href = `sms:${url}`
 				}
 				break
 			case 'whatsapp':
-				if (src) {
-					window.open(`https://wa.me/${src}`, '_blank')
+				if (url) {
+					window.open(`https://wa.me/${url}`, '_blank')
 				}
 				break
 			case 'download':
-				if (src) {
-					window.open(src, '_blank')
+				if (url) {
+					window.open(url, '_blank')
 				}
 				break
 			case 'video':
-				if (src) {
+				if (url) {
 					setOpenVideo(true)
 				}
 				break
 			case 'image':
-				if (src) {
+				if (url) {
 					setOpenImage(true)
 				}
 				break

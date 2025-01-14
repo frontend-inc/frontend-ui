@@ -17,7 +17,6 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		action,
 		url,
 		path,
-		src,
 		color='default',
 		variant = 'solid',
 		size = 'md',
@@ -37,7 +36,6 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 		action,
 		url,
 		path,
-		src,
 	})
 
 	return (
@@ -60,17 +58,17 @@ const ButtonAction: React.FC<ButtonActionProps> = (props) => {
 			>
 				{children}
 			</Button>
-			{src && (
+			{url && (
 				<>
 					<VideoModal
 						open={openVideo}
 						handleClose={() => setOpenVideo(false)}
-						src={src}
+						src={url}
 					/>
 					<ImageModal
 						open={openImage}
 						handleClose={() => setOpenImage(false)}
-						src={src}
+						src={url}
 					/>
 					<ShareModal
 						open={openShare}
