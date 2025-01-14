@@ -3,7 +3,7 @@
 import React from 'react'
 import { Empty } from '../../../components'
 import { Marquee } from '../../../components'
-import Image from 'next/image'
+import { Image } from '@nextui-org/react'
 
 export type LogosProps = {
 	logos: {
@@ -15,31 +15,28 @@ export type LogosProps = {
 }
 
 const Logos: React.FC<LogosProps> = (props) => {
-	let { logos = [], height = 48, width = 128 } = props
-
-  if(logos?.length === 0) {
-    logos = [
-      {
-        title: 'Next.JS',
-        image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109111/logos/nextjs-logo-white_bkuvfu.svg'
-      },
-      {
-        title: 'Shopify',
-        image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109017/logos/shopify-logo-white_glcwbu.svg'
-      },
-      {
-        title: 'Apollo GraphQL',
-        image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109118/logos/apollo-logo-white_p27h0n.svg'
-      },
-      {
-        title: 'OpenAI',
-        image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109128/logos/openai-logo-white_fwyv5l.svg'
-      },
-      {
-        title: 'Unsplash',
-        image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109125/logos/unsplash-logo-white_ecjhfc.svg'
-      }
-    ]
+	let { logos = [], height = 48, width = 128 } = props 
+  if(logos.length === 0) {
+    logos = [{
+      title: 'Next.JS',
+      image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109111/logos/nextjs-logo-white_bkuvfu.svg'
+    },
+    {
+      title: 'Shopify',
+      image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109017/logos/shopify-logo-white_glcwbu.svg'
+    },
+    {
+      title: 'Apollo GraphQL',
+      image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109118/logos/apollo-logo-white_p27h0n.svg'
+    },
+    {
+      title: 'OpenAI',
+      image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109128/logos/openai-logo-white_fwyv5l.svg'
+    },
+    {
+      title: 'Unsplash',
+      image: 'https://res.cloudinary.com/frontend-co/image/upload/v1736109125/logos/unsplash-logo-white_ecjhfc.svg'
+    }]
   }
 
 	return (
