@@ -11,54 +11,16 @@ import {
 	ScrollShadow,
 } from '@nextui-org/react'
 import { getInitials } from '../../../helpers'
-
-type TestimonialProps = {
-	text: string
-	author: string
-	image?: string
-	size?: 'small' | 'large'
-	variant?: 'outline' | 'fill' | 'default'
-}
-
-const TestimonialCard: React.FC<TestimonialProps> = (props) => {
-	const { text, author, image = '', variant = 'default' } = props || {}
-
-	return (
-		<Card
-			className={variant == 'fill' ? 'bg-content1' : ''}
-		>
-			<CardHeader className="p-6">
-				<User
-					avatarProps={{
-						src: image,
-						color: 'primary',
-						name: getInitials(author),
-					}}
-					name={author}
-					description="Testimonial"
-				/>
-			</CardHeader>
-			<CardBody className="p-6">
-				{text && (
-					<ScrollShadow style={{ height: '200px' }}>
-						<Typography variant="body1" className="font-normal leading-loose">
-							{text}
-						</Typography>
-					</ScrollShadow>
-				)}
-			</CardBody>
-		</Card>
-	)
-}
+import { TestimonialCard, TestimonialCardType } from './TestimonialCard'
 
 type TestimonialCardsProps = {
 	size?: 'small' | 'large'
-	items: TestimonialType[]
+	items: TestimonialCardType[]
 	variant?: 'fill' | 'outline' | 'default'
 }
 
 const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
-	const { size = 'small', variant, items = [] } = props
+	const { variant, items = [] } = props
 
 	return (
 		<div className="container mx-auto max-w-screen-lg">
@@ -66,10 +28,9 @@ const TestimonialCards: React.FC<TestimonialCardsProps> = (props) => {
 				{items?.map((testimonial, i) => (
 					<TestimonialCard
 						key={i}
-						size={size}
-						image={testimonial.image}
-						author={testimonial.subtitle}
-						text={testimonial.title}
+						avatar={testimonial.avatar}
+						author={testimonial.author}
+						text={testimonial.text}
 						variant={variant}
 					/>
 				))}

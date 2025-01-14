@@ -14,7 +14,9 @@ const Cart: React.FC = () => {
 			open={cartOpen}
 			handleClose={() => setCartOpen(false)}
 			title="My Cart"
-			buttons={<CheckoutButton />}
+			buttons={
+        <CheckoutButton />
+      }
 		>
 			<CartLineItems />
 		</Sheet>
