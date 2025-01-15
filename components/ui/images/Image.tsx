@@ -17,6 +17,7 @@ export type ImageCardProps = {
 	disableBorderRadius?: boolean
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  objectFit?: "contain" | "cover"
   radius?: "none" | "small" | "medium" | "large" | "full"
 	className?: string
 }
@@ -36,6 +37,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		enableGradient,
 		enableOverlay,    
 		className,
+    objectFit='cover',
     radius="large"
 	} = props || {}  
 
@@ -68,7 +70,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
           src={src || NO_IMAGE_URL}
           alt={alt || label}
           className={cn(
-            'object-cover h-full w-full',                 
+            'h-full w-full',                 
+            objectFit == 'contain' ? 'object-contain' : 'object-cover',
             className
           )}
         />
