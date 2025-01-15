@@ -7,6 +7,10 @@ import {
 } from "./grid-stack-render";
 import { useGridStackContext } from "./grid-stack-context";
 import { useGridStackWidgetContext } from "./grid-stack-widget-context";
+import { 
+  convertGridToPage,
+  convertPageToGrid 
+} from './grid-helpers'
 
 export {
   GridStackProvider,
@@ -16,4 +20,6 @@ export {
   type ComponentMap,
   useGridStackContext,
   useGridStackWidgetContext,
+  convertPageToGrid,
+  convertGridToPage,
 };

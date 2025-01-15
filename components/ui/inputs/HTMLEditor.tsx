@@ -7,13 +7,39 @@ import {
 	EditorContent,
 	useCurrentEditor,
 } from '@tiptap/react'
-import { IconButton, RemixIcon } from '../..'
+import { RemixIcon } from '../..'
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
 import { TextInputProps } from '../../../types'
 import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
+import { Button } from '@nextui-org/react'
+
+const MenuBarButton: React.FC<MenuBarButtonProps> = (props) => {
+ const { btn, editor } = props || {}
+  return(
+    <Button
+      isIconOnly
+      variant="solid"
+      className={cn(
+        'bg-white hover:bg-black/10',
+        btn.isActive && 'bg-black hover:bg-black/90'
+      )}
+      onPress={btn.action}
+      disabled={!editor.can().chain().focus().run()}
+      aria-label={btn.label}
+    >
+      <RemixIcon
+        name={btn.icon}
+        className={cn(
+          'text-black',
+          btn.isActive && 'text-white'
+        )}
+      />
+    </Button>        
+  )
+}
 
 const MenuBar = ({ editor }) => {
 	if (!editor) return null
@@ -110,109 +136,23 @@ const MenuBar = ({ editor }) => {
 		},
 	]
 
+  const buttons = [
+    ...formattingOptions,
+    ...headingOptions,
+    ...listOptions,
+    ...textAlignOptions,
+    ...redoButtons
+  ]
+
 	return (
 		<div className="w-full items-start justify-start md:min-w-[800px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
-			{formattingOptions.map((btn, index) => (
-				<IconButton
-					key={index}
-					variant={ btn.isActive ? 'solid' : 'light' }
-          className={cn(
-            btn.isActive && 'bg-black'
-          )}
-					onPress={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					aria-label={btn.label}
-				>
-					<RemixIcon
-						name={btn.icon}
-						className={cn(
-							'text-foreground',
-							btn.isActive && 'text-primary-foreground'
-						)}
-					/>
-				</IconButton>
-			))}
-			{headingOptions.map((btn, index) => (
-				<IconButton
-					key={index}
-					onPress={btn.action}
-					variant={ btn.isActive ? 'solid' : 'light' }
-          className={cn(
-            btn.isActive && 'bg-black'
-          )}
-					color={btn.isActive ? 'primary' : 'secondary'}
-					disabled={!editor.can().chain().focus().run()}
-					aria-label={btn.label}
-				>
-					<RemixIcon
-						name={btn.icon}
-						className={cn(
-							'text-foreground',
-							btn.isActive && 'text-primary-foreground'
-						)}
-					/>
-				</IconButton>
-			))}
-			{listOptions.map((btn, index) => (
-				<IconButton
-					key={index}
-					onPress={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'light' }
-					className={cn(
-            btn.isActive && 'bg-black'
-          )}
-					aria-label={btn.label}
-				>
-					<RemixIcon
-						name={btn.icon}
-						className={cn(
-							'text-foreground',
-							btn.isActive && 'text-primary-foreground'
-						)}
-					/>
-				</IconButton>
-			))}
-			{textAlignOptions.map((btn, index) => (
-				<IconButton
-					key={index}
-					onPress={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'light' }
-					className={cn(
-            btn.isActive && 'bg-black'
-          )}
-					aria-label={btn.label}
-				>
-					<RemixIcon
-						name={btn.icon}
-						className={cn(
-							'text-foreground',
-							btn.isActive && 'text-primary-foreground'
-						)}
-					/>
-				</IconButton>
-			))}
-			{redoButtons.map((btn, index) => (
-				<IconButton
-					key={index}
-					onPress={btn.action}
-					disabled={!editor.can().chain().focus().run()}
-					variant={ btn.isActive ? 'solid' : 'light' }
-					className={cn(
-            btn.isActive && 'bg-black'
-          )}
-					aria-label={btn.label}
-				>
-					<RemixIcon
-						name={btn.icon}
-						className={cn(
-							'text-foreground',
-							btn.isActive && 'text-primary-foreground'
-						)}
-					/>
-				</IconButton>
-			))}
+			{buttons.map((btn, index) => (
+        <MenuBarButton 
+          key={index}          
+          btn={btn} 
+          editor={editor} 
+        />
+      ))}
 		</div>
 	)
 }

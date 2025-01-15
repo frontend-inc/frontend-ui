@@ -53,7 +53,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
         onClick={handleClick ? handleClick : undefined}
         className={cn(     
           handleClick ? 'cursor-pointer' : '',
-          fullWidth ? 'w-full' : 'w-auto',     
+          'h-full w-full',
           disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
           'overflow-hidden',
           'relative'
@@ -68,8 +68,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
           src={src || NO_IMAGE_URL}
           alt={alt || label}
           className={cn(
-            'object-cover',  
-            fullWidth && 'w-full',         
+            'object-cover h-full w-full',                 
             className
           )}
         />

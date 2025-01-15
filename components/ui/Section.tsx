@@ -75,7 +75,7 @@ const Section: React.FC<SectionProps> = (props) => {
 			className={cn(
 				'z-0',
 				'relative bg-cover bg-center bg-no-repeat',
-				'w-full bg-background',
+				'w-full h-full bg-background',
         'flex flex-col',
 				theme && mode && `${theme}-${mode}`,
 				pyClasses[py],
@@ -95,7 +95,7 @@ const Section: React.FC<SectionProps> = (props) => {
 					variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content2/50',
 					maxWidth && maxWidthClasses[maxWidth],
           spacingClasses[spacing],
-					'w-full mx-auto min-h-[60px]',
+					'w-full h-full mx-auto min-h-[60px]',
           className
 				)}
 			>
