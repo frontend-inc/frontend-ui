@@ -64,16 +64,14 @@ const Header: React.FC<HeaderProps> = (props) => {
     'bg-background',
   )}>
 		<Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
-			{links?.length > MAX_LINKS ? (
-				<NavbarContent justify="start">
-					<NavbarMenuToggle className="text-foreground" />
-				</NavbarContent>
+      <NavbarContent justify="start">
+			{links?.length > MAX_LINKS ? (				
+					<NavbarMenuToggle className="text-foreground" />				
 			) : (
 				<NavbarContent className="sm:hidden" justify="start">
 					<NavbarMenuToggle className="text-foreground" />
 				</NavbarContent>
 			)}
-			<NavbarContent justify="start">
 				<NavbarBrand>
 					<NavLogo src={logo} handleClick={() => handlePress('/')} />
 				</NavbarBrand>
