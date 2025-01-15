@@ -92,7 +92,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 	const [isUploading, setIsUploading] = useState(false)
 	const [isDropzoneLoading, setIsDropzoneLoading] = useState(false)
 
-	const MAX_SIZE = 10 * 1024 * 1024 // 10MB in bytes
+	const MAX_SIZE = 20 * 1024 * 1024 // 20MB in bytes
 
 	// Handle file drops
 	const onDrop = async (droppedFiles: File[]) => {
@@ -102,7 +102,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 		droppedFiles.forEach((file) => {
 			if (file.size > MAX_SIZE) {
 				hasInvalidFiles = true
-				toast.error(`File "${file.name}" exceeds 10MB and was not added.`)
+				toast.error(`File "${file.name}" exceeds 20MB and was not added.`)
 			} else {
 				validFiles.push(file)
 			}

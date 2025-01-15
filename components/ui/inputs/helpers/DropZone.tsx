@@ -36,7 +36,6 @@ const DropZone: React.FC<DropZoneProps> = (props) => {
 					await onDrop(file, preview)
 				} catch (error) {
 					console.error('Error uploading file:', error)
-					// You might want to add some error handling UI here
 				} finally {
 					setLoading(false)
 				}

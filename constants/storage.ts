@@ -1,7 +1,5 @@
 import { ImageContentType, VideoContentType } from '../types'
 
-export const MAX_FILE_SIZE = 10000000
-
 export const IMAGE_FORMATS: ImageContentType[] = [
 	'jpg',
 	'jpeg',
