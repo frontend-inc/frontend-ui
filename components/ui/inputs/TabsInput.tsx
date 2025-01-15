@@ -32,7 +32,12 @@ export default function TabsInput(props: TabsInputProps) {
 	return (
 		<div className="flex flex-row space-x-6 items-center justify-between w-full">
 			{label && <InputLabel label={label} />}
-			<Tabs fullWidth selectedKey={value} onSelectionChange={handleInputChange}>
+      { value && (
+			<Tabs 
+        fullWidth 
+        selectedKey={value} 
+        onSelectionChange={handleInputChange}
+      >
 				{options.map((option) => (
 					<Tab
 						key={option?.value}
@@ -48,6 +53,7 @@ export default function TabsInput(props: TabsInputProps) {
 					/>
 				))}
 			</Tabs>
+      )}
 		</div>
 	)
 }
