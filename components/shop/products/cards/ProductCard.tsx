@@ -23,8 +23,7 @@ export type ProductCardProps = {
 	enableOverlay?: boolean
 }
 
-const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
-	(props, ref) => {
+const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>((props, ref) => {
 		const {
 			label,
 			title,

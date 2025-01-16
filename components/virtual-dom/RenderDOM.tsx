@@ -1,12 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from '@nextui-org/react'
-
-const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
-  const { children } = props;
-  return <div {...props}>{children}</div>;
-}
+import RenderDOMComponent from './RenderDOMComponent'
 
 export type VirtualNodeType = {  
   name: string   
@@ -19,37 +14,27 @@ export type VirtualNodeType = {
 type RenderDomProps = {
   nodes: VirtualNodeType[]
   injectProps: Record<string, React.FC>  
-  components: []
+  components: {}
 }
 
 const RenderDOM: React.FC<RenderDomProps> = (props) => {
   const { nodes=[], injectProps={}, components={} } = props || {}
-
-  const renderNode = (node: VirtualNodeType, index) => {
-
-    const Component = components[node?.name] || Div
-  
-    if (!Component) return null
-    return (
-      <Component 
-        key={index} 
-        {...node?.props} 
-        { ...(injectProps[node?.name] || {}) }
-        className={cn(
-          ...(node?.classNames || []),
-          node?.props?.className,
-        )}
-      >
-        {node?.innerHTML }        
-        {node?.children?.map((childNode, index) =>
-          renderNode(childNode, index)
-        )}
-      </Component>
-    )
+  if (!nodes || !Array.isArray(nodes)) {
+    throw new Error ('Nodes is not an array')
   }
-
-  if (!nodes) return null
-  return nodes?.map((node, i) => renderNode(node, i))
+  return nodes?.map((node, i) => (
+    <RenderDOMComponent 
+      key={i} 
+      name={node?.name} 
+      innerHTML={node?.innerHTML}
+      classNames={node?.classNames}
+      props={{
+        ...node.props,
+        ...(injectProps[node?.name] || {})
+      }}
+      components={ components }
+    />
+  ))
 }
 
 export default RenderDOM

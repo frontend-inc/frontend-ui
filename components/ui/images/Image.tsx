@@ -48,6 +48,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
     full: 'rounded-full'
   }
 
+  console.log("Image", props)
+
 	return (
     <div className='w-full h-full flex items-center justify-center'>
       <div

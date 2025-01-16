@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import ButtonAction from './ButtonAction'
+import Button from './Button'
 import { ButtonType } from '../../../types'
 import { cn } from '@nextui-org/react'
 
@@ -38,7 +38,7 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
 				>
 					{buttons.map((button, index) => (
 						<div key={index} className="w-full sm:w-auto">
-							<ButtonAction
+							<Button
 								size={size}                
 								icon={button?.icon}
 								path={button?.path}
@@ -47,9 +47,8 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
 								action={button?.action }                
                 color={ button?.color }                
 								variant={button?.variant}
-							>
-								{button?.label}
-							</ButtonAction>
+                label={ button?.label }
+							/>
 						</div>
 					))}
 				</div>
