@@ -22,12 +22,14 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
   if (!nodes || !Array.isArray(nodes)) {
     throw new Error ('Nodes is not an array')
   }
+
   return nodes?.map((node, i) => (
     <RenderDOMComponent 
       key={i} 
       name={node?.name} 
       innerHTML={node?.innerHTML}
       classNames={node?.classNames}
+      children={node?.children}
       props={{
         ...node.props,
         ...(injectProps[node?.name] || {})

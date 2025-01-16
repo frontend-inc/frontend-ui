@@ -11,7 +11,9 @@
 	transition: height 200ms ease;
 }
 
-.react-grid-item {  
+.react-grid-item {
+  inset: 8px 8px;  
+  outline: 1px dashed #2196F3;
 	transition: all 200ms ease;
 	transition-property: left, top;
 }

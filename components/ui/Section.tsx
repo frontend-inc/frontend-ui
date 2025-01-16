@@ -21,6 +21,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		py = 'md',
 		px = 'sm',
     spacing=6,
+    disableGrid=false,
     className
 	} = props
 
@@ -62,13 +63,9 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'px-48',
 	}
 
-	const backgroundStyle = bgImage
-		? {
-				backgroundImage: `url(${bgImage})`,
-		  }
-		: {
-				backgroundColor: bgColor,
-		  }
+	const backgroundStyle = bgImage ? 
+    { backgroundImage: `url(${bgImage})` } : 
+    { backgroundColor: bgColor }
 
 	return (
 		<section

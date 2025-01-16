@@ -31,6 +31,7 @@ export type SectionProps = {
 	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10 
 	requireAuth?: boolean
+  disableGrid?: boolean
   className?: string
 }
 

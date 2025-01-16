@@ -7,6 +7,7 @@ import './react-grid-layout.css';
 import 'react-resizable/css/styles.css'
 import { useMediaQuery } from 'react-responsive'
 import { RenderDOMComponent } from "../../components"
+import { GripVertical } from "lucide-react";
 
 const ResponsiveGridLayout = WidthProvider(RGL);
 
@@ -82,14 +83,18 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
         layout={isMobile ? mobileLayout : layout}                    
         onLayoutChange={ onLayoutChange }
         //@ts-ignore
-        compactType={ isMobile ? 'vertical' : null }
+        compactType={'vertical'}
         measureBeforeMount
         useCSSTransforms
       >
         { layout?.map((item) => (
           <div 
             key={ isMobile ? `mobile-${item.i}` : item.i } 
-            className='max-w-[calc(100vw)] flex flex-row items-center justify-center w-full h-full'>
+            className='max-w-[calc(100vw)] relative flex flex-row items-center justify-center w-full h-full'
+          >
+            <div className="cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 left-0">
+              <GripVertical className='w-4 h-4 text-foreground/70' />
+            </div>
             <RenderDOMComponent 
               name={ item.name }
               props={ item.props }
