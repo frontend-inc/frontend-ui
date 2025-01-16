@@ -19,7 +19,7 @@ import {
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { File, Folder } from 'lucide-react'
-import { MenuButton } from '../../../components'
+import { MenuButton } from '../..'
 
 interface Item {
 	id: string
@@ -141,7 +141,6 @@ export default function SortableTree(props: SortableTreeProps) {
 
 				if (
 					targetItem &&
-					draggedItem.type == 'file' &&
 					targetItem.type === 'folder' &&
 					targetItem.isOpen
 				) {

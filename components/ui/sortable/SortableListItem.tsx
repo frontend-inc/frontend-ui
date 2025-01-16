@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../../../components'
+import { Typography } from '../..'
 import { cn } from '@nextui-org/react'
 import { GripVertical } from 'lucide-react'
 

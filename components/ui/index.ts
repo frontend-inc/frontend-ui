@@ -15,6 +15,7 @@ export * from './heros'
 export * from './profiles'
 export * from './social'
 export * from './tabs'
+export * from './sortable'
 
 export { default as AlertModal } from './modals/AlertModal'
 export { default as ButtonTabs } from './ButtonTabs'
@@ -48,10 +49,6 @@ export { default as VideoModal } from './media/VideoModal'
 // Layouts
 export { default as LayoutContainer } from './layouts/LayoutContainer'
 export { default as Loader } from './loaders/Loader'
-export { default as SortableList } from './lists/SortableList'
-export { default as SortableListItem } from './lists/SortableListItem'
-export { default as SortableTree } from './lists/SortableTree'
-export { default as SortableNestedTree } from './lists/SortableNestedTree'
 export { default as Pagination } from './Pagination'
 // Media
 export { default as Swipeable } from './Swipeable'

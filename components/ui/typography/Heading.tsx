@@ -60,7 +60,6 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	return (
 		<div
 			className={cn(
-        "rose-light",
 				'py-4 w-full flex justify-between flex-col sm:flex-row',
         fullWidth ? 'md:w-full' : 'md:basis-1/3',
 				className

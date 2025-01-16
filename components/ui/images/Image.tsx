@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardFooter, Image } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
 import { NO_IMAGE_URL } from '../../../constants'
@@ -29,11 +29,10 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		label,
 		handleClick,
 		isBlurred,
-		isZoomed = true,
+		isZoomed = false,
 		disableBorderRadius = false,    
-		height=512,
-    width=512,
-    fullWidth,  
+		height,
+    width,
 		enableGradient,
 		enableOverlay,    
 		className,
@@ -54,8 +53,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
       <div
         onClick={handleClick ? handleClick : undefined}
         className={cn(     
+          (height && width && height > 0 && width > 0) ? '' : 'w-full h-full',
           handleClick ? 'cursor-pointer' : '',
-          'h-full w-full',
           disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
           'overflow-hidden',
           'relative'
@@ -63,14 +62,14 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
       >
         <Image
           removeWrapper
-          height={height}
-          width={!fullWidth && width > 0 ? width : undefined}
+          height={height > 0 ? height : undefined}
+          width={width > 0 ? width : undefined}
           isBlurred={isBlurred}
           isZoomed={isZoomed}
           src={src || NO_IMAGE_URL}
           alt={alt || label}
           className={cn(
-            'h-full w-full',                 
+            (height && width && height > 0 && width > 0) ? '' : 'w-full h-full',
             objectFit == 'contain' ? 'object-contain' : 'object-cover',
             className
           )}
