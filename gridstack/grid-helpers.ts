@@ -1,7 +1,7 @@
 import { GridStackOptions } from 'gridstack'
 
-const CELL_HEIGHT = 32;
-const BREAKPOINTS = [
+export const CELL_HEIGHT = 32;
+export const BREAKPOINTS = [
   { c: 1, w: 700 },
   { c: 3, w: 850 },
   { c: 6, w: 950 },
@@ -18,34 +18,11 @@ export function convertPageToGrid(json) {
     return children.map(child => {
       const { id, name, h, w, x, y, props, children: childChildren } = child;
 
-      if (name == "Section") {
+      if (name == "Section" || name == "Grid") {
         return {
           id: id,
           h: h || 12,
           w: 12, // Always full width
-          x: x || 0,
-          y: y || 0,
-          content: JSON.stringify({
-            name,
-            props,
-          }),
-          sizeToContent: true,
-          subGridOpts: {
-            acceptWidgets: true,
-            cellHeight: CELL_HEIGHT,
-            alwaysShowResizeHandle: false,
-            column: "auto",
-            minRow: 8,
-            layout: "list",
-            margin: 8,
-            children: processChildren(childChildren || []),
-          },
-        };
-      } else if(name == "Grid"){
-        return {
-          id: id,
-          h: h || 12,
-          w: w || 12,
           x: x || 0,
           y: y || 0,
           content: JSON.stringify({
@@ -102,9 +79,89 @@ export function convertPageToGrid(json) {
       minRow: 2,
       cellHeight: CELL_HEIGHT,
     },
-    children: processChildren(json.children || []),
+    children: processChildren(json.root || []),
   };
 }
+
+export function convertPageToEditorGrid(json) {
+
+  // Recursively process children
+  function processChildren(children) {
+    if(!Array.isArray(children)){
+      return children
+    }
+    return children.map(child => {
+      const { id, name, h, w, x, y, props, children: childChildren } = child;
+
+      if (name == "Grid") {
+        return {
+          id: id,
+          h: h || 12,
+          w: w || 12, // Always full width
+          x: x || 0,
+          y: y || 0,
+          content: JSON.stringify({
+            name,
+            props,
+          }),
+          sizeToContent: true,
+          subGridOpts: {
+            acceptWidgets: true,
+            cellHeight: CELL_HEIGHT,
+            alwaysShowResizeHandle: false,
+            column: "auto",
+            minRow: 8,
+            layout: "list",
+            margin: 8,
+            children: processChildren(childChildren || []),
+          },
+        };      
+      } else {
+        return {
+          id: id,
+          h: h || 4,
+          w: w || 6,
+          x: x || 0,
+          y: y || 0,
+          sizeToContent: false,
+          content: JSON.stringify({
+            name: "RenderComponent",
+            props: {
+              ...props,
+              component: child
+            },
+          }),          
+        };
+      }
+    });
+  }
+
+  // Convert the root structure
+  return {
+    acceptWidgets: true,
+    columnOpts: {
+      breakpointForWindow: true,
+      breakpoints: BREAKPOINTS,
+      layout: "moveScale",
+      columnMax: 12,
+    },
+    margin: 8,
+    cellHeight: CELL_HEIGHT,
+    subGridOpts: {
+      acceptWidgets: true,
+      columnOpts: {
+        breakpoints: BREAKPOINTS,
+        layout: "moveScale",
+      },
+      margin: 8,
+      minRow: 2,
+      cellHeight: CELL_HEIGHT,
+    },
+    children: processChildren(json.root || []),
+  };
+}
+
+
 
 export function convertGridToPage(gridOptions) {
   function processChildren(children) {

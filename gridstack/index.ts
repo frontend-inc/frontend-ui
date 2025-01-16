@@ -8,11 +8,16 @@ import {
 import { useGridStackContext } from "./grid-stack-context";
 import { useGridStackWidgetContext } from "./grid-stack-widget-context";
 import { 
+  CELL_HEIGHT,
+  BREAKPOINTS,
   convertGridToPage,
+  convertPageToEditorGrid,
   convertPageToGrid 
 } from './grid-helpers'
 
 export {
+  CELL_HEIGHT,
+  BREAKPOINTS,
   GridStackProvider,
   GridStackRenderProvider,
   GridStackRender,
@@ -22,4 +27,5 @@ export {
   useGridStackWidgetContext,
   convertPageToGrid,
   convertGridToPage,
+  convertPageToEditorGrid
 };
