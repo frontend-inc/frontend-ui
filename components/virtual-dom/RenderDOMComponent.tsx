@@ -27,7 +27,8 @@ type RenderDomProps = {
 
 const RenderDOMComponent: React.FC<RenderDomProps> = (parentProps) => {
   const { name, props, innerHTML, children, classNames, components} = parentProps || {}
-  const Component = components[name]
+  
+  const Component = components[name] || Div
 
   return (
     <Component 
