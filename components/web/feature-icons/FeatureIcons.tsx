@@ -8,7 +8,6 @@ import { Typography } from '../../../components'
 import { cn } from '@nextui-org/react'
 import FeatureIcon from './FeatureIcon'
 
-
 export type FeatureIconsProps = {
 	variant?: 'fill' | 'outline' | 'default'
 	items: {

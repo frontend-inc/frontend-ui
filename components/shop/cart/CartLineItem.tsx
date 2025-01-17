@@ -90,14 +90,14 @@ const CartLineItem: React.FC<CartLineItemProps> = (props) => {
 				)}
 			>
 				<div className="flex space-x-4 items-center pt-1">
-					<Badge color="primary" content={quantity}>						
-            <Card 
-              isPressable 
-              onPress={ () => handleClick() }
-              className="w-[72px] h-[72px] rounded-lg"
-            >
+					<Badge color="primary" content={quantity}>
+						<Card
+							isPressable
+							onPress={() => handleClick()}
+							className="w-[72px] h-[72px] rounded-lg"
+						>
 							<Image
-                removeWrapper 
+								removeWrapper
 								alt={product?.title || ''}
 								src={product?.image?.url}
 								height={72}

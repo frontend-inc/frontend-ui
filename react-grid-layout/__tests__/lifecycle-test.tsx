@@ -1,148 +1,148 @@
 /* eslint-env jest */
 
-import React from "react";
-import _ from "lodash";
-import { render, screen } from "@testing-library/react";
-import * as TestUtils from "react-dom/test-utils";
-import { GridLayout } from "../../src/GridLayout";
-import GridItem from "../../src/GridItem";
-import { ResponsiveGridLayout } from "../../src/ResponsiveGridLayout";
+import React from 'react'
+import _ from 'lodash'
+import { render, screen } from '@testing-library/react'
+import * as TestUtils from 'react-dom/test-utils'
+import { GridLayout } from '../../src/GridLayout'
+import GridItem from '../../src/GridItem'
+import { ResponsiveGridLayout } from '../../src/ResponsiveGridLayout'
 /* import BasicLayout from "../examples/1-basic";
 import ShowcaseLayout from "../examples/0-showcase";
 import DroppableLayout from "../examples/15-drag-from-outside"; */
-import deepFreeze from "./util/deepFreeze";
+import deepFreeze from './util/deepFreeze'
 
-describe("Lifecycle tests", function () {
-  // Example layouts use randomness
-  let randIdx = 0;
-  beforeAll(() => {
-    const randArr = [0.001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.999];
-    jest.spyOn(global.Math, "random").mockImplementation(() => {
-      randIdx = (randIdx + 1) % randArr.length;
-      return randArr[randIdx];
-    });
-  });
+describe('Lifecycle tests', function () {
+	// Example layouts use randomness
+	let randIdx = 0
+	beforeAll(() => {
+		const randArr = [0.001, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.999]
+		jest.spyOn(global.Math, 'random').mockImplementation(() => {
+			randIdx = (randIdx + 1) % randArr.length
+			return randArr[randIdx]
+		})
+	})
 
-  beforeEach(() => {
-    randIdx = 0;
-  });
+	beforeEach(() => {
+		randIdx = 0
+	})
 
-  afterAll(() => {
-    global.Math.random["mockRestore"]();
-  });
+	afterAll(() => {
+		global.Math.random['mockRestore']()
+	})
 
-  describe("<GridItem >", () => {
-    const mockProps = {
-      children: <div>test child</div>,
-      cols: 12,
-      containerWidth: 1200,
-      rowHeight: 300,
-      margin: [0, 0] as [number, number],
-      maxRows: 4,
-      containerPadding: [0, 0] as [number, number],
-      i: "0",
-      // These are all in grid units
-      x: 0,
-      y: 0,
-      z: 0,
-      w: 100,
-      h: 100,
-      isDraggable: false,
-      isResizable: false,
-      isBounded: false,
-      useCSSTransforms: false
-    };
-    it("Basic Render", () => {
-      const wrapper = render(<GridItem {...mockProps} />);
-      expect(wrapper).toMatchSnapshot();
-    });
+	describe('<GridItem >', () => {
+		const mockProps = {
+			children: <div>test child</div>,
+			cols: 12,
+			containerWidth: 1200,
+			rowHeight: 300,
+			margin: [0, 0] as [number, number],
+			maxRows: 4,
+			containerPadding: [0, 0] as [number, number],
+			i: '0',
+			// These are all in grid units
+			x: 0,
+			y: 0,
+			z: 0,
+			w: 100,
+			h: 100,
+			isDraggable: false,
+			isResizable: false,
+			isBounded: false,
+			useCSSTransforms: false,
+		}
+		it('Basic Render', () => {
+			const wrapper = render(<GridItem {...mockProps} />)
+			expect(wrapper).toMatchSnapshot()
+		})
 
-    describe("optional min/max dimension props log err", () => {
-      describe("minW", () => {
-        const mockError = jest.spyOn(console, "error");
-        afterEach(() => {
-          jest.clearAllMocks();
-        });
+		describe('optional min/max dimension props log err', () => {
+			describe('minW', () => {
+				const mockError = jest.spyOn(console, 'error')
+				afterEach(() => {
+					jest.clearAllMocks()
+				})
 
-        it("2x when string, not number", () => {
-          // $FlowIgnore
-          render(<GridItem {...mockProps} minW={"apple" as any} />);
-          expect(mockError).toHaveBeenCalledTimes(2);
-        });
-        it("1 err when larger than w prop", () => {
-          render(<GridItem {...mockProps} minW={400} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-      });
+				it('2x when string, not number', () => {
+					// $FlowIgnore
+					render(<GridItem {...mockProps} minW={'apple' as any} />)
+					expect(mockError).toHaveBeenCalledTimes(2)
+				})
+				it('1 err when larger than w prop', () => {
+					render(<GridItem {...mockProps} minW={400} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+			})
 
-      describe("maxW", () => {
-        const mockError = jest.spyOn(console, "error");
-        afterEach(() => {
-          jest.clearAllMocks();
-        });
+			describe('maxW', () => {
+				const mockError = jest.spyOn(console, 'error')
+				afterEach(() => {
+					jest.clearAllMocks()
+				})
 
-        it("1x when string, not number", () => {
-          // $FlowIgnore
-          render(<GridItem {...mockProps} maxW={"apple" as any} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-        it("1x err when smaller than w prop", () => {
-          render(<GridItem {...mockProps} w={4} maxW={2} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-      });
+				it('1x when string, not number', () => {
+					// $FlowIgnore
+					render(<GridItem {...mockProps} maxW={'apple' as any} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+				it('1x err when smaller than w prop', () => {
+					render(<GridItem {...mockProps} w={4} maxW={2} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+			})
 
-      describe("minH", () => {
-        const mockError = jest.spyOn(console, "error");
-        afterEach(() => {
-          jest.clearAllMocks();
-        });
+			describe('minH', () => {
+				const mockError = jest.spyOn(console, 'error')
+				afterEach(() => {
+					jest.clearAllMocks()
+				})
 
-        it("2x when string, not number", () => {
-          // $FlowIgnore
-          render(<GridItem {...mockProps} minH={"apple" as any} />);
-          expect(mockError).toHaveBeenCalledTimes(2);
-        });
-        it("1x when larger than h prop", () => {
-          render(<GridItem {...mockProps} minH={200} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-      });
+				it('2x when string, not number', () => {
+					// $FlowIgnore
+					render(<GridItem {...mockProps} minH={'apple' as any} />)
+					expect(mockError).toHaveBeenCalledTimes(2)
+				})
+				it('1x when larger than h prop', () => {
+					render(<GridItem {...mockProps} minH={200} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+			})
 
-      describe("maxH", () => {
-        const mockError = jest.spyOn(console, "error");
-        afterEach(() => {
-          jest.clearAllMocks();
-        });
+			describe('maxH', () => {
+				const mockError = jest.spyOn(console, 'error')
+				afterEach(() => {
+					jest.clearAllMocks()
+				})
 
-        it("1x when string, not number", () => {
-          // $FlowIgnore
-          render(<GridItem {...mockProps} maxH={"apple" as any} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-        it("1x when smaller than h prop", () => {
-          render(<GridItem {...mockProps} h={3} maxH={2} />);
-          expect(mockError).toHaveBeenCalledTimes(1);
-        });
-      });
-    });
+				it('1x when string, not number', () => {
+					// $FlowIgnore
+					render(<GridItem {...mockProps} maxH={'apple' as any} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+				it('1x when smaller than h prop', () => {
+					render(<GridItem {...mockProps} h={3} maxH={2} />)
+					expect(mockError).toHaveBeenCalledTimes(1)
+				})
+			})
+		})
 
-    describe("onDrag", () => {
-      it("calls onDragStart prop when droppingPosition prop has expected content", () => {
-        const mockFn = jest.fn();
+		describe('onDrag', () => {
+			it('calls onDragStart prop when droppingPosition prop has expected content', () => {
+				const mockFn = jest.fn()
 
-        render(
-          <GridItem
-            {...mockProps}
-            // $FlowIgnore
-            droppingPosition={{ left: 1, top: 1, e: {} as any }}
-            onDragStart={mockFn}
-          />
-        );
-        expect(mockFn).toHaveBeenCalledTimes(1);
-      });
+				render(
+					<GridItem
+						{...mockProps}
+						// $FlowIgnore
+						droppingPosition={{ left: 1, top: 1, e: {} as any }}
+						onDragStart={mockFn}
+					/>
+				)
+				expect(mockFn).toHaveBeenCalledTimes(1)
+			})
 
-      /*  TODO 
+			/*  TODO 
 				  
 				  it("throws err when calling onDrag without state set to dragging ", () => {
 					  const componentInstance = render(
@@ -192,17 +192,17 @@ describe("Lifecycle tests", function () {
 					  });
 					  expect(mockOnDrag).toHaveBeenCalledTimes(1);
 				  }); */
-    });
-  });
+		})
+	})
 
-  describe("<GridLayout>", function () {
-    /*  it("Basic Render", async function () {
+	describe('<GridLayout>', function () {
+		/*  it("Basic Render", async function () {
 				 const wrapper = render(<BasicLayout />);
 				 expect(wrapper).toMatchSnapshot();
 			 }); */
 
-    describe("data-grid", () => {
-      /* TODO  
+		describe('data-grid', () => {
+			/* TODO  
 				  it("Creates layout based on properties", async function () {
 					   const wrapper = render(
 						   <GridLayout
@@ -277,10 +277,10 @@ describe("Lifecycle tests", function () {
 					  expect(wrapper).toMatchSnapshot();
 					  expect(wrapper.state().layout).toHaveLength(2); // Only two truthy items
 				  });*/
-    });
+		})
 
-    describe("WidthProvider", () => {
-      /* TODO  
+		describe('WidthProvider', () => {
+			/* TODO  
 				   it("Renders with WidthProvider", async function () {
 					   const wrapper = render(<BasicLayout measureBeforeMount={false} />);
 					   expect(wrapper).toMatchSnapshot();
@@ -336,23 +336,23 @@ describe("Lifecycle tests", function () {
 					   // State should now be 500
 					   expect(widthProviderWrapper.state().width).toEqual(500);
 				   }); */
-    });
+		})
 
-    describe("Droppability", function () {
-      function dragDroppableTo(wrapper, x, y) {
-        const gridLayout = wrapper.find("GridLayout");
-        const droppable = wrapper.find(".droppable-element");
+		describe('Droppability', function () {
+			function dragDroppableTo(wrapper, x, y) {
+				const gridLayout = wrapper.find('GridLayout')
+				const droppable = wrapper.find('.droppable-element')
 
-        TestUtils.Simulate.dragOver(gridLayout.getDOMNode(), {
-          nativeEvent: {
-            target: droppable.getDOMNode(),
-            layerX: x,
-            layerY: y
-          } as any
-        });
-      }
+				TestUtils.Simulate.dragOver(gridLayout.getDOMNode(), {
+					nativeEvent: {
+						target: droppable.getDOMNode(),
+						layerX: x,
+						layerY: y,
+					} as any,
+				})
+			}
 
-      /*   TODO
+			/*   TODO
 				  
 				  it("Updates when an item is dropped in", function () {
 					   const wrapper = render(<DroppableLayout containerPadding={[0, 0]} />);
@@ -454,15 +454,15 @@ describe("Lifecycle tests", function () {
 						   .find(item => item.i === "__dropping-elem__");
 					   expect(layoutItem).toBeUndefined();
 				   }); */
-    });
-  });
+		})
+	})
 
-  describe("<ResponsiveGridLayout>", function () {
-    /*     it("Basic Render", async function () {
+	describe('<ResponsiveGridLayout>', function () {
+		/*     it("Basic Render", async function () {
 					const wrapper = render(<ShowcaseLayout />);
 					expect(wrapper).toMatchSnapshot();
 				}); */
-    /*  it("Does not modify layout on movement", async function () {
+		/*  it("Does not modify layout on movement", async function () {
 				 const layouts = {
 					 lg: [
 						 ..._.times(3, i => ({
@@ -498,5 +498,5 @@ describe("Lifecycle tests", function () {
 	 
 				 expect(frozenLayouts).not.toContain("md"); 
 		});*/
-  });
-});
+	})
+})

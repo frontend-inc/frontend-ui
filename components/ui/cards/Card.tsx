@@ -15,11 +15,11 @@ export type CardProps = {
 	description?: string
 	actions?: React.ReactNode
 	secondaryAction?: React.ReactNode
-  fullWidth?: boolean
+	fullWidth?: boolean
 	handleClick?: () => void
 	handleSelect?: () => void
 	imageHeight?: number
-  imageWidth?: number
+	imageWidth?: number
 	enableOverlay?: boolean
 	enableGradient?: boolean
 	classNames?: string
@@ -37,9 +37,9 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-      imageHeight,
-      imageWidth,
-      fullWidth,
+			imageHeight,
+			imageWidth,
+			fullWidth,
 			enableGradient,
 			enableOverlay,
 			classNames,
@@ -50,8 +50,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 				<Image
 					src={image}
 					height={imageHeight}
-          width={imageWidth}
-          fullWidth={fullWidth}
+					width={imageWidth}
+					fullWidth={fullWidth}
 					alt={title}
 					label={label}
 					handleClick={handleClick}

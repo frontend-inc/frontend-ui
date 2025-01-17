@@ -8,17 +8,16 @@ import { ButtonType } from '../../../types'
 
 type ButtonProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
-  label: string
+	label: string
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-	
-  const {
+	const {
 		icon,
 		action,
 		url,
 		path,
-		color='default',
+		color = 'default',
 		variant = 'solid',
 		size = 'md',
 		label,
@@ -46,14 +45,8 @@ const Button: React.FC<ButtonProps> = (props) => {
 				{...rest}
 				size={size}
 				variant={variant}
-				color={ color }
-				startContent={
-					icon && (
-						<RemixIcon
-							name={icon}							
-						/>
-					)
-				}
+				color={color}
+				startContent={icon && <RemixIcon name={icon} />}
 				/* @ts-ignore */
 				onPress={handleClick}
 			>

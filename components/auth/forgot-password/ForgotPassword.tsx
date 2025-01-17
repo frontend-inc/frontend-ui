@@ -33,16 +33,16 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = (props) => {
 	}
 
 	return (
-			<AuthScreen title={title} subtitle={subtitle}>
-				<ForgotPasswordForm
-					loading={loading}
-					errors={errors}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<ForgotPasswordForm
+				loading={loading}
+				errors={errors}
+				user={user}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleLogin={handleLogin}
+			/>
+		</AuthScreen>
 	)
 }
 

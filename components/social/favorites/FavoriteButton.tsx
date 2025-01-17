@@ -47,24 +47,20 @@ export default function FavoriteButton(props: FavoriteButtonProps) {
 	return (
 		<div>
 			<Button
-        isIconOnly 
+				isIconOnly
 				onPress={handleClick}
 				className={cn(
-          'min-w-8',
+					'min-w-8',
 					variant == 'circular' ? 'rounded-full' : 'rounded-lg',
 					size === 'large' && 'border border-divider',
 					'transition-transform duration-200'
 				)}
 			>
-				{isFavorite ? 
-					<RemixIcon 
-            name="ri-bookmark-fill" 
-            className="fill-primary" 
-          /> : 
-          <RemixIcon 
-            name="ri-bookmark-line" 
-          />
-        }
+				{isFavorite ? (
+					<RemixIcon name="ri-bookmark-fill" className="fill-primary" />
+				) : (
+					<RemixIcon name="ri-bookmark-line" />
+				)}
 			</Button>
 		</div>
 	)

@@ -51,13 +51,13 @@ const OneTimePasswordVerify: React.FC<OneTimePasswordVerifyProps> = (props) => {
 	}, [oneTimePassword])
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <OneTimePasswordVerifyMessage
-        verified={verified}
-        handleRedirect={handleRedirect}
-        handleLogin={handleLogin}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<OneTimePasswordVerifyMessage
+				verified={verified}
+				handleRedirect={handleRedirect}
+				handleLogin={handleLogin}
+			/>
+		</AuthScreen>
 	)
 }
 

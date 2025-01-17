@@ -49,16 +49,17 @@ export default function ProductFavoriteButton({
 			<Button
 				onPress={handleClick}
 				className={cn(
-          'min-w-8',
+					'min-w-8',
 					size === 'large' &&
 						'border border-divider bg-background text-secondary hover:bg-background hover:text-secondary',
 					isFavorite && 'text-primary hover:text-primary-dark'
 				)}
 			>
-				{isFavorite ?
-					<RemixIcon name="ri-bookmark-fill" className="fill-primary" /> : 				
-				  <RemixIcon name="ri-bookmark-line" />
-        }
+				{isFavorite ? (
+					<RemixIcon name="ri-bookmark-fill" className="fill-primary" />
+				) : (
+					<RemixIcon name="ri-bookmark-line" />
+				)}
 			</Button>
 		</div>
 	)

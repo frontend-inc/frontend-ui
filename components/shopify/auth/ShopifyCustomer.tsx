@@ -47,14 +47,14 @@ const ShopifyCustomer: React.FC<ShopifyCustomerProps> = (props) => {
 	}, [customer])
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <ShopifyCustomerForm
-        loading={loading}
-        customer={authCustomer}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<ShopifyCustomerForm
+				loading={loading}
+				customer={authCustomer}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
+		</AuthScreen>
 	)
 }
 

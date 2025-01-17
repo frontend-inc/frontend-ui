@@ -17,28 +17,25 @@ import { useDebounce } from 'use-debounce'
 import { Button } from '@nextui-org/react'
 
 const MenuBarButton: React.FC<MenuBarButtonProps> = (props) => {
- const { btn, editor } = props || {}
-  return(
-    <Button
-      isIconOnly
-      variant="solid"
-      className={cn(
-        'bg-white hover:bg-black/10',
-        btn.isActive && 'bg-black hover:bg-black/90'
-      )}
-      onPress={btn.action}
-      disabled={!editor.can().chain().focus().run()}
-      aria-label={btn.label}
-    >
-      <RemixIcon
-        name={btn.icon}
-        className={cn(
-          'text-black',
-          btn.isActive && 'text-white'
-        )}
-      />
-    </Button>        
-  )
+	const { btn, editor } = props || {}
+	return (
+		<Button
+			isIconOnly
+			variant="solid"
+			className={cn(
+				'bg-white hover:bg-black/10',
+				btn.isActive && 'bg-black hover:bg-black/90'
+			)}
+			onPress={btn.action}
+			disabled={!editor.can().chain().focus().run()}
+			aria-label={btn.label}
+		>
+			<RemixIcon
+				name={btn.icon}
+				className={cn('text-black', btn.isActive && 'text-white')}
+			/>
+		</Button>
+	)
 }
 
 const MenuBar = ({ editor }) => {
@@ -136,23 +133,19 @@ const MenuBar = ({ editor }) => {
 		},
 	]
 
-  const buttons = [
-    ...formattingOptions,
-    ...headingOptions,
-    ...listOptions,
-    ...textAlignOptions,
-    ...redoButtons
-  ]
+	const buttons = [
+		...formattingOptions,
+		...headingOptions,
+		...listOptions,
+		...textAlignOptions,
+		...redoButtons,
+	]
 
 	return (
 		<div className="w-full items-start justify-start md:min-w-[800px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
 			{buttons.map((btn, index) => (
-        <MenuBarButton 
-          key={index}          
-          btn={btn} 
-          editor={editor} 
-        />
-      ))}
+				<MenuBarButton key={index} btn={btn} editor={editor} />
+			))}
 		</div>
 	)
 }

@@ -5,9 +5,7 @@ import { Button } from '@nextui-org/react'
 import { useCart } from '../../../hooks'
 import { toast } from 'sonner'
 
-
 const CheckoutButton: React.FC = () => {
-
 	const { loading, cart, checkout } = useCart()
 
 	const handleClick = async () => {
@@ -38,7 +36,7 @@ const CheckoutButton: React.FC = () => {
 			isLoading={loading}
 			onPress={handleClick}
 			size="lg"
-      disabled={ cartDisabled }
+			disabled={cartDisabled}
 		>
 			Checkout {!cartDisabled && cart?.display_subtotal}
 		</Button>

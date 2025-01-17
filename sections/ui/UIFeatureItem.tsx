@@ -36,7 +36,11 @@ const UIFeatureItem: React.FC<UIFeatureItemProps> = (props) => {
 			maxWidth={maxWidth}
 			variant={variant}
 		>
-			<FeatureItem {...rest} isEditing={isEditing} handleChange={handleChange} />
+			<FeatureItem
+				{...rest}
+				isEditing={isEditing}
+				handleChange={handleChange}
+			/>
 		</Section>
 	)
 }

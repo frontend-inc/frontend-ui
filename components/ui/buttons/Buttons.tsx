@@ -13,8 +13,7 @@ export type ButtonsProps = {
 }
 
 const Buttons: React.FC<ButtonsProps> = (props) => {
-	
-  const {
+	const {
 		buttons,
 		size = 'md',
 		justifyContent = 'justify-center',
@@ -39,15 +38,15 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
 					{buttons.map((button, index) => (
 						<div key={index} className="w-full sm:w-auto">
 							<Button
-								size={size}                
+								size={size}
 								icon={button?.icon}
 								path={button?.path}
 								url={button?.url}
 								src={button?.src}
-								action={button?.action }                
-                color={ button?.color }                
+								action={button?.action}
+								color={button?.color}
 								variant={button?.variant}
-                label={ button?.label }
+								label={button?.label}
 							/>
 						</div>
 					))}

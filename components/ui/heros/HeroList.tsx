@@ -123,7 +123,7 @@ const HeroList: React.FC<HeroProps> = (props) => {
 						{variant !== 'circular' ? (
 							<div className="w-full py-10">
 								<Image
-                  fullWidth
+									fullWidth
 									height={512}
 									src={image}
 									alt={title}

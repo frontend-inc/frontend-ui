@@ -51,32 +51,32 @@ const VerifyPin: React.FC<VerifyPinProps> = (props) => {
 	}
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <div className="flex flex-col space-y-3">
-        {!showVerifyPin ? (
-          <VerifySendPinForm
-            errors={errors}
-            user={user}
-            handleChange={handleChange}
-            handleSubmit={handleSendPin}
-            handleLogin={handleLogin}
-          />
-        ) : (
-          <VerifyPinForm
-            errors={errors}
-            user={user}
-            handleChange={handleChange}
-            handleSubmit={handleVerifyPin}
-            handleResendPin={handleResendPin}
-          />
-        )}
-        {loginUrl && (
-          <Button variant="ghost" fullWidth onPress={handleLogin}>
-            Back to login
-          </Button>
-        )}
-      </div>
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<div className="flex flex-col space-y-3">
+				{!showVerifyPin ? (
+					<VerifySendPinForm
+						errors={errors}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleSendPin}
+						handleLogin={handleLogin}
+					/>
+				) : (
+					<VerifyPinForm
+						errors={errors}
+						user={user}
+						handleChange={handleChange}
+						handleSubmit={handleVerifyPin}
+						handleResendPin={handleResendPin}
+					/>
+				)}
+				{loginUrl && (
+					<Button variant="ghost" fullWidth onPress={handleLogin}>
+						Back to login
+					</Button>
+				)}
+			</div>
+		</AuthScreen>
 	)
 }
 

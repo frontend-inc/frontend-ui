@@ -15,27 +15,27 @@ type ButtonTabsProps = {
 	className?: string
 	fullWidth?: boolean
 	value: string | number
-  variant?: 'solid' | 'underlined' | 'bordered' | 'light'
-  isVertical?: boolean
+	variant?: 'solid' | 'underlined' | 'bordered' | 'light'
+	isVertical?: boolean
 }
 
 export default function ButtonTabs(props: ButtonTabsProps) {
-	const { 
-    handleChange, 
-    variant='solid', 
-    options, 
-    value, 
-    className, 
-    fullWidth,
-    isVertical=false 
-  } = props
+	const {
+		handleChange,
+		variant = 'solid',
+		options,
+		value,
+		className,
+		fullWidth,
+		isVertical = false,
+	} = props
 
 	return (
 		//@ts-ignore
 		<Tabs
-      isVertical={isVertical}
+			isVertical={isVertical}
 			fullWidth={fullWidth}
-      variant={variant}
+			variant={variant}
 			selectedKey={value.toString()}
 			onSelectionChange={handleChange}
 			className={className}

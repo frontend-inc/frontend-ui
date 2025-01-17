@@ -46,16 +46,16 @@ const ResetPassword: React.FC<ResetPasswordProps> = (props) => {
 	}
 
 	return (
-			<AuthScreen title={title} subtitle={subtitle}>
-				<ResetPasswordForm
-					loading={loading}
-					errors={errors}
-					user={user}
-					handleChange={handleChange}
-					handleSubmit={handleSubmit}
-					handleLogin={handleLogin}
-				/>
-			</AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<ResetPasswordForm
+				loading={loading}
+				errors={errors}
+				user={user}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleLogin={handleLogin}
+			/>
+		</AuthScreen>
 	)
 }
 

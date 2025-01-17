@@ -1,16 +1,6 @@
 'use client'
 
 import React from 'react'
-import { TestimonialType } from '../../../types'
-import { Typography } from '../../../components'
-import {
-	Card,
-	CardBody,
-	CardHeader,
-	User,
-	ScrollShadow,
-} from '@nextui-org/react'
-import { getInitials } from '../../../helpers'
 import { TestimonialCard, TestimonialCardType } from './TestimonialCard'
 
 type TestimonialCardsProps = {

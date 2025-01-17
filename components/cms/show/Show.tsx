@@ -91,10 +91,7 @@ const Show: React.FC<ShowProps> = (props) => {
 			secondaryAction={
 				buttons && (
 					<div className="w-full">
-						<Buttons
-							justifyContent={buttonAlignClasses}
-							buttons={buttons}
-						/>
+						<Buttons justifyContent={buttonAlignClasses} buttons={buttons} />
 					</div>
 				)
 			}

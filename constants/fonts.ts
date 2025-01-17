@@ -39,10 +39,10 @@ export const GOOGLE_FONTS = [
 		name: 'Open Sans',
 		url: 'https://fonts.googleapis.com/css2?family=Open+Sans&display=swap',
 	},
-  {
-    name: 'Poetsen One',
-    url: 'https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap',
-  },
+	{
+		name: 'Poetsen One',
+		url: 'https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap',
+	},
 	{
 		name: 'Playfair Display',
 		url: 'https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap',

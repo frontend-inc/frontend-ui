@@ -9,8 +9,8 @@ import { useNavigate } from '../../../hooks'
 import { cn } from '@nextui-org/react'
 
 type LinkListType = {
-  variant?: 'fill' | 'outline' | 'default'
-  color: string
+	variant?: 'fill' | 'outline' | 'default'
+	color: string
 	icon: string
 	title: string
 	subtitle: string
@@ -65,7 +65,6 @@ const LinkListItem: React.FC<LinkListType> = (props) => {
 		</li>
 	)
 }
-
 
 const LinkList: React.FC<LinkListProps> = (props) => {
 	const { variant, items } = props || {}

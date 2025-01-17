@@ -11,7 +11,7 @@ type FeatureIconProps = {
 	icon?: string
 	title?: string
 	subtitle?: string
-	variant?: 'fill' | 'outline' | 'default'	
+	variant?: 'fill' | 'outline' | 'default'
 }
 
 const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
@@ -26,11 +26,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 			)}
 		>
 			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
-			<div
-				className={cn(
-					'flex flex-col space-y-2',
-				)}
-			>
+			<div className={cn('flex flex-col space-y-2')}>
 				<Typography variant="h6">{title}</Typography>
 				<Typography className={cn('text-foreground/70')} variant="body1">
 					{subtitle}

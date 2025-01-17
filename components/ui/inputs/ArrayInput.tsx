@@ -91,10 +91,7 @@ export default function ArrayInput(props: ArrayInputProps) {
 					<div className=" flex flex-wrap gap-2 items-center">
 						{Array.isArray(value) &&
 							value?.map((tag) => (
-								<Chip 
-                  key={tag} 
-                  onClose={() => removeTag(tag)}
-                >
+								<Chip key={tag} onClose={() => removeTag(tag)}>
 									{tag}
 								</Chip>
 							))}

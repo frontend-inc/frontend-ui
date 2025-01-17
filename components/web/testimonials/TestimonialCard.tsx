@@ -13,30 +13,28 @@ import {
 import { getInitials } from '../../../helpers'
 
 export type TestimonialCardType = {
-  author: string
-  text: string
-  avatar: string    
+	author: string
+	text: string
+	avatar: string
 }
 
-type TestimonialProps = {	
-  author: string
-  text: string
-  avatar: string
+type TestimonialProps = {
+	author: string
+	text: string
+	avatar: string
 	variant?: 'outline' | 'fill' | 'default'
 }
 
 export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
-	const { 
-    text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
-    author="John Doe", 
-    avatar = '', 
-    variant = 'default' 
-  } = props || {}
+	const {
+		text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		author = 'John Doe',
+		avatar = '',
+		variant = 'default',
+	} = props || {}
 
 	return (
-		<Card
-			className={variant == 'fill' ? 'bg-content1' : ''}
-		>
+		<Card className={variant == 'fill' ? 'bg-content1' : ''}>
 			<CardHeader className="p-6">
 				<User
 					avatarProps={{

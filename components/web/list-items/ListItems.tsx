@@ -15,10 +15,7 @@ export type ListItemsProps = {
 }
 
 const ListItems: React.FC<ListItemsProps> = (props) => {
-	const { 
-    variant, 
-    items = [], 
-  } = props || {}
+	const { variant, items = [] } = props || {}
 
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">

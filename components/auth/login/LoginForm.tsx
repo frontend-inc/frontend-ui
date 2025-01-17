@@ -58,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 			<div className="flex flex-col space-y-2">
 				<Button
 					variant="solid"
-          color="primary"
+					color="primary"
 					fullWidth
 					onPress={handleSubmit}
 					isLoading={loading}
@@ -66,12 +66,12 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
 					Sign In
 				</Button>
 				{handleSignup && (
-					<Button 
-            fullWidth 
-            color="primary"
-            variant="ghost" 
-            onPress={handleSignup}
-          >
+					<Button
+						fullWidth
+						color="primary"
+						variant="ghost"
+						onPress={handleSignup}
+					>
 						No account? Sign up
 					</Button>
 				)}

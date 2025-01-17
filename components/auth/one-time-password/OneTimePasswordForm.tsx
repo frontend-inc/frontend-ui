@@ -28,7 +28,7 @@ const OneTimePasswordForm: React.FC<OneTimePasswordFormProps> = (props) => {
 			/>
 			<Button
 				variant="solid"
-        color="primary"
+				color="primary"
 				fullWidth
 				onPress={handleSubmit}
 				isLoading={loading}

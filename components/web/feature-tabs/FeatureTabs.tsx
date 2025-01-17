@@ -54,13 +54,7 @@ const FeatureTab: React.FC<FeatureIconProps> = (props) => {
 					'flex flex-row flex-grow justify-start w-full h-full space-x-3 min-h-[60px]'
 				)}
 			>
-				{icon && (
-					<RemixIcon
-						name={icon}
-						size="lg"
-						className='text-primary'
-					/>
-				)}
+				{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
 				<div
 					className={cn(
 						'flex flex-col space-y-2',
@@ -169,12 +163,12 @@ const FeatureTabs: React.FC<FeatureTabsProps> = (props) => {
 							<div className="w-full">
 								<BlurFade inView delay={0.25} className="w-full p-2">
 									<Image
-                    fullWidth 
-                    height={512}
+										fullWidth
+										height={512}
 										src={item?.image}
 										alt={item?.title}
 										enableGradient={enableGradient}
-										enableOverlay={enableOverlay}										
+										enableOverlay={enableOverlay}
 									/>
 								</BlurFade>
 							</div>

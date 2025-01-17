@@ -42,7 +42,7 @@ const Images: React.FC<ImagesProps> = (props) => {
 							<Image
 								label={item?.label}
 								src={item?.image}
-                height={240}
+								height={240}
 								handleClick={() => handleClick(item)}
 								enableGradient={enableGradient}
 								enableOverlay={enableOverlay}

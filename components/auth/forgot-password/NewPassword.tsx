@@ -36,16 +36,16 @@ const NewPassword: React.FC<NewPasswordProps> = (props) => {
 	}
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <NewPasswordForm
-        loading={loading}
-        errors={errors}
-        user={user}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        handleLogin={handleLogin}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<NewPasswordForm
+				loading={loading}
+				errors={errors}
+				user={user}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleLogin={handleLogin}
+			/>
+		</AuthScreen>
 	)
 }
 

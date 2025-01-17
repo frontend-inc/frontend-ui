@@ -36,7 +36,7 @@ export default function DateInput(props: DateInputProps) {
 		<DatePicker
 			label={label}
 			name={name}
-      //@ts-ignore
+			//@ts-ignore
 			defaultValue={parseDate(value || currentDate)}
 			className="max-w-[284px]"
 			//@ts-ignore

@@ -159,22 +159,16 @@ export default function TableFilterForm({
 			<Button isIconOnly variant="ghost" onPress={handleAddFilter}>
 				<Plus className="w-4 h-4 text-foreground" />
 			</Button>
-      <Button 
-        isLoading={loading}
-        onPress={ handleFilterSearch }
-        startContent={ 
-          <Search className="w-4 h-4" />
-        }
-      >
-        Search 
-      </Button>
+			<Button
+				isLoading={loading}
+				onPress={handleFilterSearch}
+				startContent={<Search className="w-4 h-4" />}
+			>
+				Search
+			</Button>
 			<Button
 				onPress={handleClearFilters}
-				startContent={
-          <FilterIcon 
-            className="w-4 h-4" 
-          />
-        }
+				startContent={<FilterIcon className="w-4 h-4" />}
 			>
 				Reset filters
 			</Button>

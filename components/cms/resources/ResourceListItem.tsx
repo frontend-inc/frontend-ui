@@ -75,13 +75,13 @@ export default function ResourceListItem(props: ResourceListItemProps) {
 				)}
 				{!disableImage && (
 					<div className="mr-2 min-w-[64px] min-h-[64px]">
-            <Image 
-              src={image} 
-              height={64} 
-              width={64} 
-              alt={image} 
-              handleClick={handleClick}
-            />						
+						<Image
+							src={image}
+							height={64}
+							width={64}
+							alt={image}
+							handleClick={handleClick}
+						/>
 					</div>
 				)}
 				{icon && (

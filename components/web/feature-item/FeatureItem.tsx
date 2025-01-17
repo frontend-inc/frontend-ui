@@ -37,8 +37,8 @@ const FeatureItem: React.FC<FeatureItemProps> = (props) => {
 		<Stack direction={direction} spacing={10} className="items-center">
 			<Stack direction="row" size="1/2">
 				<Image
-          fullWidth
-          aspectRatio={1.0}
+					fullWidth
+					aspectRatio={1.0}
 					src={image}
 					enableOverlay={enableOverlay}
 					enableGradient={enableGradient}

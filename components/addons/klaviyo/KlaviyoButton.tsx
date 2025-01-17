@@ -9,13 +9,19 @@ export type KlaviyoButtonProps = {
 	formId?: string
 	justifyContent?: string
 	buttonText?: string
-  size?: 'sm' | 'md' | 'lg'
-  color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
-  variant?: 'solid' | 'ghost' | 'light'
+	size?: 'sm' | 'md' | 'lg'
+	color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+	variant?: 'solid' | 'ghost' | 'light'
 }
 
 const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
-	const { formId, size='lg', color='primary', variant='solid', buttonText = 'Subscribe' } = props || {}
+	const {
+		formId,
+		size = 'lg',
+		color = 'primary',
+		variant = 'solid',
+		buttonText = 'Subscribe',
+	} = props || {}
 
 	const handleClick = () => {
 		// @ts-ignore
@@ -26,12 +32,7 @@ const KlaviyoButton: React.FC<KlaviyoButtonProps> = (props) => {
 
 	return (
 		<div className="flex flex-row justify-center">
-			<Button 
-        color={ color } 
-        variant={ variant } 
-        size={size} 
-        onPress={handleClick}        
-      >
+			<Button color={color} variant={variant} size={size} onPress={handleClick}>
 				{buttonText}
 			</Button>
 		</div>

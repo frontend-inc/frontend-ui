@@ -14,13 +14,9 @@ const GorgiasContactForm: React.FC<GorgiasContactFormProps> = (props) => {
 	return (
 		<>
 			<Script strategy="beforeInteractive" src={gorgiasContactFormSrc} />
-      <div className="flex w-full h-full items-center justify-center">
-        <iframe 
-          src={src} 
-          width="900"
-          height="800"
-        />
-      </div>
+			<div className="flex w-full h-full items-center justify-center">
+				<iframe src={src} width="900" height="800" />
+			</div>
 		</>
 	)
 }

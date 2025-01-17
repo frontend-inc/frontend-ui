@@ -25,7 +25,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 					className="text-foreground/70"
 				/>
 				<FieldString value={title} />
-        <SocialLinks links={socialLinks} />				
+				<SocialLinks links={socialLinks} />
 				<FieldText
 					value={description}
 					variant="body2"

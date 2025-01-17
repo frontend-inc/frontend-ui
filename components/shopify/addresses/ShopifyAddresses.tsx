@@ -64,26 +64,22 @@ const Addresses: React.FC<AddressesProps> = (props) => {
 	}, [addresses])
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <ShopifyAddressList
-        addresses={addresses}
-        handleClick={handleClick}
-        handleEdit={handleEdit}
-        handleDelete={handleDeleteClick}
-      />
-      <Button
-        fullWidth
-        onPress={handleAddAddress}
-        startContent={<RiAddFill />}
-      >
-        Add Address
-      </Button>
-      <AlertModal
-        open={showDeleteModal}
-        handleClose={() => setShowDeleteModal(false)}
-        handleConfirm={handleDelete}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<ShopifyAddressList
+				addresses={addresses}
+				handleClick={handleClick}
+				handleEdit={handleEdit}
+				handleDelete={handleDeleteClick}
+			/>
+			<Button fullWidth onPress={handleAddAddress} startContent={<RiAddFill />}>
+				Add Address
+			</Button>
+			<AlertModal
+				open={showDeleteModal}
+				handleClose={() => setShowDeleteModal(false)}
+				handleConfirm={handleDelete}
+			/>
+		</AuthScreen>
 	)
 }
 

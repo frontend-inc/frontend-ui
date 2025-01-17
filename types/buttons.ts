@@ -15,7 +15,7 @@ export type ButtonType = {
 	icon?: string
 	label: string
 	action: ActionType
-  color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
+	color?: 'default' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning'
 	variant?: 'solid' | 'ghost' | 'light'
 	url?: string
 	path?: string

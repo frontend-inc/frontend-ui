@@ -27,10 +27,10 @@ const Statistic: React.FC<StatisticProps> = (props) => {
 			)}
 		>
 			{icon && (
-        <div className="w-8 h-8 rounded-lg bg-content1 flex items-center justify-center">
-          <RemixIcon name={icon} size="lg" className="text-primary" />
-        </div>
-      )}
+				<div className="w-8 h-8 rounded-lg bg-content1 flex items-center justify-center">
+					<RemixIcon name={icon} size="lg" className="text-primary" />
+				</div>
+			)}
 			<div
 				className={cn(
 					'flex flex-col space-y-2',
@@ -61,7 +61,7 @@ const Statistics: React.FC<StatisticsProps> = (props) => {
 
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">
-			<div className='w-full grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4'>
+			<div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4">
 				{items?.map((item, idx) => (
 					<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
 						<Statistic

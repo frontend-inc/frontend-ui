@@ -8,10 +8,10 @@ import { SocialIcon } from 'react-social-icons'
 import { cn } from '@nextui-org/react'
 
 type SocialLinkListType = {
-  variant?: 'fill' | 'outline' | 'default'
-  provider: string
+	variant?: 'fill' | 'outline' | 'default'
+	provider: string
 	title: string
-	subtitle: string	
+	subtitle: string
 	url?: string
 }
 
@@ -23,7 +23,7 @@ export type SocialLinkListProps = {
 const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
 	const { variant, title, subtitle, provider, url } = props
 
-  const formatUrl = (username: string) => {
+	const formatUrl = (username: string) => {
 		switch (provider) {
 			case 'facebook':
 				return `https://www.facebook.com/${username}`
@@ -80,13 +80,13 @@ const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
 				)}
 			>
 				<div className=" flex flex-row space-x-6 items-center">
-          <SocialIcon 
-            network={provider}
-            style={{
-              height: 32,
-              width: 32,
-            }}
-          />					
+					<SocialIcon
+						network={provider}
+						style={{
+							height: 32,
+							width: 32,
+						}}
+					/>
 					<div className="flex flex-col space-y-0">
 						<Typography variant="subtitle2">{title}</Typography>
 						<Typography variant="body2" className="text-foreground/70">
@@ -99,7 +99,6 @@ const SocialLinkListItem: React.FC<SocialLinkListType> = (props) => {
 		</li>
 	)
 }
-
 
 const SocialLinkList: React.FC<SocialLinkListProps> = (props) => {
 	const { variant, links } = props || {}

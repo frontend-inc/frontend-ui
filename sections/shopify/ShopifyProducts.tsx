@@ -2,11 +2,13 @@
 
 import React from 'react'
 import { Section, Heading } from '../../components'
-import { ShopifyProductSearch  } from '../../components/shopify'
+import { ShopifyProductSearch } from '../../components/shopify'
 import { ShopifyProductSearchProps } from '../../components/shopify/products/ShopifyProductSearch'
 import { SectionProps, HeadingProps } from '../../types'
 
-type ShopifyProductsProps = SectionProps & HeadingProps & ShopifyProductSearchProps
+type ShopifyProductsProps = SectionProps &
+	HeadingProps &
+	ShopifyProductSearchProps
 
 const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 	const {

@@ -13,7 +13,7 @@ const UIVideos: React.FC<UIVideosProps> = (props) => {
 		label,
 		title,
 		subtitle,
-		textAlign='center',
+		textAlign = 'center',
 		fontSize = 'md',
 		bgColor,
 		bgImage,

@@ -6,10 +6,7 @@ import { Buttons } from '../../components'
 import { ButtonsProps } from '../../components/ui/buttons/Buttons'
 import { SectionProps, StackProps, HeadingProps } from '../../types'
 
-type UIButtonsProps = SectionProps &
-	HeadingProps &
-	StackProps &
-	ButtonsProps
+type UIButtonsProps = SectionProps & HeadingProps & StackProps & ButtonsProps
 
 const UIButtons: React.FC<UIButtonsProps> = (props) => {
 	const {

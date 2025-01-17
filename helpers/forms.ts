@@ -1,5 +1,5 @@
 type FormMetafieldParams = {
-  enableName?: boolean
+	enableName?: boolean
 	enableCompany?: boolean
 	enablePhone?: boolean
 	enableReason?: boolean
@@ -9,7 +9,7 @@ type FormMetafieldParams = {
 
 export const buildFormMetafields = (params: FormMetafieldParams) => {
 	const {
-    enableName,
+		enableName,
 		enableCompany,
 		enablePhone,
 		enableReason,
@@ -19,7 +19,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 
 	let metafields = [] as any
 
-  if (enableName) {
+	if (enableName) {
 		metafields.push({
 			label: 'Name',
 			name: 'name',

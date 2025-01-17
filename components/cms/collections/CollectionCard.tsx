@@ -38,9 +38,7 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 		} = props
 
 		return (
-      <Card 
-        ref={ ref }
-        isFooterBlurred>
+			<Card ref={ref} isFooterBlurred>
 				<Image
 					handleClick={handleClick}
 					disableBorderRadius
@@ -48,12 +46,12 @@ const CollectionCard = React.forwardRef<HTMLDivElement, CollectionCardProps>(
 					src={image}
 					alt={primary}
 					aspectRatio={1.0}
-          {...slots.image}
+					{...slots.image}
 				/>
 				<CardFooter className="dark absolute bottom-0 left-0 w-full flex flex-col space-y-2 p-4 z-20">
-          <Typography variant="caption" className="text-white text-ellipsis">
-            { label }
-          </Typography>
+					<Typography variant="caption" className="text-white text-ellipsis">
+						{label}
+					</Typography>
 					<Typography variant="body1" className="text-white text-ellipsis">
 						{primary}
 					</Typography>

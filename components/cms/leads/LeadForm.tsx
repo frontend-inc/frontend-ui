@@ -12,7 +12,7 @@ export type LeadFormProps = {
 	url?: string
 	path?: string
 	handleClick?: () => void
-  enableName?: boolean
+	enableName?: boolean
 	enablePhone?: boolean
 	enableCompany?: boolean
 	enableReason?: boolean
@@ -21,8 +21,8 @@ export type LeadFormProps = {
 }
 
 const LeadForm: React.FC<LeadFormProps> = (props) => {
-	const {    
-    enableName,
+	const {
+		enableName,
 		enablePhone,
 		enableCompany,
 		enableReason,
@@ -34,7 +34,7 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 	} = props || {}
 
 	const metafields = buildFormMetafields({
-    enableName,
+		enableName,
 		enablePhone,
 		enableCompany,
 		enableReason,

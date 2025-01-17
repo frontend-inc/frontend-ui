@@ -47,7 +47,7 @@ const Cover: React.FC<CoverProps> = (props) => {
 	return (
 		<div className="relative w-full h-[400px]">
 			<Image
-        fullWidth
+				fullWidth
 				disableZoom
 				disableBorderRadius
 				src={image}
@@ -57,11 +57,11 @@ const Cover: React.FC<CoverProps> = (props) => {
 				enableOverlay={enableOverlay}
 			/>
 			<div
-        style={{
-          height: `${height}px`
-        }}
+				style={{
+					height: `${height}px`,
+				}}
 				className={cn(
-					'flex flex-col items-center justify-center z-20',					
+					'flex flex-col items-center justify-center z-20',
 					`absolute top-0 left-0 w-full h-full px-3 sm:px-0`
 				)}
 			>

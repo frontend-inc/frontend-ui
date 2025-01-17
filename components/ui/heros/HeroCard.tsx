@@ -28,7 +28,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 							alt={title}
 							label={label}
 							height={512}
-              fullWidth
+							fullWidth
 							enableGradient={enableGradient}
 							enableOverlay={enableOverlay}
 						/>
@@ -43,7 +43,7 @@ const HeroCard: React.FC<HeroProps> = (props) => {
 							size="lg"
 						/>
 						<Typography variant="body1">{description}</Typography>
-            {secondaryAction}
+						{secondaryAction}
 					</div>
 				</div>
 			</div>

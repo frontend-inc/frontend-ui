@@ -35,7 +35,7 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = (props) => {
 						width: '100%',
 						overflow: 'none',
 						height: '1000px',
-            backgroundColor: 'black',
+						backgroundColor: 'black',
 					}}
 					url={calendlyUrl}
 					prefill={prefill}

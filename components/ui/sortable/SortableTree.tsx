@@ -139,11 +139,7 @@ export default function SortableTree(props: SortableTreeProps) {
 				const draggedItem = sortedItems[newIndex]
 				const targetItem = sortedItems[newIndex - 1] // The item before the dragged item
 
-				if (
-					targetItem &&
-					targetItem.type === 'folder' &&
-					targetItem.isOpen
-				) {
+				if (targetItem && targetItem.type === 'folder' && targetItem.isOpen) {
 					draggedItem.parent_id = targetItem.id
 				} else if (
 					targetItem &&

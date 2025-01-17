@@ -10,9 +10,9 @@ type ShopifyProductsCarouselProps = SectionProps &
 	HeadingProps &
 	ProductCollectionCarouselProps
 
-const ShopifyProductCollectionCarousel: React.FC<ShopifyProductsCarouselProps> = (
-	props
-) => {
+const ShopifyProductCollectionCarousel: React.FC<
+	ShopifyProductsCarouselProps
+> = (props) => {
 	const {
 		label,
 		title,

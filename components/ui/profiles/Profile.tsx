@@ -46,7 +46,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 								/>
 							</div>
 							<div className="w-full flex flex-row items-center justify-center ">
-                <SocialLinks links={ socialLinks } />								
+								<SocialLinks links={socialLinks} />
 							</div>
 						</div>
 					</Stack>

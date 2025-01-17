@@ -42,15 +42,15 @@ const ShopifyChangePassword: React.FC<ShopifyChangePasswordProps> = (props) => {
 	}
 
 	return (
-    <AuthScreen title={title} subtitle={subtitle}>
-      <ShopifyChangePasswordForm
-        errors={errors}
-        customer={customer}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        handleLogin={handleLogin}
-      />
-    </AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<ShopifyChangePasswordForm
+				errors={errors}
+				customer={customer}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+				handleLogin={handleLogin}
+			/>
+		</AuthScreen>
 	)
 }
 

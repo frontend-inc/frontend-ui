@@ -20,32 +20,30 @@ const Section: React.FC<SectionProps> = (props) => {
 		variant,
 		py = 'md',
 		px = 'sm',
-    spacing=6,
-    disableGrid=false,
-    className
+		spacing = 6,
+		disableGrid = false,
+		className,
 	} = props
 
+	const spacingClasses = {
+		1: 'space-y-1',
+		2: 'space-y-2',
+		3: 'space-y-3',
+		4: 'space-y-4',
+		5: 'space-y-5',
+		6: 'space-y-6',
+		7: 'space-y-7',
+		8: 'space-y-8',
+		9: 'space-y-9',
+		10: 'space-y-10',
+	}
 
-  const spacingClasses = {
-    1: 'space-y-1',
-    2: 'space-y-2',
-    3: 'space-y-3',
-    4: 'space-y-4',
-    5: 'space-y-5',
-    6: 'space-y-6',
-    7: 'space-y-7',
-    8: 'space-y-8',
-    9: 'space-y-9',
-    10: 'space-y-10'    
-  }
-
-
-  const maxWidthClasses: Record<ContainerMaxWidth, string> = {
-    sm: 'container mx-auto max-w-screen-sm',
-    md: 'container mx-auto max-w-screen-md',
-    lg: 'container mx-auto max-w-screen-lg',
-    xl: 'container mx-auto max-w-screen-xl',
-  }
+	const maxWidthClasses: Record<ContainerMaxWidth, string> = {
+		sm: 'container mx-auto max-w-screen-sm',
+		md: 'container mx-auto max-w-screen-md',
+		lg: 'container mx-auto max-w-screen-lg',
+		xl: 'container mx-auto max-w-screen-xl',
+	}
 
 	const pyClasses = {
 		none: 'py-0',
@@ -63,9 +61,9 @@ const Section: React.FC<SectionProps> = (props) => {
 		xl: 'px-48',
 	}
 
-	const backgroundStyle = bgImage ? 
-    { backgroundImage: `url(${bgImage})` } : 
-    { backgroundColor: bgColor }
+	const backgroundStyle = bgImage
+		? { backgroundImage: `url(${bgImage})` }
+		: { backgroundColor: bgColor }
 
 	return (
 		<section
@@ -73,7 +71,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				'z-0',
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full h-full bg-background',
-        'flex flex-col',
+				'flex flex-col',
 				theme && mode && `${theme}-${mode}`,
 				pyClasses[py],
 				pxClasses[px],
@@ -91,12 +89,12 @@ const Section: React.FC<SectionProps> = (props) => {
 					variant == 'fill' && bgImage && 'p-8 rounded-xl bg-black/50',
 					variant == 'fill' && !bgImage && 'p-8 rounded-xl bg-content2/50',
 					maxWidth && maxWidthClasses[maxWidth],
-          spacingClasses[spacing],
+					spacingClasses[spacing],
 					'w-full h-full mx-auto min-h-[60px]',
-          className
+					className
 				)}
 			>
-        { children }
+				{children}
 			</div>
 		</section>
 	)

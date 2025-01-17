@@ -64,22 +64,22 @@ const Address: React.FC<AddressProps> = (props) => {
 	}, [addressId])
 
 	return (
-			<AuthScreen title={title} subtitle={subtitle}>
-				<div className="flex flex-col space-y-3">
-					<ShopifyAddressForm address={address} handleChange={handleChange} />
-					<Button fullWidth onPress={handleSubmit}>
-						Save Address
-					</Button>
-					<Button fullWidth variant="ghost" onPress={handleDeleteClick}>
-						Delete Address
-					</Button>
-				</div>
-				<AlertModal
-					open={showDeleteModal}
-					handleClose={() => setShowDeleteModal(false)}
-					handleConfirm={handleDeleteAddress}
-				/>
-			</AuthScreen>
+		<AuthScreen title={title} subtitle={subtitle}>
+			<div className="flex flex-col space-y-3">
+				<ShopifyAddressForm address={address} handleChange={handleChange} />
+				<Button fullWidth onPress={handleSubmit}>
+					Save Address
+				</Button>
+				<Button fullWidth variant="ghost" onPress={handleDeleteClick}>
+					Delete Address
+				</Button>
+			</div>
+			<AlertModal
+				open={showDeleteModal}
+				handleClose={() => setShowDeleteModal(false)}
+				handleConfirm={handleDeleteAddress}
+			/>
+		</AuthScreen>
 	)
 }
 

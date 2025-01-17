@@ -26,7 +26,7 @@ const DocumentDetails: React.FC<DocumentHeroProps> = (props) => {
 			{!disableImage && (
 				<div className="w-full flex flex-row justify-center">
 					<Image
-            fullWidth
+						fullWidth
 						alt={resource?.label}
 						src={resource?.image?.url}
 						label={resource?.label}

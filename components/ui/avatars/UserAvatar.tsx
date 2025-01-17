@@ -16,11 +16,11 @@ const UserAvatar: React.FC<UserAvatarProps> = (props) => {
 	const { user, size = 'md', className } = props
 
 	return (
-		<Avatar 
+		<Avatar
 			radius={size}
 			isBordered
 			name={getInitials(user?.name)}
-      description={user?.email}
+			description={user?.email}
 			size={size}
 			src={user?.avatar?.url}
 			className={className}

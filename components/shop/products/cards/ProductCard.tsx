@@ -23,7 +23,8 @@ export type ProductCardProps = {
 	enableOverlay?: boolean
 }
 
-const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>((props, ref) => {
+const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
+	(props, ref) => {
 		const {
 			label,
 			title,
@@ -44,9 +45,9 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>((props, r
 			<div ref={ref} className={cn('w-full overflow-hidden bg-background')}>
 				<div className="min-h-[250px] w-full relative overflow-hidden">
 					<Image
-            fullWidth
-						src={image}            
-						height={height}            
+						fullWidth
+						src={image}
+						height={height}
 						alt={title}
 						label={label}
 						handleClick={handleClick}

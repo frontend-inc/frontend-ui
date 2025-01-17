@@ -36,13 +36,13 @@ const ResourceDetails: React.FC<ResourceDetailsProps> = (props) => {
 				{!disableImage && (
 					<div className="justify-center items-center flex flex-col space-y-6 w-full">
 						<div className="min-w-[240px] min-h-[240px]">
-							<Image 
-                alt={label} 
-                src={image} 
-                label={label} 
-                height={240}
-                fullWidth
-              />
+							<Image
+								alt={label}
+								src={image}
+								label={label}
+								height={240}
+								fullWidth
+							/>
 						</div>
 					</div>
 				)}

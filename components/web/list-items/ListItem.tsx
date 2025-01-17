@@ -25,11 +25,7 @@ const ListItem: React.FC<ListItemProps> = (props) => {
 			)}
 		>
 			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
-			<div
-				className={cn(
-					'flex flex-col space-y-2',
-				)}
-			>
+			<div className={cn('flex flex-col space-y-2')}>
 				<Typography variant="h6">{title}</Typography>
 				<Typography className={cn('text-foreground/70')} variant="body1">
 					{subtitle}
