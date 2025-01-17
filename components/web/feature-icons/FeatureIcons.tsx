@@ -6,41 +6,8 @@ import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
 import { Typography } from '../../../components'
 import { cn } from '@nextui-org/react'
+import FeatureIcon from './FeatureIcon'
 
-type FeatureIconProps = {
-	icon?: string
-	title?: string
-	subtitle?: string
-	variant?: 'fill' | 'outline' | 'default'
-	direction?: 'column' | 'row'
-}
-
-const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
-	const { variant, icon, title, subtitle, direction = 'column' } = props || {}
-	return (
-		<div
-			className={cn(
-				'flex justify-start py-6 w-full items-start h-full',
-				'flex-row items-start space-x-3 min-h-[90px]',
-				variant == 'outline' && 'border-2 border-divider rounded-lg p-6',
-				variant == 'fill' && 'bg-content1 rounded-lg p-6'
-			)}
-		>
-			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
-			<div
-				className={cn(
-					'flex flex-col space-y-2',
-					direction === 'row' && 'text-left'
-				)}
-			>
-				<Typography variant="h6">{title}</Typography>
-				<Typography className={cn('text-foreground/70')} variant="body1">
-					{subtitle}
-				</Typography>
-			</div>
-		</div>
-	)
-}
 
 export type FeatureIconsProps = {
 	variant?: 'fill' | 'outline' | 'default'
@@ -49,11 +16,10 @@ export type FeatureIconsProps = {
 		title?: string
 		subtitle?: string
 	}[]
-	direction?: 'column' | 'row'
 }
 
 const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
-	const { variant, items = [], direction = 'column' } = props || {}
+	const { variant, items = [] } = props || {}
 
 	return (
 		<div className="container mx-auto max-w-screen-lg p-2">
@@ -64,7 +30,6 @@ const FeatureIcons: React.FC<FeatureIconsProps> = (props) => {
 							icon={item?.icon}
 							title={item?.title}
 							subtitle={item?.subtitle}
-							direction={direction}
 							variant={variant}
 						/>
 					</BlurFade>

@@ -1,4 +1,5 @@
 export * from './links'
+export * from './feature-icons'
 export * from './testimonials'
 export * from './list-items'
 

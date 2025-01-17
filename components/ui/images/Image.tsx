@@ -31,8 +31,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		isBlurred,
 		isZoomed = false,
 		disableBorderRadius = false,    
-		height,
-    width,
+		height=0,
+    width=0,
 		enableGradient,
 		enableOverlay,    
 		className,
@@ -53,7 +53,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
       <div
         onClick={handleClick ? handleClick : undefined}
         className={cn(     
-          (height && width && height > 0 && width > 0) ? '' : 'w-full h-full',
+          (height > 0 && width > 0) ? '' : 'w-full h-full',
           handleClick ? 'cursor-pointer' : '',
           disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
           'overflow-hidden',
@@ -69,7 +69,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
           src={src || NO_IMAGE_URL}
           alt={alt || label}
           className={cn(
-            (height && width && height > 0 && width > 0) ? '' : 'w-full h-full',
+            (height > 0 && width > 0) ? '' : 'w-full h-full',
             objectFit == 'contain' ? 'object-contain' : 'object-cover',
             className
           )}
