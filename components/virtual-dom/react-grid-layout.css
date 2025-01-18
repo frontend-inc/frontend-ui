@@ -13,7 +13,7 @@
 
 .react-grid-item {
 	inset: 8px 8px;
-	outline: 1px dashed #2196f3;
+	outline: 1px dashed #dddddd;
 	transition: all 200ms ease;
 	transition-property: left, top;
 }

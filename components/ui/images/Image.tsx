@@ -53,7 +53,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<div
 				onClick={handleClick ? handleClick : undefined}
 				className={cn(
-					height > 0 && width > 0 ? '' : 'w-full h-full',
+					'w-full h-full',
 					handleClick ? 'cursor-pointer' : '',
 					disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 					'overflow-hidden',
@@ -62,14 +62,12 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			>
 				<Image
 					removeWrapper
-					height={height > 0 ? height : undefined}
-					width={width > 0 ? width : undefined}
 					isBlurred={isBlurred}
 					isZoomed={isZoomed}
 					src={src || NO_IMAGE_URL}
 					alt={alt || label}
 					className={cn(
-						height > 0 && width > 0 ? '' : 'w-full h-full',
+						'w-full h-full',
 						objectFit == 'contain' ? 'object-contain' : 'object-cover',
 						className
 					)}

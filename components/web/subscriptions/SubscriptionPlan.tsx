@@ -25,9 +25,8 @@ type SubscriptionPlanProps = {
 	buttonText?: string
 	url?: string
 	path?: string
-	interval?: string
-	popular?: boolean
 	precision?: number
+  interval?: string
 	variant?: 'default' | 'outline' | 'fill' | 'shadow'
 	handleClick?: () => void
 }

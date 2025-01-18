@@ -1,7 +1,9 @@
+export * from './cards'
 export * from './links'
 export * from './feature-icons'
 export * from './testimonials'
 export * from './list-items'
+
 
 // Web Components
 export { default as Accordion } from './accordions/Accordion'
@@ -27,6 +29,7 @@ export { default as Prices } from './price-list/Prices'
 export { default as SimplePage } from './pages/SimplePage'
 export { default as SubscriptionPlan } from './subscriptions/SubscriptionPlan'
 export { default as SubscriptionPlans } from './subscriptions/SubscriptionPlans'
+export { default as Statistic } from './statistics/Statistic'
 export { default as Statistics } from './statistics/Statistics'
 export { default as Spotlight } from './spotlight/Spotlight'
 export { default as VideoCover } from './covers/VideoCover'

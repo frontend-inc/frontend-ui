@@ -11,8 +11,7 @@ type HeadingProps = {
 	title?: string
 	subtitle?: string
 	textAlign?: 'left' | 'center' | 'right'
-	fullWidth?: boolean
-	size?: 'sm' | 'md' | 'lg' | 'xl'
+	size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 	className?: string
 	secondaryAction?: React.ReactNode
 	isEditing?: boolean
@@ -22,7 +21,6 @@ type HeadingProps = {
 const Heading: React.FC<HeadingProps> = (props) => {
 	const {
 		isEditing,
-		fullWidth = true,
 		label,
 		title,
 		subtitle,
@@ -34,13 +32,15 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	} = props || {}
 
 	const titleVariant = {
-		sm: 'h4',
+    xs: 'subtitle1',
+		sm: 'h6',
 		md: 'h4',
 		lg: 'h2',
 		xl: 'h1',
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
+    xs: 'body2',
 		sm: 'body1',
 		md: 'subtitle2',
 		lg: 'subtitle2',
@@ -49,6 +49,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	}[size] as TypographyVariantsType
 
 	const spacingClass = {
+    xs: 'space-y-1',
 		sm: 'space-y-2',
 		md: 'space-y-3',
 		lg: 'space-y-4',
@@ -61,7 +62,6 @@ const Heading: React.FC<HeadingProps> = (props) => {
 		<div
 			className={cn(
 				'py-4 w-full flex justify-between flex-col sm:flex-row',
-				fullWidth ? 'md:w-full' : 'md:basis-1/3',
 				className
 			)}
 		>

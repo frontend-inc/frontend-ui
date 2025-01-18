@@ -1,84 +1,77 @@
-// @ts-nocheck
-
 'use client'
 
-import React, { useMemo } from 'react'
+import React, { useRef, useState, useEffect, useMemo } from 'react'
 import {
-	GridLayout as RGL,
+	ResponsiveGridLayout as RGL,
 	WidthProvider,
 	LayoutItem,
 } from '../../react-grid-layout'
-import { combineLayouts, mergeLayouts } from '../../react-grid-layout'
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
 import { useMediaQuery } from 'react-responsive'
 import { RenderDOMComponent } from '../../components'
 import { GripVertical } from 'lucide-react'
+import { ReactGridLayoutsType, ReactGridLayoutType } from '../../types'
+import copy from 'copy-to-clipboard'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
 type LayoutItemType = LayoutItem & {
-	w: { xs: number; md: number }
-	h: { xs: number; md: number }
-	x: { xs: number; md: number }
-	y: { xs: number; md: number }
-	name: string
+  name: string
 	props: Record<string, any>
 	classNames?: string[]
 	innerHTML?: string
+  layouts: ReactGridLayoutsType 
 }
 
 type ResponsiveLayout = LayoutItemType[]
 
 type ReactGridLayoutProps = {
-	layout: ResponsiveLayout
+	nodes: LayoutItemType[]
 	onDrop: (layout: ResponsiveLayout) => void
 	componentMap: Record<string, React.FC>
 }
 
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
-	const { layout = [], onDrop, componentMap } = props || {}
+	const { nodes = [], onDrop, componentMap } = props || {}
 
-	const calcMobileLayout = (layout: ResponsiveLayout) => {
-		return layout.map((item) => ({
-			...item,
-			w: 12,
-			x: 0,
-			y: item?.y?.xs,
-			h: item?.h?.xs,
-			isResizable: true,
-			isDraggable: true,
-		}))
-	}
+  //const cols={ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }
+  const breakpoints = { md: 680, sm: 0 }
+  const cols={ md: 12, sm: 1 }
+  
+  const formatLayout = (nodes) => {
+    if(!Array.isArray(nodes)) return [];
+    const layout = { sm: [], md: [] }
+    nodes.forEach((node) => {
+      //@ts-ignore
+      layout.sm.push({ i: node.id, id: node.id, ...node.layouts.sm })
+      //@ts-ignore
+      layout.md.push({ i: node.id, id: node.id, ...node.layouts.md })
+    })    
+    return layout
+  }
+  
+  const [layouts, setLayouts] = useState(formatLayout(nodes))
+  useEffect(() => {
+    setLayouts(formatLayout(nodes))
+  }, [nodes])
 
-	const calcDesktopLayout = (layout: ResponsiveLayout) => {
-		return layout.map((item) => ({
-			...item,
-			w: item?.w?.md,
-			x: item?.x?.md,
-			y: item?.y?.md,
-			h: item?.h?.md,
-			isResizable: true,
-			isDraggable: true,
-		}))
-	}
-
-	const isMobile = useMediaQuery({ maxWidth: 640 })
-
-	const mobileLayout = useMemo(() => calcMobileLayout(layout), [layout])
-	const desktopLayout = useMemo(() => calcDesktopLayout(layout), [layout])
-
-	const onLayoutChange = (newLayout: ResponsiveLayout) => {
-		let mergedLayout
-		let responsiveLayout
-		if (isMobile) {
-			mergedLayout = mergeLayouts(mobileLayout, newLayout)
-			responsiveLayout = combineLayouts(mergedLayout, desktopLayout)
-		} else {
-			mergedLayout = mergeLayouts(desktopLayout, newLayout)
-			responsiveLayout = combineLayouts(mobileLayout, mergedLayout)
-		}
-		onDrop(responsiveLayout)
+	const onLayoutChange = ({ layout, layouts, breakpoint }) => {
+    setLayouts(layouts)
+    let newNodes = [ ...nodes ]    
+    newNodes = newNodes.map((node) => {            
+      const sm = layouts.sm.find(l => l.i === node.id)
+      const md = layouts.md.find(l => l.i === node.id)      
+      return {
+        ...node,
+        layouts: {
+          sm: { x: sm.x, y: sm.y, w: sm.w, h: sm.h },
+          md: { x: md.x, y: md.y, w: md.w, h: md.h },
+        },
+      }
+    }) 
+    copy(JSON.stringify(newNodes))
+    onDrop(newNodes)    		
 	}
 
 	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
@@ -94,31 +87,29 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 
 	return (
 		<div className="w-full h-full min-h-[200px]">
-			<ResponsiveGridLayout
-				autoSize
-				className="grid"
+			<ResponsiveGridLayout				
+				className="layout"
 				rowHeight={50}
-				cols={12}
-				layout={isMobile ? mobileLayout : desktopLayout}
-				onLayoutChange={onLayoutChange}
-				compactType="vertical"
-				measureBeforeMount
-				useCSSTransforms
+        breakpoints={breakpoints}
+				cols={cols}
+				layouts={ layouts }
+				onLayoutChange={ onLayoutChange }
+				compactType={'vertical'}
 			>
-				{layout?.map((item) => (
+				{nodes?.map((node) => (
 					<div
-						onClick={(ev) => handleClick(item, ev)}
-						key={item.i}
-						className="relative flex flex-row items-center justify-center w-full h-full"
+						onClick={(ev) => handleClick(node, ev)}
+						key={node.id}
+						className="py-2 px-7 relative flex flex-row w-full h-full"
 					>
 						<div className="cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 left-0">
 							<GripVertical className="w-4 h-4 text-foreground/70" />
 						</div>
 						<RenderDOMComponent
-							name={item.name}
-							props={item.props}
-							innerHTML={item.innerHTML}
-							classNames={item.classNames}
+							name={node.name}
+							props={node.props}
+							innerHTML={node.innerHTML}
+							classNames={node.classNames}
 							components={componentMap}
 						/>
 					</div>

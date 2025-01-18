@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Empty, Typography } from '../../../components'
+import { Empty, Typography } from '../..'
 import { Accordion as NextAccordion, AccordionItem } from '@nextui-org/react'
 
 export type AccordionProps = {
