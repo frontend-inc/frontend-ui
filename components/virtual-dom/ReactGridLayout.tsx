@@ -8,10 +8,10 @@ import {
 } from '../../react-grid-layout'
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
-import { useMediaQuery } from 'react-responsive'
+import { Button } from '@nextui-org/react'
 import { RenderDOMComponent } from '../../components'
-import { GripVertical } from 'lucide-react'
-import { ReactGridLayoutsType, ReactGridLayoutType } from '../../types'
+import { GripVertical, Trash2 } from 'lucide-react'
+import { ReactGridLayoutsType } from '../../types'
 import copy from 'copy-to-clipboard'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
@@ -29,11 +29,12 @@ type ResponsiveLayout = LayoutItemType[]
 type ReactGridLayoutProps = {
 	nodes: LayoutItemType[]
 	onDrop: (layout: ResponsiveLayout) => void
+  handleDelete: (node: LayoutItemType) => void
 	componentMap: Record<string, React.FC>
 }
 
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
-	const { nodes = [], onDrop, componentMap } = props || {}
+	const { nodes = [], onDrop, handleDelete, componentMap } = props || {}
 
   //const cols={ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }
   const breakpoints = { md: 680, sm: 0 }
@@ -112,6 +113,15 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							classNames={node.classNames}
 							components={componentMap}
 						/>
+            <div className="cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 right-0">
+              <Button 
+                isIconOnly
+                variant="light"
+                onPress={() => handleDelete(node)}
+              >
+							  <Trash2 className="w-4 h-4 text-foreground/70" />
+              </Button>
+						</div>
 					</div>
 				))}
 			</ResponsiveGridLayout>
