@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import {
 	Card,
 	FileCard,
@@ -14,6 +14,7 @@ import {
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
 import { DocumentStyleTypes } from './DocumentList'
+import { resizeCloudinaryImage } from '../../../helpers'
 
 type DocumentListItemProps = {
 	buttons: ButtonType[]
@@ -70,10 +71,17 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		list: 'h6',
 	}
 
+  const imageUrl = useMemo(() => resizeCloudinaryImage(resource?.image?.url, { 
+      width: 480,
+      height: 320,
+      transform: 'fill'
+    }
+  ), [resource?.image?.url])  
+
 	return (
 		<Component
 			label={resource?.label}
-			image={resource?.image?.url}
+			image={imageUrl}
 			fullWidth
 			imageHeight={320}
 			imageWidth={480}
