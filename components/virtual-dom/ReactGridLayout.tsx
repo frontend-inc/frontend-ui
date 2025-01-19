@@ -59,8 +59,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
   const [layouts, setLayouts] = useState(formatLayout(nodes))
   const [debouncedLayouts] = useDebounce(layouts, 250)
 
+  // Only update the layout if the nodes change
   useEffect(() => {
-    setLayouts(formatLayout(nodes))
+    if(!isEqual(layouts, formatLayout(nodes))){
+      setLayouts(formatLayout(nodes))
+    }    
   }, [nodes])
 
 	const onLayoutChange = ({ layout, layouts: newLayouts, breakpoint }) => {    
@@ -86,8 +89,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
         },
       }
     }) 
-    copy(JSON.stringify(newNodes, null, 2))
-    onDrop(newNodes)    		
+    onDrop(newNodes)    		    
   }, [debouncedLayouts])
 
 	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
@@ -121,9 +123,9 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
               "outline-dashed rounded-md outline-1 outline-transparent hover:outline-blue-500",
               "p-1 relative flex flex-row w-full h-full"
             )}
-					>
-						<div className="invisible grid-controls cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 left-0">
-							<GripVertical className="w-4 h-4 text-foreground/70" />
+					>                        
+						<div className="invisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
+							<GripVertical className="w-4 h-4 text-white" />
 						</div>
 						<RenderDOMNode
 							name={node.name}
@@ -132,24 +134,24 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							classNames={node.classNames}
 							components={componentMap}
 						/>
-            <div className="invisible grid-controls z-50 flex flex-row items-center justify-center absolute top-2 right-2">
+            <div className="invisible grid-controls z-50 flex flex-row items-center space-x-1 justify-center absolute top-2 right-2">
               <Button 
                 isIconOnly
                 variant="light"
                 size="sm"
-                className="rounded-full"
+                className="bg-black/30 hover:bg-black/70"
                 onPress={(ev) => handleClick(node, ev)}
               >
-							  <RiPencilLine className="w-4 h-4 text-foreground/70" />
+							  <RiPencilLine className="w-4 h-4 text-white" />
               </Button>
               <Button 
                 isIconOnly
-                variant="light"
+                variant="solid"
                 size="sm"
-                className="rounded-full"
+                className="bg-black/30 hover:bg-black/70"
                 onPress={() => handleDelete(node)}
               >
-							  <RiCloseLine className="w-4 h-4 text-foreground/70" />
+							  <RiCloseLine className="w-4 h-4 text-white" />
               </Button>
 						</div>
 					</div>

@@ -11,7 +11,7 @@ type SocialIconButtonsProps = {
 const SocialIconButtons: React.FC<SocialIconButtonsProps> = (props) => {
 	const { links = [] } = props || {}
 	return (
-		<div className="w-full flex flex-row items-center justify-center space-x-1">
+		<div className="w-full flex flex-row flex-wrap gap-2 items-center justify-center">
 			{links?.map((link) => (
 				<SocialIconButton
 					url={link.url}
