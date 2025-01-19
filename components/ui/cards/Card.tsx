@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from '@nextui-org/react'
 import { Typography } from '../../../components'
-import { Image } from '@nextui-org/react'
+import { Card as NextUICard, Image } from '@nextui-org/react'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
@@ -44,15 +44,23 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
+        <NextUICard 
+          isPressable 
+          isHoverable
+          onPress={ handleClick }
+          shadow="none"
+          className='w-full'
+        >
 				<Image
+          removeWrapper
 					src={image}
 					height={imageHeight}
 					width={imageWidth}
 					alt={title}
 					label={label}
-					handleClick={handleClick}
           className='w-full object-cover'
 				/>
+        </NextUICard>
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
 					{subtitle && (
