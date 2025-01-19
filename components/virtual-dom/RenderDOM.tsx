@@ -1,7 +1,8 @@
 'use client'
 
 import React from 'react'
-import RenderDOMComponent from './RenderDOMComponent'
+import RenderDOMNode from './RenderDOMNode'
+import RenderDOMGrid from './RenderDOMGrid'
 
 export type VirtualNodeType = {
 	name: string
@@ -24,18 +25,26 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 	}
 
 	return nodes?.map((node, i) => (
-		<RenderDOMComponent
-			key={i}
-			name={node?.name}
-			innerHTML={node?.innerHTML}
-			classNames={node?.classNames}
-			children={node?.children}
-			props={{
-				...node.props,
-				...(injectProps[node?.name] || {}),
-			}}
-			components={components}
-		/>
+    node?.name == "Grid" ? (
+      <RenderDOMGrid 
+        key={node.id}
+        node={ node }
+        components={ components }
+      />
+    ):(
+      <RenderDOMNode
+        key={node.id}
+        name={node?.name}
+        innerHTML={node?.innerHTML}
+        classNames={node?.classNames}
+        children={node?.children}
+        props={{
+          ...node.props,
+          ...(injectProps[node?.name] || {}),
+        }}
+        components={components}
+      />
+    ) 
 	))
 }
 

@@ -25,20 +25,20 @@ type RenderDomProps = {
 	components: {}
 }
 
-const RenderDOMComponent: React.FC<RenderDomProps> = (parentProps) => {
+const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 	const { name, props, innerHTML, children, classNames, components } =
 		parentProps || {}
 
 	const Component = components[name] || Div
 
-	return (
+	return (    
 		<Component
 			{...props}
 			className={cn(...(classNames || []), props?.className)}
 		>
 			{innerHTML}
 			{children?.map((childNode, index) => (
-				<RenderDOMComponent
+				<RenderDOMNode
 					key={index}
 					name={childNode?.name}
 					innerHTML={childNode?.innerHTML}
@@ -52,4 +52,4 @@ const RenderDOMComponent: React.FC<RenderDomProps> = (parentProps) => {
 	)
 }
 
-export default RenderDOMComponent
+export default RenderDOMNode

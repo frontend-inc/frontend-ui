@@ -9,10 +9,13 @@ import {
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
 import { Button } from '@nextui-org/react'
-import { RenderDOMComponent } from '../../components'
-import { GripVertical, Trash2 } from 'lucide-react'
+import { RenderDOMNode } from '../../components'
+import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
-import copy from 'copy-to-clipboard'
+import { RiCloseLine, RiPencilLine, RiSettings2Line } from '@remixicon/react'
+import { cn } from 'frontend-shadcn'
+import { useDebounce } from 'use-debounce'
+import { isEqual } from 'lodash'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
@@ -36,8 +39,8 @@ type ReactGridLayoutProps = {
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	const { nodes = [], onDrop, handleDelete, componentMap } = props || {}
 
-  //const cols={ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }
-  const breakpoints = { md: 680, sm: 0 }
+  // Match breakpoints with tailwindcss
+  const breakpoints = { md: 640, sm: 0 }
   const cols={ md: 12, sm: 1 }
   
   const formatLayout = (nodes) => {
@@ -53,16 +56,27 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
   }
   
   const [layouts, setLayouts] = useState(formatLayout(nodes))
+  const [debouncedLayouts] = useDebounce(layouts, 250)
+
   useEffect(() => {
     setLayouts(formatLayout(nodes))
   }, [nodes])
 
-	const onLayoutChange = ({ layout, layouts, breakpoint }) => {
-    setLayouts(layouts)
+	const onLayoutChange = ({ layout, layouts: newLayouts, breakpoint }) => {    
+    const responsiveLayouts = { 
+      ...layouts,
+      [breakpoint]: layout.map((l) => ({ i: l.i, ...l }))
+    }
+    if(!isEqual(layouts, responsiveLayouts)){
+      setLayouts(responsiveLayouts)    
+    }
+	}
+
+  useEffect(() => {
     let newNodes = [ ...nodes ]    
     newNodes = newNodes.map((node) => {            
-      const sm = layouts.sm.find(l => l.i === node.id)
-      const md = layouts.md.find(l => l.i === node.id)      
+      const sm = debouncedLayouts.sm.find(l => l.i === node.id)
+      const md = debouncedLayouts.md.find(l => l.i === node.id)      
       return {
         ...node,
         layouts: {
@@ -71,9 +85,8 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
         },
       }
     }) 
-    copy(JSON.stringify(newNodes))
     onDrop(newNodes)    		
-	}
+  }, [debouncedLayouts])
 
 	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
 		ev.stopPropagation()
@@ -93,7 +106,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				rowHeight={50}
         breakpoints={breakpoints}
 				cols={cols}
-				layouts={ layouts }
+				layouts={layouts}
 				onLayoutChange={ onLayoutChange }
 				compactType={'vertical'}
 			>
@@ -101,25 +114,40 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 					<div
 						onClick={(ev) => handleClick(node, ev)}
 						key={node.id}
-						className="py-2 px-7 relative flex flex-row w-full h-full"
+						className={cn(
+              "grid-controls",
+              "outline-dashed rounded-md outline-1 outline-transparent hover:outline-blue-500",
+              "p-1 relative flex flex-row w-full h-full"
+            )}
 					>
-						<div className="cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 left-0">
+						<div className="invisible grid-controls cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 left-0">
 							<GripVertical className="w-4 h-4 text-foreground/70" />
 						</div>
-						<RenderDOMComponent
+						<RenderDOMNode
 							name={node.name}
 							props={node.props}
 							innerHTML={node.innerHTML}
 							classNames={node.classNames}
 							components={componentMap}
 						/>
-            <div className="cursor-grab active:cursor-grabbing w-8 h-8 z-50 flex items-center justify-center absolute top-2 right-0">
+            <div className="invisible grid-controls z-50 flex flex-row items-center justify-center absolute top-2 right-2">
               <Button 
                 isIconOnly
                 variant="light"
+                size="sm"
+                className="rounded-full"
+                onPress={(ev) => handleClick(node, ev)}
+              >
+							  <RiPencilLine className="w-4 h-4 text-foreground/70" />
+              </Button>
+              <Button 
+                isIconOnly
+                variant="light"
+                size="sm"
+                className="rounded-full"
                 onPress={() => handleDelete(node)}
               >
-							  <Trash2 className="w-4 h-4 text-foreground/70" />
+							  <RiCloseLine className="w-4 h-4 text-foreground/70" />
               </Button>
 						</div>
 					</div>

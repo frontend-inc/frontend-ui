@@ -13,7 +13,7 @@
 
 .react-grid-item {
 	inset: 8px 8px;
-	outline: 1px dashed #dddddd;
+	/*outline: 1px dashed #dddddd; */
 	transition: all 200ms ease;
 	transition-property: left, top;
 }
@@ -137,4 +137,8 @@
 .react-grid-item > .react-resizable-handle.react-resizable-handle-s {
 	bottom: 0;
 	transform: rotate(45deg);
+}
+
+.react-grid-item:hover > .grid-controls {
+  visibility: visible;  
 }

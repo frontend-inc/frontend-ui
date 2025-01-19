@@ -31,8 +31,6 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		isBlurred,
 		isZoomed = false,
 		disableBorderRadius = false,
-		height = 0,
-		width = 0,
 		enableGradient,
 		enableOverlay,
 		className,

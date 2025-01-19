@@ -16,12 +16,11 @@ const Section: React.FC<SectionProps> = (props) => {
 		bgImage,
 		bgOverlay,
 		mode,
-		maxWidth,
+		maxWidth='xl',
 		variant,
 		py = 'md',
 		px = 'sm',
 		spacing = 6,
-		disableGrid = false,
 		className,
 	} = props
 
@@ -78,7 +77,7 @@ const Section: React.FC<SectionProps> = (props) => {
 				!bgImage && bgColor,
 				bgImage &&
 					bgOverlay &&
-					"after:content-[''] after:absolute after:inset-0 after:bg-black/50"
+					"after:content-[''] after:absolute after:inset-0 after:bg-black/70"
 			)}
 			style={backgroundStyle}
 		>

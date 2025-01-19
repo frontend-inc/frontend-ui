@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Empty } from '../../../components'
-import FeaturedCard from './FeatureCard'
+import FeaturedCardItem from './FeatureCardItem'
 import { BlurFade } from '../../../components'
 
 export type FeatureCardsProps = {
@@ -29,7 +29,7 @@ const FeatureCards: React.FC<FeatureCardsProps> = (props) => {
 			<div className="w-full flex flex-col space-y-10 p-2">
 				{items?.map((item, i) => (
 					<BlurFade delay={0.25} inView key={i}>
-						<FeaturedCard
+						<FeaturedCardItem
 							label={item?.label}
 							title={item?.title}
 							subtitle={item?.subtitle}

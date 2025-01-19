@@ -1,20 +1,18 @@
 'use client'
 
 import React from 'react'
-import { Empty } from '../..'
-import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
-import { Typography } from '../../../components'
+import { Typography } from '../..'
 import { cn } from '@nextui-org/react'
 
-type FeatureIconProps = {
+type FeatureCardProps = {
 	icon?: string
 	title?: string
 	subtitle?: string
 	variant?: 'fill' | 'outline' | 'default'
 }
 
-const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
+const FeatureCard: React.FC<FeatureCardProps> = (props) => {
 	const { variant, icon, title, subtitle } = props || {}
 	return (
 		<div
@@ -36,4 +34,4 @@ const FeatureIcon: React.FC<FeatureIconProps> = (props) => {
 	)
 }
 
-export default FeatureIcon
+export default FeatureCard

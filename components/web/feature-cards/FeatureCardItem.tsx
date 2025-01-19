@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useApp } from '../../../hooks'
-import { Typography } from '../../../components'
+import { Typography } from '../..'
 import { Button } from '@nextui-org/react'
 import { Image } from '../..'
 import { useRouter } from 'next/navigation'

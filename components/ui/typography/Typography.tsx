@@ -5,7 +5,7 @@ import { cn } from '@nextui-org/react'
 import { SyntheticEventType } from '../../../types'
 import { useDebounce } from 'use-debounce'
 
-type TypographyProps = {
+export type TypographyProps = {
 	variant:
 		| 'h1'
 		| 'h2'
