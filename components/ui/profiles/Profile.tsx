@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Container, Stack, AvatarImage, Typography, SocialLinks } from '../..'
+import { Container, Stack, AvatarImage, Typography, SocialIconButtons } from '../..'
 import { Heading } from '../../../components'
 import { HeadingProps } from '../../../types'
 
@@ -46,7 +46,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 								/>
 							</div>
 							<div className="w-full flex flex-row items-center justify-center ">
-								<SocialLinks links={socialLinks} />
+								<SocialIconButtons links={socialLinks} />
 							</div>
 						</div>
 					</Stack>

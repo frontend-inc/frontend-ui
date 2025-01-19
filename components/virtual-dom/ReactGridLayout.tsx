@@ -16,6 +16,7 @@ import { RiCloseLine, RiPencilLine, RiSettings2Line } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
+import copy from 'copy-to-clipboard'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
@@ -85,6 +86,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
         },
       }
     }) 
+    copy(JSON.stringify(newNodes, null, 2))
     onDrop(newNodes)    		
   }, [debouncedLayouts])
 

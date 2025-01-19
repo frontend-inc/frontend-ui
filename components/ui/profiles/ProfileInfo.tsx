@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { SocialLinks, FieldString, FieldText } from '../../../components'
+import { SocialIconButtons, FieldString, FieldText } from '../../../components'
 
 type ProfileInfoProps = {
 	title: string
@@ -25,7 +25,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = (props) => {
 					className="text-foreground/70"
 				/>
 				<FieldString value={title} />
-				<SocialLinks links={socialLinks} />
+				<SocialIconButtons links={socialLinks} />
 				<FieldText
 					value={description}
 					variant="body2"

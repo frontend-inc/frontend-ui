@@ -35,9 +35,9 @@ const ButtonLink: React.FC<ButtonLinkType> = (props) => {
 				//@ts-ignore
 				onClick={onClick}
 				className={cn(
-					'w-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-content2',
+					'w-full h-full flex justify-between items-center rounded-xl p-4 focus:outline-none hover:bg-content2',
 					variant === 'fill' && 'bg-content1 hover:bg-content2',
-					variant === 'outline' && 'border border-divider rounded-lg'
+					'border-2 border-divider rounded-xl'
 				)}
 			>
 				<div className=" flex flex-row space-x-6 items-center">

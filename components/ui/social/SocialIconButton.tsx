@@ -1,20 +1,19 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '../..'
+import { Button } from '@nextui-org/react'
+//@ts-ignore
 import { SocialIcon } from 'react-social-icons'
-import { cn } from '@nextui-org/react'
 
-type SocialLinkType = {
-	variant?: 'fill' | 'outline' | 'default'
+type SocialIconButtonProps = {
 	provider: string
-	title: string
-	subtitle: string
 	url?: string
+	color?: string
+	size?: number
 }
 
-const SocialLink: React.FC<SocialLinkType> = (props) => {
-	const { variant="fill", title, subtitle, provider, url } = props
+const SocialIconButton: React.FC<SocialIconButtonProps> = (props) => {
+	const { provider, size = 32, url } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {
@@ -62,35 +61,22 @@ const SocialLink: React.FC<SocialLinkType> = (props) => {
 	}
 
 	return (
-		<div className="w-full">
-			<button
-				//@ts-ignore
-				onClick={handleClick}
-				className={cn(
-					'w-full h-full p-4 flex justify-between items-center rounded-xl focus:outline-none hover:bg-content2',
-					variant === 'fill' && 'bg-content1 hover:bg-content2',
-					'border-2 border-divider rounded-xl'
-				)}
-			>
-				<div className=" flex flex-row space-x-6 items-center">
-					<SocialIcon
-						network={provider}
-						style={{
-							height: 32,
-							width: 32,
-						}}
-					/>
-					<div className="flex flex-col space-y-0">
-						<Typography variant="subtitle2">{title}</Typography>
-						<Typography variant="body2" className="text-foreground/70">
-							{subtitle}
-						</Typography>
-					</div>
-				</div>
-				<i className="ri-arrow-right-up-line text-xl rotate-[45] text-foreground/70" />
-			</button>
-		</div>
+		<Button
+			isIconOnly
+			className="min-w-10"
+			variant="light"
+			radius="full"
+			onPress={handleClick}
+		>
+			<SocialIcon
+				network={provider}
+				style={{
+					height: size,
+					width: size,
+				}}
+			/>
+		</Button>
 	)
 }
 
-export default SocialLink
+export default SocialIconButton
