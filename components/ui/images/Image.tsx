@@ -33,6 +33,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		disableBorderRadius = false,
 		enableGradient,
 		enableOverlay,
+    height=0,
+    width=0,
 		className,
 		objectFit = 'cover',
 		radius = 'large',

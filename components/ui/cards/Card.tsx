@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from '@nextui-org/react'
 import { Typography } from '../../../components'
-import { Image } from '../../../components'
+import { Image } from '@nextui-org/react'
 
 export type CardProps = {
 	ref?: React.Ref<HTMLDivElement>
@@ -37,11 +37,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			imageHeight,
-			imageWidth,
-			fullWidth,
-			enableGradient,
-			enableOverlay,
+			imageHeight=180,
+			imageWidth=240,
 			classNames,
 		} = props
 
@@ -51,12 +48,10 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 					src={image}
 					height={imageHeight}
 					width={imageWidth}
-					fullWidth={fullWidth}
 					alt={title}
 					label={label}
 					handleClick={handleClick}
-					enableGradient={enableGradient}
-					enableOverlay={enableOverlay}
+          className='w-full object-cover'
 				/>
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
