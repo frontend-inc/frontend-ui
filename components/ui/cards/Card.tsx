@@ -37,8 +37,8 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			imageHeight=180,
-			imageWidth=240,
+			imageHeight=240,
+			imageWidth=320,
 			classNames,
 		} = props
 
