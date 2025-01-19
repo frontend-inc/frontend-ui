@@ -7,7 +7,8 @@ import { Checkbox } from '@nextui-org/react'
 import { MenuButton } from '../../../components'
 import { GripVertical } from 'lucide-react'
 import { Typography } from '../../../components'
-import { Image, RemixIcon } from '../../../components'
+import { RemixIcon } from '../../../components'
+import { Image } from '@nextui-org/react'
 
 export type ResourceListItemProps = {
 	selectable?: boolean
