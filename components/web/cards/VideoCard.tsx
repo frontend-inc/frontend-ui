@@ -43,9 +43,6 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
           objectFit={objectFit}
           disableBorderRadius
         />
-        <div className="absolute bottom-2 left-2">
-          <RemixIcon name="ri-play-fill" />
-        </div>
       </Card>
       <VideoModal
         open={ open }
