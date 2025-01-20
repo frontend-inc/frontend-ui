@@ -116,6 +116,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				rowHeight={50}
         breakpoints={breakpoints}
 				cols={cols}
+        margin={[0,0]}
 				layouts={layouts}
 				onLayoutChange={ onLayoutChange }
 				compactType={'vertical'}
