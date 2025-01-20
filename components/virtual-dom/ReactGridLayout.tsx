@@ -110,7 +110,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	}
 
 	return (
-		<div className="grid-item w-full h-full min-h-[200px]">
+		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout				
 				className="react-grid-layout"
 				rowHeight={50}
@@ -126,7 +126,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 						key={node.id}
 						className={cn(
               "grid-controls",
-              "outline-dashed rounded-md outline-1 outline-transparent hover:outline-blue-500",
+              "border-2 rounded-md border-transparent hover:border-blue-500",
               "p-1 relative flex flex-row w-full h-full"
             )}
 					>                        

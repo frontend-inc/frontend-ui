@@ -27,12 +27,11 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 
 	return nodes?.map((node, i) => (
     node?.name == "Grid" ? (
-      <Section key={i} { ...node.props } maxWidth="xl">
-        <StaticReactGridLayout           
-          nodes={ node?.children || [] }
-          componentMap={ components }          
-        />      
-      </Section> 
+      <RenderDOMGrid 
+        key={ node.id }
+        node={ node }
+        components={ components }
+      />      
     ):(
       <RenderDOMNode
         key={i}
@@ -51,3 +50,12 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 }
 
 export default RenderDOM
+
+/* 
+<Section key={i} { ...node.props } maxWidth="xl">
+  <StaticReactGridLayout           
+    nodes={ node?.children || [] }
+    componentMap={ components }          
+  />      
+</Section> 
+*/

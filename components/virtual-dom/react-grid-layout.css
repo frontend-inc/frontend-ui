@@ -16,9 +16,6 @@
 	transition: all 200ms ease;
 	transition-property: left, top;
 }
-.react-grid-item.grid-item:hover {
-	outline: 2px solid #2196f3; 
-}
 
 .react-grid-item img {
 	pointer-events: none;
