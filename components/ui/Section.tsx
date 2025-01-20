@@ -46,10 +46,10 @@ const Section: React.FC<SectionProps> = (props) => {
 
 	const pyClasses = {
 		none: 'py-0',
-		sm: 'md:py-[24px]',
-		md: 'md:py-[48px]',
-		lg: 'md:py-[96px]',
-		xl: 'md:py-[144px]',
+		sm: 'py-[24px]',
+		md: 'py-[48px]',
+		lg: 'py-[96px]',
+		xl: 'py-[144px]',
 	}
 
 	const pxClasses = {
@@ -67,7 +67,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	return (
 		<section
 			className={cn(
-				'z-0 py-0',
+				'z-0',
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full h-full bg-background',
 				'flex flex-col',
