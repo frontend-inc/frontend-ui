@@ -129,7 +129,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 						className={cn(
               "grid-controls",
               "border-2 rounded-md border-transparent hover:border-blue-500",
-              "p-3 relative flex flex-row w-full h-full"
+              "px-3 py-1 relative flex flex-row w-full h-full"
             )}
 					>                   
           	<div className="draggable-handle inset-6nvisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
