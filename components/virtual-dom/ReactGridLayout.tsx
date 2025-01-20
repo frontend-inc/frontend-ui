@@ -12,10 +12,11 @@ import { Button } from '@nextui-org/react'
 import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
-import { RiCloseLine, RiPencilLine, RiSettings2Line } from '@remixicon/react'
+import { RiCloseLine, RiPencilLine } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
+import { SyntheticEventType } from '../../types'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
@@ -34,10 +35,11 @@ type ReactGridLayoutProps = {
 	onDrop: (layout: ResponsiveLayout) => void
   handleDelete: (node: LayoutItemType) => void
 	componentMap: Record<string, React.FC>
+  handleUpdate: (component: any) => void
 }
 
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
-	const { nodes = [], onDrop, handleDelete, componentMap } = props || {}
+	const { nodes = [], onDrop, handleDelete, handleUpdate, componentMap } = props || {}
 
   // Match breakpoints with tailwindcss
   const breakpoints = { md: 640, sm: 0 }
@@ -74,6 +76,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
       setLayouts(responsiveLayouts)    
     }
 	}
+
 
   const mounted = useRef(false)
   useEffect(() => {  
@@ -121,21 +124,37 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				compactType={'vertical'}
         draggableHandle='.draggable-handle'
 			>
-				{nodes?.map((node) => (
+				{nodes?.map((node) => {
+          
+          const handleChange = (ev: SyntheticEventType) => {
+            const { name, value } = ev.target
+            let newComponent = {
+                ...node,
+                props: {
+                  ...node.props,
+                  [name]: value,
+                },
+              }
+            handleUpdate(newComponent)
+          }          
+              
+          return(
 					<div
 						onClick={(ev) => handleClick(node, ev)}
 						key={node.id}
 						className={cn(
               "grid-controls",
               "border-2 rounded-md border-transparent hover:border-blue-500",
-              "p-1 relative flex flex-row w-full h-full"
+              "p-3 relative flex flex-row w-full h-full"
             )}
 					>                   
           	<div className="draggable-handle invisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
 							<GripVertical className="w-4 h-4 text-white" />
 						</div>     
 						<RenderDOMNode
-							name={node.name}
+              isEditing
+              handleChange={ handleChange }
+							component={node.name}
 							props={node.props}
 							innerHTML={node.innerHTML}
 							classNames={node.classNames}
@@ -162,7 +181,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
               </Button>
 						</div>
 					</div>
-				))}
+				)})}
 			</ResponsiveGridLayout>
 		</div>
 	)

@@ -17,7 +17,10 @@ export type VirtualNodeType = {
 }
 
 type RenderDomProps = {
-	name: string
+  isEditing?: boolean
+  handleChange?: (ev: any) => void
+	name?: string
+  component: string
 	props?: any
 	classNames?: string[]
 	innerHTML?: string
@@ -26,26 +29,28 @@ type RenderDomProps = {
 }
 
 const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
-	const { name, props, innerHTML, children, classNames, components } =
+	const { component, props, innerHTML, children, classNames, components, ...rest } =
 		parentProps || {}
 
-	const Component = components[name] || Div
+	const Component = components[component] || Div
 
 	return (    
 		<Component
 			{...props}
+      { ...rest }
 			className={cn(...(classNames || []), props?.className)}
 		>
 			{innerHTML}
 			{children?.map((childNode, index) => (
 				<RenderDOMNode
 					key={index}
-					name={childNode?.name}
+					component={childNode?.name}
 					innerHTML={childNode?.innerHTML}
 					classNames={childNode?.classNames}
 					props={childNode?.props}
 					children={childNode?.children}
 					components={components}
+          { ...rest }
 				/>
 			))}
 		</Component>

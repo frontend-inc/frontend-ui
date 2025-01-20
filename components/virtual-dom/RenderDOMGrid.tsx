@@ -31,7 +31,7 @@ const RenderDOMGrid: React.FC<RenderDomProps> = (props) => {
         { node?.children?.map((childNode) => (
           <GridItem key={childNode.id} layouts={ childNode?.layouts }>
             <RenderDOMNode 
-              name={childNode?.name}
+              component={childNode?.name}
               innerHTML={childNode?.innerHTML}
               classNames={childNode?.classNames}
               children={childNode?.children}

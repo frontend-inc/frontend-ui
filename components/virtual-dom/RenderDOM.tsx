@@ -36,7 +36,7 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
     ):(
       <RenderDOMNode
         key={i}
-        name={node?.name}
+        component={node?.name}
         innerHTML={node?.innerHTML}
         classNames={node?.classNames}
         children={node?.children}

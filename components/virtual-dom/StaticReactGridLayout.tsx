@@ -60,10 +60,10 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 				{nodes?.map((node) => (					
          <div          
           key={node.id}
-          className="p-1 relative flex flex-row w-full h-full"          
+          className="p-3 relative flex flex-row w-full h-full"          
         >       
           <RenderDOMNode            
-            name={node.name}
+            component={node.name}
             props={node.props}
             innerHTML={node.innerHTML}
             classNames={node.classNames}

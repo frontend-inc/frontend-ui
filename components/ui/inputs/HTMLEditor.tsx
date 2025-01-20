@@ -151,7 +151,7 @@ const MenuBar = ({ editor }) => {
 }
 
 const HTMLEditor: React.FC<TextInputProps> = (props) => {
-	const { label, name, value, handleChange } = props || {}
+	const { label, name='html', value, handleChange } = props || {}
 
 	const [text, setText] = useState(value || '')
 	const [debouncedText] = useDebounce(text, 500)
