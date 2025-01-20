@@ -131,7 +131,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
               "p-1 relative flex flex-row w-full h-full"
             )}
 					>                   
-          	<div className="draggable-handle inset-6nvisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
+          	<div className="draggable-handle invisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
 							<GripVertical className="w-4 h-4 text-white" />
 						</div>     
 						<RenderDOMNode
