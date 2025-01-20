@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState, useEffect, useMemo } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import {
 	ResponsiveGridLayout as RGL,
 	WidthProvider,
@@ -16,7 +16,6 @@ import { RiCloseLine, RiPencilLine, RiSettings2Line } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
-import copy from 'copy-to-clipboard'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
@@ -76,20 +75,27 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
     }
 	}
 
-  useEffect(() => {
-    let newNodes = [ ...nodes ]    
-    newNodes = newNodes.map((node) => {            
-      const sm = debouncedLayouts.sm.find(l => l.i === node.id)
-      const md = debouncedLayouts.md.find(l => l.i === node.id)      
-      return {
-        ...node,
-        layouts: {
-          sm: { x: sm.x, y: sm.y, w: sm.w, h: sm.h },
-          md: { x: md.x, y: md.y, w: md.w, h: md.h },
-        },
-      }
-    }) 
-    onDrop(newNodes)    		    
+  const mounted = useRef(false)
+  useEffect(() => {  
+    // Don't run on first render 
+    if(mounted.current){     
+      let newNodes = [ ...nodes ]    
+      newNodes = newNodes.map((node) => {            
+        const sm = debouncedLayouts.sm.find(l => l.i === node.id)
+        const md = debouncedLayouts.md.find(l => l.i === node.id)      
+        return {
+          ...node,
+          layouts: {
+            sm: { x: sm.x, y: sm.y, w: sm.w, h: sm.h },
+            md: { x: md.x, y: md.y, w: md.w, h: md.h },
+          },
+        }
+      }) 
+      onDrop(newNodes)  
+    }
+    if(debouncedLayouts){
+      mounted.current = true
+    }    
   }, [debouncedLayouts])
 
 	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
@@ -104,9 +110,9 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	}
 
 	return (
-		<div className="w-full h-full min-h-[200px]">
+		<div className="grid-item w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout				
-				className="layout"
+				className="react-grid-layout"
 				rowHeight={50}
         breakpoints={breakpoints}
 				cols={cols}

@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import RenderDOMNode from './RenderDOMNode'
 import RenderDOMGrid from './RenderDOMGrid'
+import { Section, StaticReactGridLayout } from '../../components'
 
 export type VirtualNodeType = {
 	name: string
@@ -26,14 +27,15 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 
 	return nodes?.map((node, i) => (
     node?.name == "Grid" ? (
-      <RenderDOMGrid 
-        key={node.id}
-        node={ node }
-        components={ components }
-      />
+      <Section key={i} { ...node.props } maxWidth="xl">
+        <StaticReactGridLayout           
+          nodes={ node?.children || [] }
+          componentMap={ components }          
+        />      
+      </Section> 
     ):(
       <RenderDOMNode
-        key={node.id}
+        key={i}
         name={node?.name}
         innerHTML={node?.innerHTML}
         classNames={node?.classNames}

@@ -13,12 +13,11 @@
 
 .react-grid-item {
 	inset: 8px 8px;
-	/*outline: 1px dashed #dddddd; */
 	transition: all 200ms ease;
 	transition-property: left, top;
 }
-.react-grid-item:hover {
-	outline: 2px solid #2196f3;
+.react-grid-item.grid-item:hover {
+	outline: 2px solid #2196f3; 
 }
 
 .react-grid-item img {
