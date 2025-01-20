@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import { InputLabel } from '../../../components'
 import { Button } from '@nextui-org/react'
 import {
@@ -17,7 +17,6 @@ import {
 	TAILWIND_COLOR_PICKER_MAP,
 	TAILWIND_COLOR_MAP,
 } from '../../../constants'
-import { useDebounce } from 'use-debounce'
 
 type ColorInputProps = {
 	label?: string
@@ -42,20 +41,14 @@ export default function ColorInput(props: ColorInputProps) {
 	} = props || {}
 
 	const [tone, setTone] = useState(500)
-  const [debouncedTone] = useDebounce(tone, 250)
-	
-  const [selectedColor, setSelectedColor] = useState('slate')
+	const [selectedColor, setSelectedColor] = useState('slate')
 
 	const handleToneChange = (newTone: number) => {
-		setTone(newTone)		
-	}
-
-  // Tone was triggered rapidly so we debounce
-  useEffect(() => {
-    if (selectedColor) {
-			handleColorChange(selectedColor, debouncedTone)
+		setTone(newTone)
+		if (selectedColor) {
+			handleColorChange(selectedColor, newTone)
 		}
-  }, [debouncedTone])
+	}
 
 	const handleColorChange = (color: string, shade: number = tone) => {
 		if (!color) return
