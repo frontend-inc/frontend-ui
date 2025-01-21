@@ -27,24 +27,22 @@ const AvatarUser: React.FC<AvatarUserProps> = (props) => {
 	} = props
 
 	return (
-    <div className="flex flex-row items-start justify-start">
-      <User
-        avatarProps={{
-          src: avatar,
-          name: getInitials(name),
-          alt: name,
-          radius,
-          isBordered,
-          className: cn(
-            isBordered && 'mr-1',
-          ),
-          size,
-        }}
-        name={name}
-        description={description}
-        className={cn('items-start justify-start', className)}
-      />
-    </div>
+		<div className="flex flex-row items-start justify-start">
+			<User
+				avatarProps={{
+					src: avatar,
+					name: getInitials(name),
+					alt: name,
+					radius,
+					isBordered,
+					className: cn(isBordered && 'mr-1'),
+					size,
+				}}
+				name={name}
+				description={description}
+				className={cn('items-start justify-start', className)}
+			/>
+		</div>
 	)
 }
 

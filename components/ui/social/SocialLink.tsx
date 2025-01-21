@@ -14,7 +14,7 @@ type SocialLinkType = {
 }
 
 const SocialLink: React.FC<SocialLinkType> = (props) => {
-	const { variant="fill", title, subtitle, provider, url } = props
+	const { variant = 'fill', title, subtitle, provider, url } = props
 
 	const formatUrl = (username: string) => {
 		switch (provider) {

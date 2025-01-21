@@ -23,6 +23,7 @@ type TestimonialProps = {
 	text: string
 	avatar: string
 	variant?: 'outline' | 'fill' | 'default'
+	className?: string
 }
 
 export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
@@ -31,10 +32,11 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 		author = 'John Doe',
 		avatar = '',
 		variant = 'default',
+		className,
 	} = props || {}
 
 	return (
-		<Card className={variant == 'fill' ? 'bg-content1' : ''}>
+		<Card className={className}>
 			<CardHeader className="p-6">
 				<User
 					avatarProps={{

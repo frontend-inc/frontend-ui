@@ -28,11 +28,7 @@ const Statistic: React.FC<StatisticProps> = (props) => {
 					<RemixIcon name={icon} size="lg" className="text-primary" />
 				</div>
 			)}
-			<div
-				className={cn(
-					'flex flex-col space-y-2',					
-				)}
-			>
+			<div className={cn('flex flex-col space-y-2')}>
 				<Typography className="text-foreground/70" variant="caption">
 					{subtitle}
 				</Typography>

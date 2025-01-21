@@ -71,12 +71,15 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 		list: 'h6',
 	}
 
-  const imageUrl = useMemo(() => resizeCloudinaryImage(resource?.image?.url, { 
-      width: 480,
-      height: 320,
-      transform: 'fill'
-    }
-  ), [resource?.image?.url])  
+	const imageUrl = useMemo(
+		() =>
+			resizeCloudinaryImage(resource?.image?.url, {
+				width: 480,
+				height: 320,
+				transform: 'fill',
+			}),
+		[resource?.image?.url]
+	)
 
 	return (
 		<Component

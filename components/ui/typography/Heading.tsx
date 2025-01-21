@@ -32,7 +32,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	} = props || {}
 
 	const titleVariant = {
-    xs: 'subtitle1',
+		xs: 'subtitle1',
 		sm: 'h6',
 		md: 'h4',
 		lg: 'h2',
@@ -40,7 +40,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	}[size] as TypographyVariantsType
 
 	const subtitleVariant = {
-    xs: 'body2',
+		xs: 'body2',
 		sm: 'body1',
 		md: 'subtitle2',
 		lg: 'subtitle2',
@@ -49,7 +49,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
 	}[size] as TypographyVariantsType
 
 	const spacingClass = {
-    xs: 'space-y-1',
+		xs: 'space-y-1',
 		sm: 'space-y-2',
 		md: 'space-y-3',
 		lg: 'space-y-4',

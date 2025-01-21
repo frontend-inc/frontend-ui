@@ -21,11 +21,11 @@ export default function Logo(props: LogoProps) {
 	const { src, width = LOGO_WIDTH, height = LOGO_HEIGHT, handleClick } = props
 
 	return (
-		<Button       
-      className="px-2 hover:bg-transparent" 
-      variant="light" 
-      onPress={() => handleClick('/')}
-    >
+		<Button
+			className="px-2 hover:bg-transparent"
+			variant="light"
+			onPress={() => handleClick('/')}
+		>
 			{src ? (
 				<Image
 					src={src}

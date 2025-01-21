@@ -37,30 +37,30 @@ const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
 			secondaryAction,
 			handleClick,
 			image,
-			imageHeight=240,
-			imageWidth=320,
+			imageHeight = 240,
+			imageWidth = 320,
 			classNames,
 		} = props
 
 		return (
 			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-        <NextUICard 
-          isPressable 
-          isHoverable
-          onPress={ handleClick }
-          shadow="none"
-          className='w-full'
-        >
-				<Image
-          removeWrapper
-					src={image}
-					height={imageHeight}
-					width={imageWidth}
-					alt={title}
-					label={label}
-          className='w-full object-cover'
-				/>
-        </NextUICard>
+				<NextUICard
+					isPressable
+					isHoverable
+					onPress={handleClick}
+					shadow="none"
+					className="w-full"
+				>
+					<Image
+						removeWrapper
+						src={image}
+						height={imageHeight}
+						width={imageWidth}
+						alt={title}
+						label={label}
+						className="w-full object-cover"
+					/>
+				</NextUICard>
 				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
 					<Typography variant="subtitle2">{title}</Typography>
 					{subtitle && (

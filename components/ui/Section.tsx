@@ -16,7 +16,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		bgImage,
 		bgOverlay,
 		mode,
-		maxWidth='xl',
+		maxWidth = 'xl',
 		variant,
 		py = 'md',
 		px = 'sm',

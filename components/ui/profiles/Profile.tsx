@@ -1,7 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Container, Stack, AvatarImage, Typography, SocialIconButtons } from '../..'
+import {
+	Container,
+	Stack,
+	AvatarImage,
+	Typography,
+	SocialIconButtons,
+} from '../..'
 import { Heading } from '../../../components'
 import { HeadingProps } from '../../../types'
 

@@ -64,5 +64,4 @@ const ButtonLink: React.FC<ButtonLinkType> = (props) => {
 	)
 }
 
-
 export default ButtonLink
