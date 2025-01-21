@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useMemo } from 'react'
 import {
 	ResponsiveGridLayout as RGL,
 	WidthProvider,
@@ -18,7 +18,6 @@ import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
 import { SyntheticEventType } from '../../types'
 
-const ResponsiveGridLayout = WidthProvider(RGL)
 
 type LayoutItemType = LayoutItem & {
   name: string
@@ -40,6 +39,7 @@ type ReactGridLayoutProps = {
 
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	const { nodes = [], onDrop, handleDelete, handleUpdate, componentMap } = props || {}
+  const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), [])
 
   // Match breakpoints with tailwindcss
   const breakpoints = { md: 640, sm: 0 }
@@ -111,6 +111,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 			'*'
 		)
 	}
+  
 
 	return (
 		<div className="w-full h-full min-h-[200px]">
@@ -123,6 +124,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				onLayoutChange={ onLayoutChange }
 				compactType={'vertical'}
         draggableHandle='.draggable-handle'
+        isDroppable={false}
 			>
 				{nodes?.map((node) => {
           
@@ -140,6 +142,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
               
           return(
 					<div
+            draggable
 						onClick={(ev) => handleClick(node, ev)}
 						key={node.id}
 						className={cn(
