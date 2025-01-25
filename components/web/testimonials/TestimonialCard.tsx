@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { TestimonialType } from '../../../types'
 import { Typography } from '../../../components'
 import {
+  cn,
 	Card,
 	CardBody,
 	CardHeader,
@@ -36,7 +36,14 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	} = props || {}
 
 	return (
-		<Card className={className}>
+		<Card 
+      isHoverable
+      className={cn(
+          'w-full',
+        className
+      )}
+      shadow="medium"
+    >
 			<CardHeader className="p-6">
 				<User
 					avatarProps={{

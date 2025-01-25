@@ -24,7 +24,7 @@ const Label: React.FC<LabelProps> = (props) => {
 		<Typography
 			variant="caption"
 			className={cn(
-				'px-3 py-1 text-xs tracking-wider text-foreground',
+				'text-xs tracking-wider text-foreground',
 				textAlign && textAlignClasses[textAlign],
 				className
 			)}

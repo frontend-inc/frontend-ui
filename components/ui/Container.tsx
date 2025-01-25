@@ -8,14 +8,22 @@ export type ContainerProps = {
 }
 
 const Container: React.FC<ContainerProps> = (props) => {
-	const { maxWidth, className, children } = props
-	if (!maxWidth) return children
+	const { maxWidth='xl', className, children } = props
+
+  const maxWidthClasses = {
+    sm: 'max-w-screen-sm',
+    md: 'max-w-screen-md',
+    lg: 'max-w-screen-lg',
+    xl: 'max-w-screen-xl',
+  }
+
 	return (
 		<div className="w-full flex items-center">
 			<div
 				className={cn(
-					'container mx-auto',
-					maxWidth && `max-w-screen-${maxWidth}`,
+					'container mx-auto p-4',
+          maxWidthClasses[maxWidth],					
+          'space-y-6',
 					className
 				)}
 			>

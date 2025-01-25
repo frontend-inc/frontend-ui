@@ -24,7 +24,6 @@ export default function LayoutContainer(props: LayoutContainerProps) {
 			<div
 				className={cn(
 					'w-full h-full overflow-y-scroll scrollbar-hide',
-					'bg-background'
 				)}
 			>
 				<div className="flex flex-col w-full">

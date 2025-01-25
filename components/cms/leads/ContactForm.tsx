@@ -15,6 +15,7 @@ export type ContactFormProps = {
 	buttonText?: string
 	href?: string
 	handleClick?: () => void
+  className?: string
 }
 
 // Call To Action
@@ -25,6 +26,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		enableReason,
 		reasonOptions = [],
 		buttonText = 'Send Message',
+    className
 	} = props || {}
 
 	const {
@@ -59,7 +61,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 	}
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="md" className={className}>
 			<Form
 				loading={delayedLoading}
 				fields={[

@@ -142,7 +142,7 @@ const MenuBar = ({ editor }) => {
 	]
 
 	return (
-		<div className="w-full items-start justify-start md:min-w-[800px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
+		<div className="w-full items-start justify-start md:min-w-[880px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
 			{buttons.map((btn, index) => (
 				<MenuBarButton key={index} btn={btn} editor={editor} />
 			))}

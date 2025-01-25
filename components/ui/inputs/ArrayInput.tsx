@@ -11,7 +11,7 @@ import {
 import { SyntheticEventType } from '../../../types'
 import { cn } from '@nextui-org/react'
 import { Input } from 'frontend-shadcn'
-import { Chip } from '@nextui-org/react'
+import { Button, ButtonGroup } from '@nextui-org/react'
 
 type ArrayInputProps = {
 	errors?: any
@@ -21,7 +21,6 @@ type ArrayInputProps = {
 	placeholder?: string
 	handleChange: (e: SyntheticEventType) => void
 	direction?: 'row' | 'column'
-	info?: string
 }
 
 export default function ArrayInput(props: ArrayInputProps) {
@@ -32,7 +31,6 @@ export default function ArrayInput(props: ArrayInputProps) {
 		placeholder,
 		handleChange,
 		direction = 'column',
-		info,
 		value = [],
 	} = props || {}
 
@@ -88,12 +86,22 @@ export default function ArrayInput(props: ArrayInputProps) {
 					)}
 				>
 					<Typography variant="overline">{label}</Typography>
-					<div className=" flex flex-wrap gap-2 items-center">
+					<div className=" flex flex-wrap gap-2 items-center pt-[2px]">
 						{Array.isArray(value) &&
 							value?.map((tag) => (
-								<Chip key={tag} onClose={() => removeTag(tag)}>
-									{tag}
-								</Chip>
+                <ButtonGroup key={tag}>
+                  <Button size="sm" className='min-w-8'>
+                    { tag }
+                  </Button>
+                  <Button 
+                    size="sm"
+                    isIconOnly
+                    className='min-w-6 w-6'
+                    onPress={() => removeTag(tag)}
+                  >
+                    <RemixIcon name="ri-close-fill" />
+                  </Button>
+                </ButtonGroup>
 							))}
 						<Input
 							type="text"

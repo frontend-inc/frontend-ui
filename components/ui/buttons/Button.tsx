@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
 import { Button as NextUIButton } from '@nextui-org/react'
@@ -9,9 +9,11 @@ import { ButtonType } from '../../../types'
 type ButtonProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
 	label: string
+  innerHTML?: string
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
 		icon,
 		action,
@@ -41,8 +43,8 @@ const Button: React.FC<ButtonProps> = (props) => {
 	return (
 		<>
 			<NextUIButton
-				fullWidth
 				{...rest}
+        ref={ ref }
 				size={size}
 				variant={variant}
 				color={color}
@@ -74,6 +76,6 @@ const Button: React.FC<ButtonProps> = (props) => {
 			)}
 		</>
 	)
-}
+})
 
 export default Button

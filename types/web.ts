@@ -21,17 +21,9 @@ export type StackProps = {
 
 export type SectionProps = {
 	children?: React.ReactNode
-	bgColor?: string
-	bgImage?: string
-	bgOverlay?: boolean
+	bgColor?: string	
 	mode?: 'dark' | 'light'
-	maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | false
-	variant?: 'fill' | 'outline' | 'default'
-	py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-	px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-	spacing?: 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10
-	requireAuth?: boolean
-	disableGrid?: boolean
+	disablePadding?: boolean  
 	className?: string
 }
 

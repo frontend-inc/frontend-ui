@@ -18,6 +18,7 @@ export type LeadFormProps = {
 	enableReason?: boolean
 	enableMessage?: boolean
 	reasonOptions?: string[]
+  className?: string
 }
 
 const LeadForm: React.FC<LeadFormProps> = (props) => {
@@ -31,6 +32,7 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 		buttonText = 'Submit',
 		url,
 		path,
+    className
 	} = props || {}
 
 	const metafields = buildFormMetafields({
@@ -75,7 +77,7 @@ const LeadForm: React.FC<LeadFormProps> = (props) => {
 	}
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="md" className={className}>
 			<Form
 				loading={delayedLoading}
 				fields={[

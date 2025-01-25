@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Image } from '@nextui-org/react'
 import { cn } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
 import { NO_IMAGE_URL } from '../../../constants'
+import { useDebounce } from 'use-debounce'
 
 export type ImageCardProps = {
 	src: string
@@ -107,19 +108,8 @@ const NextImage: React.FC<ImageProps> = (props) => {
 		...rest
 	} = props || {}
 
-	return aspectRatio > 0 ? (
-		<AspectRatio ratio={aspectRatio}>
-			<ImageCard
-				src={src}
-				height={height}
-				width={width}
-				fullWidth={fullWidth}
-				handleClick={handleClick}
-				disableBorderRadius={disableBorderRadius}
-				{...rest}
-			/>
-		</AspectRatio>
-	) : (
+
+  return(
 		<ImageCard
 			src={src}
 			height={height}

@@ -1,4 +1,6 @@
 import React from 'react'
+import { Typography } from '../ui'
+import { Image as NextUIImage, Card as NextUICard } from '@nextui-org/react'
 
 const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 	const { children, ...rest } = props
@@ -12,46 +14,65 @@ const Button: React.FC<React.HTMLAttributes<HTMLButtonElement>> = (props) => {
 	return <button {...rest}>{children}</button>
 }
 
+
+const Heading: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
+	const { children,  ...rest } = props
+
+	return <Typography variant='h3' {...rest}>{children}</Typography>
+}
+
 const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h1 {...rest}>{children}</h1>
+	return <Typography variant='h1' {...rest}>{children}</Typography>
 }
 
 const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h2 {...rest}>{children}</h2>
+	return <Typography variant='h2' {...rest}>{children}</Typography>
 }
 
 const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h3 {...rest}>{children}</h3>
+	return <Typography variant='h3' {...rest}>{children}</Typography>
 }
 
 const H4: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h4 {...rest}>{children}</h4>
+	return <Typography variant='h4' {...rest}>{children}</Typography>
 }
 
 const H5: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h5 {...rest}>{children}</h5>
+	return <Typography variant='h5' {...rest}>{children}</Typography>
 }
 
 const H6: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <h6 {...rest}>{children}</h6>
+	return <Typography variant='h6' {...rest}>{children}</Typography>
+}
+
+const Subtitle1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
+  const { children, ...rest } = props
+
+  return <Typography variant='subtitle1' {...rest}>{children}</Typography>
+}
+
+const Subtitle2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
+  const { children, ...rest } = props
+
+  return <Typography variant='subtitle2' {...rest}>{children}</Typography>
 }
 
 const P: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = (props) => {
 	const { children, ...rest } = props
 
-	return <p {...rest}>{children}</p>
+	return <Typography variant='body1' {...rest}>{children}</Typography>
 }
 
 const Span: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => {
@@ -104,24 +125,37 @@ const A: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
 
 const Img: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = (props) => {
 	const { children, ...rest } = props || {}
-	return <img {...rest} />
+	return <NextUIImage {...rest} />
 }
 
+type CardProps = {
+  children: React.ReactNode  
+}
+
+const Card: React.FC<CardProps> = (props) => {
+	const { children, ...rest } = props
+
+	return <NextUICard {...rest}>{children}</NextUICard>
+}
 const Video: React.FC<React.VideoHTMLAttributes<HTMLVideoElement>> = (
 	props
 ) => {
 	return <video {...props} />
 }
 
-export {
-	Div,
+export {  
 	Button,
+  Card,	
+  Div,
+  Heading,
 	H1,
 	H2,
 	H3,
 	H4,
 	H5,
 	H6,
+  Subtitle1,
+  Subtitle2,
 	P,
 	Span,
 	Section,

@@ -9,7 +9,7 @@ export type GridProps = {
 }
 
 const Grid: React.FC<GridProps> = (props) => {
-	const { cols = 12, gap = 4, className, children } = props
+	const { cols = '3', gap = 4, className, children } = props
 
 	const gridClasses = {
 		auto: 'md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))]',

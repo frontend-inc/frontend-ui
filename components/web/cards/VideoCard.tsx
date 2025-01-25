@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Card } from '@nextui-org/react'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
-import { Image, VideoModal, RemixIcon } from '../../../components'
+import { Image, VideoModal } from '../../../components'
 
 type VideoCardProps = {
 	src: string
@@ -12,6 +12,7 @@ type VideoCardProps = {
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
 	enableGradient?: boolean
+  className?: string
 }
 
 const VideoCard: React.FC<VideoCardProps> = (props) => {
@@ -21,6 +22,7 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 		enableOverlay,
 		enableGradient,
 		objectFit = 'cover',
+    className
 	} = props || {}
 
 	const [open, setOpen] = useState(false)
@@ -41,6 +43,7 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 					enableGradient={enableGradient}
 					objectFit={objectFit}
 					disableBorderRadius
+          className={ className }
 				/>
 			</Card>
 			<VideoModal open={open} handleClose={() => setOpen(false)} src={src} />

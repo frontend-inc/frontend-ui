@@ -19,11 +19,21 @@ export type CardProps = {
 	path?: string
 	url?: string
 	buttonText?: string
+  objectFit?: 'cover' | 'contain' 
 	className?: string
 }
 
 const Card: React.FC<CardProps> = (props) => {
-	const { title, subtitle, image, path, url, buttonText, className } =
+	const { 
+    title, 
+    subtitle, 
+    image, 
+    path, 
+    url, 
+    buttonText, 
+    objectFit,
+    className 
+  } =
 		props || {}
 
 	const onClick = useNavigate({
@@ -36,20 +46,32 @@ const Card: React.FC<CardProps> = (props) => {
 			isHoverable
 			isPressable
 			onPress={onClick}
-			className={cn('w-full min-h-[340px] overflow-hidden', className)}
+			className={cn('w-full overflow-hidden', className)}
 		>
-			{title && <CardHeader>{title}</CardHeader>}
-			<CardBody className="py-0">
-				<Image src={image} alt="card-image" />
+			<CardBody>
+				<Image 
+          src={image} 
+          alt="card-image" 
+          className='aspect-video' 
+          objectFit={ objectFit }
+        />
 			</CardBody>
 			<CardFooter className="w-full min-h-[80px] flex flex-col space-y-2 justify-start items-start">
+        { title && (
+					<Typography variant="subtitle1" className="text-foreground/70">
+						{title}
+					</Typography>
+				)}
 				{subtitle && (
 					<Typography variant="body1" className="text-foreground/70">
 						{subtitle}
 					</Typography>
 				)}
 				{buttonText && (
-					<Button fullWidth color="primary" onPress={onClick}>
+					<Button 
+            fullWidth             
+            onPress={onClick}
+          >
 						{buttonText}
 					</Button>
 				)}

@@ -17,6 +17,7 @@ type ButtonTabsProps = {
 	value: string | number
 	variant?: 'solid' | 'underlined' | 'bordered' | 'light'
 	isVertical?: boolean
+  size?: 'sm' | 'md' | 'lg'
 }
 
 export default function ButtonTabs(props: ButtonTabsProps) {
@@ -28,6 +29,7 @@ export default function ButtonTabs(props: ButtonTabsProps) {
 		className,
 		fullWidth,
 		isVertical = false,
+    size='md'
 	} = props
 
 	return (
@@ -39,9 +41,10 @@ export default function ButtonTabs(props: ButtonTabsProps) {
 			selectedKey={value.toString()}
 			onSelectionChange={handleChange}
 			className={className}
+      size={size}
 		>
 			{options.map((tab, i) => (
-				<Tab
+				<Tab          
 					key={tab.value}
 					title={
 						<div className="flex space-x-2 items-center">
