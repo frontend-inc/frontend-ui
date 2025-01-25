@@ -44,6 +44,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		<>
 			<NextUIButton
 				{...rest}
+        fullWidth
         ref={ ref }
 				size={size}
 				variant={variant}

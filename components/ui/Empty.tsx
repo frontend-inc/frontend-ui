@@ -46,6 +46,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
 			)}
 			<div className="flex flex-col space-y-0 w-full items-center justify-center">
 				<Typography
+          textAlign='center'
 					variant="subtitle2"
 					className={cn(
 						'text-md text-bold text-foreground',
@@ -55,6 +56,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
 					{title}
 				</Typography>
 				<Typography
+          textAlign='center'
 					variant="body1"
 					className={cn(
 						'text-sm text-foreground/70 font-normal',

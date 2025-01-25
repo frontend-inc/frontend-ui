@@ -106,7 +106,6 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	}, [debouncedLayouts])
 
 	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
-		ev.stopPropagation()
 		window.parent.postMessage(
 			{
 				event: 'click_component',
@@ -130,15 +129,25 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				isDroppable={false}
 			>
 				{nodes?.map((node) => {
-					const handleChange = (ev: SyntheticEventType) => {
+					
+          const handleChange = (ev: SyntheticEventType) => {
 						const { name, value } = ev.target
-						let newComponent = {
-							...node,
-							props: {
-								...node.props,
-								[name]: value,
-							},
-						}
+						
+            let newComponent = { ...node }
+            if (name == 'innerHTML') {
+              newComponent = {
+                ...node,
+                innerHTML: value,
+              }
+            } else {
+              newComponent = {
+                ...node,
+                props: {
+                  ...node.props,
+                  [name]: value,
+                },
+              }
+            }
 						handleUpdate(newComponent)
 					}
 
@@ -147,10 +156,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							draggable
 							onClick={(ev) => handleClick(node, ev)}
 							key={node.id}
-							className={cn(
+							className={cn(                
 								'grid-controls',
+                'flex flex-row w-full h-full items-center',
 								'border-2 rounded-md border-transparent hover:border-blue-500',
-								'p-1 px-3 relative flex flex-row w-full h-full'
+								'p-1 px-3 relative'
 							)}
 						>
 							<div className="draggable-handle invisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">

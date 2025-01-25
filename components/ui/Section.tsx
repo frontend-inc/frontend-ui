@@ -4,6 +4,7 @@ import React from 'react'
 import { SectionProps } from '../../types'
 import { cn } from '@nextui-org/react'
 import { useTheme } from '../../hooks'
+import { Container } from '../../components'
 
 const Section: React.FC<SectionProps> = (props) => {
 	const { theme } = useTheme()
@@ -24,7 +25,9 @@ const Section: React.FC<SectionProps> = (props) => {
         className 
 			)}
 		>
-			{children}
+      <Container maxWidth='lg'>
+			  {children}
+      </Container>
 		</section>
 	)
 }

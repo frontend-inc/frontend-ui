@@ -15,6 +15,10 @@ function sanitizeVirtualDom(nodes = [], parentId = null) {
       innerHTML: node?.innerHTML || '',
       label: node?.label || node?.name,
       children: node?.children,
+      layouts: node?.layouts || {
+        sm: { w: 1, x: 0, y: 0, h: 1 },
+        md: { w: 6, x: 0, y: 0, h: 3 },
+      },
       isOpen: node?.isOpen || false,
     }
 
@@ -42,7 +46,7 @@ export const setLocalVirtualDom = (appId, pageId, virtualDom: any[]) => {
 
 export const getLocalVirtualDom = (appId, pageId) => {
   if(!appId || !pageId) return;
-  if(typeof window === undefined) return []
+  if(typeof window === undefined || !localStorage) return []
   let storage = localStorage.getItem(`${appId}-${pageId}-vdom`)
   if(storage && storage !== 'undefined'){
     return JSON.parse(storage)

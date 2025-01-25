@@ -102,7 +102,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
 			onInput={handleInputChange}
 			suppressContentEditableWarning
 			className={cn(
-				'text-foreground outline-none focus:outline-none focus:ring-0',        
+				'w-full text-foreground outline-none focus:outline-none focus:ring-0',        
 				isEditing && 'cursor-text',
 				fontFamily[variant],
 				variantClasses[variant],

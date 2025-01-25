@@ -35,7 +35,6 @@ const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 
 const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = (props) => {
 	const { children, ...rest } = props
-
 	return <Typography variant='h3' {...rest}>{children}</Typography>
 }
 

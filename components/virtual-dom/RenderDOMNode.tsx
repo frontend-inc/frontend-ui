@@ -34,7 +34,6 @@ const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 		props,
 		innerHTML,
 		children,
-		classNames,
 		components,
 		...rest
 	} = parentProps || {}
@@ -42,10 +41,10 @@ const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 	const Component = components[component] || Div
 
 	return (
-		<Component
-			{...props}
-			{...rest}
-			className={cn(...(classNames || []), props?.className)}
+		<Component			
+      { ...props }   
+      { ...rest }   
+			className={cn(props?.className)}
 		>
 			{innerHTML}
 			{children?.map((childNode, index) => (
