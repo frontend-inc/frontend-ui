@@ -1,1 +1,1 @@
-export { Sortable, SortableProps } from './Sortable';
+export * from './Sortable';

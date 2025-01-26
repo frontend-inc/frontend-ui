@@ -38,7 +38,7 @@ import { Item } from '../item'
 import { List } from '../list'
 import { Wrapper } from '../wrapper'
 
-export interface SortableProps {
+export type SortableProps = {
   activationConstraint?: PointerActivationConstraint;
   animateLayoutChanges?: AnimateLayoutChanges;
   adjustScale?: boolean;
