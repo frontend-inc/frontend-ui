@@ -34,8 +34,8 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		variant,
 		textAlign = 'left',
 		className,
-		children,
-		name = 'innerHTML',
+		children='',
+		name = 'text',
 		isEditing,
 		handleChange,
 	} = props

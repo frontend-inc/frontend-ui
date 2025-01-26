@@ -18,7 +18,11 @@ const RichText: React.FC<RichTextProps> = (props) => {
 			<div dangerouslySetInnerHTML={{ __html: html }} />
 		</div>
 	) : (
-		<HTMLEditor value={html} name="html" handleChange={handleChange} />
+		<HTMLEditor     
+      name="html" 
+      value={html} 
+      handleChange={handleChange} 
+    />
 	)
 }
 

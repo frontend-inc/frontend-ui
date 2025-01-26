@@ -9,7 +9,6 @@ export type VirtualNodeType = {
 	name: string
 	props?: any
 	classNames?: string[]
-	innerHTML?: string
 	children?: VirtualNodeType[]
 }
 
@@ -37,7 +36,6 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 			<RenderDOMNode
 				key={i}
 				component={node?.name}
-				innerHTML={node?.innerHTML}
 				children={node?.children}
 				props={{
 					...node.props,

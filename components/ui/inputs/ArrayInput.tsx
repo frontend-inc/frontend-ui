@@ -86,9 +86,9 @@ export default function ArrayInput(props: ArrayInputProps) {
 					)}
 				>
 					<Typography variant="overline">{label}</Typography>
-					<div className=" flex flex-wrap gap-2 items-center pt-[2px]">
-						{Array.isArray(value) &&
-							value?.map((tag) => (
+            <div className=" flex flex-wrap gap-2">
+            {Array.isArray(value) &&
+              value?.map((tag) => (
                 <ButtonGroup key={tag}>
                   <Button size="sm" className='min-w-8'>
                     { tag }
@@ -102,17 +102,17 @@ export default function ArrayInput(props: ArrayInputProps) {
                     <RemixIcon name="ri-close-fill" />
                   </Button>
                 </ButtonGroup>
-							))}
-						<Input
-							type="text"
-							placeholder={placeholder || `Add ${label?.toLowerCase()}`}
-							value={inputValue}
-							onChange={(e) => setInputValue(e.target.value)}
-							onKeyDown={handleKeyDown}
-							onBlur={() => addTag(inputValue)}
-							className="text-foreground flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-						/>
-					</div>
+              ))}
+              <Input
+                type="text"
+                placeholder={placeholder || `Add ${label?.toLowerCase()}`}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onBlur={() => addTag(inputValue)}
+                className="text-foreground min-w-12 flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+              />
+          </div>
 				</div>
 				<ErrorText error={error} />
 			</div>

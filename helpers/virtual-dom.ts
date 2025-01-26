@@ -1,5 +1,17 @@
 // @ts-ignore
+import { ReactGridLayoutType } from '@/types';
+// @ts-ignore
 import { nanoid } from 'nanoid'
+
+export function bottom(layout: ReactGridLayoutType[]): number {
+  let max = 0,
+    bottomY;
+  for (let i = 0, len = layout.length; i < len; i++) {
+    bottomY = layout[i].y + layout[i].h;
+    if (bottomY > max) max = bottomY;
+  }
+  return max;
+}
 
 // Ensure that all nodes have an ID and other prop values
 function sanitizeVirtualDom(nodes = [], parentId = null) {
@@ -12,7 +24,6 @@ function sanitizeVirtualDom(nodes = [], parentId = null) {
       name: node?.name || '',
       parent_id: parentId,
       props: node?.props || {},
-      innerHTML: node?.innerHTML || '',
       label: node?.label || node?.name,
       children: node?.children,
       layouts: node?.layouts || {

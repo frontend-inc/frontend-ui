@@ -3,8 +3,6 @@
 import React from 'react'
 import {
 	Card as NextUICard,
-	CardHeader,
-	CardBody,
 	CardFooter,
 	cn,
 } from '@nextui-org/react'
@@ -43,22 +41,18 @@ const Card: React.FC<CardProps> = (props) => {
 
 	return (
 		<NextUICard
-			isHoverable
-			isPressable
-			onPress={onClick}
 			className={cn('w-full overflow-hidden', className)}
 		>
-			<CardBody>
-				<Image 
-          src={image} 
-          alt="card-image" 
-          className='aspect-video' 
-          objectFit={ objectFit }
-        />
-			</CardBody>
+      <Image 
+        disableBorderRadius
+        src={image} 
+        alt="card-image" 
+        className='aspect-video' 
+        objectFit={ objectFit }
+      />
 			<CardFooter className="w-full min-h-[80px] flex flex-col space-y-2 justify-start items-start">
         { title && (
-					<Typography variant="subtitle1" className="text-foreground/70">
+					<Typography variant="subtitle2" className="text-foreground">
 						{title}
 					</Typography>
 				)}

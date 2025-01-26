@@ -8,7 +8,7 @@ import {
 } from '../../react-grid-layout'
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
-import { Button } from '@nextui-org/react'
+import { Button, ButtonGroup } from '@nextui-org/react'
 import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
@@ -16,13 +16,14 @@ import { RiCloseLine, RiPencilLine } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
+import { useEditor } from 'hooks'
 import { SyntheticEventType } from '../../types'
+import { VirtualDomType } from 'types'
 
 type LayoutItemType = LayoutItem & {
 	name: string
 	props: Record<string, any>
 	classNames?: string[]
-	innerHTML?: string
 	layouts: ReactGridLayoutsType
 }
 
@@ -44,6 +45,8 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		handleUpdate,
 		componentMap,
 	} = props || {}
+
+  const { activeComponent, setActiveComponent } = useEditor()
 	const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), [])
 
 	// Match breakpoints with tailwindcss
@@ -105,11 +108,13 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		}
 	}, [debouncedLayouts])
 
-	const handleClick = (component: LayoutItemType, ev: React.MouseEvent) => {
+	const handleClick = (node: VirtualDomType, ev: React.MouseEvent) => {
+    ev.stopPropagation()
+    setActiveComponent(node)
 		window.parent.postMessage(
 			{
 				event: 'click_component',
-				data: component,
+				data: node,
 			},
 			'*'
 		)
@@ -119,10 +124,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="react-grid-layout"
-				rowHeight={50}
+				rowHeight={45}
 				breakpoints={breakpoints}
 				cols={cols}
 				layouts={layouts}
+        margin={[5,5]}
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"
@@ -133,23 +139,17 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
           const handleChange = (ev: SyntheticEventType) => {
 						const { name, value } = ev.target
 						
-            let newComponent = { ...node }
-            if (name == 'innerHTML') {
-              newComponent = {
-                ...node,
-                innerHTML: value,
-              }
-            } else {
-              newComponent = {
-                ...node,
-                props: {
-                  ...node.props,
-                  [name]: value,
-                },
-              }
+            let newComponent = {
+              ...node,
+              props: {
+                ...node.props,
+                [name]: value,
+              },
             }
 						handleUpdate(newComponent)
 					}
+
+          const isSelected = activeComponent?.id && (activeComponent?.id === node.id)
 
 					return (
 						<div
@@ -158,42 +158,34 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							key={node.id}
 							className={cn(                
 								'grid-controls',
-                'flex flex-row w-full h-full items-center',
-								'border-2 rounded-md border-transparent hover:border-blue-500',
-								'p-1 px-3 relative'
+                'flex flex-row w-full h-full justify-center',
+								'border-2 rounded-md border-transparent hover:border-blue-500',                
+                isSelected && 'border-blue-500 relative',								
 							)}
 						>
-							<div className="draggable-handle invisible bg-black/30 hover:bg-black/50 rounded-md grid-controls cursor-grab active:cursor-grabbing w-6 h-7 z-50 flex items-center justify-center absolute top-3 left-2">
-								<GripVertical className="w-4 h-4 text-white" />
-							</div>
 							<RenderDOMNode
 								isEditing
 								handleChange={handleChange}
 								component={node.name}
 								props={node.props}
-								innerHTML={node.innerHTML}
 								classNames={node.classNames}
 								components={componentMap}
-							/>
-							<div className="invisible grid-controls z-50 flex flex-row items-center space-x-1 justify-center absolute top-2 right-2">
-								<Button
-									isIconOnly
-									variant="light"
-									size="sm"
-									className="bg-black/30 hover:bg-black/70"
-									onPress={(ev) => handleClick(node, ev)}
-								>
-									<RiPencilLine className="w-4 h-4 text-white" />
-								</Button>
-								<Button
-									isIconOnly
-									variant="solid"
-									size="sm"
-									className="bg-black/30 hover:bg-black/70"
-									onPress={() => handleDelete(node)}
-								>
-									<RiCloseLine className="w-4 h-4 text-white" />
-								</Button>
+							/>                
+							  <div className={ cn(
+                  "hidden rounded-lg grid-controls z-50 shadow-sm bg-black/50 flex-row items-center space-x-1 justify-center absolute top-[2px] right-[2px]",
+                  isSelected && 'flex'
+                )}>      
+                  <Button
+                    isIconOnly
+                    variant="light"
+                    size="sm"                    
+                    onPress={() => handleDelete(node)}
+                  >
+                    <RiCloseLine className="w-4 h-4 text-white" />
+                  </Button>                   
+                  <div className="draggable-handle rounded-lg shadow-sm h-8 w-8 flex items-center justify-center">
+                    <GripVertical className="w-4 h-4 text-white" />         
+                  </div>                  
 							</div>
 						</div>
 					)

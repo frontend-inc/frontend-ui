@@ -37,12 +37,11 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 
 	return (
 		<Card 
-      isHoverable
       className={cn(
-          'w-full',
+        'w-full',
         className
       )}
-      shadow="medium"
+      shadow="lg"
     >
 			<CardHeader className="p-6">
 				<User
@@ -57,7 +56,7 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 			</CardHeader>
 			<CardBody className="p-6">
 				{text && (
-					<ScrollShadow style={{ height: '200px' }}>
+					<ScrollShadow>
 						<Typography variant="body1" className="font-normal leading-loose">
 							{text}
 						</Typography>

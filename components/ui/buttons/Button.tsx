@@ -9,7 +9,6 @@ import { ButtonType } from '../../../types'
 type ButtonProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
 	label: string
-  innerHTML?: string
 }
 
 

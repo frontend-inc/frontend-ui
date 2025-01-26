@@ -16,7 +16,6 @@ type LayoutItemType = LayoutItem & {
 	name: string
 	props: Record<string, any>
 	classNames?: string[]
-	innerHTML?: string
 	layouts: ReactGridLayoutsType
 }
 
@@ -61,7 +60,8 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="static-grid"
-				rowHeight={50}
+				rowHeight={32}
+        margin={[5, 5]}
 				breakpoints={breakpoints}
 				cols={cols}
 				layouts={layouts}
@@ -75,7 +75,6 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 						<RenderDOMNode
 							component={node.name}
 							props={node.props}
-							innerHTML={node.innerHTML}
 							classNames={node.classNames}
 							components={componentMap}
 						/>

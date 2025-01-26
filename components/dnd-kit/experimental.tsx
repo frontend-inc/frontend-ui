@@ -1,81 +1,12 @@
-import React from "react";
-import {
-  DndContext,
-  closestCenter,
-  DragOverlay,
-  useDraggable,
-  useDroppable,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  useSortable,
-  arrayMove,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import React from 'react';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, horizontalListSortingStrategy } from '@dnd-kit/sortable';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
-export const RenderTree = ({ tree, onMove }) => {
-  const renderNode = (node, path) => {
-    if (node.type === "Stack") {
-      return (
-        <SortableStack key={path} node={node} path={path} onMove={onMove} />
-      );
-    }
-
-    if (node.type === "Card") {
-      return <Card key={path} id={path} />;
-    }
-
-    return null;
-  };
-
-  return <>{tree.children.map((child, index) => renderNode(child, `${index}`))}</>;
-};
-
-const SortableStack = ({ node, path, onMove }) => {
-  return (
-    <SortableContext
-      items={node.children.map((_, index) => `${path}-${index}`)}
-      strategy={verticalListSortingStrategy}
-    >
-      <div className="stack">
-        {node.children.map((child, index) =>
-          child.type === "Card" ? (
-            <SortableCard
-              key={`${path}-${index}`}
-              id={`${path}-${index}`}
-              onMove={(from, to) =>
-                onMove(
-                  path,
-                  node.children,
-                  from.replace(`${path}-`, ""),
-                  to.replace(`${path}-`, "")
-                )
-              }
-            />
-          ) : (
-            <RenderTree
-              key={`${path}-${index}`}
-              tree={child}
-              onMove={(from, to) =>
-                onMove(path, node.children, from, to, `${path}-${index}`)
-              }
-            />
-          )
-        )}
-      </div>
-    </SortableContext>
-  );
-};
-
-function SortableCard({ id }) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({
-      id,
-      onDragEnd: ({ active, over }) => {
-        // You can handle the reorder logic right here if you prefer
-      },
-    });
+// Sortable Card Component
+function SortableCard({ id, title }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -83,70 +14,89 @@ function SortableCard({ id }) {
   };
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-      className="card"
-    >
-      Card {id}
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners} className="p-4 m-2 bg-white shadow rounded">
+      {title}
     </div>
   );
 }
 
-const Card = ({ id }) => {
-  return <div className="card">Card {id}</div>;
-};
+// Flex Container Component
+function FlexContainer({ id, direction, children, onDragEnd }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
-export const Tree = ({ data, setData }) => {
-  const handleMove = (path, children, fromIndex, toIndex) => {
-    const newChildren = arrayMove(children, parseInt(fromIndex), parseInt(toIndex));
-    const newData = JSON.parse(JSON.stringify(data)); // Deep copy to ensure immutability
-
-    let target = newData;
-    path.split("-").forEach((key) => {
-      if (key !== "") target = target.children[parseInt(key)];
-    });
-
-    target.children = newChildren;
-    setData(newData);
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
   };
 
-  function parseIndexFromId(id) {
-    // If the ID is “2-1” meaning “stack at index 2, item at index 1”
-    // you might do something like this:
-    const parts = id.split("-");
-    return parseInt(parts[parts.length - 1]);
-  }
-  
-  function handleDragEnd(event) {
-    const { active, over } = event;
-  
-    // `active.id` is the id of the item we dragged
-    // `over?.id` is the id of the item the dragged item was dropped on
-  
-    if (!over || active.id === over.id) {
-      return; // Nothing changed
-    }
-    
-    // Extract indices from IDs, or keep them in a map somewhere
-    const fromIndex = parseIndexFromId(active.id);
-    const toIndex = parseIndexFromId(over.id);
-  
-    // If your IDs are "stackId-index", you'll parse out the portion after the dash
-    handleMove(stackPath, stackChildren, fromIndex, toIndex);
-  }
-  
+  const sortingStrategy = direction === 'flex-row' ? horizontalListSortingStrategy : verticalListSortingStrategy;
+
   return (
-    <DndContext 
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <RenderTree tree={data} onMove={handleMove} />
-      <DragOverlay>{/* Placeholder for overlay rendering */}</DragOverlay>
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners} className={`flex ${direction} p-4 bg-gray-100 rounded`}>
+      <SortableContext items={children.map(child => child.id)} strategy={sortingStrategy}>
+        {children.map(child => (
+          child.type === 'Card' ? (
+            <SortableCard key={child.id} id={child.id} title={child.props.title} />
+          ) : (
+            <FlexContainer
+              key={child.id}
+              id={child.id}
+              direction={child.props.direction}
+              children={child.children}
+              onDragEnd={onDragEnd}
+            />
+          )
+        ))}
+      </SortableContext>
+    </div>
+  );
+}
+
+// Recursive function to find and update nested items
+function updateNestedItems(items, activeId, overId) {
+  return items.map(item => {
+    if (item.children) {
+      return {
+        ...item,
+        children: updateNestedItems(item.children, activeId, overId),
+      };
+    }
+    return item;
+  });
+}
+
+// Main Component
+export default function VirtualDOMDragAndDrop({ virtualDOM }) {
+  const [items, setItems] = React.useState(virtualDOM.children);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      setItems((items) => {
+        const oldIndex = items.findIndex(item => item.id === active.id);
+        const newIndex = items.findIndex(item => item.id === over.id);
+
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
+  return (
+    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <FlexContainer
+        id={virtualDOM.id}
+        direction={virtualDOM.props.direction}
+        children={items}
+        onDragEnd={handleDragEnd}
+      />
     </DndContext>
   );
-};
-
-export default Tree;
+}

@@ -12,7 +12,6 @@ export type VirtualNodeType = {
 		sm: { x: number; y: number; w: number; h: number }
 		md: { x: number; y: number; w: number; h: number }
 	}
-	innerHTML?: string
 	children?: VirtualNodeType[]
 }
 
@@ -32,7 +31,6 @@ const RenderDOMGrid: React.FC<RenderDomProps> = (props) => {
 					<GridItem key={childNode.id} layouts={childNode?.layouts}>
 						<RenderDOMNode
 							component={childNode?.name}
-							innerHTML={childNode?.innerHTML}
 							classNames={childNode?.classNames}
 							children={childNode?.children}
 							props={{

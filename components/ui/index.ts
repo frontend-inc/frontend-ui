@@ -32,6 +32,7 @@ export { default as Stack } from './layout/Stack'
 export { default as Row } from './layout/Row'
 
 export { default as Label } from './Label'
+export { default as Link } from './Link'
 export { default as MenuButton } from './MenuButton'
 export { default as Modal } from './modals/Modal'
 export { default as MediaModal } from './modals/MediaModal'

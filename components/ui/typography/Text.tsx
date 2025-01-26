@@ -5,15 +5,13 @@ import Typography from './Typography'
 import { TypographyProps } from './Typography'
 
 type TextProps = Omit<TypographyProps, 'children'> & {
-	text: string
-}
+  text: string
+} 
 
 const Text: React.FC<TextProps> = (props) => {
 	const { text, ...rest } = props
 
-	console.log('Text', props)
-
-	return <Typography {...rest}>{text}</Typography>
+	return <Typography { ...rest}>{ text }</Typography>
 }
 
 export default Text
