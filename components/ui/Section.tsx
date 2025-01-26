@@ -68,7 +68,6 @@ const Section: React.FC<SectionProps> = (props) => {
 			<div
 				className={cn(
           'relative z-[1]',
-					bgImage && 'p-8 rounded-xl bg-black/50',          
 					maxWidth && maxWidthClasses[maxWidth],
 					'w-full mx-auto min-h-[60px] flex flex-row justify-center items-center'
 				)}
