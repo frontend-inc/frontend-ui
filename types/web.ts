@@ -21,7 +21,12 @@ export type StackProps = {
 
 export type SectionProps = {
 	children?: React.ReactNode
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | null 
+  py?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  px?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	bgColor?: string	
+  bgImage?: string
+  bgOverlay?: boolean
 	mode?: 'dark' | 'light'
 	disablePadding?: boolean  
 	className?: string
