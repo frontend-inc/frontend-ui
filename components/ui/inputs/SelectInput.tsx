@@ -37,7 +37,6 @@ export default function SelectInput(props: SelectInputPropsType) {
 			placeholder={placeholder || 'Select an option'}
 			items={options}
 			selectionMode="single"
-			selectedKeys={[value]}
 			onSelectionChange={handleSelect}
 		>
 			{(option) => (
