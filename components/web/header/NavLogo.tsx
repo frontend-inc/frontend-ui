@@ -21,10 +21,9 @@ export default function Logo(props: LogoProps) {
 	const { src, width = LOGO_WIDTH, height = LOGO_HEIGHT, handleClick } = props
 
 	return (
-		<Button
-			className="px-2 hover:bg-transparent"
-			variant="light"
-			onPress={() => handleClick('/')}
+		<div
+			className="cursor-pointer p-0"
+			onClick={() => handleClick('/')}
 		>
 			{src ? (
 				<Image
@@ -49,6 +48,6 @@ export default function Logo(props: LogoProps) {
 					</p>
 				</div>
 			)}
-		</Button>
+		</div>
 	)
 }
