@@ -29,7 +29,7 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 
 	// Match breakpoints with tailwindcss
 	const breakpoints = { md: 640, sm: 0 }
-	const cols = { md: 12, sm: 1 }
+	const cols = { md: 12, sm: 4 }
 
 	const formatLayout = (nodes) => {
 		if (!Array.isArray(nodes)) return []
@@ -60,7 +60,7 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="static-grid"
-				rowHeight={40}
+				rowHeight={45}
         margin={[5, 5]}
 				breakpoints={breakpoints}
 				cols={cols}

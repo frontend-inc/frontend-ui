@@ -51,7 +51,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 
 	// Match breakpoints with tailwindcss
 	const breakpoints = { md: 640, sm: 0 }
-	const cols = { md: 12, sm: 1 }
+	const cols = { md: 12, sm: 4 }
 
 	const formatLayout = (nodes) => {
 		if (!Array.isArray(nodes)) return []
