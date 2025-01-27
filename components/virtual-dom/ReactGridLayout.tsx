@@ -20,7 +20,7 @@ import { useEditor } from 'hooks'
 import { SyntheticEventType } from '../../types'
 import { VirtualDomType } from 'types'
 
-export const ROW_HEIGHT = 42
+export const ROW_HEIGHT = 48
 export const MARGIN = [8, 8]
 export const COLS = { md: 12, sm: 4 }
 export const BREAKPOINTS = { md: 640, sm: 0 }
@@ -155,27 +155,29 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 
 					return (
 						<div
-							draggable
+              draggable={false} 
 							onClick={(ev) => handleClick(node, ev)}
 							key={node.id}
               data-id={node.id}
 							className={cn(                
 								'grid-controls',
                 'flex flex-row w-full h-full justify-center',
-								'border-2 rounded-md border-transparent hover:border-blue-500',                
+								'border-2 rounded-md border-transparent hover:border-dashed-2 hover:border-blue-500 hover:bg-blue-500 hover:bg-opacity-10',                
                 isSelected && 'border-blue-500 relative',								
 							)}
 						>
-							<RenderDOMNode
-								isEditing
-								handleChange={handleChange}
-								component={node.name}
-								props={node.props}
-								classNames={node.classNames}
-								components={componentMap}
-							/>                
+              <div className='pointer-events-none flex flex-row w-full h-full justify-center'>
+                <RenderDOMNode
+                  isEditing
+                  handleChange={handleChange}
+                  component={node.name}
+                  props={node.props}
+                  classNames={node.classNames}
+                  components={componentMap}
+                />             
+                </div>   
 							  <div className={ cn(
-                  "hidden rounded-lg grid-controls z-50 shadow-sm bg-black/50 flex-row items-center space-x-1 justify-center absolute top-[2px] right-[2px]",
+                  "hidden rounded-lg grid-controls z-50 shadow-sm bg-background flex-row items-center space-x-1 justify-center absolute top-[3px] right-[3px]",
                   isSelected && 'flex'
                 )}>      
                   <Button
@@ -184,10 +186,10 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     size="sm"                    
                     onPress={() => handleDelete(node)}
                   >
-                    <RiCloseLine className="w-4 h-4 text-white" />
+                    <RiCloseLine className="w-4 h-4 text-foreground" />
                   </Button>                   
                   <div className="draggable-handle rounded-lg shadow-sm h-8 w-8 flex items-center justify-center">
-                    <GripVertical className="w-5 h-5 text-white" />         
+                    <GripVertical className="w-5 h-5 text-foreground" />         
                   </div>                  
 							</div>
 						</div>

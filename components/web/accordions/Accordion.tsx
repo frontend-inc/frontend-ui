@@ -23,7 +23,7 @@ const Accordion: React.FC<AccordionProps> = (props) => {
 			<NextAccordion variant={variant} selectionMode="multiple">
 				{items?.map((item, i) => (
 					<AccordionItem key={i} aria-label={item?.title} title={item?.title}>
-						<Typography variant="subtitle2" className="pb-2">
+						<Typography variant="body1" className="pb-2">
 							{item?.subtitle}
 						</Typography>
 					</AccordionItem>

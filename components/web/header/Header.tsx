@@ -59,7 +59,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-		<div className={cn(theme && mode && `${theme}-${mode}`, 'bg-background')}>
+		<div className={cn(
+      theme && mode && `${theme}-${mode}`, 
+      'bg-background z-40'
+    )}>
 			<Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
 				<NavbarContent justify="start">
 					{links?.length > MAX_LINKS ? (

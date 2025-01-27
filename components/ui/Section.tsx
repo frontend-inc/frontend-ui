@@ -25,7 +25,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		bgOverlay,
 		mode,
 		maxWidth,
-		py = 'md',
+		py = 'sm',
 		px = 'sm',
 	} = props
 
