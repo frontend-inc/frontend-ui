@@ -13,7 +13,7 @@ import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
 import { RiCloseLine } from '@remixicon/react'
-import { cn } from 'frontend-shadcn'
+import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
 import { useEditor } from 'hooks'
@@ -153,9 +153,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 
           const isSelected = activeComponent?.id && (activeComponent?.id === node.id)
 
+          // Support live editing for typography components
+          const disablePointerEvents = !['RichText','Text','Paragraph'].includes(node.name)
+
 					return (
 						<div
-              draggable={false} 
 							onClick={(ev) => handleClick(node, ev)}
 							key={node.id}
               data-id={node.id}
@@ -166,20 +168,25 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                 isSelected && 'border-blue-500 relative',								
 							)}
 						>
-              <div className='pointer-events-none flex flex-row w-full h-full justify-center'>
-                <RenderDOMNode
-                  isEditing
-                  handleChange={handleChange}
-                  component={node.name}
-                  props={node.props}
-                  classNames={node.classNames}
-                  components={componentMap}
-                />             
+              <div 
+                className={ cn(
+                  'flex flex-row w-full h-full justify-center',
+                  disablePointerEvents && 'pointer-events-none'
+                )}>
+                  <RenderDOMNode
+                    isEditing
+                    handleChange={handleChange}
+                    component={node.name}
+                    props={node.props}
+                    classNames={node.classNames}
+                    components={componentMap}
+                  />             
                 </div>   
-							  <div className={ cn(
-                  "hidden rounded-lg grid-controls z-50 shadow-sm bg-background flex-row items-center space-x-1 justify-center absolute top-[3px] right-[3px]",
-                  isSelected && 'flex'
-                )}>      
+							  <div 
+                  className={ cn(
+                    "hidden rounded-lg grid-controls z-50 shadow-sm bg-background flex-row items-center space-x-1 justify-center absolute top-[3px] right-[3px]",
+                    isSelected && 'flex'
+                  )}>      
                   <Button
                     isIconOnly
                     variant="light"

@@ -19,7 +19,8 @@ const Section: React.FC<SectionProps> = (props) => {
 	const { theme } = useTheme()
 
 	const {
-		children,
+    children,
+    className,		
 		bgColor,
 		bgImage,
 		bgOverlay,
@@ -61,7 +62,8 @@ const Section: React.FC<SectionProps> = (props) => {
 				pxClasses[px],
 				!bgImage && bgColor,
 				bgImage && bgOverlay &&
-					"after:content-[''] after:absolute after:inset-0 after:bg-black/50"
+					"after:content-[''] after:absolute after:inset-0 after:bg-black/50",
+        className
 			)}
 			style={backgroundStyle}
 		>
