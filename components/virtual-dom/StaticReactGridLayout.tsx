@@ -60,8 +60,8 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="static-grid"
-				rowHeight={45}
-        margin={[5, 5]}
+				rowHeight={42}
+        margin={[8, 8]}
 				breakpoints={breakpoints}
 				cols={cols}
 				layouts={layouts}
