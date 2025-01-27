@@ -120,9 +120,6 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		)
   }
 
-  const handleResize = (layout, oldItem, newItem, placeholder, e, element) => {
-    console.log('layout', element?.attributes, layout, oldItem, newItem, placeholder, e, element)
-  }
 
 	return (
 		<div className="w-full h-full min-h-[200px]">
