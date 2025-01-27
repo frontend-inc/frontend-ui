@@ -88,7 +88,9 @@ export default function ArrayInput(props: ArrayInputProps) {
 					<Typography variant="overline">{label}</Typography>
             <div className=" flex flex-wrap gap-2">
             {Array.isArray(value) &&
-              value?.map((tag) => (
+              value
+                ?.filter((tag) => tag)
+                ?.map((tag) => (
                 <ButtonGroup key={tag}>
                   <Button size="sm" className='min-w-8'>
                     { tag }
