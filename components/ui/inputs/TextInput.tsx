@@ -18,7 +18,6 @@ export default function TextInput(props: TextInputProps) {
 		placeholder,
 		disabled,
 		errors,
-		direction = 'column',
 		className,
 		debounceDelay = 350,
 		disableDebounce = false,

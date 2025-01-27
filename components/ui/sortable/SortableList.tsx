@@ -57,7 +57,8 @@ export default function SortableList(props: SortableListProps) {
 						ref={provided.innerRef}
 					>
 						<div className="flex flex-col space-y-2 w-full overflow-y-scroll scrollbar-hide">
-							{sorted?.map((item, index) => (
+							{ Array.isArray(sorted) && 
+                sorted?.map((item, index) => (
 								<Draggable
 									key={item?.id || index}
 									draggableId={String(item?.id || index)}
