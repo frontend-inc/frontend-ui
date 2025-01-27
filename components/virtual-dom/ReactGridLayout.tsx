@@ -133,7 +133,6 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"
-        onResizeStop={handleResize}
 				isDroppable={false}
 			>
 				{nodes?.map((node) => {
