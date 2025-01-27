@@ -124,11 +124,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="react-grid-layout"
-				rowHeight={45}
+				rowHeight={42}
 				breakpoints={breakpoints}
 				cols={cols}
 				layouts={layouts}
-        margin={[5,5]}
+        margin={[8,8]}
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"
