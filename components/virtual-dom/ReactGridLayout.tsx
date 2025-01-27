@@ -12,13 +12,18 @@ import { Button, ButtonGroup } from '@nextui-org/react'
 import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
-import { RiCloseLine, RiPencilLine } from '@remixicon/react'
+import { RiCloseLine } from '@remixicon/react'
 import { cn } from 'frontend-shadcn'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
 import { useEditor } from 'hooks'
 import { SyntheticEventType } from '../../types'
 import { VirtualDomType } from 'types'
+
+export const ROW_HEIGHT = 42
+export const MARGIN = [8, 8]
+export const COLS = { md: 12, sm: 4 }
+export const BREAKPOINTS = { md: 640, sm: 0 }
 
 type LayoutItemType = LayoutItem & {
 	name: string
@@ -49,9 +54,6 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
   const { activeComponent, setActiveComponent } = useEditor()
 	const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), [])
 
-	// Match breakpoints with tailwindcss
-	const breakpoints = { md: 640, sm: 0 }
-	const cols = { md: 12, sm: 4 }
 
 	const formatLayout = (nodes) => {
 		if (!Array.isArray(nodes)) return []
@@ -124,11 +126,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="react-grid-layout"
-				rowHeight={42}
-				breakpoints={breakpoints}
-				cols={cols}
+				rowHeight={ROW_HEIGHT}
+				breakpoints={BREAKPOINTS}
+				cols={COLS}
 				layouts={layouts}
-        margin={[8,8]}
+        margin={MARGIN}
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"

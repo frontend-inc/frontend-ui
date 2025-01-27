@@ -9,6 +9,12 @@ import {
 //import './react-grid-layout.css'
 import { RenderDOMNode } from '..'
 import { ReactGridLayoutsType } from '../../types'
+import { 
+  ROW_HEIGHT,
+  MARGIN,
+  COLS,
+  BREAKPOINTS
+} from './ReactGridLayout'
 
 const ResponsiveGridLayout = WidthProvider(RGL)
 
@@ -26,10 +32,6 @@ type StaticReactGridLayoutProps = {
 
 const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 	const { nodes = [], componentMap } = props || {}
-
-	// Match breakpoints with tailwindcss
-	const breakpoints = { md: 640, sm: 0 }
-	const cols = { md: 12, sm: 4 }
 
 	const formatLayout = (nodes) => {
 		if (!Array.isArray(nodes)) return []
@@ -60,10 +62,10 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 		<div className="w-full h-full min-h-[200px]">
 			<ResponsiveGridLayout
 				className="static-grid"
-				rowHeight={42}
-        margin={[8, 8]}
-				breakpoints={breakpoints}
-				cols={cols}
+				rowHeight={ROW_HEIGHT}
+        margin={MARGIN}
+				breakpoints={BREAKPOINTS}
+				cols={COLS}
 				layouts={layouts}
 				compactType={'vertical'}
 			>
