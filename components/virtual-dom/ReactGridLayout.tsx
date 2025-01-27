@@ -118,7 +118,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 			},
 			'*'
 		)
-	}
+  }
+
+  const handleResize = (layout, oldItem, newItem, placeholder, e, element) => {
+    console.log('layout', element?.attributes, layout, oldItem, newItem, placeholder, e, element)
+  }
 
 	return (
 		<div className="w-full h-full min-h-[200px]">
@@ -132,6 +136,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"
+        onResizeStop={handleResize}
 				isDroppable={false}
 			>
 				{nodes?.map((node) => {
@@ -156,6 +161,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							draggable
 							onClick={(ev) => handleClick(node, ev)}
 							key={node.id}
+              data-id={node.id}
 							className={cn(                
 								'grid-controls',
                 'flex flex-row w-full h-full justify-center',

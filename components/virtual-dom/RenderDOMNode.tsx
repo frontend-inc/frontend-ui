@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import { cn } from '@nextui-org/react'
 
 const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
@@ -26,6 +26,8 @@ type RenderDomProps = {
 	components: {}
 }
 
+const ROW_HEIGHT = 40 
+
 const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 	const {
 		component,
@@ -36,6 +38,7 @@ const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 	} = parentProps || {}
 
 	const Component = components[component] || Div
+
 
 	return (
 		<Component			
