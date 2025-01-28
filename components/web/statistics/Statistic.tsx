@@ -10,17 +10,19 @@ type StatisticProps = {
 	title?: string
 	subtitle?: string
 	variant?: 'fill' | 'outline' | 'default'
+  className
 }
 
 const Statistic: React.FC<StatisticProps> = (props) => {
-	const { variant, icon, title, subtitle } = props || {}
+	const { variant, icon, title, subtitle, className } = props || {}
 	return (
 		<div
 			className={cn(
 				'flex justify-start w-full items-start h-full',
 				'flex-row space-x-3 min-h-[90px]',
 				variant == 'outline' && 'border-2 border-divider rounded-lg p-4',
-				variant == 'fill' && 'bg-content1 rounded-lg p-4'
+				variant == 'fill' && 'bg-content1 rounded-lg p-4',
+        className
 			)}
 		>
 			{icon && (
