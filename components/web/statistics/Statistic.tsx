@@ -18,7 +18,7 @@ const Statistic: React.FC<StatisticProps> = (props) => {
 	return (
 		<div
 			className={cn(
-        'shadow-lg p-4 bg-content1 rounded-xl',
+        'shadow-md p-4 bg-content1 rounded-xl',
 				'flex justify-start w-full items-start h-full',
 				'flex-row space-x-3 items-center min-h-[90px]',
 				variant == 'outline' && 'border-2 border-divider rounded-lg p-4',
