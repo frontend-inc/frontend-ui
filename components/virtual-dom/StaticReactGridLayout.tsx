@@ -67,6 +67,7 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 				breakpoints={BREAKPOINTS}
 				cols={COLS}
 				layouts={layouts}
+        measureBeforeMount
 				compactType={'vertical'}
 			>
 				{nodes?.map((node) => (

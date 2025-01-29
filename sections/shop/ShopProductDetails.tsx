@@ -17,14 +17,11 @@ const ShopProductDetails: React.FC<ShopProductDetailsProps> = (props) => {
 		py,
 		px,
 		maxWidth,
-		requireAuth,
-
 		...rest
 	} = props
 
 	return (
 		<Section
-			requireAuth={requireAuth}
 			bgColor={bgColor}
 			bgImage={bgImage}
 			bgOverlay={bgOverlay}

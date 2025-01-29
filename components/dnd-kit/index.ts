@@ -1,5 +1,5 @@
-export * from './grid-layout'
-export * from './vertical-layout'
-export * from './multiple-containers'
+export * from './examples/grid-layout'
+export * from './examples/vertical-layout'
+export * from './examples/multiple-containers'
 
 export { default as VirtualDOMDragAndDrop } from './experimental'

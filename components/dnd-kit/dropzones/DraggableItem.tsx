@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import { cn } from '@nextui-org/react'
 import type {DraggableSyntheticListeners} from '@dnd-kit/core';
 import type {Transform} from '@dnd-kit/utilities';
-import { Handle } from './components/item/components';
-import { Remove } from './components/item/components';
-import styles from './components/item/Item.module.css';
+import { Handle } from '../components/item/components';
+import { Remove } from '../components/item/components';
+import styles from '../components/item/Item.module.css';
 
 export interface Props {
   dragOverlay?: boolean;

@@ -13,7 +13,7 @@ type StatisticProps = {
   className
 }
 
-const Statistic: React.FC<StatisticProps> = (props) => {
+const StatisticCard: React.FC<StatisticProps> = (props) => {
 	const { variant, icon, title, subtitle, className } = props || {}
 	return (
 		<div
@@ -41,4 +41,4 @@ const Statistic: React.FC<StatisticProps> = (props) => {
 	)
 }
 
-export default Statistic
+export default StatisticCard

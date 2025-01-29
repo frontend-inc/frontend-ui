@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { TestimonialCard, TestimonialCardType } from './TestimonialCard'
+import { TestimonialCard, TestimonialCardType } from '../../ui/cards/TestimonialCard'
 
 type TestimonialCardsProps = {
 	size?: 'small' | 'large'

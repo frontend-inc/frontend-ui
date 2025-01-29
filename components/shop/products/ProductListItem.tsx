@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ProductCard } from '../..'
+import { ShopProductCard } from '../..'
 import { SocialButtons } from '../..'
 import { SubscribeButton, AddToCartButton } from '../../../components'
 
@@ -29,7 +29,7 @@ const ProductListItem: React.FC<ProductListItemProps> = (props) => {
 	} = props
 
 	return (
-		<ProductCard
+		<ShopProductCard
 			label={resource?.label}
 			image={resource?.image?.url}
 			title={resource?.title}

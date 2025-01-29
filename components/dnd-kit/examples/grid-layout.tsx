@@ -7,11 +7,11 @@ import {
   rectSortingStrategy,
   rectSwappingStrategy,
 } from '@dnd-kit/sortable';
-import { createRange } from './components/utilities/utilities';
+import { createRange } from '../components/utilities/utilities';
 
-import {Sortable, SortableProps} from './components/sortable/Sortable'
-import {GridContainer} from './components/grid-container/GridContainer';
-import { DraggableItem } from './draggable-item';
+import {Sortable, SortableProps} from '../components/sortable/Sortable'
+import {GridContainer} from '../components/grid-container/GridContainer';
+import { DraggableItem } from '../dropzones/DraggableItem';
 
 export default {
   title: 'Presets/Sortable/Grid',

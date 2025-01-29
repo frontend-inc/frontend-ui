@@ -3,7 +3,7 @@
 import React from 'react'
 import { Swipeable } from '../../../components'
 import { Container } from '../../../components'
-import { TestimonialCard, TestimonialCardType } from './TestimonialCard'
+import { TestimonialCard, TestimonialCardType } from '../../ui/cards/TestimonialCard'
 
 type SwipeableTestimonialsProps = {
 	items: TestimonialCardType[]

@@ -29,7 +29,7 @@ const Icon: React.FC<IconProps> = (props) => {
 		secondary: 'bg-secondary/20',
 		success: 'bg-success/20',
 		warning: 'bg-warning/20',
-		error: 'bg-error/20',
+		danger: 'bg-danger/20',
 		background: 'bg-background',
 		content1: 'bg-content1',
 		content2: 'bg-content2',
@@ -41,7 +41,7 @@ const Icon: React.FC<IconProps> = (props) => {
 		secondary: 'bg-secondary',
 		success: 'bg-success',
 		warning: 'bg-warning',
-		error: 'bg-error',
+		danger: 'bg-danger',
 		background: 'bg-background',
 		content1: 'bg-content1',
 		content2: 'bg-content2',
@@ -60,7 +60,7 @@ const Icon: React.FC<IconProps> = (props) => {
 		secondary: 'text-secondary',
 		success: 'text-success',
 		warning: 'text-warning',
-		error: 'text-error',
+		danger: 'text-danger',
 		background: 'text-foreground',
 		content1: 'text-foreground',
 		content2: 'text-foreground',
@@ -78,9 +78,10 @@ const Icon: React.FC<IconProps> = (props) => {
 			<RemixIcon
 				name={name}
 				size={size}
-				className={cn(
+				className={cn(          
 					variant == 'ghost' && textClasses[color || 'default'],
 					variant == 'default' && textClasses[color || 'default'],
+          variant == 'solid' && 'text-white/70',
 					className
 				)}
 			/>

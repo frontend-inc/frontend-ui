@@ -6,7 +6,7 @@ import { BlurFade } from '../..'
 import { RemixIcon } from '../..'
 import { Typography } from '../../../components'
 import { cn } from '@nextui-org/react'
-import FeatureIcon from './FeatureCard'
+import FeatureIcon from '../../ui/cards/FeatureCard'
 
 export type FeatureIconsProps = {
 	variant?: 'fill' | 'outline' | 'default'

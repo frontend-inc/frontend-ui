@@ -117,6 +117,7 @@ export function Sortable({
   useDragOverlay = true,
   wrapperStyle = () => ({}),
 }: SortableProps) {
+  
   const [items, setItems] = useState<UniqueIdentifier[]>(
     () =>
       initialItems ?? createRange<UniqueIdentifier>(itemCount, (index) => index)

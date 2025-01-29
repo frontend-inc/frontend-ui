@@ -14,7 +14,7 @@ import { cn } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 import { formatCurrency } from '../../../helpers'
 
-type SubscriptionPlanProps = {
+type SubscriptionCardProps = {
 	id?: string | number
 	label?: string
 	title: string
@@ -31,7 +31,7 @@ type SubscriptionPlanProps = {
 	handleClick?: () => void
 }
 
-const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
+const SubscriptionCard: React.FC<SubscriptionCardProps> = (props) => {
 	const {
 		title,
 		subtitle,
@@ -133,4 +133,4 @@ const SubscriptionPlan: React.FC<SubscriptionPlanProps> = (props) => {
 	)
 }
 
-export default SubscriptionPlan
+export default SubscriptionCard

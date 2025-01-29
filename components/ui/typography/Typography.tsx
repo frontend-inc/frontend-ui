@@ -21,6 +21,7 @@ export type TypographyProps = {
 		| 'caption'
 		| 'overline'
 		| 'destructive'
+  color?: 'textPrimary' | 'textSecondary' | 'primary' | 'secondary' | 'destructive' | 'foreground' | 'background'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
 	isEditing?: boolean
@@ -36,12 +37,23 @@ const Typography: React.FC<TypographyProps> = (props) => {
 		className,
 		children='',
 		name = 'text',
+    color = 'textPrimary',
 		isEditing,
 		handleChange,
 	} = props
 
 	const [text, setText] = useState(children)
 	const [debouncedText] = useDebounce(text, 350)
+
+  const colorClasses = {
+    textPrimary: 'text-foreground',
+    textSecondary: 'text-foreground/70',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    destructive: 'text-destructive',
+    foreground: 'text-foreground',
+    background: 'text-background',
+  }
 
 	const variantClasses = {
 		h1: 'text-5xl sm:text-6xl font-bold tracking-tight',
@@ -102,11 +114,12 @@ const Typography: React.FC<TypographyProps> = (props) => {
 			onInput={handleInputChange}
 			suppressContentEditableWarning
 			className={cn(
-				'w-full text-foreground outline-none focus:outline-none focus:ring-0',        
+				'w-full outline-none focus:outline-none focus:ring-0',        
 				isEditing && 'cursor-text',
 				fontFamily[variant],
 				variantClasses[variant],
 				alignmentClasses[textAlign],
+        colorClasses[color],
 				className
 			)}
 		>

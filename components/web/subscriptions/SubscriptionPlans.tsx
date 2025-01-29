@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import SubscriptionPlan from './SubscriptionPlan'
+import SubscriptionPlan from './SubscriptionCard'
 import { PriceType } from '../../..'
 import { Stack, Empty } from '../..'
 

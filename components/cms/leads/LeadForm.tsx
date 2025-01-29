@@ -4,7 +4,7 @@ import React from 'react'
 import { Container, Form } from '../../../components'
 import { useContacts, useNavigate } from '../../../hooks'
 import { toast } from 'sonner'
-import { buildFormMetafields } from '../../../helpers'
+import { buildFormFields } from '../../../helpers'
 
 export type LeadFormProps = {
 	buttonText?: string
@@ -12,35 +12,35 @@ export type LeadFormProps = {
 	url?: string
 	path?: string
 	handleClick?: () => void
-	enableName?: boolean
-	enablePhone?: boolean
-	enableCompany?: boolean
-	enableReason?: boolean
-	enableMessage?: boolean
+	fieldName?: boolean
+	fieldPhone?: boolean
+	fieldCompany?: boolean
+	fieldReason?: boolean
+	fieldMessage?: boolean
 	reasonOptions?: string[]
   className?: string
 }
 
 const LeadForm: React.FC<LeadFormProps> = (props) => {
 	const {
-		enableName,
-		enablePhone,
-		enableCompany,
-		enableReason,
+		fieldName,
+		fieldPhone,
+		fieldCompany,
+		fieldReason,
 		reasonOptions = [],
-		enableMessage,
+		fieldMessage,
 		buttonText = 'Submit',
 		url,
 		path,
     className
 	} = props || {}
 
-	const metafields = buildFormMetafields({
-		enableName,
-		enablePhone,
-		enableCompany,
-		enableReason,
-		enableMessage,
+	const metafields = buildFormFields({
+		fieldName,
+		fieldPhone,
+		fieldCompany,
+		fieldReason,
+		fieldMessage,
 		reasonOptions,
 	})
 

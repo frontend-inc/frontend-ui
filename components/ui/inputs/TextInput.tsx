@@ -15,7 +15,7 @@ export default function TextInput(props: TextInputProps) {
 		name,
 		value = '',
 		handleChange,
-		placeholder,
+		placeholder='',
 		disabled,
 		errors,
 		className,

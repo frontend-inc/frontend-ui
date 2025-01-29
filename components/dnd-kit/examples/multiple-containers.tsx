@@ -35,12 +35,10 @@ import {
   rectSortingStrategy,
 } from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {coordinateGetter as multipleContainersCoordinateGetter} from './multipleContainersKeyboardCoordinates'
-import { Button } from '@nextui-org/react';
-import {Item, Container, ContainerProps} from './components';
-import { Resizable, ResizableBox } from 'react-resizable'
+import {coordinateGetter as multipleContainersCoordinateGetter} from '../multipleContainersKeyboardCoordinates'
+import {Item, Container, ContainerProps} from '../components';
 
-import {createRange} from './components';
+import {createRange} from '../components';
 
 export default {
   title: 'Presets/Sortable/Multiple Containers',
@@ -186,18 +184,6 @@ export function MultipleContainers({
   const [containers, setContainers] = useState(
     Object.keys(items) as UniqueIdentifier[]
   );
-  const [layouts, setLayouts] = useState({
-    "A": { colspan: 1, direction: 'row' },
-    "B": { colspan: 2, direction: 'column' },
-    "C": { colspan: 1, direction: 'row' },
-    "D": { colspan: 2, direction: 'column' },
-  })
-
-  const toggleLayout = (containerId: UniqueIdentifier) => {
-    const newLayouts = {...layouts}
-    newLayouts[containerId].colspan = layouts[containerId].colspan === 1 ? 2 : 1
-    setLayouts(newLayouts)
-  }
 
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
   const lastOverId = useRef<UniqueIdentifier | null>(null);
@@ -482,8 +468,6 @@ export function MultipleContainers({
         >
           {containers.map((containerId, idx) => {
             
-            const isVertical = layouts[containerId].direction === 'column'
-
             return(
             <DroppableContainer
               key={containerId}
@@ -495,11 +479,8 @@ export function MultipleContainers({
               style={containerStyle}
               unstyled={minimal}
               onRemove={() => handleRemove(containerId)}
-              className={cn(
-                layouts[containerId].colspan === 2 ? 'col-span-2' : 'col-span-1'
-              )}
+              className={'col-span-1'}
             >
-              <Button onPress={() => toggleLayout(containerId)}>Toggle Layout</Button>
               <SortableContext 
                 items={items[containerId]} 
                 strategy={ isVertical ? 
@@ -507,9 +488,7 @@ export function MultipleContainers({
                     horizontalListSortingStrategy
                   }
               >
-                <div className={cn(
-                  isVertical ? 'flex flex-col space-y-2' : 'grid grid-cols-3 gap-4',
-                )}>
+                <div className='flex flex-col space-y-2'>
                 {items[containerId].map((value, index) => {
                   return (
                     <SortableItem

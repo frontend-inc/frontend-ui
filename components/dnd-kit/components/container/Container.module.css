@@ -6,8 +6,6 @@
   box-sizing: border-box;
   appearance: none;
   outline: none;
-  min-width: 350px;
-  margin: 10px;
   border-radius: 5px;
   min-height: 200px;
   transition: background-color 350ms ease;

@@ -2,15 +2,15 @@
 
 import React, { useMemo } from 'react'
 import {
-	Card,
-	FileCard,
-	ListCard,
-	CoverCard,
-	TextCard,
-	Typography,
-	VideoCard,
-	ImageCard,
+	CmsCard,
+	CmsFileCard,
+	CmsListCard,
+	CmsCoverCard,
+	CmsTextCard,
+	CmsVideoCard,
+	CmsImageCard,
 } from '../..'
+import { 	Typography } from '../..'
 import { ListFields, SocialButtons } from '../..'
 import { ButtonType, MetafieldType } from '../../../types'
 import { DocumentStyleTypes } from './DocumentList'
@@ -52,16 +52,16 @@ const DocumentListItem: React.FC<DocumentListItemProps> = (props) => {
 	} = props
 
 	const COMPONENTS = {
-		card: Card,
-		cover: CoverCard,
-		text: TextCard,
-		list: ListCard,
-		image: ImageCard,
-		file: FileCard,
-		video: VideoCard,
+		card: CmsCard,
+		cover: CmsCoverCard,
+		text: CmsTextCard,
+		list: CmsListCard,
+		image: CmsImageCard,
+		file: CmsFileCard,
+		video: CmsVideoCard,
 	}
 
-	let Component = COMPONENTS[style] || Card
+	let Component = COMPONENTS[style] || CmsCard
 
 	let typographyVariants = {
 		card: 'subtitle1',

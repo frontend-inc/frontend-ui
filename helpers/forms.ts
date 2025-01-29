@@ -1,25 +1,25 @@
 type FormMetafieldParams = {
-	enableName?: boolean
-	enableCompany?: boolean
-	enablePhone?: boolean
-	enableReason?: boolean
-	enableMessage?: boolean
+	fieldName?: boolean
+	fieldCompany?: boolean
+	fieldPhone?: boolean
+	fieldReason?: boolean
+	fieldMessage?: boolean
 	reasonOptions?: string[]
 }
 
-export const buildFormMetafields = (params: FormMetafieldParams) => {
+export const buildFormFields = (params: FormMetafieldParams) => {
 	const {
-		enableName,
-		enableCompany,
-		enablePhone,
-		enableReason,
-		enableMessage,
+		fieldName,
+		fieldCompany,
+		fieldPhone,
+		fieldReason,
+		fieldMessage,
 		reasonOptions = [],
 	} = params || {}
 
 	let metafields = [] as any
 
-	if (enableName) {
+	if (fieldName) {
 		metafields.push({
 			label: 'Name',
 			name: 'name',
@@ -28,7 +28,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 		})
 	}
 
-	if (enableCompany) {
+	if (fieldCompany) {
 		metafields.push({
 			label: 'Company',
 			name: 'company',
@@ -37,7 +37,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 		})
 	}
 
-	if (enablePhone) {
+	if (fieldPhone) {
 		metafields.push({
 			label: 'Phone',
 			name: 'phone',
@@ -46,7 +46,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 		})
 	}
 
-	if (enableReason) {
+	if (fieldReason) {
 		metafields.push({
 			label: 'Reason',
 			name: 'reason',
@@ -56,7 +56,7 @@ export const buildFormMetafields = (params: FormMetafieldParams) => {
 		})
 	}
 
-	if (enableMessage) {
+	if (fieldMessage) {
 		metafields.push({
 			label: 'Message',
 			name: 'message',

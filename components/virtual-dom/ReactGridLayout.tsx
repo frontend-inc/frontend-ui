@@ -131,6 +131,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 				cols={COLS}
 				layouts={layouts}
         margin={MARGIN}
+        measureBeforeMount
 				onLayoutChange={onLayoutChange}
 				compactType={'vertical'}
 				draggableHandle=".draggable-handle"
@@ -199,7 +200,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     <GripVertical className="w-5 h-5 text-foreground" />         
                   </div>                  
 							</div>
-						</div>
+				    </div>
 					)
 				})}
 			</ResponsiveGridLayout>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { ButtonType, MetafieldType } from '../../../types'
-import { HeroList } from '../..'
+import { CmsHeroList } from '../..'
 import { useResourceContext } from 'frontend-js'
 import { Buttons, SocialButtons } from '../..'
 
@@ -59,7 +59,7 @@ const Show: React.FC<ShowProps> = (props) => {
 
 	if (!resource?.id) return null
 	return (
-		<HeroList
+		<CmsHeroList
 			disableImage={disableImage}
 			label={resource?.label}
 			image={resource?.image?.url}

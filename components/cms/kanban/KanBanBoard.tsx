@@ -19,7 +19,7 @@ import {
 import { Typography } from '../../../components'
 import { Button } from '@nextui-org/react'
 import Droppable from './Droppable'
-import { KanBanCard } from '../..'
+import KanBanCard from './KanBanCard'
 import { RiAddFill } from '@remixicon/react'
 
 type KanBanBoardProps = {

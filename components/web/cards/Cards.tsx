@@ -24,34 +24,20 @@ export type CardsProps = {
 	layout?: 'grid' | 'carousel'
 }
 
-type CardItemsProps = {
+type CardItemProps = {
 	item: CardType
-	enableGradient?: boolean
-	enableOverlay?: boolean
-	enablePadding?: boolean
-	handleClick: (path: string) => void
 }
 
-const CardItems: React.FC<CardItemsProps> = (props) => {
-	const { item, enableGradient, enableOverlay, handleClick } = props || {}
+const CardItem: React.FC<CardItemProps> = (props) => {
+	const { item } = props || {}
 
 	return (
 		<Card
-			imageHeight={300}
-			label={item?.label}
 			image={item?.image}
 			title={item?.title}
 			subtitle={item?.subtitle}
-			actions={
-				item?.buttonText && (
-					<Button fullWidth onPress={() => handleClick(item?.path)}>
-						{item?.buttonText}
-					</Button>
-				)
-			}
-			handleClick={() => handleClick(item?.path)}
-			enableGradient={enableGradient}
-			enableOverlay={enableOverlay}
+      buttonText={ item?.buttonText }
+      path={ item?.path }						
 		/>
 	)
 }
@@ -69,12 +55,8 @@ const Cards: React.FC<CardsProps> = (props) => {
 						{items?.map((item, idx) => (
 							<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
 								<div className="py-2 w-full">
-									<CardItems
-										enablePadding
+									<CardItem
 										item={item}
-										enableGradient={enableGradient}
-										enableOverlay={enableOverlay}
-										handleClick={onClick}
 									/>
 								</div>
 							</BlurFade>
@@ -88,12 +70,8 @@ const Cards: React.FC<CardsProps> = (props) => {
 					>
 						{items?.map((item, idx) => (
 							<BlurFade delay={0.25 + idx * 0.05} inView key={idx}>
-								<CardItems
-									enablePadding
+								<CardItem
 									item={item}
-									enableGradient={enableGradient}
-									enableOverlay={enableOverlay}
-									handleClick={onClick}
 								/>
 							</BlurFade>
 						))}

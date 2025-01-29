@@ -3,7 +3,7 @@
 import React from 'react'
 import { Avatar, AvatarFallback } from 'frontend-shadcn'
 import { RemixIcon } from '../../../components'
-import { CardProps } from './Card'
+import { CardProps } from './CmsCard'
 import { Typography } from '../../../components'
 
 export type FileCardProps = CardProps & {

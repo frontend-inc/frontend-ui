@@ -13,7 +13,7 @@ type SocialIconButtonProps = {
 }
 
 const SocialIconButton: React.FC<SocialIconButtonProps> = (props) => {
-	const { provider, size = 32, url } = props || {}
+	const { provider, size = 28, url } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {

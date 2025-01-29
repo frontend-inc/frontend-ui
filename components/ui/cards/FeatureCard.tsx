@@ -3,26 +3,30 @@
 import React from 'react'
 import { RemixIcon } from '../..'
 import { Typography } from '../..'
-import { cn } from '@nextui-org/react'
+import { cn, Card, CardBody } from '@nextui-org/react'
 
 type FeatureCardProps = {
 	icon?: string
 	title?: string
 	subtitle?: string
-	variant?: 'fill' | 'outline' | 'default'
+	variant?: 'flat'| 'fill' | 'outline'
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = (props) => {
-	const { variant, icon, title, subtitle } = props || {}
+	const { variant='flat', icon, title, subtitle } = props || {}
 	return (
-		<div
-			className={cn(
-				'flex justify-start py-6 w-full items-start h-full',
-				'flex-row items-start space-x-3 min-h-[90px]',
-				variant == 'outline' && 'border-2 border-divider rounded-lg p-6',
-				variant == 'fill' && 'bg-content1 rounded-lg p-6'
-			)}
+		<Card
+      //@ts-ignore
+      isHoverable
+      shadow={ variant == "flat" ? "none" : "md" }
+      className='w-full h-full'
 		>
+      <CardBody
+        className={cn(
+          'flex justify-start py-6 w-full items-start h-full',
+          'flex-row items-start space-x-3 min-h-[90px]',
+        )}      
+      >
 			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
 			<div className={cn('flex flex-col space-y-2')}>
 				<Typography variant="h6">{title}</Typography>
@@ -30,7 +34,8 @@ const FeatureCard: React.FC<FeatureCardProps> = (props) => {
 					{subtitle}
 				</Typography>
 			</div>
-		</div>
+      </CardBody>
+		</Card>
 	)
 }
 

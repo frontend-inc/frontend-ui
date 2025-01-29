@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import { FormFieldType } from '../../../types'
 import { Container, Form } from '../../../components'
 import { useContacts } from '../../../hooks'
 import { toast } from 'sonner'
-import { buildFormMetafields } from '../../../helpers'
+import { buildFormFields } from '../../../helpers'
 
 export type ContactFormProps = {
 	enablePhone?: boolean
@@ -38,7 +37,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
 		createContact,
 	} = useContacts()
 
-	const metafields = buildFormMetafields({
+	const metafields = buildFormFields({
 		enablePhone,
 		enableCompany,
 		enableReason,

@@ -11,8 +11,8 @@ import {
   restrictToFirstScrollableAncestor,
 } from '@dnd-kit/modifiers';
 
-import {createRange} from './components';
-import {Sortable, SortableProps} from './components';
+import {createRange} from '../components';
+import {Sortable, SortableProps} from '../components';
 
 export default {
   title: 'Presets/Sortable/Vertical',

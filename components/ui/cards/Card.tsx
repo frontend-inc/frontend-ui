@@ -1,86 +1,83 @@
 'use client'
 
 import React from 'react'
-import { cn } from '@nextui-org/react'
-import { Typography } from '../../../components'
-import { Card as NextUICard, Image } from '@nextui-org/react'
+import {
+	Card,
+  CardBody,
+	CardFooter,
+	cn,
+} from '@nextui-org/react'
+import { Image, Typography } from '../..'
+import { useNavigate } from '../../../hooks'
+import { Button } from 'frontend-shadcn'
 
-export type CardProps = {
-	ref?: React.Ref<HTMLDivElement>
-	avatar?: React.ReactNode
+export type SimpleCardProps = {
+  label?: string
 	image?: string
-	label?: string
 	title: string
 	subtitle?: string
-	description?: string
-	actions?: React.ReactNode
-	secondaryAction?: React.ReactNode
-	fullWidth?: boolean
-	handleClick?: () => void
-	handleSelect?: () => void
-	imageHeight?: number
-	imageWidth?: number
-	enableOverlay?: boolean
-	enableGradient?: boolean
-	classNames?: string
+	path?: string
+	url?: string
+	buttonText?: string
+  objectFit?: 'cover' | 'contain' 
+	className?: string
 }
 
-// @ts-ignore
-const Card: React.FC<CardProps> = React.forwardRef<HTMLDivElement, CardProps>(
-	(props, ref) => {
-		const {
-			label,
-			title,
-			subtitle,
-			description,
-			actions,
-			secondaryAction,
-			handleClick,
-			image,
-			imageHeight = 240,
-			imageWidth = 320,
-			classNames,
-		} = props
+const SimpleCard: React.FC<SimpleCardProps> = (props) => {
+	const { 
+    label,
+    title, 
+    subtitle, 
+    image, 
+    path, 
+    url, 
+    buttonText, 
+    objectFit,
+    className 
+  } =
+		props || {}
 
-		return (
-			<div ref={ref} className={cn('w-full overflow-hidden', classNames)}>
-				<NextUICard
-					isPressable
-					isHoverable
-					onPress={handleClick}
-					shadow="none"
-					className="w-full"
-				>
-					<Image
-						removeWrapper
-						src={image}
-						height={imageHeight}
-						width={imageWidth}
-						alt={title}
-						label={label}
-						className="w-full object-cover"
-					/>
-				</NextUICard>
-				<div className="mx-2 pt-3 flex flex-col space-y-2 overflow-hidden">
-					<Typography variant="subtitle2">{title}</Typography>
-					{subtitle && (
-						<Typography variant="body2" className="text-foreground/70">
-							{subtitle}
-						</Typography>
-					)}
-					{description && (
-						<Typography variant="body1" className="text-foreground/70">
-							{description}
-						</Typography>
-					)}
-					{actions}
-					{secondaryAction}
-				</div>
-			</div>
-		)
-	}
-)
+	const onClick = useNavigate({
+		url,
+		path,
+	})
 
-Card.displayName = 'Card'
+	return (
+		<Card
+			className={cn('w-full overflow-hidden', className)}
+		>
+      <CardBody>
+        <Image 
+          disableBorderRadius
+          label={label}
+          src={image} 
+          alt="card-image" 
+          className='aspect-video' 
+          objectFit={ objectFit }
+        />
+			<CardFooter className="w-full min-h-[80px] flex flex-col space-y-2 justify-start items-start">
+        { title && (
+					<Typography variant="subtitle2" className="text-foreground">
+						{title}
+					</Typography>
+				)}
+				{subtitle && (
+					<Typography variant="body1" className="text-foreground/70">
+						{subtitle}
+					</Typography>
+				)}
+				{buttonText && (
+					<Button 
+            fullWidth             
+            onPress={onClick}
+          >
+						{buttonText}
+					</Button>
+				)}
+			</CardFooter>
+      </CardBody>
+		</Card>
+	)
+}
 
-export default Card
+export default SimpleCard
