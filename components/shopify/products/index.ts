@@ -1,6 +1,7 @@
 export * from './images'
 // Products
 export { default as ShopifyProductArray } from './ShopifyProductArray'
+export { default as ShopifyProductItem } from './ShopifyProductItem'
 export { default as ShopifyProductCard } from './ShopifyProductCard'
 export { default as ShopifyProductCarousel } from './ShopifyProductCarousel'
 export { default as ShopifyProductCollection } from './ShopifyProductCollection'

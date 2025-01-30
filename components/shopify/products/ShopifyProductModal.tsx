@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Drawer, Modal } from '../../../components'
+import { Modal } from '../../../components'
 import { ShopifyProductDetails } from '../../../components/shopify'
 import { BlurFade } from '../../../components'
 

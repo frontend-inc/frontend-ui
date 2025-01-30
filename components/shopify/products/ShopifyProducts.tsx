@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { ShopifyProductCard } from '..'
+import { ShopifyProductItem } from '..'
 import { ShopifyProductType } from 'frontend-shopify'
 import { BlurFade } from '../../../components'
 
@@ -26,7 +26,7 @@ const ShopifyProducts: React.FC<ShopifyProductsProps> = (props) => {
 			{products?.map((product, idx) => (
 				<BlurFade delay={0.25 + idx * 0.05} inView key={product?.id}>
 					<div className="p-1" key={product?.id}>
-						<ShopifyProductCard
+						<ShopifyProductItem
 							product={product}
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}

@@ -4,7 +4,6 @@ import React from 'react'
 import { ShopifyProductType } from 'frontend-shopify'
 import { Typography } from '../../../components'
 import { formatCurrency } from 'frontend-shopify'
-import { OkendoStarRating } from '../../../components/addons'
 
 type ShopifyProductDetailsProps = {
 	product?: ShopifyProductType

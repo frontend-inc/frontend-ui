@@ -9,8 +9,9 @@ import {
 	ShopifyVariantSelector,
 	ShopifyTrackRecentlyViewed,
 } from '..'
+import { Skeleton } from '@nextui-org/react'
 import { useProducts, useProductDetails } from 'frontend-shopify'
-import { cn, Alert } from '@nextui-org/react'
+import { cn } from '@nextui-org/react'
 
 export type ShopifyProductDetailsProps = {
 	shopifyProduct: string
@@ -52,6 +53,7 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 		}
 	}, [shopifyProduct])
 
+  if (!product) return <ShopifyProductDetailsSkeleton />
 	return (
 		<div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 w-full pb-[60px]">
 			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>
@@ -94,3 +96,29 @@ const ShopifyProductDetails: React.FC<ShopifyProductDetailsProps> = (props) => {
 }
 
 export default ShopifyProductDetails
+
+export const ShopifyProductDetailsSkeleton = () => {
+  return(
+    <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 w-full pb-[60px]">
+			<div className='w-full flex flex-col space-y-2 sm:w-1/2 p-0 sm:p-1'>
+        <Skeleton className='h-full w-full aspect-square rounded-xl' />				
+        <div className="flex flex-row md:justify-center flex-wrap gap-3">
+          <Skeleton className='h-20 w-20 rounded-xl' />				
+          <Skeleton className='h-20 w-20 rounded-xl' />				
+          <Skeleton className='h-20 w-20 rounded-xl' />				
+          <Skeleton className='h-20 w-20 rounded-xl' />				
+        </div>
+			</div>
+			<div className={cn('w-full sm:w-1/2', 'p-0 sm:p-1')}>
+				<div className="flex flex-col space-y-8">
+					<div className="flex flex-col space-y-4">
+            <Skeleton className='h-6 w-full rounded-lg' />				
+            <Skeleton className='h-6 w-full md:w-2/3 rounded-lg'  />				
+            <Skeleton className='h-6 w-full md:w-2/4 rounded-lg' />				            
+					</div>
+					<Skeleton className='h-10 py-6 w-full md:w-1/2 rounded-xl' />				
+				</div>
+			</div>
+		</div>
+  )
+}

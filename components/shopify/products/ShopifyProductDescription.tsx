@@ -3,6 +3,7 @@
 import React from 'react'
 import { Typography } from '../../../components'
 import { ShopifyProductType } from 'frontend-shopify'
+import { ScrollShadow } from '@nextui-org/react'
 
 type ShopifyProductDescriptionProps = {
 	product?: ShopifyProductType
@@ -16,9 +17,11 @@ const ShopifyProductDescription: React.FC<ShopifyProductDescriptionProps> = (
 
 	if (!product?.description || product?.description?.length == 0) return null
 	return (
-		<Typography variant="body1" className="text-md leading-loose">
-			{product?.description}
-		</Typography>
+    <ScrollShadow className="h-full max-h-[340px]">
+      <Typography variant="body1" className="text-md whitespace-pre-line leading-loose">
+        {product?.description}
+      </Typography>
+    </ScrollShadow>
 	)
 }
 

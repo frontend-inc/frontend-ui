@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { useProducts } from 'frontend-shopify'
+import React from 'react'
 import { ShopifyProductCard } from '..'
 
 export type ShopifyProductArrayProps = {
@@ -22,18 +21,10 @@ const ShopifyProductArray: React.FC<ShopifyProductArrayProps> = (props) => {
 	return (
 		<div className="w-full gap-6 pb-1 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
 			{handles?.map((handle) => {
-				const { product, findProduct } = useProducts()
-				useEffect(() => {
-					if (handle) {
-						findProduct(handle)
-					}
-				}, [handle])
-
-				if (!product) return null
 				return (
-					<div key={product?.id} className="p-1">
+					<div key={handle} className="p-1">
 						<ShopifyProductCard
-							product={product}
+							shopifyProduct={handle}
 							enableBorder={enableBorder}
 							enableAddToCart={enableAddToCart}
 							enableQuantity={enableQuantity}
