@@ -1,5 +1,6 @@
 export { default as ActionCard } from './ActionCard'
 export { default as BlogCard } from './BlogCard'
+export { default as BlogListCard } from './BlogListCard'
 export { default as Card } from './Card'
 export { default as CoverCard } from './CoverCard'
 export { default as FeatureCard } from './FeatureCard'

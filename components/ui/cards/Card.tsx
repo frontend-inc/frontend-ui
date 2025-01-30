@@ -11,7 +11,7 @@ import { Image, Typography } from '../..'
 import { useNavigate } from '../../../hooks'
 import { Button } from 'frontend-shadcn'
 
-export type SimpleCardProps = {
+export type CardProps = {
   label?: string
 	image?: string
 	title: string
