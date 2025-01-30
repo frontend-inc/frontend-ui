@@ -50,8 +50,9 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 			onPress={ onClick }
       className="w-full overflow-hidden"
     >
-      <CardBody className='w-full aspect-square'>    
+      <CardBody className='p-0 min-h-[240px] h-full w-full aspect-square'>    
         <Image
+          disableBorderRadius
           fullWidth
           src={image}
           alt={title}
@@ -60,11 +61,10 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
           isBlurred
           enableGradient={enableGradient}
           enableOverlay={enableOverlay}
-          className='aspect-square'
         />
       </CardBody> 
-      <CardFooter>
-        <div className="w-full h-full px-2 flex flex-col space-y-2">
+      <CardFooter className="flex flex-col justify-between">
+        <div className="w-full h-full flex flex-col space-y-2">
           <Typography variant="subtitle1">{title}</Typography>
           <div className="flex flex-row space-x-2">
             <Typography className="text-lg text-foreground" variant="caption">
@@ -82,9 +82,10 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
             >
               {subtitle}
             </Typography>
-          )}          
+          )}       
+          </div>   
         <Button 
-          className='min-h-[44px]'
+          className='min-h-[44px] mb-2'
           fullWidth          
           variant="solid"
           color="primary"
@@ -92,7 +93,6 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         >
           {buttonText}
         </Button>
-        </div>
       </CardFooter>
     </Card>
   )

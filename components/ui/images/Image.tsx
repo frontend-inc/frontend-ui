@@ -70,6 +70,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					className={cn(
 						'w-full h-full',
 						objectFit == 'contain' ? 'object-contain' : 'object-cover',
+            disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 						className
 					)}
 				/>

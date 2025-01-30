@@ -64,7 +64,7 @@ export default function ShopifyProductCard(props: ShopifyProductCardProps) {
         //@ts-ignore 
         isPressable
         onPress={ handleItemClick }
-        className={cn('w-full h-full bg-background', className)          
+        className={cn('w-full h-full', className)          
       }>
 				<CardBody className="p-0">
 					<SwipeableShopifyProductImages
