@@ -111,6 +111,10 @@ const Typography: React.FC<TypographyProps> = (props) => {
     }
   }, [text])
 
+  useEffect(() => {
+    setText(children)
+  }, [children])
+
   return (
     <div
       ref={contentRef}
