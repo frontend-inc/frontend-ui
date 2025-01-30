@@ -5,7 +5,7 @@ import {
 	ResponsiveGridLayout as RGL,
 	WidthProvider,
 	LayoutItem,
-} from '../../react-grid-layout'
+} from 'packages/react-grid-layout'
 //import './react-grid-layout.css'
 import { RenderDOMNode } from '..'
 import { ReactGridLayoutsType } from '../../types'
