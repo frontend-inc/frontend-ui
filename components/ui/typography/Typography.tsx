@@ -21,7 +21,7 @@ export type TypographyProps = {
 		| 'caption'
 		| 'overline'
 		| 'destructive'
-  color?: 'textPrimary' | 'textSecondary' | 'primary' | 'secondary' | 'destructive' | 'foreground' | 'background'
+  color?: 'textPrimary' | 'textSecondary' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
 	textAlign?: 'left' | 'center' | 'right'
 	className?: string
 	isEditing?: boolean
