@@ -13,10 +13,11 @@ type EmptyProps = {
 	variant?: 'accent' | 'default' | 'primary' | 'secondary' | 'destructive'
 	fill?: boolean
 	className?: string
+  actions?: React.ReactNode 
 }
 
 const Empty: React.FC<EmptyProps> = (props) => {
-	const { icon, fill, title, description, variant, className } = props
+	const { icon, fill, title, description, actions, variant, className } = props
 
 	const textClasses = {
 		accent: 'text-accent',
@@ -66,6 +67,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
 					{description}
 				</Typography>
 			</div>
+      { actions && actions }
 		</div>
 	)
 }
