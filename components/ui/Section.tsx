@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { AuthGuard } from '../../components'
 import { SectionProps } from '../../types'
 import { cn } from '@nextui-org/react'
 import { useTheme } from '../../hooks'

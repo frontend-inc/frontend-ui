@@ -9,7 +9,7 @@ import {
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
 import { Button, ButtonGroup } from '@nextui-org/react'
-import { RenderDOMNode } from '../../components'
+import { Empty, RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
 import { RiCloseLine } from '@remixicon/react'
