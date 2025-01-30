@@ -8,22 +8,24 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from 'frontend-shadcn'
-import { NotificationType } from '../../../types'
 import { Notification } from '../../../components'
 
 type NotificationsProps = {
-	notifications: NotificationType[]
+  notifications: {
+    text: string 
+  }[]
 }
 
-export default function Notifications({ notifications }: NotificationsProps) {
+export default function Notifications(props: NotificationsProps) {
+  const { notifications=[] } = props || []  
 	if (!notifications?.length) return null
 	return (
 		<div className="bg-primary w-full relative top-0 left-0 p-0 pb-[30px] h-11 px-[48px]">
 			<Carousel>
 				<CarouselContent>
-					{notifications.map((notification, i) => (
+					{notifications.map(({ text }, i) => (
 						<CarouselItem key={i}>
-							<Notification notification={notification} />
+							<Notification text={text} />
 						</CarouselItem>
 					))}
 				</CarouselContent>

@@ -17,7 +17,7 @@ type LayoutContainerProps = {
 }
 
 export default function LayoutContainer(props: LayoutContainerProps) {
-	const { children, notifications, requireAuth } = props
+	const { children, requireAuth } = props
 
 	return (
 		<div className="w-full min-h-screen">
@@ -28,7 +28,6 @@ export default function LayoutContainer(props: LayoutContainerProps) {
 			>
 				<div className="flex flex-col w-full">
 					<AuthGuard requireAuth={requireAuth}>
-						<Notifications notifications={notifications} />
 						{children}
 					</AuthGuard>
 				</div>
