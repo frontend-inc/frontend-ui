@@ -17,14 +17,13 @@ const FeatureCard: React.FC<FeatureCardProps> = (props) => {
 	return (
 		<Card
       //@ts-ignore
-      isHoverable
       shadow={"none"}
-      className='w-full h-full'
+      className='w-full h-full bg-background'
 		>
       <CardBody
         className={cn(
-          'flex justify-start py-6 w-full items-start h-full',
-          'flex-row items-start space-x-3 min-h-[90px]',
+          'flex justify-start w-full items-start h-full',
+          'flex-row items-start space-x-3',
         )}      
       >
 			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
