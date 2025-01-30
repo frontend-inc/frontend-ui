@@ -36,7 +36,7 @@ const BlogCard: React.FC<BlogCard> = (props) => {
 			onPress={ onClick }
       className="w-full overflow-hidden"
     >
-      <CardBody className="flex flex-col gap-4 w-full">
+      <CardBody className=" w-full">
         <Image
           label={label}
           src={image}
@@ -44,8 +44,8 @@ const BlogCard: React.FC<BlogCard> = (props) => {
           className='w-full aspect-square'
         />
       </CardBody>
-      <CardFooter className="flex flex-col gap-4 w-full">        
-        <div className="flex flex-col space-y-1">
+      <CardFooter className="flex flex-col space-y-4 w-full">        
+        <div className="flex flex-col space-y-1 w-full">
           { publishedAt && <Typography variant="caption">{publishedAt}</Typography> }
           <Typography variant="h5">{title}</Typography>
           <Typography variant="body2" className="text-foreground/70">
