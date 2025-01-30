@@ -107,7 +107,7 @@ export default function ArrayInput(props: ArrayInputProps) {
               ))}
               <Input
                 type="text"
-                placeholder={placeholder || `Add ${label?.toLowerCase()}`}
+                placeholder={placeholder}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
