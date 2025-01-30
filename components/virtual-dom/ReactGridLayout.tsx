@@ -155,7 +155,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
           const isSelected = activeComponent?.id && (activeComponent?.id === node.id)
 
           // Support live editing for typography components
-          const disablePointerEvents = true // !['RichText','Text','Paragraph'].includes(node.name)
+          const disablePointerEvents = !['RichText','Text','Paragraph'].includes(node.name)
 
 					return (
 						<div
@@ -165,7 +165,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							className={cn(                
 								'grid-controls',
                 'flex flex-row w-full h-full justify-center',
-								'border-2 rounded-md border-transparent hover:border-dashed-2 hover:border-blue-500 hover:bg-blue-500 hover:bg-opacity-10',                
+								'border-2 rounded-md border-transparent hover:border-dashed-2 hover:border-blue-500 ',                
                 isSelected && 'border-blue-500 relative',								
 							)}
 						>
