@@ -18,7 +18,7 @@ const FeatureCard: React.FC<FeatureCardProps> = (props) => {
 		<Card
       //@ts-ignore
       isHoverable
-      shadow={ variant == "flat" ? "none" : "md" }
+      shadow={"none"}
       className='w-full h-full'
 		>
       <CardBody
