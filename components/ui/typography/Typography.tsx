@@ -95,56 +95,8 @@ const Typography: React.FC<TypographyProps> = (props) => {
     right: 'text-right',
   }
 
-  const getCaretPosition = (element: HTMLDivElement | null): number => {
-    if (!element) return 0
-    const selection = window.getSelection()
-    if (!selection || selection.rangeCount === 0) return 0
-    const range = selection.getRangeAt(0)
-    const preRange = range.cloneRange()
-    preRange.selectNodeContents(element)
-    preRange.setEnd(range.endContainer, range.endOffset)
-    return preRange.toString().length
-  }
-
-  const setCaretPosition = (element: HTMLDivElement | null, position: number) => {
-    if (!element) return
-    const range = document.createRange()
-    const selection = window.getSelection()
-    let charCount = 0,
-      node: Node | null = null
-
-    function traverseNodes(node: Node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        charCount += node.textContent?.length || 0
-        if (charCount >= position) {
-          return node
-        }
-      } else {
-        for (const child of Array.from(node.childNodes)) {
-          const result = traverseNodes(child)
-          if (result) return result
-        }
-      }
-      return null
-    }
-
-    node = traverseNodes(element)
-
-    if (node) {
-      const offset = position - (charCount - (node.textContent?.length || 0))
-      range.setStart(node, offset)
-      range.setEnd(node, offset)
-      selection?.removeAllRanges()
-      selection?.addRange(range)
-    }
-  }
-
   const handleInputChange = (ev: React.FormEvent<HTMLDivElement>) => {
-    const caretPosition = getCaretPosition(contentRef.current)
     setText(ev.currentTarget.textContent || '')
-    setTimeout(() => {
-      setCaretPosition(contentRef.current, caretPosition)
-    }, 0)
   }
 
   useEffect(() => {
