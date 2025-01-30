@@ -155,7 +155,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
           const isSelected = activeComponent?.id && (activeComponent?.id === node.id)
 
           // Support live editing for typography components
-          const disablePointerEvents = !['RichText','Text','Paragraph'].includes(node.name)
+          const disablePointerEvents = true // !['RichText','Text','Paragraph'].includes(node.name)
 
 					return (
 						<div
