@@ -199,7 +199,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                   >
                     <RiCloseLine className="w-4 h-4 text-foreground" />
                   </Button>    
-                  <div className="draggable-handle rounded-lg shadow-sm h-8 w-8 flex items-center justify-center">
+                  <div className="draggable-handle rounded-lg h-8 w-8 flex items-center justify-center">
                     <GripVertical className="w-5 h-5 text-foreground" />         
                   </div>                                 
                 </div>
