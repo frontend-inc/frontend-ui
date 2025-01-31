@@ -5,21 +5,57 @@ import {
 	BubbleMenu,
 	useEditor,
 	EditorContent,
-	useCurrentEditor,
+  useCurrentEditor,
+  // @ts-ignore
 } from '@tiptap/react'
-import { Surface } from '@block-editor/components/ui/Surface'
-import { Toolbar } from '@block-editor/components/ui/Toolbar'
+//@ts-ignore
+import { Color } from '@tiptap/extension-color'
+//@ts-ignore
+import { TextStyle } from '@tiptap/extension-text-style'
+import { Surface } from '../../../tiptap/components/ui/Surface'
+import { Toolbar } from '../../../tiptap/components/ui/Toolbar'
 import { RemixIcon } from '../..'
+//@ts-ignore
 import StarterKit from '@tiptap/starter-kit'
+//@ts-ignore
 import TextAlign from '@tiptap/extension-text-align'
+//@ts-ignore
 import Link from '@tiptap/extension-link'
 import { TextInputProps } from '../../../types'
 import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 import { Button } from '@nextui-org/react'
 import * as Popover from '@radix-ui/react-popover'
-import { DropdownButton } from '@block-editor/components/ui/Dropdown'
-import { Icon } from '@block-editor/components/ui/Icon'
+import { DropdownButton } from '../../../tiptap/components/ui/Dropdown'
+import { useTextmenuCommands } from '../../../tiptap/components/menus/TextMenu/hooks/useTextmenuCommands'
+import { useTextmenuStates } from '../../../tiptap/components/menus/TextMenu/hooks/useTextmenuStates'
+
+export const TAILWIND_COLOR_MAP = {
+  black: '#000000',
+  white: '#ffffff',
+	slate: '#64748b',
+	gray: '#6b7280',
+	zinc: '#71717a',
+	neutral: '#737373',
+	stone: '#78716c',
+	red: '#ef4444',
+	orange: '#f97316',
+	amber: '#f59e0b',
+	yellow: '#eab308',
+	lime: '#84cc16',
+	green: '#22c55e',
+	emerald: '#10b981',
+	teal: '#14b8a6',
+	cyan: '#06b6d4',
+	sky: '#0ea5e9',
+	blue: '#3b82f6',
+	indigo: '#6366f1',
+	violet: '#8b5cf6',
+	purple: '#a855f7',
+	fuchsia: '#d946ef',
+	pink: '#ec4899',
+	rose: '#f43f5e',
+}
 
 type ButtonType = {
   icon: string
@@ -39,8 +75,8 @@ const MenuBarButton: React.FC<MenuBarButtonProps> = (props) => {
 		<Button
 			isIconOnly
       size="sm"
-			variant="solid"
-			className={cn(
+			variant="solid"      
+			className={cn(        
 				'bg-white hover:bg-black/10',
 				button.isActive && 'bg-black hover:bg-black/90'
 			)}
@@ -71,32 +107,76 @@ const MenuPopover: React.FC<MenuPopoverProps> = (props) => {
 
   return(
     <Popover.Root open={open} onOpenChange={setOpen}>
-    <Popover.Trigger asChild>
-      <Toolbar.Button
-        className={cn(
-          'bg-white hover:bg-black/10 ',
-          props.isActive && 'bg-black hover:bg-black/90 '
-        )}
-      >
-        <RemixIcon 
-          name={ icon } 
-          className={cn('text-black', props.isActive && 'text-white')}
-        />
-      </Toolbar.Button>
-    </Popover.Trigger>
-    <Popover.Content side="bottom" align="start" sideOffset={8}>
-      <Surface className="p-2 flex flex-col min-w-[16rem]">
-        { buttons.map((button, index) => (
-        <Popover.Close key={ index }>
-          <DropdownButton onClick={button.action}>
-            <RemixIcon name={ button.icon } />
-            { button.label }
-          </DropdownButton>
-        </Popover.Close>
-        ))}
-      </Surface>
-    </Popover.Content>
-  </Popover.Root>           
+      <Popover.Trigger asChild>
+        <Toolbar.Button
+          className={cn(
+            'bg-white hover:bg-black/10 ',
+            props.isActive && 'bg-black hover:bg-black/90 '
+          )}
+        >
+          <RemixIcon 
+            name={ icon } 
+            className={cn('text-black', props.isActive && 'text-white')}
+          />
+        </Toolbar.Button>
+      </Popover.Trigger>
+      <Popover.Content side="bottom" align="start" sideOffset={8}>
+        <Surface className="p-2 flex flex-col min-w-[16rem]">
+          { buttons.map((button, index) => (
+          <Popover.Close key={ index }>
+            <DropdownButton onClick={button.action}>
+              <RemixIcon name={ button.icon } />
+              { button.label }
+            </DropdownButton>
+          </Popover.Close>
+          ))}
+        </Surface>
+      </Popover.Content>
+    </Popover.Root>           
+  )
+}
+
+type MenuColorPickerProps = {
+  activeColor: string
+  buttons: ButtonType[]
+}
+
+const MenuColorPicker: React.FC<MenuColorPickerProps> = (props) => {
+
+  const { activeColor, buttons } = props || {}
+
+  const [open, setOpen] = useState(false)
+  return(
+    <Popover.Root open={open} onOpenChange={setOpen}>
+      <Popover.Trigger asChild>
+        <Toolbar.Button>
+          <div 
+            className={ cn(
+              'w-6 h-6 rounded-xl',
+            )}             
+            style={{
+              backgroundColor: activeColor || 'black'
+            }}
+          />
+        </Toolbar.Button>
+      </Popover.Trigger>
+      <Popover.Content side="bottom" align="start" sideOffset={8}>
+        <Surface className="p-2 grid grid-cols-4 min-w-[16rem]">
+          { buttons.map((button, index) => (
+             <Popover.Close key={ index }>
+              <DropdownButton onClick={button.action}>
+                <div 
+                  className='w-6 h-6 rounded-xl' 
+                  style={{
+                    backgroundColor: button.color 
+                  }}
+                />
+            </DropdownButton>
+          </Popover.Close>
+          ))}          
+        </Surface>
+      </Popover.Content>
+    </Popover.Root>    
   )
 }
 
@@ -165,7 +245,7 @@ const MenuBar = ({ editor }) => {
       icon: 'ri-double-quotes-l',
     }
 	]
-
+  
 	const listOptions = [
 		{
 			label: 'Bullet List',
@@ -180,35 +260,20 @@ const MenuBar = ({ editor }) => {
 			icon: 'ri-list-ordered',
 		},
 	]
-	const redoButtons = [
-		{
-			action: () => editor.chain().focus().undo().run(),
-			isActive: false,
-			icon: 'ri-arrow-go-back-line',
-			label: 'Undo',
-		},
-		{
-			action: () => editor.chain().focus().redo().run(),
-			isActive: false,
-			icon: 'ri-arrow-go-forward-line',
-			label: 'Redo',
-		},
-	]
+
+  const colorButtons = Object.keys(TAILWIND_COLOR_MAP).map((color) => ({
+    action: () => commands.onChangeColor(TAILWIND_COLOR_MAP[color]),
+    isActive: editor.isActive('textStyle', { color: TAILWIND_COLOR_MAP[color] }),
+    color: TAILWIND_COLOR_MAP[color],
+  }))
 
   const getActiveHeaderIcon = () => {
     const activeHeader = headingOptions.find((option) => option.isActive)
     return activeHeader ? activeHeader.icon : 'ri-heading'
   }
 
-  const getActiveTextAlignIcon = () => {
-    const activeTextAlign = textAlignOptions.find((option) => option.isActive)
-    return activeTextAlign ? activeTextAlign.icon : 'ri-align-left'
-  }
-
-  const getActiveListIcon = () => {
-    const activeList = listOptions.find((option) => option.isActive)
-    return activeList ? activeList.icon : 'ri-list-unordered'
-  }
+  const commands = useTextmenuCommands(editor)
+  const states = useTextmenuStates(editor)
 
   const getActiveFormats = (editor) => ({
       h1: editor.isActive('heading', { level: 1 }),
@@ -226,6 +291,10 @@ const MenuBar = ({ editor }) => {
       textAlignLeft: editor.isActive({ textAlign: 'left' }),
       textAlignCenter: editor.isActive({ textAlign: 'center' }),
       textAlignRight: editor.isActive({ textAlign: 'right' }),
+      ...colorButtons.reduce((acc, button) => {
+        acc[button.color] = button.isActive;
+        return acc;
+      }, {}),
   })
     
   const [activeFormats, setActiveFormats] = useState({});
@@ -247,7 +316,12 @@ const MenuBar = ({ editor }) => {
   }, [editor]);
     
 	return (
-		<div className="w-full items-start justify-start md:min-w-[880px] p-2 bg-white rounded-2xl shadow-lg flex flex-wrap gap-2 z-50">
+		<div 
+      className="w-full flex gap-2 items-start justify-start p-2 bg-white rounded-2xl shadow-lg z-50"
+      style={{
+        width: "600px"
+      }}
+    >
       <MenuPopover 
         icon={ getActiveHeaderIcon() } 
         buttons={headingOptions} 
@@ -264,28 +338,17 @@ const MenuBar = ({ editor }) => {
 			{formattingOptions.map((button, index) => (
 				<MenuBarButton key={index} button={button} editor={editor} />
 			))} 
-      <MenuPopover 
-        icon={ getActiveListIcon() } 
-        buttons={listOptions} 
-        editor={editor} 
-        isActive={
-          activeFormats['bulletList'] ||
-          activeFormats['orderedList']
-        }
-        />
-      <MenuPopover 
-        icon={ getActiveTextAlignIcon() } 
-        isActive={
-          activeFormats['textAlignLeft'] ||
-          activeFormats['textAlignCenter'] ||
-          activeFormats['textAlignRight']
-        }
-        buttons={textAlignOptions} 
-        editor={editor} 
-      />
-      { redoButtons.map((button, index) => (
+      { listOptions.map((button, index) => (
         <MenuBarButton key={index} button={button} editor={editor} />
       ))}
+      { textAlignOptions.map((button, index) => (
+        <MenuBarButton key={index} button={button} editor={editor} />
+      ))}      
+      <MenuColorPicker 
+        editor={editor} 
+        activeColor={states.currentColor} 
+        buttons={colorButtons} 
+      />
 		</div>
 	)
 }
@@ -298,6 +361,8 @@ const HTMLEditor: React.FC<TextInputProps> = (props) => {
 
 	const extensions = [
 		StarterKit,
+    TextStyle,
+    Color.configure({ types: ['textStyle'] }),
 		TextAlign.configure({
 			types: ['heading', 'paragraph'],
 			alignments: ['left', 'center', 'right', 'justify'],
@@ -347,7 +412,7 @@ const HTMLEditor: React.FC<TextInputProps> = (props) => {
 	return (
 		<div className="w-full prose flex flex-col space-y-2">
 			{editor && (
-        <div className='w-full z-50'>
+        <div className='w-full md:w-[600px] md:min-w-[600px] z-50'>
           <BubbleMenu editor={editor}>
             <MenuBar editor={editor} />
           </BubbleMenu>
