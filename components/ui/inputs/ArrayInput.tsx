@@ -112,7 +112,7 @@ export default function ArrayInput(props: ArrayInputProps) {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 onBlur={() => addTag(inputValue)}
-                className="text-foreground min-w-12 flex-1 px-0 py-0 text-sm border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="text-foreground min-w-12 flex-1 px-0 py-0 text-sm border-0 outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
               />
           </div>
 				</div>

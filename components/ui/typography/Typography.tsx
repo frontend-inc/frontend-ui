@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { cn } from '@nextui-org/react'
+import {  } from 'use-debounce'
 
 export type TypographyProps = {
   variant:
@@ -45,12 +46,12 @@ const Typography: React.FC<TypographyProps> = (props) => {
   }
 
   const variantClasses = {
-    h1: 'text-5xl md:text-7xl font-bold tracking-tight',
-    h2: 'text-5xl md:text-6xl font-bold tracking-tight',
-    h3: 'text-4xl md:text-5xl font-semibold',
-    h4: 'text-3xl md:text-4xl font-semibold',
-    h5: 'text-2xl md:text-3xl font-semibold',
-    h6: 'text-xl md:text-2xl font-semibold',
+    h1: 'sm:text-5xl text-7xl font-bold tracking-tight',
+    h2: 'sm:text-4xl text-6xl font-bold tracking-tight',
+    h3: 'sm:text-3xl text-5xl font-semibold',
+    h4: 'sm:text-2xl text-4xl font-semibold',
+    h5: 'sm:text-2xl text-3xl font-semibold',
+    h6: 'sm:text-xl text-2xl font-semibold',
     subtitle1: 'text-lg font-semibold leading-relaxed',
     subtitle2: 'text-md font-medium leading-relaxed',
     button: 'text-base',
@@ -87,11 +88,12 @@ const Typography: React.FC<TypographyProps> = (props) => {
   return (
     <div
       className={cn(
-        'whitespace-pre-line w-full',
-        fontFamily[variant],
-        variantClasses[variant],
+        'whitespace-pre-line',
+        'w-full outline-none focus:outline-none focus:ring-0',
+        fontFamily[variant],        
         alignmentClasses[textAlign],
         colorClasses[color],
+        variantClasses[variant],
         className
       )}
     >
