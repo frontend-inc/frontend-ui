@@ -50,7 +50,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 	}
 
 	return (
-		<div className="w-full h-full flex items-center justify-center">
+		<div className="w-full h-full flex items-center justify-center z-10">
 			<div
 				onClick={handleClick ? handleClick : undefined}
 				className={cn(
@@ -68,7 +68,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					src={src || NO_IMAGE_URL}
 					alt={alt || label}
 					className={cn(
-						'w-full h-full',
+						'w-full h-full z-10',
 						objectFit == 'contain' ? 'object-contain' : 'object-cover',
             disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 						className

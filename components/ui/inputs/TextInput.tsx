@@ -66,7 +66,7 @@ export default function TextInput(props: TextInputProps) {
 			type={type}
 			name={name}
 			disabled={disabled}
-			placeholder={placeholder || `Enter ${label}`}
+			placeholder={placeholder}
 			onValueChange={handleInputChange}
 			value={text}
 			autoComplete="off"
