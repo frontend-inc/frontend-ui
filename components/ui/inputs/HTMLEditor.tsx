@@ -12,8 +12,8 @@ import {
 import { Color } from '@tiptap/extension-color'
 //@ts-ignore
 import { TextStyle } from '@tiptap/extension-text-style'
-import { Surface } from '../../../tiptap/components/ui/Surface'
-import { Toolbar } from '../../../tiptap/components/ui/Toolbar'
+import { Surface } from '../../../components/tiptap/components/ui/Surface'
+import { Toolbar } from '../../../components/tiptap/components/ui/Toolbar'
 import { RemixIcon } from '../..'
 //@ts-ignore
 import StarterKit from '@tiptap/starter-kit'
@@ -26,9 +26,9 @@ import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 import { Button } from '@nextui-org/react'
 import * as Popover from '@radix-ui/react-popover'
-import { DropdownButton } from '../../../tiptap/components/ui/Dropdown'
-import { useTextmenuCommands } from '../../../tiptap/components/menus/TextMenu/hooks/useTextmenuCommands'
-import { useTextmenuStates } from '../../../tiptap/components/menus/TextMenu/hooks/useTextmenuStates'
+import { DropdownButton } from '../../../components/tiptap/components/ui/Dropdown'
+import { useTextmenuCommands } from '../../../components/tiptap/components/menus/TextMenu/hooks/useTextmenuCommands'
+import { useTextmenuStates } from '../../../components/tiptap/components/menus/TextMenu/hooks/useTextmenuStates'
 
 export const TAILWIND_COLOR_MAP = {
   black: '#000000',

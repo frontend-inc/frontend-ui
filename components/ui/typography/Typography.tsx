@@ -1,8 +1,7 @@
 'use client'
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { cn } from '@nextui-org/react'
-import { SyntheticEventType } from '../../../types'
-import { useDebounce } from 'use-debounce'
+import {  } from 'use-debounce'
 
 export type TypographyProps = {
   variant:
@@ -23,9 +22,6 @@ export type TypographyProps = {
   color?: 'textPrimary' | 'textSecondary' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
   textAlign?: 'left' | 'center' | 'right'
   className?: string
-  isEditing?: boolean
-  name?: string
-  handleChange?: (ev: SyntheticEventType) => void
   children: React.ReactNode
 }
 
@@ -35,15 +31,9 @@ const Typography: React.FC<TypographyProps> = (props) => {
     textAlign = 'left',
     className,
     children = '',
-    name = 'text',
     color = 'textPrimary',
-    isEditing,
-    handleChange,
   } = props
 
-  const [text, setText] = useState(children)
-  const [debouncedText] = useDebounce(text, 350)
-  const contentRef = useRef<HTMLDivElement>(null)
 
   const colorClasses = {
     textPrimary: 'text-foreground',
@@ -95,43 +85,20 @@ const Typography: React.FC<TypographyProps> = (props) => {
     right: 'text-right',
   }
 
-  const handleInputChange = (ev: React.FormEvent<HTMLDivElement>) => {
-    setText(ev.currentTarget.textContent || '')
-  }
-
-  useEffect(() => {
-    if (handleChange && debouncedText !== children) {
-      handleChange({ target: { name, value: debouncedText } })
-    }
-  }, [debouncedText])
-
-  useEffect(() => {
-    if (contentRef.current && contentRef.current.textContent !== text) {
-      contentRef.current.textContent = text
-    }
-  }, [text])
-
-  useEffect(() => {
-    setText(children)
-  }, [children])
-
   return (
     <div
-      ref={contentRef}
-      contentEditable={isEditing}
-      suppressContentEditableWarning
-      onInput={handleInputChange}
       className={cn(
         'whitespace-pre-line',
         'w-full outline-none focus:outline-none focus:ring-0',
-        isEditing && 'cursor-text',
         fontFamily[variant],
         variantClasses[variant],
         alignmentClasses[textAlign],
         colorClasses[color],
         className
       )}
-    />
+    >
+    { children }
+    </div>
   )
 }
 

@@ -183,10 +183,13 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     components={componentMap}
                   />             
                 </div>   
-							  <div 
+                <div 
+                  className='absolute top-1 right-1 justify-end'
+                >
+							  <div                 
                   className={ cn(
-                    "hidden rounded-lg grid-controls z-50 shadow-sm bg-background flex-row items-center space-x-1 justify-center absolute top-[3px] right-[3px]",
-                    isSelected && 'flex'
+                    "hidden rounded-lg grid-controls z-50 shadow-sm bg-background",
+                    isSelected && 'flex flex-row justify-end space-x-1',
                   )}>      
                   <Button
                     isIconOnly
@@ -195,10 +198,11 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     onPress={() => handleDelete(node)}
                   >
                     <RiCloseLine className="w-4 h-4 text-foreground" />
-                  </Button>                   
+                  </Button>    
                   <div className="draggable-handle rounded-lg shadow-sm h-8 w-8 flex items-center justify-center">
                     <GripVertical className="w-5 h-5 text-foreground" />         
-                  </div>                  
+                  </div>                                 
+                </div>
 							</div>
 				    </div>
 					)
