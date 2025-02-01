@@ -407,7 +407,7 @@ const HTMLEditor: React.FC<TextInputProps> = (props) => {
 	return (
 		<div className="w-full prose flex flex-col space-y-2">
 			{editor && (
-        <div className='w-full md:w-[420px] md:min-w-[420px] z-50'>
+        <div className='w-full z-50'>
           <BubbleMenu editor={editor}>
             <MenuBar editor={editor} />
           </BubbleMenu>
