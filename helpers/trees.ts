@@ -117,18 +117,25 @@ export const walkTree = (root = [], fn) => {
 
 // Find the parent Id of a node 
 export const findParentNode = (nodeId, nodes) => {
-  let parent = null
-  walkTree(nodes, (node) => {
-    if (node.children) {
-      node.children.forEach((child) => {
-        if (child.id === nodeId) {
-          parent = node
+  let parent = null;
+
+  function walkTree(nodes) {
+    for (const node of nodes) {
+      if (node.children) {
+        for (const child of node.children) {
+          if (child.id === nodeId) {
+            parent = node;
+            return; // Exit early when found
+          }
         }
-      })
+        walkTree(node.children); // Recurse into children
+      }
     }
-  })
-  return parent
-}
+  }
+
+  walkTree(nodes);
+  return parent;
+};
 
 export const isDescendant = (nodeId, parentId, nodes) => {
   const parent = findNode(parentId, nodes);

@@ -160,8 +160,8 @@
   background-color: transparent;
   background-size: calc(100% / 24) 54px;
   background-image: 
-      linear-gradient(to right, rgba(46, 126, 255, 0.2) 1px, transparent 1px), 
-      linear-gradient(to bottom, rgba(46, 126, 255, 0.2) 1px, transparent 1px);
+      linear-gradient(to right, rgba(46, 126, 255, 0.25) 1px, transparent 1px), 
+      linear-gradient(to bottom, rgba(46, 126, 255, 0.25) 1px, transparent 1px);
 }
 
 @media (max-width: 640px) {
