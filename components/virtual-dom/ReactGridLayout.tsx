@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect, useMemo } from 'react'
 import {
+  EventCallback,
 	ResponsiveGridLayout as RGL,
 	WidthProvider,
 	LayoutItem,
@@ -54,19 +55,24 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		componentMap,
 	} = props || {}
 
-  const { activeComponent, setActiveComponent } = useEditor()
+  const { 
+    postIframeMessage,
+    activeComponent, 
+    setActiveComponent 
+  } = useEditor()
+
 	const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), [])
 
   const [isDragging, setIsDragging] = useState(false)
 
-  const handleDragStart = ({ event }) => {
+  const handleDragStart = ({ event }: any ) => {
     setIsDragging(true)
     if(event){
       event.stopPropagation()
     }    
   }
 
-  const handleDragStop = ({ event }) => {
+  const handleDragStop = ({ event }: any) => {
     setIsDragging(false)
     if(event){
       event.stopPropagation()

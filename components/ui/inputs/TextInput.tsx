@@ -13,7 +13,7 @@ export default function TextInput(props: TextInputProps) {
 		label,
 		type,
 		name,
-		value = '',
+		value,
 		handleChange,
 		placeholder='',
 		disabled,
@@ -57,9 +57,8 @@ export default function TextInput(props: TextInputProps) {
 	}, [debouncedText])
   
 	useEffect(() => {
-    console.log('value changed', value)
-		setText(value)
-	}, [value])
+    if(value) setText(value);
+	}, [name, value])
 
 	return (
 		<Input
