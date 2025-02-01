@@ -70,7 +70,7 @@ export default function TextInput(props: TextInputProps) {
 			disabled={disabled}
 			placeholder={placeholder}
 			onValueChange={handleInputChange}
-			value={text}
+			value={text ? text : ''}
 			autoComplete="off"
 			errorMessage={error}
 		/>
