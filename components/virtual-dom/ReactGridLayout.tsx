@@ -12,7 +12,7 @@ import { Button } from '@nextui-org/react'
 import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
-import { RiCloseLine, RiDeleteBin7Line, RiSquareFill } from '@remixicon/react'
+import { RiCloseLine, RiDeleteBin7Line, RiFileCopyLine, RiSquareFill } from '@remixicon/react'
 import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
@@ -40,6 +40,7 @@ type ReactGridLayoutProps = {
 	handleDelete: (node: LayoutItemType) => void
 	componentMap: Record<string, React.FC>
 	handleUpdate: (component: any) => void
+  handleDuplicate: (component: any) => void
 }
 
 // https://github.com/react-grid-layout/react-grid-layout
@@ -49,6 +50,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 		onDrop,
 		handleDelete,
 		handleUpdate,
+    handleDuplicate,
 		componentMap,
 	} = props || {}
 
@@ -227,6 +229,14 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                   >
                     <RiDeleteBin7Line className="w-4 h-4 text-foreground" />
                   </Button>    
+                  <Button
+                    isIconOnly
+                    variant="light"
+                    size="sm"                    
+                    onPress={() => handleDuplicate(node)}
+                  >
+                    <RiFileCopyLine className="w-4 h-4 text-foreground" />
+                  </Button>
                   <div className="draggable-handle rounded-lg h-8 w-8 flex items-center justify-center">
                     <GripVertical className="w-5 h-5 text-foreground" />         
                   </div>                                 
