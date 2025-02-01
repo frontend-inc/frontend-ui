@@ -25,25 +25,7 @@ const Section: React.FC<SectionProps> = (props) => {
 		bgOverlay,
 		mode,
 		maxWidth,
-		py = 'sm',
-		px = 'sm',
 	} = props
-
-	const pyClasses = {
-		none: 'py-0',
-		sm: 'py-[24px]',
-		md: 'py-[48px]',
-		lg: 'py-[96px]',
-		xl: 'py-[144px]',
-	}
-
-	const pxClasses = {
-		none: 'px-0',
-		sm: 'px-6',
-		md: 'px-12',
-		lg: 'px-24',
-		xl: 'px-48',
-	}
 
 	const backgroundStyle = bgImage ? { 
     backgroundImage: `url(${bgImage})` } : {
@@ -57,8 +39,8 @@ const Section: React.FC<SectionProps> = (props) => {
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
         theme && mode && `${theme}-${mode}`,
-				pyClasses[py],
-				pxClasses[px],
+				'py-[50px]',
+        'px-2',
 				!bgImage && bgColor,
 				bgImage && bgOverlay &&
 					"after:content-[''] after:absolute after:inset-0 after:bg-black/50",

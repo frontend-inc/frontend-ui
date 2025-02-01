@@ -54,7 +54,7 @@ export default function TextInput(props: TextInputProps) {
 			} as React.ChangeEvent<HTMLInputElement>)
 		}
 	}, [debouncedText])
-
+  
 	useEffect(() => {
 		setText(value)
 	}, [value])

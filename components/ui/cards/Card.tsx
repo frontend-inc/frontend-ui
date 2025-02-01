@@ -46,26 +46,29 @@ const SimpleCard: React.FC<SimpleCardProps> = (props) => {
 		<Card
 			className={cn('w-full overflow-hidden', className)}
 		>
-      <CardBody>
+      <CardBody className='p-0 w-full'>
         <Image 
           disableBorderRadius
           label={label}
           src={image} 
           alt="card-image" 
-          className='aspect-video' 
+          className='aspect-square' 
           objectFit={ objectFit }
         />
-			<CardFooter className="w-full min-h-[80px] flex flex-col space-y-2 justify-start items-start">
-        { title && (
-					<Typography variant="subtitle2" className="text-foreground">
-						{title}
-					</Typography>
-				)}
-				{subtitle && (
-					<Typography variant="body1" className="text-foreground/70">
-						{subtitle}
-					</Typography>
-				)}
+      </CardBody>
+      <CardFooter className="w-full min-h-[140px] justify-between items-start flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 w-full">
+          { title && (
+            <Typography variant="subtitle2" className="text-foreground">
+              {title}
+            </Typography>
+          )}
+          {subtitle && (
+            <Typography variant="body1" className="text-foreground/70">
+              {subtitle}
+            </Typography>
+          )}
+        </div>
 				{buttonText && (
 					<Button 
             fullWidth             
@@ -75,7 +78,6 @@ const SimpleCard: React.FC<SimpleCardProps> = (props) => {
 					</Button>
 				)}
 			</CardFooter>
-      </CardBody>
 		</Card>
 	)
 }

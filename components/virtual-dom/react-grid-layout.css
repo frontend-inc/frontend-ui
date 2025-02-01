@@ -53,6 +53,7 @@
 	user-select: none;
 }
 
+
 .react-grid-item > .react-resizable-handle {
 	position: absolute;
 	width: 20px;
@@ -95,8 +96,8 @@
 }
 
 .react-grid-item > .react-resizable-handle.react-resizable-handle-ne {
-	top: 0;
-	right: 0;
+	top: -5px;
+	right: -5px;
 	cursor: ne-resize;
 	transform: rotate(270deg);
 }
@@ -135,11 +136,6 @@
 	transform: rotate(45deg);
 }
 
-.react-grid-item:hover > .grid-controls {
-	visibility: visible;
-}
-
-
 .react-grid-item > .react-resizable-handle {
   opacity: 0;
 }
@@ -147,3 +143,31 @@
 .react-grid-item:hover > .react-resizable-handle {
   opacity: 1;
 }
+
+/* Custom CSS */
+.react-grid-item:hover {
+  /*outline: 2px solid #2563eb;*/
+}
+
+.react-grid-item:hover > .grid-controls {
+	visibility: visible;
+}
+
+.grid-container {
+  width: 100%;
+  height: 100vh;
+  background-position: -2px -2px;
+  background-color: transparent;
+  background-size: calc(100% / 24) 54px;
+  background-image: 
+      linear-gradient(to right, rgba(46, 126, 255, 0.2) 1px, transparent 1px), 
+      linear-gradient(to bottom, rgba(46, 126, 255, 0.2) 1px, transparent 1px);
+}
+
+@media (max-width: 640px) {
+  .grid-container {
+      background-size: calc(100% / 8) 50px;
+  }
+}
+
+

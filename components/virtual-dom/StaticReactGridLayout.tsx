@@ -59,7 +59,7 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 
 	if (!nodes || !Array.isArray(nodes)) return null
 	return (
-		<div className="w-full h-full min-h-[200px]">
+		<div className="w-full">
 			<ResponsiveGridLayout
 				className="static-grid"
 				rowHeight={ROW_HEIGHT}

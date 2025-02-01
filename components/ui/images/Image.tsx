@@ -10,8 +10,6 @@ export type ImageCardProps = {
 	alt?: string
 	label?: string
 	handleClick?: () => void
-	height?: number
-	width?: number
 	fullWidth?: boolean
 	isBlurred?: boolean
 	isZoomed?: boolean
@@ -34,8 +32,6 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		disableBorderRadius = false,
 		enableGradient,
 		enableOverlay,
-		height = 0,
-		width = 0,
 		className,
 		objectFit = 'cover',
 		radius = 'large',
@@ -50,7 +46,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 	}
 
 	return (
-		<div className="w-full h-full flex items-center justify-center">
+		<div className="z-0 w-full h-full flex items-center justify-center">
 			<div
 				onClick={handleClick ? handleClick : undefined}
 				className={cn(
@@ -68,7 +64,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					src={src || NO_IMAGE_URL}
 					alt={alt || label}
 					className={cn(
-						'w-full h-full',
+						'w-full h-full z-0',
 						objectFit == 'contain' ? 'object-contain' : 'object-cover',
             disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 						className

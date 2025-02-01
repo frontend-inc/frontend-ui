@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from '@nextui-org/react'
 import { SocialIconButtons, Typography } from '../..'
-import { AvatarImage } from '../..'
+import { Image } from '../..'
 import { Button, Card, CardBody, CardFooter } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 import { SocialLinkType } from '@/types'
@@ -43,15 +43,15 @@ const TeamCard: React.FC<TeamCardProps> = (props) => {
 			onPress={ onClick }
       className="w-full overflow-hidden"
     >
-      <CardBody className='w-full'>    
-        <div className='w-full flex items-center justify-center'>
-          <div className='flex mx-auto w-full max-w-[240px] px-4'>
-            <AvatarImage
-              src={image}
-              alt={name}
-            />
-          </div>
-        </div>
+      <CardBody className='w-full p-0'>            
+        <Image
+          src={image}
+          alt={name}
+          disableBorderRadius
+          className='aspect-square'
+        />
+      </CardBody>
+      <CardFooter className='w-full flex flex-col space-y-2 items-between min-h-[180px]'>
         <div className="w-full h-full flex flex-col space-y-2">
           <SocialIconButtons 
             links={ socialLinks }
@@ -65,18 +65,19 @@ const TeamCard: React.FC<TeamCardProps> = (props) => {
               {description}
             </Typography>
           )}          
-          { buttonText && (
-            <Button 
-              fullWidth    
-              variant="solid"
-              color="primary"         
-              onPress={onClick}
-            >
-              { buttonText }  
-            </Button>
-          )}
         </div>
-      </CardBody>
+        { buttonText && (
+          <Button 
+            fullWidth    
+            variant="solid"
+            color="primary"  
+            className="min-h-[40px]"       
+            onPress={onClick}
+          >
+            { buttonText }  
+          </Button>
+        )}
+      </CardFooter>
     </Card>
   )
 }

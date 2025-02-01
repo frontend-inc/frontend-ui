@@ -344,11 +344,6 @@ const MenuBar = ({ editor }) => {
       { textAlignOptions.map((button, index) => (
         <MenuBarButton key={index} button={button} editor={editor} />
       ))}      
-      <MenuColorPicker 
-        editor={editor} 
-        activeColor={states.currentColor} 
-        buttons={colorButtons} 
-      />
 		</div>
 	)
 }
@@ -412,7 +407,7 @@ const HTMLEditor: React.FC<TextInputProps> = (props) => {
 	return (
 		<div className="w-full prose flex flex-col space-y-2">
 			{editor && (
-        <div className='w-full md:w-[600px] md:min-w-[600px] z-50'>
+        <div className='w-full md:w-[420px] md:min-w-[420px] z-50'>
           <BubbleMenu editor={editor}>
             <MenuBar editor={editor} />
           </BubbleMenu>

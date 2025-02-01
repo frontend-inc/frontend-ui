@@ -19,6 +19,7 @@ const ListItem: React.FC<ListItemProps> = (props) => {
 	return (
 		<div
 			className={cn(
+        'p-2',
 				'flex justify-start py-6 w-full items-start h-full',
 				'flex-row items-start space-x-3 min-h-[90px]',
 				variant == 'outline' && 'border-2 border-divider rounded-lg p-6',

@@ -12,7 +12,7 @@ import { Button } from '@nextui-org/react'
 import { RenderDOMNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
-import { RiCloseLine } from '@remixicon/react'
+import { RiCloseLine, RiDeleteBin7Line, RiSquareFill } from '@remixicon/react'
 import { cn } from '@nextui-org/react'
 import { useDebounce } from 'use-debounce'
 import { isEqual } from 'lodash'
@@ -20,9 +20,9 @@ import { useEditor } from 'hooks'
 import { SyntheticEventType } from '../../types'
 import { VirtualDomType } from 'types'
 
-export const ROW_HEIGHT = 48
-export const MARGIN = [8, 8]
-export const COLS = { md: 12, sm: 4 }
+export const ROW_HEIGHT = 50
+export const MARGIN = [4, 4]
+export const COLS = { md: 24, sm: 8 }
 export const BREAKPOINTS = { md: 640, sm: 0 }
 
 type LayoutItemType = LayoutItem & {
@@ -42,6 +42,7 @@ type ReactGridLayoutProps = {
 	handleUpdate: (component: any) => void
 }
 
+// https://github.com/react-grid-layout/react-grid-layout
 const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	const {
 		nodes = [],
@@ -54,6 +55,21 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
   const { activeComponent, setActiveComponent } = useEditor()
 	const ResponsiveGridLayout = useMemo(() => WidthProvider(RGL), [])
 
+  const [isDragging, setIsDragging] = useState(false)
+
+  const handleDragStart = ({ event }) => {
+    setIsDragging(true)
+    if(event){
+      event.stopPropagation()
+    }    
+  }
+
+  const handleDragStop = ({ event }) => {
+    setIsDragging(false)
+    if(event){
+      event.stopPropagation()
+    }
+  }
 
 	const formatLayout = (nodes) => {
 		if (!Array.isArray(nodes)) return []
@@ -111,7 +127,6 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 	}, [debouncedLayouts])
 
 	const handleClick = (node: VirtualDomType, ev: React.MouseEvent) => {
-    ev.stopPropagation()
     setActiveComponent(node)
 		window.parent.postMessage(
 			{
@@ -120,28 +135,44 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 			},
 			'*'
 		)
+    ev.stopPropagation()
   }
 
 	return (
-		<div className="w-full h-full min-h-[200px]">
+		<div 
+      className={cn(
+        "relative w-full",
+        isDragging && 'display-grid-columns'
+      )}>    
+      {isDragging && (
+        <div className="absolute top-3 left-3 grid-container" />    
+      )}
 			<ResponsiveGridLayout
 				className="react-grid-layout"
 				rowHeight={ROW_HEIGHT}
 				breakpoints={BREAKPOINTS}
 				cols={COLS}
+        //@ts-ignore
 				layouts={layouts}
+        //@ts-ignore
         margin={MARGIN}
         measureBeforeMount
+        onDragStart={handleDragStart}
+        onDragStop={handleDragStop}
+        onResizeStart={handleDragStart}
+        onResizeStop={handleDragStop}
 				onLayoutChange={onLayoutChange}
-				compactType={'vertical'}
+        //@ts-ignore
+				compactType={null}
+        preventCollision
 				draggableHandle=".draggable-handle"
+        resizeHandles={['se','sw','nw']}
 				isDroppable={false}
 			>
 				{nodes?.map((node) => {
 					
           const handleChange = (ev: SyntheticEventType) => {
-						const { name, value } = ev.target
-						
+						const { name, value } = ev.target						
             let newComponent = {
               ...node,
               props: {
@@ -155,7 +186,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
           const isSelected = activeComponent?.id && (activeComponent?.id === node.id)
 
           // Support live editing for typography components
-          const disablePointerEvents = !['RichText','Text','Paragraph'].includes(node.name)
+          const disablePointerEvents = !['RichText'].includes(node.name)
 
 					return (
 						<div
@@ -163,10 +194,9 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							key={node.id}
               data-id={node.id}
 							className={cn(                
-								'grid-controls',
                 'flex flex-row w-full h-full justify-center',
-								'border-2 rounded-md border-transparent hover:border-dashed-2 hover:border-blue-500 ',                
-                isSelected && 'border-blue-500 relative',								
+								'outline outline-2 outline-transparent hover:outline-blue-500 ',                
+                isSelected && 'outline-blue-500',								
 							)}
 						>
               <div 
@@ -183,9 +213,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     components={componentMap}
                   />             
                 </div>   
-                <div 
-                  className='absolute top-1 right-1 justify-end'
-                >
+                <div className='grid-controls absolute top-1 right-1 justify-end'>
 							  <div                 
                   className={ cn(
                     "hidden rounded-lg grid-controls z-50 shadow-sm bg-background",
@@ -197,7 +225,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                     size="sm"                    
                     onPress={() => handleDelete(node)}
                   >
-                    <RiCloseLine className="w-4 h-4 text-foreground" />
+                    <RiDeleteBin7Line className="w-4 h-4 text-foreground" />
                   </Button>    
                   <div className="draggable-handle rounded-lg h-8 w-8 flex items-center justify-center">
                     <GripVertical className="w-5 h-5 text-foreground" />         

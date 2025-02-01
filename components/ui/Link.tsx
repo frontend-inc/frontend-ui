@@ -23,9 +23,7 @@ const Link: React.FC<LinkProps> = (props) => {
     className  
   } = props 
 
-  const onClick = () => {
-    console.log('Link clicked')
-  }
+  const onClick = useNavigate({ url, path })
 
   return(
     <NextUILink 
