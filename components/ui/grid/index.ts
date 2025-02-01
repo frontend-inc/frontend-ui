@@ -1,1 +1,1 @@
-export { Grid, GridItem } from './Grid'
+export { Grid, GridItem } from './GridLayout'
