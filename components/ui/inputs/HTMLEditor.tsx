@@ -392,7 +392,8 @@ const HTMLEditor: React.FC<TextInputProps> = (props) => {
 	useEffect(() => {
 		if (isInitialMount.current) {
 			if (value) {
-				setText(value)
+        console.log('value', value)
+				//setText(value)
 			}
 			isInitialMount.current = false
 		}

@@ -20,7 +20,7 @@ const RichText: React.FC<RichTextProps> = (props) => {
 	) : (
 		<HTMLEditor     
       name="html" 
-      value={html} 
+      value={""} 
       handleChange={handleChange} 
     />
 	)
