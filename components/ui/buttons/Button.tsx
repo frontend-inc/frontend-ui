@@ -22,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		variant = 'solid',
 		size = 'md',
 		label,
+    children,
 		...rest
 	} = props
 
@@ -53,6 +54,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				onPress={handleClick}
 			>
 				{label}
+        { children }
 			</NextUIButton>
 			{url && (
 				<>
