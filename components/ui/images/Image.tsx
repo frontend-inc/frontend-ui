@@ -33,6 +33,8 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 		enableGradient,
 		enableOverlay,
 		className,
+    height=200,
+    width=200,
 		objectFit = 'cover',
 		radius = 'large',
 	} = props || {}
@@ -50,7 +52,6 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 			<div
 				onClick={handleClick ? handleClick : undefined}
 				className={cn(
-					'w-full h-full',
 					handleClick ? 'cursor-pointer' : '',
 					disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 					'overflow-hidden',
@@ -63,8 +64,10 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					isZoomed={isZoomed}
 					src={src || NO_IMAGE_URL}
 					alt={alt || label}
+          width={width}
+          height={height}
 					className={cn(
-						'w-full h-full z-0',
+						'z-0',
 						objectFit == 'contain' ? 'object-contain' : 'object-cover',
             disableBorderRadius ? 'rounded-none' : radiusClasses[radius],
 						className

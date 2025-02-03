@@ -20,7 +20,8 @@ const Link: React.FC<LinkProps> = (props) => {
     url,
     path,
     text,
-    className  
+    className,
+    children  
   } = props 
 
   const onClick = useNavigate({ url, path })
@@ -35,6 +36,7 @@ const Link: React.FC<LinkProps> = (props) => {
       href="#"
     >
       { text }
+      { children }
     </NextUILink>
   )
 }

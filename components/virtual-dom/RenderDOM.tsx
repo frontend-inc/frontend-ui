@@ -24,8 +24,24 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
 		throw new Error('Nodes is not an array')
 	}
 
-	return nodes?.map((node, i) =>
-		node?.name == 'Grid' ? (
+	return nodes?.map((node, i) =>		
+    <RenderDOMNode
+      key={i}
+      component={node?.name}
+      children={node?.children}
+      props={{
+        ...node.props,
+        ...(injectProps[node?.name] || {}),
+      }}
+      components={components}
+    />		
+	)
+}
+
+export default RenderDOM
+
+/* 
+  node?.name == 'Grid' ? (
       <Section key={i} {...node.props} maxWidth="xl">
         <StaticReactGridLayout
           nodes={node?.children || []}
@@ -33,26 +49,4 @@ const RenderDOM: React.FC<RenderDomProps> = (props) => {
         />
       </Section>    
 		) : (
-			<RenderDOMNode
-				key={i}
-				component={node?.name}
-				children={node?.children}
-				props={{
-					...node.props,
-					...(injectProps[node?.name] || {}),
-				}}
-				components={components}
-			/>
-		)
-	)
-}
-
-export default RenderDOM
-
-/* 
-  <RenderDOMGrid 
-    key={ node.id }
-    node={ node }
-    components={ components }
-  />
 */

@@ -32,7 +32,6 @@ export default function TextInput(props: TextInputProps) {
 	})
 
 	const handleInputChange = (value) => {
-    console.log('Input changed', value)
 		clearError()
 		setText(value)
 		if (disableDebounce) {

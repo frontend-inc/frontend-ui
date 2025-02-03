@@ -39,14 +39,21 @@ const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
 
 	const Component = components[component] || Div
 
-
+  const isImage = component == 'Image' || component == 'img'
+  if(isImage){
+    return(<Component			
+      { ...props }   
+      { ...rest }   
+			className={cn(props?.className)}
+		/>)
+  }
 	return (
 		<Component			
       { ...props }   
       { ...rest }   
 			className={cn(props?.className)}
 		>
-			{children?.map((childNode, index) => (
+			{ children?.map((childNode, index) => (
 				<RenderDOMNode
 					key={index}
 					component={childNode?.name}
