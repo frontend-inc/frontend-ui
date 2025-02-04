@@ -1,18 +1,20 @@
+'use client'
 import React from 'react'
-import { Image as HeroUIImage } from '@nextui-org/react'
-import { useDebounce } from 'use-debounce'
+import { Image, Skeleton } from "@nextui-org/react";
+import { useEffect, useRef, useState } from "react";
 
-const DebouncedImage = (props) => {
-  const { src } = props
-  const [debouncedSrc] = useDebounce(src, 1000)
-  return(
-    <HeroUIImage 
-      height={ 200 }
-      width={ 200 }
-      { ...props }
-      src={ debouncedSrc} 
-    /> 
-)
+interface StableImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+function StableImage({ src, ...rest }: StableImageProps) {  
+  if(!src){
+    <Skeleton className='w-full h-full' />
+  }
+  return <Image src={ src } { ...rest }/>;
 }
 
 const H1 = (props) => {
@@ -76,5 +78,5 @@ export {
   UL,
   LI,
   OL,
-  DebouncedImage
+  StableImage
 }
