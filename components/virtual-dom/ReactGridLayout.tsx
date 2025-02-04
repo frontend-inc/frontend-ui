@@ -202,7 +202,7 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
 							key={node.id}
               data-id={node.id}
 							className={cn(                
-                'flex flex-row w-full h-full justify-center',
+                'flex flex-row w-full h-full justify-center overflow-hidden',
 								'outline outline-2 outline-transparent hover:outline-blue-500 ',                
                 isSelected && 'outline-blue-500',								
 							)}

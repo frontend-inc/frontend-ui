@@ -25,6 +25,10 @@ function sanitizeVirtualDom(nodes = [], parentId = null) {
       parent_id: parentId,
       props: node?.props || {},
       label: node?.label || node?.name,
+      layouts: node?.layouts || {
+        sm: { w: 1, x: 0, y: 0, h: 1 },
+        md: { w: 6, x: 0, y: 0, h: 3 },
+      },
       children: node?.children,
       isOpen: node?.isOpen || false,
     }
