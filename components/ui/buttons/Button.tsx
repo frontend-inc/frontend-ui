@@ -8,7 +8,7 @@ import { ButtonType } from '../../../types'
 
 type ButtonProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
-	label: string
+	text: string
 }
 
 
@@ -21,8 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		color = 'default',
 		variant = 'solid',
 		size = 'md',
-		label,
-    children,
+		text,
 		...rest
 	} = props
 
@@ -54,8 +53,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				onPress={handleClick}
         className='w-full'
 			>
-				{label}
-        { children }
+				{text}
 			</NextUIButton>
 			{url && (
 				<>
