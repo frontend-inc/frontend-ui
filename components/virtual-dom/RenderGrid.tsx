@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import RenderDOMNode from './RenderDOMNode'
+import RenderNode from './RenderNode'
 import { Section, Grid, GridItem } from '..'
 
 export type VirtualNodeType = {
@@ -21,7 +21,7 @@ type RenderDomProps = {
 	components: {}
 }
 
-const RenderDOMGrid: React.FC<RenderDomProps> = (props) => {
+const RenderGrid: React.FC<RenderDomProps> = (props) => {
 	const { node, injectProps = {}, components = {} } = props || {}
 
 	return (
@@ -29,15 +29,15 @@ const RenderDOMGrid: React.FC<RenderDomProps> = (props) => {
 			<Grid>
 				{node?.children?.map((childNode) => (
 					<GridItem key={childNode.id} layouts={childNode?.layouts}>
-						<RenderDOMNode
-							component={childNode?.name}
+						<RenderNode
+							type={childNode?.name}
 							classNames={childNode?.classNames}
 							children={childNode?.children}
 							props={{
 								...childNode.props,
 								...(injectProps[childNode?.name] || {}),
 							}}
-							components={components}
+							componentMap={components}
 						/>
 					</GridItem>
 				))}
@@ -46,4 +46,4 @@ const RenderDOMGrid: React.FC<RenderDomProps> = (props) => {
 	)
 }
 
-export default RenderDOMGrid
+export default RenderGrid

@@ -1,5 +1,5 @@
-export { default as RenderDOM } from './RenderDOM'
-export { default as RenderDOMNode } from './RenderDOMNode'
+export { default as Render } from './Render'
+export { default as RenderNode } from './RenderNode'
 export { default as ReactGridLayout } from './ReactGridLayout'
 export { default as StaticReactGridLayout } from './StaticReactGridLayout'
 export { default as RenderElement } from './RenderElement'

@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/react'
 import { Image, Typography } from '../..'
 import { useNavigate } from '../../../hooks'
-import { Button } from 'frontend-shadcn'
+import { Button } from '@nextui-org/react'
 
 export type CardProps = {
   label?: string

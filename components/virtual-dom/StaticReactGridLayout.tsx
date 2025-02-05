@@ -7,7 +7,7 @@ import {
 	LayoutItem,
 } from 'packages/react-grid-layout'
 //import './react-grid-layout.css'
-import { RenderDOMNode } from '..'
+import { RenderNode } from '..'
 import { ReactGridLayoutsType } from '../../types'
 import { 
   ROW_HEIGHT,
@@ -75,11 +75,11 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 						key={node.id}
 						className="p-1 px-3 relative flex flex-row w-full h-full"
 					>
-						<RenderDOMNode
-							component={node.name}
+						<RenderNode
+							type={node.name}
 							props={node.props}
 							classNames={node.classNames}
-							components={componentMap}
+							componentMap={componentMap}
 						/>
 					</div>
 				))}

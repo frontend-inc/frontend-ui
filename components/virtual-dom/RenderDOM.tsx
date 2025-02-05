@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useMemo } from 'react'
-import RenderDOMNode from './RenderDOMNode'
-import RenderDOMGrid from './RenderDOMGrid'
+import RenderNode from './RenderNode'
 import { Section, StaticReactGridLayout } from '../../components'
 
 export type VirtualNodeType = {
@@ -13,35 +12,32 @@ export type VirtualNodeType = {
 }
 
 type RenderDomProps = {
-	nodes: VirtualNodeType[]
+	node: VirtualNodeType
 	injectProps: Record<string, React.FC>
-	components: {}
+	componentMap: {}
 }
 
 const RenderDOM: React.FC<RenderDomProps> = (props) => {
-	const { nodes = [], injectProps = {}, components = {} } = props || {}
-	if (!nodes || !Array.isArray(nodes)) {
-		throw new Error('Nodes is not an array')
-	}
+	const { node, injectProps = {}, componentMap = {} } = props || {}	
 
-	return nodes?.map((node, i) =>
+	return (
 		node?.name == 'Grid' ? (
       <Section key={i} {...node.props} maxWidth="xl">
         <StaticReactGridLayout
           nodes={node?.children || []}
-          componentMap={components}
+          componentMap={componentMap}
         />
       </Section>    
 		) : (
-			<RenderDOMNode
+			<RenderNode
 				key={i}
-				component={node?.name}
+				type={node?.name}
 				children={node?.children}
 				props={{
 					...node.props,
 					...(injectProps[node?.name] || {}),
 				}}
-				components={components}
+				componentMap={componentMap}
 			/>
 		)
 	)

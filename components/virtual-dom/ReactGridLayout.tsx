@@ -10,7 +10,7 @@ import {
 import './react-grid-layout.css'
 import 'react-resizable/css/styles.css'
 import { Button } from '@nextui-org/react'
-import { RenderDOMNode } from '../../components'
+import { RenderNode } from '../../components'
 import { GripVertical } from 'lucide-react'
 import { ReactGridLayoutsType } from '../../types'
 import { RiCloseLine, RiDeleteBin7Line, RiFileCopyLine, RiSquareFill } from '@remixicon/react'
@@ -212,13 +212,13 @@ const ReactGridLayout: React.FC<ReactGridLayoutProps> = (props) => {
                   'flex flex-row w-full h-full justify-center',
                   disablePointerEvents && 'pointer-events-none'
                 )}>
-                  <RenderDOMNode
+                  <RenderNode
                     isEditing
                     handleChange={handleChange}
-                    component={node.name}
+                    type={node.name}
                     props={node.props}
                     classNames={node.classNames}
-                    components={componentMap}
+                    componentMap={componentMap}
                   />             
                 </div>   
                 <div className='grid-controls absolute top-1 right-1 justify-end'>

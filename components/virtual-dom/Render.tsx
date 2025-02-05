@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useLayoutEffect, useRef } from 'react'
+import React from 'react'
+import RenderNode from './RenderNode'
 import { cn } from '@nextui-org/react'
 
 const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
@@ -9,56 +10,52 @@ const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 }
 
 export type VirtualNodeType = {
+  id: string
 	name: string
 	props?: any
 	classNames?: string[]
 	children?: VirtualNodeType[]
 }
 
-type RenderDomProps = {
+type RenderNodeProps = {
 	isEditing?: boolean
 	handleChange?: (ev: any) => void
-	name?: string
-	component: string
-	props?: any
-	classNames?: string[]
-	children?: VirtualNodeType[]
-	components: {}
+  root: VirtualNodeType
+	componentMap: {}
 }
 
-const ROW_HEIGHT = 40 
-
-const RenderDOMNode: React.FC<RenderDomProps> = (parentProps) => {
+const RenderDOM: React.FC<RenderNodeProps> = (parentProps) => {
 	const {
-		component,
-		props,
-		children,
-		components,
-		...rest
+		root,
+		componentMap,
 	} = parentProps || {}
 
-	const Component = components[component] || Div
+  const { 
+    name,
+    props,
+    children,
+    ...rest
+  } = root || {}
 
+	const Component = componentMap[name] || Div
 
-	return (
+  return (
 		<Component			
       { ...props }   
       { ...rest }   
 			className={cn(props?.className)}
 		>
-			{children?.map((childNode, index) => (
-				<RenderDOMNode
+			{ children?.map((childNode, index) => (
+				<RenderNode
 					key={index}
-					component={childNode?.name}
-					classNames={childNode?.classNames}
+					type={childNode?.name}
 					props={childNode?.props}
 					children={childNode?.children}
-					components={components}
-					{...rest}
+					componentMap={componentMap}
 				/>
 			))}
 		</Component>
 	)
 }
 
-export default RenderDOMNode
+export default RenderDOM

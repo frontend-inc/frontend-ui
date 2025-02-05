@@ -52,6 +52,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				startContent={icon && <RemixIcon name={icon} />}
 				/* @ts-ignore */
 				onPress={handleClick}
+        className='w-full'
 			>
 				{label}
         { children }

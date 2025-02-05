@@ -13,41 +13,39 @@ export function bottom(layout: ReactGridLayoutType[]): number {
   return max;
 }
 
-// Ensure that all nodes have an ID and other prop values
-function sanitizeVirtualDom(nodes = [], parentId = null) {
-  const nodesArray = Array.isArray(nodes) ? nodes : [nodes]
-  return nodesArray.map((node) => {
+function sanitizeNode(tree, parentId = null) {
+  if (!tree || typeof tree !== "object") {
+    return null; // Ensure tree is valid
+  }
 
-    let sanitizedNode = {
-      // @ts-ignore
-      id: node?.id || nanoid(),
-      name: node?.name || '',
-      parent_id: parentId,
-      props: node?.props || {},
-      label: node?.label || node?.name,
-      children: node?.children,
-      layouts: node?.layouts || {
-        sm: { w: 1, x: 0, y: 0, h: 1 },
-        md: { w: 6, x: 0, y: 0, h: 3 },
-      },
-      isOpen: node?.isOpen || false,
-    }
+  const sanitizedNode = {
+    id: tree?.id || nanoid(),
+    name: tree?.name || "",
+    parent_id: parentId,
+    props: typeof tree?.props === "object" && tree?.props !== null ? { ...tree.props } : {},
+    label: tree?.label || tree?.name || "",
+    layouts: typeof tree?.layouts === "object" && tree?.layouts !== null 
+      ? { ...tree.layouts } 
+      : {
+          sm: { w: 1, x: 0, y: 0, h: 1 },
+          md: { w: 6, x: 0, y: 0, h: 3 },
+        },
+    children: Array.isArray(tree?.children) ? tree.children : [],
+    isOpen: tree?.isOpen || false,
+  };
 
-    if (Array.isArray(sanitizedNode.children)) {
-      sanitizedNode.children = sanitizeVirtualDom(
-        sanitizedNode.children,
-        sanitizedNode.id
-      )
-    }
+  // Recursively sanitize children
+  sanitizedNode.children = sanitizedNode.children.length
+    ? sanitizedNode.children.map((child) => sanitizeNode(child, sanitizedNode.id))
+    : [];
 
-    return sanitizedNode
-  })
+  return sanitizedNode;
 }
 
 export const setLocalVirtualDom = (appId, pageId, virtualDom: any[]) => {
   if(!appId || !pageId) return;
   if(typeof window === undefined) return []
-  const sanitizedDom = sanitizeVirtualDom(virtualDom)
+  const sanitizedDom = sanitizeNode(virtualDom)
   const storageData = JSON.stringify(sanitizedDom)
   if(localStorage && storageData){
     localStorage.setItem(`${appId}-${pageId}-vdom`, storageData)
@@ -62,6 +60,6 @@ export const getLocalVirtualDom = (appId, pageId) => {
   if(storage && storage !== 'undefined'){
     return JSON.parse(storage)
   }else{
-    return []
+    return {}
   }	
 }
