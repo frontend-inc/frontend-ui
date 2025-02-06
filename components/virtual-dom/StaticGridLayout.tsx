@@ -72,6 +72,7 @@ const StaticReactGridLayout: React.FC<StaticReactGridLayoutProps> = (props) => {
 				{nodes?.map((node) => (
 					<div
 						key={node.id}
+            id={`component-${node.id}`}
 						className="p-1 px-3 relative flex flex-row w-full h-full"
 					>
 						<RenderNode

@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { cn } from '@nextui-org/react'
-import { ScrollShadow } from '@nextui-org/react'
 
 export type TypographyProps = {
   variant:
@@ -87,12 +86,9 @@ const Typography: React.FC<TypographyProps> = (props) => {
   }
 
   return (
-    <ScrollShadow 
-      style={{ 
-        height: "100%" 
-      }}
+    <div 
       className={cn(
-        'whitespace-pre-line overflow-y-scroll',
+        'whitespace-pre-line',
         'w-full outline-none focus:outline-none focus:ring-0',
         color,
         fontFamily[variant],     
@@ -103,7 +99,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
       )}
     >
       { children }
-    </ScrollShadow>
+    </div>
   )
 }
 

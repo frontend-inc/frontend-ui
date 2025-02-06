@@ -43,12 +43,6 @@ const RenderNode: React.FC<RenderNodeProps> = (parentProps) => {
   const isImage = type == 'Image' || type == 'img'
   const isGrid = type == 'Grid' 
 
-  if(isGrid){
-    <StaticGridLayout 
-      nodes={ children }
-      componentMap={ componentMap }
-    />
-  }  
   if(isImage){
     return(<Component			
       { ...injectProps }
@@ -57,6 +51,12 @@ const RenderNode: React.FC<RenderNodeProps> = (parentProps) => {
 			className={cn(props?.className)}
 		/>)
   }
+  if(isGrid){
+    <StaticGridLayout 
+      nodes={ children }
+      componentMap={ componentMap }
+    />
+  }  
 	return (
 		<Component			
       { ...injectProps }
