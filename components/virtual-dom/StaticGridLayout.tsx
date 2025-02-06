@@ -14,7 +14,6 @@ export const MARGIN = [4, 4]
 export const COLS = { md: 24, sm: 8 }
 export const BREAKPOINTS = { md: 640, sm: 0 }
 
-
 const ResponsiveGridLayout = WidthProvider(RGL)
 
 type LayoutItemType = LayoutItem & {

@@ -2,8 +2,11 @@
 
 import React from 'react'
 import RenderNode from './RenderNode'
+<<<<<<< Updated upstream
 import StaticGridLayout from './StaticGridLayout'
 import { Section } from '../../components'
+=======
+>>>>>>> Stashed changes
 import { cn } from '@nextui-org/react'
 
 const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
@@ -46,6 +49,7 @@ const RenderDOM: React.FC<RenderNodeProps> = (parentProps) => {
       { ...props }   
       { ...rest }   
 			className={cn(props?.className)}
+<<<<<<< Updated upstream
 		>      
 			{ children?.map((childNode, index) => (
         childNode?.name == 'Grid' ?
@@ -56,6 +60,10 @@ const RenderDOM: React.FC<RenderNodeProps> = (parentProps) => {
             componentMap={ componentMap }
           /> 
         </Section>:
+=======
+		>
+			{ children?.map((childNode, index) => (
+>>>>>>> Stashed changes
 				<RenderNode
 					key={index}
 					type={childNode?.name}
