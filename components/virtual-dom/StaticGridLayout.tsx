@@ -6,7 +6,6 @@ import {
 	WidthProvider,
 	LayoutItem,
 } from 'packages/react-grid-layout'
-//import './react-grid-layout.css'
 import RenderNode  from './RenderNode'
 
 export const ROW_HEIGHT = 50
