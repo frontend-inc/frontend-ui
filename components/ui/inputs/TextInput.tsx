@@ -63,15 +63,18 @@ export default function TextInput(props: TextInputProps) {
 	return (
 		<Input
 			label={label}
-			className={cn(className)}
 			type={type}
 			name={name}
 			disabled={disabled}
 			placeholder={placeholder}
+      labelPosition='top'
 			onValueChange={handleInputChange}
 			value={text ? text : ''}
 			autoComplete="off"
-			errorMessage={error}
+			errorMessage={error}   
+      classNames={{
+        input: className
+      }}
 		/>
 	)
 }

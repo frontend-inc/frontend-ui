@@ -38,12 +38,12 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 	return (
 		<Card 
       className={cn(
-        'w-full',
+        'w-full h-full',
         className
       )}
-      shadow="lg"
+      shadow="md"
     >
-			<CardHeader className="p-6">
+			<CardHeader className='px-3'>
 				<User
 					avatarProps={{
 						src: avatar,

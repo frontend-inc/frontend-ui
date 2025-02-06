@@ -8,7 +8,7 @@ type LinkProps = {
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
   url?: string
   path?: string
-  children: React.ReactNode  
+  children: React.ReactNode | string
   className?: string
 }
 
@@ -20,7 +20,8 @@ const Link: React.FC<LinkProps> = (props) => {
     url,
     path,
     text,
-    className  
+    className,
+    children  
   } = props 
 
   const onClick = useNavigate({ url, path })
@@ -34,7 +35,7 @@ const Link: React.FC<LinkProps> = (props) => {
       className={ className }
       href="#"
     >
-      { text }
+      { text }{ children }      
     </NextUILink>
   )
 }

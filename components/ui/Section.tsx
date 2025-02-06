@@ -35,7 +35,7 @@ const Section: React.FC<SectionProps> = (props) => {
 	return (
 		<section
 			className={cn(
-        'z-0',
+        'z-0 h-full',
 				'relative bg-cover bg-center bg-no-repeat',
 				'w-full bg-background',
         theme && mode && `${theme}-${mode}`,

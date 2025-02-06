@@ -3,14 +3,14 @@
 import React, { forwardRef } from 'react'
 import { RemixIcon, ImageModal, VideoModal, ShareModal } from '../..'
 import { useButton } from '../../../hooks'
-import { Button as NextUIButton } from '@nextui-org/react'
+import { cn, Button as NextUIButton } from '@nextui-org/react'
 import { ButtonType } from '../../../types'
 
 type ButtonProps = Omit<ButtonType, 'label'> & {
 	size?: 'sm' | 'md' | 'lg'
 	text: string
+  className?: string
 }
-
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
@@ -22,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		variant = 'solid',
 		size = 'md',
 		text,
+    className,
 		...rest
 	} = props
 
@@ -51,7 +52,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				startContent={icon && <RemixIcon name={icon} />}
 				/* @ts-ignore */
 				onPress={handleClick}
-        className='w-full'
+        className={cn('w-full', className)}
 			>
 				{text}
 			</NextUIButton>

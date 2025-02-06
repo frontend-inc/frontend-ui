@@ -23,10 +23,9 @@ import { MenuButton } from '../..'
 
 interface Item {
 	id: string
-	name: string
+	label: string
 	type: 'file' | 'folder'
-	parent_id: string | null
-	isOpen?: boolean
+	parentId: string | null	
 	position?: number
 }
 
@@ -57,7 +56,7 @@ function SortableItem(props: SortableItemProps) {
 		transition,
 	}
 
-	const childItems = items.filter((i) => i.parent_id === item.id)
+	const childItems = items.filter((i) => i.parentId === item.id)
 
 	const handleItemClick = () => {
 		if (item.type === 'folder') {
@@ -82,14 +81,14 @@ function SortableItem(props: SortableItemProps) {
           `}
 				>
 					{item.type === 'file' ? <File size={16} /> : <Folder size={16} />}
-					<span>{item.name}</span>
+					<span>{item.label}</span>
 				</div>
 				<MenuButton
 					handleEdit={() => handleEdit(item)}
 					handleDelete={() => handleDelete(item)}
 				/>
 			</div>
-			{item.type === 'folder' && item.isOpen && childItems.length > 0 && (
+			{item.type === 'folder' && childItems.length > 0 && (
 				<ul className="ml-6 mt-2 space-y-2">
 					{childItems.map((childItem) => (
 						<SortableItem
@@ -139,17 +138,17 @@ export default function SortableTree(props: SortableTreeProps) {
 				const draggedItem = sortedItems[newIndex]
 				const targetItem = sortedItems[newIndex - 1] // The item before the dragged item
 
-				if (targetItem && targetItem.type === 'folder' && targetItem.isOpen) {
-					draggedItem.parent_id = targetItem.id
+				if (targetItem && targetItem.type === 'folder' ) {
+					draggedItem.parentId = targetItem.id
 				} else if (
 					targetItem &&
 					draggedItem.type == 'file' &&
 					targetItem.type == 'file' &&
-					targetItem.parent_id
+					targetItem.parentId
 				) {
-					draggedItem.parent_id = targetItem.parent_id
+					draggedItem.parentId = targetItem.parentId
 				} else {
-					draggedItem.parent_id = null
+					draggedItem.parentId = null
 				}
 
 				// Update positions of all items in the updated array
@@ -166,12 +165,12 @@ export default function SortableTree(props: SortableTreeProps) {
 	const toggleFolder = (itemId: string) => {
 		setItems(
 			items.map((item) =>
-				item.id === itemId ? { ...item, isOpen: !item.isOpen } : item
+				item.id === itemId ? { ...item } : item
 			)
 		)
 	}
 
-	const rootItems = items.filter((item) => item.parent_id === null)
+	const rootItems = items.filter((item) => item.parentId === null)
 
 	return (
 		<DndContext

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { cn } from '@nextui-org/react'
-import {  } from 'use-debounce'
+
 
 export type TypographyProps = {
   variant:
@@ -19,9 +19,10 @@ export type TypographyProps = {
     | 'caption'
     | 'overline'
     | 'destructive'
-  color?: 'textPrimary' | 'textSecondary' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  fontWeight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold'
   textAlign?: 'left' | 'center' | 'right'
   className?: string
+  color?: string
   children: React.ReactNode
 }
 
@@ -31,18 +32,18 @@ const Typography: React.FC<TypographyProps> = (props) => {
     textAlign = 'left',
     className,
     children = '',
-    color = 'textPrimary',
-  } = props
+    fontWeight = 'normal',
+    color = 'text-foreground',
+  } = props  
 
 
-  const colorClasses = {
-    textPrimary: 'text-foreground',
-    textSecondary: 'text-foreground/70',
-    primary: 'text-primary',
-    secondary: 'text-secondary',
-    destructive: 'text-destructive',
-    foreground: 'text-foreground',
-    background: 'text-background',
+  const fontWeightClasses = {
+    light: 'font-light',
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+    extrabold: 'font-extrabold'
   }
 
   const variantClasses = {
@@ -90,10 +91,11 @@ const Typography: React.FC<TypographyProps> = (props) => {
       className={cn(
         'whitespace-pre-line',
         'w-full outline-none focus:outline-none focus:ring-0',
-        fontFamily[variant],        
-        alignmentClasses[textAlign],
-        colorClasses[color],
+        color,
+        fontFamily[variant],     
+        alignmentClasses[textAlign],        
         variantClasses[variant],
+        fontWeightClasses[fontWeight],   
         className
       )}
     >

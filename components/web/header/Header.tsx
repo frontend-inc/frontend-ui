@@ -32,6 +32,7 @@ export type HeaderProps = {
 	enableAuth?: boolean
 	enableShopify?: boolean
 	enableStripe?: boolean
+  className?: string
 }
 
 const MAX_LINKS = 3
@@ -45,6 +46,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 		enableAuth = false,
 		enableStripe = false,
 		enableShopify = false,
+    className
 	} = props
 
 	const { theme } = useTheme()
@@ -61,7 +63,8 @@ const Header: React.FC<HeaderProps> = (props) => {
 	return (
 		<div className={cn(
       theme && mode && `${theme}-${mode}`, 
-      'bg-background z-40'
+      'z-40',
+      className
     )}>
 			<Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
 				<NavbarContent justify="start">
@@ -79,18 +82,8 @@ const Header: React.FC<HeaderProps> = (props) => {
 				{links?.length <= MAX_LINKS && (
 					<NavbarContent className="hidden sm:flex gap-4" justify="center">
 						{links?.map((link, index) =>
-							link?.children?.length == 0 ? (
-								<NavbarItem key={link.id}>
-									<Button
-										className="text-foreground"
-										variant="light"
-										onPress={() => handlePress(link?.path)}
-									>
-										{link?.label}
-									</Button>
-								</NavbarItem>
-							) : (
-								<Dropdown key={link.id}>
+							link?.children?.length > 0 ? (
+								<Dropdown key={index}>
 									<DropdownTrigger>
 										<Button
 											variant="light"
@@ -117,8 +110,18 @@ const Header: React.FC<HeaderProps> = (props) => {
 										))}
 									</DropdownMenu>
 								</Dropdown>
-							)
-						)}
+							): (
+              <NavbarItem key={index}>
+              <Button
+                className="text-foreground"
+                variant="light"
+                onPress={() => handlePress(link?.path)}
+              >
+                {link?.label}
+              </Button>
+            </NavbarItem>
+            )
+          )}
 					</NavbarContent>
 				)}
 				<NavbarContent justify="end">
@@ -129,17 +132,8 @@ const Header: React.FC<HeaderProps> = (props) => {
 				</NavbarContent>
 				<NavbarMenu>
 					{links?.map((link, index) => (
-						<NavbarMenuItem key={link?.id}>
-							{link?.children?.length == 0 ? (
-								<Button
-									variant="light"
-									className="w-full"
-									onPress={() => handlePress(link?.path)}
-									size="lg"
-								>
-									{link?.label}
-								</Button>
-							) : (
+						<NavbarMenuItem key={index}>
+							{link?.children?.length > 0  ? (															
 								<Dropdown key={index}>
 									<DropdownTrigger>
 										<Button
@@ -164,7 +158,16 @@ const Header: React.FC<HeaderProps> = (props) => {
 										))}
 									</DropdownMenu>
 								</Dropdown>
-							)}
+							):(
+                <Button
+									variant="light"
+									className="w-full"
+									onPress={() => handlePress(link?.path)}
+									size="lg"
+								>
+									{link?.label}
+								</Button>
+              )}
 						</NavbarMenuItem>
 					))}
 				</NavbarMenu>

@@ -12,8 +12,6 @@ import {
 import { Color } from '@tiptap/extension-color'
 //@ts-ignore
 import { TextStyle } from '@tiptap/extension-text-style'
-import { Surface } from '../../../components/tiptap/components/ui/Surface'
-import { Toolbar } from '../../../components/tiptap/components/ui/Toolbar'
 import { RemixIcon } from '../..'
 //@ts-ignore
 import StarterKit from '@tiptap/starter-kit'
@@ -27,6 +25,8 @@ import { useDebounce } from 'use-debounce'
 import { Button } from '@nextui-org/react'
 import * as Popover from '@radix-ui/react-popover'
 import { DropdownButton } from '../../../components/tiptap/components/ui/Dropdown'
+import { Surface } from '../../../components/tiptap/components/ui/Surface'
+import { Toolbar } from '../../../components/tiptap/components/ui/Toolbar'
 import { useTextmenuCommands } from '../../../components/tiptap/components/menus/TextMenu/hooks/useTextmenuCommands'
 import { useTextmenuStates } from '../../../components/tiptap/components/menus/TextMenu/hooks/useTextmenuStates'
 
