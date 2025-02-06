@@ -18,11 +18,11 @@ export type VirtualNodeType = {
 type RenderDomProps = {
 	node: VirtualNodeType
 	injectProps: Record<string, React.FC>
-	components: {}
+	componentMap: {}
 }
 
 const RenderGrid: React.FC<RenderDomProps> = (props) => {
-	const { node, injectProps = {}, components = {} } = props || {}
+	const { node, injectProps = {}, componentMap = {} } = props || {}
 
 	return (
 		<Section {...node.props} maxWidth="xl">
@@ -37,7 +37,7 @@ const RenderGrid: React.FC<RenderDomProps> = (props) => {
 								...childNode.props,
 								...(injectProps[childNode?.name] || {}),
 							}}
-							componentMap={components}
+							componentMap={componentMap}
 						/>
 					</GridItem>
 				))}

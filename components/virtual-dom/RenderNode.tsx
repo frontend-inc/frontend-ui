@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { cn } from '@nextui-org/react'
+import { StaticGridLayout } from '.'
 
 const Div: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
 	const { children } = props
@@ -40,6 +41,14 @@ const RenderNode: React.FC<RenderNodeProps> = (parentProps) => {
 	const Component = componentMap[type] || Div
 
   const isImage = type == 'Image' || type == 'img'
+  const isGrid = type == 'Grid' 
+
+  if(isGrid){
+    <StaticGridLayout 
+      nodes={ children }
+      componentMap={ componentMap }
+    />
+  }  
   if(isImage){
     return(<Component			
       { ...injectProps }
