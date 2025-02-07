@@ -20,6 +20,7 @@ export type CardProps = {
 	url?: string
 	buttonText?: string
   objectFit?: 'cover' | 'contain' 
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 	className?: string
 }
 
@@ -33,9 +34,9 @@ const SimpleCard: React.FC<CardProps> = (props) => {
     url, 
     buttonText, 
     objectFit,
+    shadow='sm',
     className 
-  } =
-		props || {}
+  } = props || {}
 
 	const onClick = useNavigate({
 		url,
@@ -44,7 +45,11 @@ const SimpleCard: React.FC<CardProps> = (props) => {
 
 	return (
 		<Card
-			className={cn('w-full overflow-hidden', className)}
+			className={
+        cn('w-full overflow-hidden', 
+        className
+      )}
+      shadow={ shadow }
 		>
       <CardBody className='p-0 w-full'>
         <Image 

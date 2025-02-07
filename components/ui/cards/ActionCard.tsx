@@ -4,7 +4,7 @@ import React from 'react'
 import { CardProps } from './Card'
 import { Icon, Typography, RemixIcon } from '../..'
 import { useNavigate } from '../../../hooks'
-import { Card, CardBody } from '@nextui-org/react'
+import { cn, Card, CardBody } from '@nextui-org/react'
 
 type ActionCardProps = CardProps & {
   icon?: string
@@ -19,7 +19,9 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
 		icon,
     url,
     path,
-    color='primary'
+    color='primary',
+    className,
+    shadow='sm'
 	} = props || {}
 
   const onClick = useNavigate({
@@ -33,7 +35,11 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
       isHoverable
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn(
+        "w-full overflow-hidden",
+        className
+      )}
+      shadow={ shadow }
     >
       <CardBody className="flex flex-row space-x-4 w-full items-center">
         <div>

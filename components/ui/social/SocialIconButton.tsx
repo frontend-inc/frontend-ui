@@ -4,16 +4,18 @@ import React from 'react'
 import { Button } from '@nextui-org/react'
 //@ts-ignore
 import { SocialIcon } from 'react-social-icons'
+import { cn } from 'frontend-shadcn'
 
 type SocialIconButtonProps = {
 	provider: string
 	url?: string
 	color?: string
 	size?: number
+  className?: string
 }
 
 const SocialIconButton: React.FC<SocialIconButtonProps> = (props) => {
-	const { provider, size = 28, url } = props || {}
+	const { provider, size = 28, className, url } = props || {}
 
 	const formatUrl = (username: string) => {
 		switch (provider) {
@@ -63,7 +65,7 @@ const SocialIconButton: React.FC<SocialIconButtonProps> = (props) => {
 	return (
 		<Button
 			isIconOnly
-			className="min-w-10"
+			className={cn("min-w-10", className)}
 			variant="light"
 			radius="full"
 			onPress={handleClick}

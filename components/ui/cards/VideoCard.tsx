@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Card } from '@nextui-org/react'
+import { cn, Card } from '@nextui-org/react'
 import { cloudinaryImageFromVideoUrl } from '../../../helpers'
 import { Image, VideoModal } from '../../../components'
 
@@ -12,6 +12,7 @@ type VideoCardProps = {
 	objectFit?: 'cover' | 'contain'
 	enableOverlay?: boolean
 	enableGradient?: boolean
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
 }
 
@@ -22,6 +23,7 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 		enableOverlay,
 		enableGradient,
 		objectFit = 'cover',
+    shadow='sm',
     className
 	} = props || {}
 
@@ -33,8 +35,11 @@ const VideoCard: React.FC<VideoCardProps> = (props) => {
 			<Card
 				isPressable
 				onPress={() => setOpen(true)}
-				className="w-full relative"
-				shadow="none"
+				className={cn(
+          "w-full relative",
+          className 
+        )}
+				shadow={ shadow }
 			>
 				<Image
 					src={image ? image : cloudinaryImage}

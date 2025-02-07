@@ -7,6 +7,7 @@ import {
 	Card,
 	CardBody,
 	CardHeader,
+  CardFooter,
 	User,
 	ScrollShadow,
 } from '@nextui-org/react'
@@ -24,6 +25,7 @@ type TestimonialProps = {
 	avatar: string
 	variant?: 'outline' | 'fill' | 'default'
 	className?: string
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
@@ -31,8 +33,8 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 		text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		author = 'John Doe',
 		avatar = '',
-		variant = 'default',
 		className,
+    shadow = 'sm',
 	} = props || {}
 
 	return (
@@ -41,20 +43,9 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
         'w-full h-full',
         className
       )}
-      shadow="md"
-    >
-			<CardHeader className='px-3'>
-				<User
-					avatarProps={{
-						src: avatar,
-						color: 'primary',
-						name: getInitials(author),
-					}}
-					name={author}
-					description="Testimonial"
-				/>
-			</CardHeader>
-			<CardBody className="p-6">
+      shadow={ shadow }
+    >			
+			<CardBody className="p-6 pb-0">
 				{text && (
 					<ScrollShadow>
 						<Typography variant="body1" className="font-normal leading-loose">
@@ -63,6 +54,22 @@ export const TestimonialCard: React.FC<TestimonialProps> = (props) => {
 					</ScrollShadow>
 				)}
 			</CardBody>
+      <CardFooter className='px-6 pb-4'>
+				<User
+					avatarProps={{
+						src: avatar,
+            size: 'md',
+						color: 'primary',
+						name: getInitials(author),
+					}}
+          classNames={{
+            name: 'text-lg font-semibold',
+            description: 'text-sm font-normal text-foreground/70'
+          }}          
+					name={author}
+					description="Testimonial"
+				/>
+			</CardFooter>
 		</Card>
 	)
 }

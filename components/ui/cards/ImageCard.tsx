@@ -8,11 +8,8 @@ export type CardProps = {
 	primary?: string
 	secondaryAction?: React.ReactNode
 	handleClick?: () => void
-	height?: number
 	image?: string
-	slots?: {
-		image?: any
-	}
+  className?: string
 }
 
 export default function ImageCard(props: CardProps) {
@@ -21,10 +18,7 @@ export default function ImageCard(props: CardProps) {
 		secondaryAction,
 		handleClick,
 		image,
-		height = 260,
-		slots = {
-			image: {},
-		},
+    className,
 	} = props || {}
 
 	return (
@@ -32,16 +26,15 @@ export default function ImageCard(props: CardProps) {
 			<div
 				className={cn(
 					'relative flex flex-col overflow-hidden rounded',
-					'transition-shadow duration-300 hover:shadow-md'
+					'transition-shadow duration-300 hover:shadow-md',
+          className 
 				)}
 			>
 				<Image
 					src={image}
-					height={height}
 					alt={primary}
 					handleClick={handleClick}
 					className="w-full h-auto object-cover"
-					{...slots.image}
 				/>
 				<div className="absolute top-2.5 right-2.5 flex flex-row justify-end">
 					{secondaryAction}

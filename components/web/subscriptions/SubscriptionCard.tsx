@@ -45,6 +45,8 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = (props) => {
 		url,
 		handleClick,
 		precision = 0,
+    shadow='sm',
+    className
 	} = props
 
 	const [loading, setLoading] = useState(false)
@@ -69,9 +71,16 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = (props) => {
 	}
 
 	return (
-		<Card isHoverable className="w-full">
+		<Card 
+      isHoverable 
+      className={cn(
+        "h-full w-full",
+        className 
+      )}
+      shadow={shadow}
+    >
 			<CardHeader className="flex flex-col p-6 justify-start items-start space-y-1">
-				<Typography variant="subtitle2">{title}</Typography>
+				<Typography fontWeight='semibold' variant="subtitle2">{title}</Typography>
 				<Typography variant="body2" className="text-foreground/70">
 					{subtitle}
 				</Typography>
@@ -79,7 +88,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = (props) => {
 			<CardBody className="flex flex-col space-y-4 p-6 w-full min-h-[300px]">
 				<div className="flex flex-row space-x-4 w-full items-end">
 					<div className="flex flex-row items-center space-x-1">
-						<Typography variant="h2" className="font-bold">
+						<Typography variant="h1" className="font-bold">
 							{price == 0 ? 'FREE' : formatCurrency(price, precision)}
 						</Typography>
 						{price > 0 && (

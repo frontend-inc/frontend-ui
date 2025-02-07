@@ -17,6 +17,7 @@ export type TeamCardProps = {
   path?: string
   buttonText?: string
 	socialLinks?: SocialLinkType[]
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const TeamCard: React.FC<TeamCardProps> = (props) => {
@@ -29,6 +30,8 @@ const TeamCard: React.FC<TeamCardProps> = (props) => {
     buttonText='Learn More',			
     url,
     path,
+    className,
+    shadow='sm'
   } = props
 
   const onClick = useNavigate({
@@ -41,7 +44,11 @@ const TeamCard: React.FC<TeamCardProps> = (props) => {
       //@ts-ignore
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn(
+        "w-full overflow-hidden",
+        className 
+      )}
+      shadow={ shadow }
     >
       <CardBody className='w-full p-0'>            
         <Image

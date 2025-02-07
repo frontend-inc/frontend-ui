@@ -5,7 +5,7 @@ import { Image } from '../..'
 import { CardProps } from './Card'
 import { Typography } from '../..'
 import { useNavigate } from '../../../hooks'
-import { Button, Card, CardFooter, CardBody } from '@nextui-org/react'
+import { cn, Button, Card, CardFooter, CardBody } from '@nextui-org/react'
 
 type BlogCard = CardProps & {
   publishedAt?: string
@@ -22,6 +22,8 @@ const BlogCard: React.FC<BlogCard> = (props) => {
     url,
     path,
     buttonText,
+    className,
+    shadow='sm'
 	} = props || {}
 
   const onClick = useNavigate({
@@ -34,7 +36,8 @@ const BlogCard: React.FC<BlogCard> = (props) => {
       //@ts-ignore
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn("w-full overflow-hidden", className)}
+      shadow={ shadow }
     >
       <CardBody className="p-0 w-full">
         <Image

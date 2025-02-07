@@ -5,6 +5,7 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
 	src?: string
 	width?: number
 	height?: number
+  mode?: 'dark' | 'light'
 }
 
 export default function Safari({
@@ -12,16 +13,19 @@ export default function Safari({
 	url,
 	width = 1203,
 	height = 753,
+  mode='dark',
 	...props
 }: SafariProps) {
 	return (
 		<svg
 			width={width}
 			height={height}
-			viewBox={`0 0 ${width} ${height}`}
+			viewBox={`0 0 ${width} ${height}`}      
+      style={{ width: '100%', height: 'auto' }}
 			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
+			xmlns="http://www.w3.org/2000/svg"      
 			{...props}
+      className={ mode === 'dark' ? 'dark' : 'light' }
 		>
 			<g clipPath="url(#path0)">
 				<path

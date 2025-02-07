@@ -10,15 +10,20 @@ type FeatureCardProps = {
 	title?: string
 	subtitle?: string
 	variant?: 'flat'| 'fill' | 'outline'
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  className?: string
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = (props) => {
-	const { icon, title, subtitle } = props || {}
+	const { icon, title, subtitle, shadow='sm', className } = props || {}
 	return (
 		<Card
-      //@ts-ignore
-      shadow={"none"}
-      className='w-full h-full bg-background'
+      shadow={shadow}
+      //@ts-ignore      
+      className={cn(
+        'w-full h-full',
+        className
+      )}
 		>
       <CardBody
         className={cn(
@@ -27,11 +32,13 @@ const FeatureCard: React.FC<FeatureCardProps> = (props) => {
         )}      
       >
 			{icon && (
-        <RemixIcon name={icon} size="lg" className="text-primary" />
+        <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
+          <RemixIcon name={icon} size="lg" className="text-primary" />
+        </div>
       )}
 			<div className={cn('flex flex-col space-y-2')}>
-				<Typography variant="h6">{title}</Typography>
-				<Typography className={cn('text-foreground/70')} variant="body1">
+				<Typography variant="subtitle1" fontWeight="semibold">{title}</Typography>
+				<Typography color='text-foreground/70' variant="body1">
 					{subtitle}
 				</Typography>
 			</div>

@@ -6,6 +6,7 @@ import { CardProps } from './Card'
 import { Typography } from '../../../components'
 import { useNavigate } from '../../../hooks'
 import { Button, Card, CardBody } from '@nextui-org/react'
+import { cn } from 'frontend-shadcn'
 
 const ListCard: React.FC<CardProps> = (props) => {
 	const {
@@ -16,6 +17,8 @@ const ListCard: React.FC<CardProps> = (props) => {
     url,
     path,
     buttonText,
+    shadow='sm',
+    className,
 	} = props || {}
 
   const onClick = useNavigate({
@@ -28,7 +31,8 @@ const ListCard: React.FC<CardProps> = (props) => {
       //@ts-ignore
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn("w-full overflow-hidden", className)}
+      shadow={shadow}
     >
       <CardBody>
         <div className="flex flex-row space-x-4 w-[240px]">

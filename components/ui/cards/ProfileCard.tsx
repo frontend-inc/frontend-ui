@@ -17,6 +17,8 @@ export type ProfileCardProps = {
   path?: string
   buttonText?: string
 	socialLinks?: SocialLinkType[]
+  className?: string
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = (props) => {
@@ -29,6 +31,8 @@ const ProfileCard: React.FC<ProfileCardProps> = (props) => {
     buttonText='Message Me',			
     url,
     path,
+    className,
+    shadow='sm'
   } = props
 
   const onClick = useNavigate({
@@ -41,7 +45,11 @@ const ProfileCard: React.FC<ProfileCardProps> = (props) => {
       //@ts-ignore
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn(
+        "w-full overflow-hidden",
+        className
+      )}
+      shadow={ shadow }
     >
       <CardBody className='w-full flex flex-col sm:flex-row gap-4 aspect-square'>    
        <div className='w-full max-w-[240px] flex flex-col items-center'>

@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { cn } from '@nextui-org/react'
 import { Typography } from '../../../components'
 import { Image } from '../..'
-import { Button, Card, CardBody, CardFooter } from '@nextui-org/react'
+import { cn, Button, Card, CardBody, CardFooter } from '@nextui-org/react'
 import { useNavigate } from '../../../hooks'
 
 export type ProductCardProps = {
@@ -20,6 +19,8 @@ export type ProductCardProps = {
   buttonText?: string
 	enableGradient?: boolean
 	enableOverlay?: boolean
+  className?: string
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const ProductCard: React.FC<ProductCardProps> = (props) => {
@@ -36,6 +37,8 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
     path,
     enableGradient = false,
     enableOverlay = false,
+    className,
+    shadow='sm'
   } = props
 
   const onClick = useNavigate({
@@ -48,7 +51,11 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
       //@ts-ignore
       isPressable 
 			onPress={ onClick }
-      className="w-full overflow-hidden"
+      className={cn(
+        "w-full overflow-hidden", 
+        className
+      )}
+      shadow={ shadow }
     >
       <CardBody className='p-0 min-h-[240px] h-full w-full aspect-square'>    
         <Image
