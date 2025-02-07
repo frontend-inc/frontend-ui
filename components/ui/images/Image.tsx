@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Image } from '@nextui-org/react'
-import { cn } from '@nextui-org/react'
+import { cn, Skeleton } from '@nextui-org/react'
 import { AspectRatio } from 'frontend-shadcn'
 import { NO_IMAGE_URL } from '../../../constants'
 import { useDebounce } from 'use-debounce'
@@ -22,7 +22,8 @@ export type ImageCardProps = {
 }
 
 const ImageCard: React.FC<ImageCardProps> = (props) => {
-	const {
+	
+  const {
 		src,
 		alt,
 		label,
@@ -61,7 +62,7 @@ const ImageCard: React.FC<ImageCardProps> = (props) => {
 					removeWrapper
 					isBlurred={isBlurred}
 					isZoomed={isZoomed}
-					src={src || NO_IMAGE_URL}
+					src={src || NO_IMAGE_URL}          
 					alt={alt || label}
 					className={cn(
 						'w-full h-full z-0',

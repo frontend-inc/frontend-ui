@@ -13,7 +13,7 @@ type FeatureCardProps = {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = (props) => {
-	const { variant='flat', icon, title, subtitle } = props || {}
+	const { icon, title, subtitle } = props || {}
 	return (
 		<Card
       //@ts-ignore
@@ -23,10 +23,12 @@ const FeatureCard: React.FC<FeatureCardProps> = (props) => {
       <CardBody
         className={cn(
           'flex justify-start w-full items-start h-full',
-          'flex-row items-start space-x-3',
+          'flex-col items-start space-y-3',
         )}      
       >
-			{icon && <RemixIcon name={icon} size="lg" className="text-primary" />}
+			{icon && (
+        <RemixIcon name={icon} size="lg" className="text-primary" />
+      )}
 			<div className={cn('flex flex-col space-y-2')}>
 				<Typography variant="h6">{title}</Typography>
 				<Typography className={cn('text-foreground/70')} variant="body1">

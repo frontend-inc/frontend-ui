@@ -14,10 +14,10 @@ const RemixIcon = forwardRef<HTMLElement, RemixIconProps>((props, ref) => {
 	const { name, className, size = 'lg' } = props
 
 	const sizeClasses = {
-		sm: 'text-sm',
-		md: 'text-md',
-		lg: 'text-lg',
-		xl: 'text-xl',
+		sm: 'text-md',
+		md: 'text-lg',
+		lg: 'text-xl',
+		xl: 'text-3xl',
 	}
 
 	return (
