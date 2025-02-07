@@ -23,7 +23,7 @@ export type CardProps = {
 	className?: string
 }
 
-const SimpleCard: React.FC<SimpleCardProps> = (props) => {
+const SimpleCard: React.FC<CardProps> = (props) => {
 	const { 
     label,
     title, 
