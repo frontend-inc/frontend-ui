@@ -1,10 +1,12 @@
 import React, { SVGProps } from 'react'
+import { cn } from '@nextui-org/react'
 
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
 	width?: number
 	height?: number
 	src?: string
   mode?: 'dark' | 'light'
+  className?: string
 }
 
 export default function Iphone15Pro({
@@ -12,6 +14,7 @@ export default function Iphone15Pro({
 	height = 882,
 	src,
   mode='dark',
+  className,
 	...props
 }: Iphone15ProProps) {
 	return (  
@@ -23,7 +26,10 @@ export default function Iphone15Pro({
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
       {...props}
-      className={ mode === 'dark' ? 'dark' : 'light' }
+      className={cn(
+        mode === 'dark' ? 'dark' : 'light',
+        className 
+      )}
 		>
 			<path
 				d="M2 73C2 32.6832 34.6832 0 75 0H357C397.317 0 430 32.6832 430 73V809C430 849.317 397.317 882 357 882H75C34.6832 882 2 849.317 2 809V73Z"
