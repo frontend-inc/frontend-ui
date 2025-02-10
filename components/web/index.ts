@@ -8,6 +8,8 @@ export * from './covers'
 // Web Components
 export { default as Accordion } from './accordions/Accordion'
 export { default as Cards } from './cards/Cards'
+export { default as GooglePlayButton } from './footer/GooglePlayButton'
+export { default as AppStoreButton } from './footer/AppStoreButton'
 export { default as CallToAction } from './cta/CallToAction'
 export { default as FeatureCard } from '../ui/cards/FeatureCard'
 export { default as FeatureIcons } from './feature-icons/FeatureIcons'
